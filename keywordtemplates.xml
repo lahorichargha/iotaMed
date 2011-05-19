@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<template type='keywords' title='Standard' templateUuid='DE9030CC-22AB-46BE-8927-3DB49FB1752D'>
+
+    <block title='Standard' type='default' templateUuid='8AC4B008-4663-40F3-95E5-D66851FD172B'>
+        <item>Anamnes<observation name='Anamnes' type='memo' direction='getput'/></item>
+        <item>Allmäntillstånd<observation name='Allmäntillstånd' type='string' direction='getput'/></item>
+        <item>Hjärta<observation name='Hjärta' type='string' direction='getput'/></item>
+        <item>Lungor<observation name='Lungor' type='string' direction='getput'/></item>
+        <item>Blodtryck<observation name='Blodtryck' type='string' direction='getput'/></item>
+        <item>Buk<observation name='Buk' type='string' direction='getput'/></item>
+        <item>Hud och slemhinnor<observation name='Hud' type='string' direction='getput'/></item>
+        <item>Beslut och bedömning<observation name='Bedömning' type='string' direction='getput'/></item>
+    </block>
+
+    <block title='Barn' templateUuid='96BD6EC0-4C01-42AC-B348-CAB886134900'>
+        <item>Öron<observation name='Öron' type='string' direction='getput'/></item>
+        <item>Mun och svalg<observation name='MoS' type='string' direction='getput'/></item>
+        <item>Längd<observation name='Längd' type='string' direction='getput'/></item>
+        <item>Vikt<observation name='Vikt' type='string' direction='getput'/></item>
+    </block>
+
+    <block title='Stenhagen VC' templateUuid='5736D351-6D15-45B8-AD02-52A26F6463AE'>
+        <item>Vener och perifer cirkulation<observation name='Perifapulsar' type='string' direction='getput'/></item>
+    </block>
+
+    <block title='Neurologi' templateUuid='CB7F1ADB-59FB-4AE1-8D30-EB96F5AC8B73'>
+        <item>Romberg test<observation name='Romberg' type='string' direction='getput'/></item>
+        <item>Nystagmus<observation name='Nystagmus' type='string' direction='getput'/></item>
+        <item>Babinski reflex<observation name='Babinski' type='string' direction='getput'/></item>
+    </block>
+
+</template>

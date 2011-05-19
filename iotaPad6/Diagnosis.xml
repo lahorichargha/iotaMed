@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-16"?>
+
+<GetDiagnosisResult xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <diagnos xmlns="http://Cross/NPOIntegrationService/L02RspDiagnosis">
+
+    <system-id>SE162321000032-00AJ</system-id>
+
+    <journal-id>SE162321000032-00AJ_3301023218</journal-id>
+
+    <agande_vardenhet-id>30030011</agande_vardenhet-id>
+
+    <agande_vardgivare-id />
+
+    <diagnos-id>
+
+      <kod>MEEBMKP_9366330_5_1_1</kod>
+
+      <kodverk>SYSteam Internal</kodverk>
+
+    </diagnos-id>
+
+    <diagnoskod>
+
+      <kod>J069</kod>
+
+      <text>Akut övre luftvägsinfektion, ospecificerad</text>
+
+      <kodverk>KSH97</kodverk>
+
+      <fortydligande />
+
+    </diagnoskod>
+
+    <diagnosbeskrivning-kod />
+
+    <diagnosbeskrivning-text />
+
+    <diagnostyp>Huvuddiagnos</diagnostyp>
+
+    <registreringstidpunkt>2011-01-14T12:04:00</registreringstidpunkt>
+
+    <signeringstidpunkt>2011-01-14T12:08:52.792</signeringstidpunkt>
+
+    <handelsetidpunkt>2011-01-14T12:04:00</handelsetidpunkt>
+
+    <vard_och_omsorgspersonal>
+
+      <personal-id>
+
+        <kod />
+
+        <kodverk>HSA-id</kodverk>
+
+      </personal-id>
+
+      <namn>Christina Malmsten</namn>
+
+      <befattning>leg läkare</befattning>
+
+      <enhet>
+
+        <enhets-id>
+
+          <kod>30030011</kod>
+
+          <kodverk>HSA-id</kodverk>
+
+        </enhets-id>
+
+        <enhetsnamn>Medicinkliniken KSK</enhetsnamn>
+
+        <telefonnummer>08-55665566</telefonnummer>
+
+        <e-postadress />
+
+        <postadress>Kullbergska sjukhuset Box 110,641 22,Katrineholm</postadress>
+
+        <geografisk_plats>Katrineholm</geografisk_plats>
+
+      </enhet>
+
+    </vard_och_omsorgspersonal>
+
+    <vard_och_omsorgstagare>
+
+      <person-id>
+
+        <kod>193301023218</kod>
+
+        <kodverk>P</kodverk>
+
+      </person-id>
+
+    </vard_och_omsorgstagare>
+
+  </diagnos>
+
+  <description xsi:nil="true" xmlns="http://Cross/NPOIntegrationService/L02RspDiagnosis" />
+
+</GetDiagnosisResult>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-16"?>
+
+<GetMedicalRecordResult xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <vard_och_omsorgsdokument xmlns="http://Cross/NPOIntegrationService/L01RspMedicalRecord">
+
+    <system-id>SE162321000032-00AJ</system-id>
+
+    <journal-id>SE162321000032-00AJ_2701271112</journal-id>
+
+    <agande_vardenhet-id>30030011</agande_vardenhet-id>
+
+    <agande_vardgivare-id />
+
+    <dokument_id>
+
+      <kod>MEEBMKP_9366353_1_1_1</kod>
+
+      <kodverk>SYSteam Internal</kodverk>
+
+    </dokument_id>
+
+    <dokumenttyp>
+
+      <kod>ova</kod>
+
+      <text>Öppenvårdsanteckning</text>
+
+      <kodverk>SYSteam Internal</kodverk>
+
+      <fortydligande>Mottagningsanteckning</fortydligande>
+
+    </dokumenttyp>
+
+    <dokumentnamn>Mottagningsanteckning</dokumentnamn>
+
+    <registreringstidpunkt>2011-01-31T13:44:00</registreringstidpunkt>
+
+    <handelsetidpunkt>2011-01-31T13:44:00</handelsetidpunkt>
+
+    <innehall_text>
+
+      <anteckningar>
+
+        <sokord>Åtgärd</sokord>
+
+        <varde />
+
+      </anteckningar>
+
+      <anteckningar>
+
+        <sokord>Recept</sokord>
+
+        <varde>Waran Tablett, 2,5 mg, 2X100 tablett(er),  Se dostext, Enligt waranschema, Exp. 1 ggr
+Furix Tablett, 40 mg, 100 tablett(er),  1+1+0+0 st, 1 st Tablett till frukost, 1 st Tablett till lunch., Exp. 4 ggr
+SelokenZOC Depottablett, 25 mg, 100 styck,  1x2 st, 1 st Depottablett 2 gånger dagligen, Exp. 4 ggr
+Diklofenak Sandoz Enterotablett, 25 mg, 100x1 tablett(er),  1x3 st, 1 st Enterotablett 3 gånger dagligen, Exp. 4 ggr</varde>
+
+      </anteckningar>
+
+      <anteckningar>
+
+        <sokord>Makulera</sokord>
+
+        <varde>Receptet är makulerat. SelokenZOC Depottablett, 25 mg
+</varde>
+
+      </anteckningar>
+
+      <anteckningar>
+
+        <sokord>Dosändring</sokord>
+
+        <varde>Diklofenak Sandoz Enterotablett, 25 mg Dosändrat 101205
+från dos: 1x3 1 st Enterotablett 3 gånger dagligen
+till dos: 2x3 2 st Enterotablett 3 gånger dagligen
+</varde>
+
+      </anteckningar>
+
+    </innehall_text>
+
+    <innehall_multimedia xsi:type="xsd:string" />
+
+    <vard_och_omsorgspersonal>
+
+      <personal-id>
+
+        <kod />
+
+        <kodverk>HSA-id</kodverk>
+
+      </personal-id>
+
+      <namn>Christina Malmsten</namn>
+
+      <befattning>leg läkare</befattning>
+
+      <enhet>
+
+        <enhets-id>
+
+          <kod>30030011</kod>
+
+          <kodverk>HSA-id</kodverk>
+
+        </enhets-id>
+
+        <enhetsnamn>Medicinkliniken KSK</enhetsnamn>
+
+        <telefonnummer>08-55665566</telefonnummer>
+
+        <e-postadress />
+
+        <postadress>Kullbergska sjukhuset Box 110,641 22,Katrineholm</postadress>
+
+        <geografisk_plats>Katrineholm</geografisk_plats>
+
+      </enhet>
+
+    </vard_och_omsorgspersonal>
+
+    <vard_och_omsorgstagare>
+
+      <person-id>
+
+        <kod>192701271112</kod>
+
+        <kodverk>P</kodverk>
+
+      </person-id>
+
+    </vard_och_omsorgstagare>
+
+  </vard_och_omsorgsdokument>
+
+  <description xsi:nil="true" xmlns="http://Cross/NPOIntegrationService/L01RspMedicalRecord" />
+
+</GetMedicalRecordResult>

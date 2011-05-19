@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <template title="Acne" resourceName='' resourceType=''/>
+    <template title="Akromioclavikularleden, axel" resourceName='' resourceType=''/>
+    <template title="Aktinisk keratos" resourceName='' resourceType=''/>
+    <template title="Akut Okomplicerad Mediaotit, AOM" resourceName='' resourceType=''/>
+    <template title="Alkoholberoende" resourceName='' resourceType=''/>
+    <template title="Alzheimers sjukdom" resourceName='' resourceType=''/>
+    <template title="Anafylaktisk reaktion" resourceName='' resourceType=''/>
+    <template title="Analfissur" resourceName='' resourceType=''/>
+    <template title="Anemiutredning" resourceName='' resourceType=''/>
+    <template title="Aneurysm → Bukaortaaneurysm" resourceName='' resourceType=''/>
+    <template title="Angina pectoris" resourceName='' resourceType=''/>
+    <template title="Antikoagulantiabehandling" resourceName='' resourceType=''/>
+    <template title="Arbetsrelaterade hudbesvär: Handeksem" resourceName='' resourceType=''/>
+    <template title="Arbetsrelaterade luftvägsbesvär" resourceName='' resourceType=''/>
+    <template title="Artriter: Vårdnivåer" resourceName='' resourceType=''/>
+    <template title="Artrit, Psoriasis-" resourceName='' resourceType=''/>
+    <template title="Artrit, Reumatoid" resourceName='' resourceType=''/>
+    <template title="Artros, axelleden" resourceName='' resourceType=''/>
+    <template title="Artros → Höftledsartros" resourceName='' resourceType=''/>
+    <template title="Astma hos vuxna" resourceName='' resourceType=''/>
+    <template title="Astma/obstruktiv bronkit hos barn" resourceName='' resourceType=''/>
+    <template title="Axelleden, diagnosstöd" resourceName='' resourceType=''/>
+    
+    <template title="B12-brist" resourceName='' resourceType=''/>
+    <template title="Benskörhet" resourceName='' resourceType=''/>
+    <template title="Bensår" resourceName='' resourceType=''/>
+    <template title="Benvaricer - Venös insufficiens, varicer" resourceName='' resourceType=''/>
+    <template title="Bett → Sårinfektion" resourceName='' resourceType=''/>
+    <template title="BHP (Benign Prostatahyperplasi) och LUTS (Lower Urinary Tract Symtoms) " resourceName='' resourceType=''/>
+    <template title="Bihåleinflammation, Sinuit" resourceName='' resourceType=''/>
+    <template title="Bistick → Insektsstick" resourceName='' resourceType=''/>
+    <template title="Blepharit → Ögonlockssjukdomar" resourceName='' resourceType=''/>
+    <template title="Borrelia" resourceName='' resourceType=''/>
+    <template title="Bronkit, akut" resourceName='' resourceType=''/>
+    <template title="Bronkit hos barn → Astma/obstruktiv bronkit hos barn" resourceName='' resourceType=''/>
+    <template title="Bröstcancer" resourceName='' resourceType=''/>
+    <template title="Bukaortaaneurysm" resourceName='' resourceType=''/>
+    
+    <template title="Cholecystit, akut" resourceName='' resourceType=''/>
+    <template title="Chrons sjukdom → Inflammatorsk tarmsjukdom, IBD" resourceName='' resourceType=''/>
+    <template title="Claudicatio" resourceName='' resourceType=''/>
+    <template title="Cystit" resourceName='' resourceType=''/>
+    
+    <template title="Demenssjukdomar" resourceName='' resourceType=''/>
+    <template title="Depression" resourceName='' resourceType=''/>
+    <template title="Diabetes " resourceName='diabetes' resourceType='xml'/>
+    <template title="Diabeteshanden" resourceName='' resourceType=''/>
+    <template title="Diabetesfoten" resourceName='' resourceType=''/>
+    <template title="Diarréer" resourceName='' resourceType=''/>
+    <template title="Diskbråck, Lumbala" resourceName='' resourceType=''/>
+    <template title="Divertikulit" resourceName='' resourceType=''/>
+    <template title="Droppfinger (Malletfinger)" resourceName='' resourceType=''/>
+    <template title="Dupuytrens kontraktur" resourceName='' resourceType=''/>
+    <template title="Dysfagi" resourceName='' resourceType=''/>
+    <template title="Dyspeptiska besvär" resourceName='' resourceType=''/>
+    <template title="Dövhet" resourceName='' resourceType=''/>
+    
+    <template title="Eksem, arbetsrelaterade hudbesvär" resourceName='' resourceType=''/>
+    <template title="Eksem, Seborroiskt" resourceName='' resourceType=''/>
+    <template title="Elkänslighet" resourceName='' resourceType=''/>
+    <template title="Emboli, Lung- och ventrombos" resourceName='' resourceType=''/>
+    <template title="Episklerit" resourceName='' resourceType=''/>
+    <template title="Erektil dysfunktion" resourceName='' resourceType=''/>
+    <template title="Erysipelas (Rosfeber, streptokockinfektion)" resourceName='' resourceType=''/>
+    <template title="Extern Otit " resourceName='' resourceType=''/>
+    <template title="Extremitetsischemi, akut" resourceName='' resourceType=''/>
+    <template title="Extremitetsischemi, kronisk/kritisk" resourceName='' resourceType=''/>
+    
+    <template title="Faryngotonsillit, akut" resourceName='' resourceType=''/>
+    <template title="Fibromyalgi" resourceName='' resourceType=''/>
+    <template title="Fotinflammationer - se Ortopediska infektioner" resourceName='' resourceType=''/>
+    <template title='Fotledstrauma' resourceName='fotledstrauma' resourceType='xml'/>
+    <template title="Frontotemporal demens" resourceName='' resourceType=''/>
+    <template title="Frusen skuldra" resourceName='' resourceType=''/>
+    <template title="Födelsemärken" resourceName='' resourceType=''/>
+    <template title="Förmaksflimmer, FF" resourceName='' resourceType=''/>
+    <template title="Förstoppning hos barn" resourceName='' resourceType=''/>
+    
+    <template title="Gallsten" resourceName='' resourceType=''/>
+    <template title="Ganglion på handen" resourceName='' resourceType=''/>
+    <template title="Gastroesofageal refluxsjukdom, GERD" resourceName='' resourceType=''/>
+    <template title="Gastrointestinal blödning" resourceName='' resourceType=''/>
+    <template title="Getingstick, se Insektsstick" resourceName='' resourceType=''/>
+    <template title="Gikt" resourceName='' resourceType=''/>
+    <template title="Glaukom, Akut ..." resourceName='' resourceType=''/>
+    <template title="Gynekologiska infektioner" resourceName='' resourceType=''/>
+    
+    <template title="Handinflammationer - se Ortopediska infektioner" resourceName='' resourceType=''/>
+    <template title="Handeksem" resourceName='' resourceType=''/>
+    <template title="Handledsfrakturer" resourceName='' resourceType=''/>
+    <template title="Helicobacter pylori-infektion" resourceName='' resourceType=''/>
+    <template title="Hemorrojder" resourceName='' resourceType=''/>
+    <template title="Hemostas-/koagulationsrubbning" resourceName='' resourceType=''/>
+    <template title="Hepatit A" resourceName='' resourceType=''/>
+    <template title="Hepatit B" resourceName='' resourceType=''/>
+    <template title="Hjälpmedel, Ortopedtekniska " resourceName='' resourceType=''/>
+    <template title="Hjärtinfarkt, handläggning efter" resourceName='' resourceType=''/>
+    <template title="Hjärtsvikt" resourceName='' resourceType=''/>
+    <template title="Huvudvärk, se Spänningshuvudvärk och Migrän" resourceName='' resourceType=''/>
+    <template title="Hyperkalcemi" resourceName='' resourceType=''/>
+    <template title="Hypertoni" resourceName='' resourceType=''/>
+    <template title="Hypertyreos  " resourceName='' resourceType=''/>
+    <template title="Hypotyreos" resourceName='' resourceType=''/>
+    <template title="Höftfraktur" resourceName='' resourceType=''/>
+    <template title="Höftledsartros" resourceName='' resourceType=''/>
+    <template title="Höga trombocyter - Trombocytos " resourceName='' resourceType=''/>
+    <template title="Höga vita blodkroppar - Leukocytos " resourceName='' resourceType=''/>
+    <template title="Högt blodtryck" resourceName='' resourceType=''/>
+    <template title="Högt Hb/EVF - Polycytemi " resourceName='' resourceType=''/>
+    <template title="Hörselnedsättning" resourceName='' resourceType=''/>
+    <template title="Ikterus" resourceName='' resourceType=''/>
+    <template title="Impingementsyndrom i axeln" resourceName='' resourceType=''/>
+    <template title="Impotens" resourceName='' resourceType=''/>
+    <template title="Infektioner, ortopediska" resourceName='' resourceType=''/>
+    <template title="Infektioner, gynekologiska" resourceName='' resourceType=''/>
+    <template title="Infektionskänslighet hos barn" resourceName='' resourceType=''/>
+    <template title="Inflammatoriska systemsjd (Kollagenoser): Vårdnivåer  " resourceName='' resourceType=''/>
+    <template title="Inflammatorsk tarmsjukdom, IBD" resourceName='' resourceType=''/>
+    <template title="Inkontinens hos kvinnor, Urin-" resourceName='' resourceType=''/>
+    <template title="Insektsstick" resourceName='' resourceType=''/>
+    <template title="Instabilitet, axel" resourceName='' resourceType=''/>
+    <template title="Irit, Akut..." resourceName='' resourceType=''/>
+    <template title="Irritable Bowel Syndrome (IBS)" resourceName='' resourceType=''/>
+    <template title="Ischemi, extremitets-" resourceName='' resourceType=''/>
+    
+    <template title="Karpaltunnelsyndrom" resourceName='' resourceType=''/>
+    <template title="Keratit" resourceName='' resourceType=''/>
+    <template title="Keratos, Aktinisk" resourceName='' resourceType=''/>
+    <template title="Knäledsartros" resourceName='' resourceType=''/>
+    <template title="Knöl i tyreoidea" resourceName='' resourceType=''/>
+    <template title="Koagulations-/hemostasrubbning" resourceName='' resourceType=''/>
+    <template title="KOL, Kronisk obstruktiv lungsjukdom" resourceName='' resourceType=''/>
+    <template title="Kolit, Mikroskopisk" resourceName='' resourceType=''/>
+    <template title="Kolit, Ulcerös" resourceName='' resourceType=''/>
+    <template title="Kollagenoser, Inflammatoriska systemsjd: Vårdnivåer " resourceName='' resourceType=''/>
+    <template title="Kongenitala nevi" resourceName='' resourceType=''/>
+    <template title="Konjunktivit, akut" resourceName='' resourceType=''/>
+    <template title="Kronisk/kritisk extremitetsischemi" resourceName='' resourceType=''/>
+    <template title="Kronisk obstruktiv lungsjukdom, KOL" resourceName='' resourceType=''/>
+    <template title="Kroniskt idiopatiskt värksyndrom, KIVS / Myofasciellt smärtsyndrom" resourceName='' resourceType=''/>
+    <template title="Kuffruptur, axel" resourceName='' resourceType=''/>
+    
+    <template title="Ledsjukdomar, reumatiska: Vårdnivåer " resourceName='' resourceType=''/>
+    <template title="Leukocytos - höga vita blodkroppar" resourceName='' resourceType=''/>
+    <template title="Levercirros och dess komplikationer" resourceName='' resourceType=''/>
+    <template title="Leverprover, Måttligt förhöjda, utan signifikanta symtom" resourceName='' resourceType=''/>
+    <template title="Ljumskbråck" resourceName='' resourceType=''/>
+    <template title="Luftvägsbesvär, Arbetsrelaterade " resourceName='' resourceType=''/>
+    <template title="Lumbago" resourceName='' resourceType=''/>
+    <template title="Lumbal spinal stenos" resourceName='' resourceType=''/>
+    <template title="Lumbala diskbråck" resourceName='' resourceType=''/>
+    <template title="Lungcancer" resourceName='' resourceType=''/>
+    <template title="Lungemboli och ventrombos" resourceName='' resourceType=''/>
+    <template title="Lunginflammation" resourceName='' resourceType=''/>
+    <template title="LUTS (Lower Urinary Tract Symtoms) och BHP (Benign Prostatahyperplasi)" resourceName='' resourceType=''/>
+    <template title="Läkemedelsberoende" resourceName='' resourceType=''/>
+    
+    <template title="Malletfinger (Droppfinger)" resourceName='' resourceType=''/>
+    <template title="Mediaotit, akut" resourceName='' resourceType=''/>
+    <template title="Metabola syndromet" resourceName='' resourceType=''/>
+    <template title="Migrän" resourceName='' resourceType=''/>
+    <template title="Missbruk: Alkoholberoende" resourceName='' resourceType=''/>
+    <template title="Missbruk: Läkemedelsberoende" resourceName='' resourceType=''/>
+    <template title="Mjukdelsreumatiska tillstånd: Vårdnivåer" resourceName='' resourceType=''/>
+    <template title="M-komponent " resourceName='' resourceType=''/>
+    <template title="Myofasciellt smärtsyndrom/ Kronisk idiopatiskt värksyndrom (KIVS)" resourceName='' resourceType=''/>
+    
+    <template title="Nevi, kongenitala" resourceName='' resourceType=''/>
+    <template title="Nevi, pigment" resourceName='' resourceType=''/>
+    <template title="Nedsatt hörsel" resourceName='' resourceType=''/>
+    <template title="Neuropati, Poly-" resourceName='' resourceType=''/>
+    <template title="Neuropatisk smärta" resourceName='' resourceType=''/>
+    <template title="Neutropeni " resourceName='' resourceType=''/>
+    <template title="Njurcancer" resourceName='' resourceType=''/>
+    <template title="Njursvikt" resourceName='' resourceType=''/>
+    
+    <template title="Obstruktiv lungsjukdom, KOL" resourceName='' resourceType=''/>
+    <template title="Obstruktivt sömnapnésyndrom" resourceName='' resourceType=''/>
+    <template title="Ortopediska infektioner" resourceName='' resourceType=''/>
+    <template title="Ortopedtekniska hjälpmedel " resourceName='' resourceType=''/>
+    <template title="Osteoporos" resourceName='' resourceType=''/>
+    <template title="Otit, Extern" resourceName='' resourceType=''/>
+    <template title="Otit, Media" resourceName='' resourceType=''/>
+    <template title="Otosalpingit, Otit, sekretorisk  " resourceName='' resourceType=''/>
+    
+    <template title="Peritendinit (Senskideåkommor i händerna)" resourceName='' resourceType=''/>
+    <template title="Pigmentnevi" resourceName='' resourceType=''/>
+    <template title="Pneumoni" resourceName='' resourceType=''/>
+    <template title="Polycytemi - högt Hb/EVF" resourceName='' resourceType=''/>
+    <template title="Polymyalgia reumatika, PMR / Temporalisarterit, TA" resourceName='' resourceType=''/>
+    <template title="Polyneuropati" resourceName='' resourceType=''/>
+    <template title="Postoperativa infektioner " resourceName='' resourceType=''/>
+    <template title="Proktit" resourceName='' resourceType=''/>
+    <template title="Prolaps" resourceName='' resourceType=''/>
+    <template title="Prostatacancer" resourceName='' resourceType=''/>
+    <template title="Prostatahyperplasi " resourceName='' resourceType=''/>
+    <template title="Psoriasisartrit" resourceName='' resourceType=''/>
+    <template title="Pyelonefrit" resourceName='' resourceType=''/>
+    
+    <template title="Quervain, Mb de Senskideåkommor i händerna" resourceName='' resourceType=''/>
+    
+    <template title="Radiologi inom handkirurgi " resourceName='' resourceType=''/>
+    <template title="Radiusfraktur,  Restsymtom efter..." resourceName='' resourceType=''/>
+    <template title="Raynauds fenomen" resourceName='' resourceType=''/>
+    <template title="Refluxsjukdom, Gastroesofageal" resourceName='' resourceType=''/>
+    <template title="Restless legs (RLS)" resourceName='' resourceType=''/>
+    <template title="Reumatiska sjukdomar: Vårdnivåer" resourceName='' resourceType=''/>
+    <template title="Reumatiska åkommor i händerna " resourceName='' resourceType=''/>
+    <template title="Reumatoid Artrit" resourceName='' resourceType=''/>
+    <template title="Reumatoid Artrit, axel" resourceName='' resourceType=''/>
+    <template title="Rinokonjunktivit" resourceName='' resourceType=''/>
+    <template title="Rosfeber (Erysipelas)" resourceName='' resourceType=''/>
+    <template title="Rött öga" resourceName='' resourceType=''/>
+    
+    <template title="Seborroiskt eksem" resourceName='' resourceType=''/>
+    <template title="Sekretorisk mediaotit se Otosalpingit" resourceName='' resourceType=''/>
+    <template title="Senskideåkommor i händerna" resourceName='' resourceType=''/>
+    <template title="Sinuit" resourceName='' resourceType=''/>
+    <template title="Sjögrens syndrom" resourceName='' resourceType=''/>
+    <template title="SLE (Systemisk Lupus Erythematosus)" resourceName='' resourceType=''/>
+    <template title="Smärta, Cancer..." resourceName='' resourceType=''/>
+    <template title="Smärta, Neuropatisk" resourceName='' resourceType=''/>
+    <template title="Spinal stenos, Lumbal..." resourceName='' resourceType=''/>
+    <template title="Spänningshuvudvärk" resourceName='' resourceType=''/>
+    <template title="Stressrelaterad psykisk ohälsa" resourceName='' resourceType=''/>
+    <template title="Stroke" resourceName='stroke' resourceType='xml'/>
+    <template title="Subkonjunktival blödning" resourceName='' resourceType=''/>
+    <template title="Synbesvär" resourceName='' resourceType=''/>
+    <template title="Sårinfektion" resourceName='' resourceType=''/>
+    <template title="Sömnapnésyndrom, obstruktivt " resourceName='' resourceType=''/>
+    
+    <template title="Tarminfektion" resourceName='' resourceType=''/>
+    <template title="Temporalisarterit, TA / Polymyalgia reumatika, PMR" resourceName='' resourceType=''/>
+    <template title="Tendovaginitis nodosa (Senskideåkommor i  händerna) " resourceName='' resourceType=''/>
+    <template title="Tinnitus" resourceName='' resourceType=''/>
+    <template title="Tonsillit" resourceName='' resourceType=''/>
+    <template title="Torra ögon" resourceName='' resourceType=''/>
+    <template title="Trombocytopeni" resourceName='' resourceType=''/>
+    <template title="Trombocytos - höga trombocyter" resourceName='' resourceType=''/>
+    <template title="Trombos, ven- och lungemboli" resourceName='' resourceType=''/>
+    <template title="Tumbasartros" resourceName='' resourceType=''/>
+    <template title="Tyreoidea, Knöl i" resourceName='' resourceType=''/>
+    <template title="Tyreoideasjukdomar och graviditet" resourceName='' resourceType=''/>
+    <template title="Tårvägsproblem" resourceName='' resourceType=''/>
+    
+    <template title="Ulcerös kolit" resourceName='' resourceType=''/>
+    <template title="Urinvägsinfektion hos barn" resourceName='' resourceType=''/>
+    <template title="Urinvägssymtom, Nedre... (LUTS och BHP)" resourceName='' resourceType=''/>
+    <template title="Ulnarispåverkan i armarna" resourceName='' resourceType=''/>
+    <template title="Urtikaria" resourceName='' resourceType=''/>
+    
+    <template title="Vaglar" resourceName='' resourceType=''/>
+    <template title="Varicer, ben- Åderbråck och ytlig venös insufficiens" resourceName='' resourceType=''/>
+    <template title="Vaskulitsjukdomr, reumatiska: Vårdnivåer " resourceName='' resourceType=''/>
+    <template title="Vaskulära demenser" resourceName='' resourceType=''/>
+    <template title="Ventrombos och lungemboli" resourceName='' resourceType=''/>
+    <template title="Vibrationsskador i händerna" resourceName='' resourceType=''/>
+    <template title="Vita blodkroppar, Höga  - Leukocytos " resourceName='' resourceType=''/>
+    <template title="Vitamin B12-brist" resourceName='' resourceType=''/>
+    <template title="Vårtor" resourceName='' resourceType=''/>
+    
+    <template title="Åderbråck och ytlig venös insufficiens" resourceName='' resourceType=''/>
+    
+    <template title="Ätstörningar" resourceName='' resourceType=''/>
+    
+    <template title="Ögonlockssjukdomar" resourceName='' resourceType=''/>
+    <template title="Ögonskador" resourceName='' resourceType=''/>
+    <template title="Öroninflammation" resourceName='' resourceType=''/>
+    
+    
+</templates>
+

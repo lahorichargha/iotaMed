@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-16"?>
+
+<GetMicrobiologyResult xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <undersokningsresultat xmlns="http://Cross/NPOIntegrationService/L05RspUndersokning">
+
+    <system-id>SE162321000032-00AJ</system-id>
+
+    <journal-id>SE162321000032-00AJ_3104306711</journal-id>
+
+    <agande_vardenhet-id>30030011</agande_vardenhet-id>
+
+    <agande_vardgivare-id />
+
+    <rc_id>
+
+      <kod>MEEBMKP_1215147_1_77</kod>
+
+      <kodverk>SYSteam Internal</kodverk>
+
+    </rc_id>
+
+    <svarstyp>Slutgiltigt svar</svarstyp>
+
+    <svarsstidpunkt>2011-01-13T20:01:19.862</svarsstidpunkt>
+
+    <signeringstidpunkt xsi:nil="true" />
+
+    <registreringstidpunkt>2011-01-13T20:01:19.862</registreringstidpunkt>
+
+    <utlatande> </utlatande>
+
+    <labenhet>Mikrobiologi</labenhet>
+
+    <svarskommentar>Svar: </svarskommentar>
+
+    <utford_analystjanst>
+
+      <atgardsid>10677490</atgardsid>
+
+      <atgardskod />
+
+      <atgardskod_text>Urinodling rutin</atgardskod_text>
+
+      <atgardsstatus>Avklarad</atgardsstatus>
+
+      <atgardstid>2010-05-19T19:59:00</atgardstid>
+
+      <analyskommentarer>
+Fråga: 
+Svar: Ingen växt</analyskommentarer>
+
+      <provmaterial />
+
+      <metod />
+
+      <utfall_resultat>
+
+        <varde>100519</varde>
+
+        <varde_enhet />
+
+        <patologiskmarkerad>False</patologiskmarkerad>
+
+        <referensintervall />
+
+        <referenspopulation />
+
+        <beskrivning>
+Fråga: 
+Svar: Ingen växt</beskrivning>
+
+      </utfall_resultat>
+
+    </utford_analystjanst>
+
+    <vardbegaran>
+
+      <vardbegaranid>1215147_1_77</vardbegaranid>
+
+      <fragestallning />
+
+      <vard_och_omsorgspersonal>
+
+        <personal-id>
+
+          <kod />
+
+          <kodverk>HSA-id</kodverk>
+
+        </personal-id>
+
+        <namn>Christina Malmsten</namn>
+
+        <befattning>leg läkare</befattning>
+
+        <enhet>
+
+          <enhets-id>
+
+            <kod>30030011</kod>
+
+            <kodverk>HSA-id</kodverk>
+
+          </enhets-id>
+
+          <enhetsnamn>Medicinkliniken KSK</enhetsnamn>
+
+          <telefonnummer>08-55665566</telefonnummer>
+
+          <e-postadress />
+
+          <postadress>Kullbergska sjukhuset Box 110,641 22,Katrineholm</postadress>
+
+          <geografisk_plats>Katrineholm</geografisk_plats>
+
+        </enhet>
+
+      </vard_och_omsorgspersonal>
+
+    </vardbegaran>
+
+    <vard_och_omsorgspersonal>
+
+      <personal-id>
+
+        <kod />
+
+        <kodverk>HSA-id</kodverk>
+
+      </personal-id>
+
+      <namn>Christina Malmsten</namn>
+
+      <befattning>leg läkare</befattning>
+
+      <enhet>
+
+        <enhets-id>
+
+          <kod>30030011</kod>
+
+          <kodverk>HSA-id</kodverk>
+
+        </enhets-id>
+
+        <enhetsnamn>Medicinkliniken KSK</enhetsnamn>
+
+        <telefonnummer>08-55665566</telefonnummer>
+
+        <e-postadress />
+
+        <postadress>Kullbergska sjukhuset Box 110,641 22,Katrineholm</postadress>
+
+        <geografisk_plats>Katrineholm</geografisk_plats>
+
+      </enhet>
+
+    </vard_och_omsorgspersonal>
+
+    <vard_och_omsorgstagare>
+
+      <person-id>
+
+        <kod>193104306711</kod>
+
+        <kodverk>P</kodverk>
+
+      </person-id>
+
+    </vard_och_omsorgstagare>
+
+  </undersokningsresultat>
+
+  <description xsi:nil="true" xmlns="http://Cross/NPOIntegrationService/L05RspUndersokning" />
+
+</GetMicrobiologyResult>

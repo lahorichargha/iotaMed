@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<template type='issue' title='Diabetes' fromICD10='E10' toICD10='E14' lang='SE' templateUuid='D31C527B-9F08-4B6D-8A02-9FD8A728EACC'>
+
+    <description type='template'>Denna mall är avsedd för primärvårdens utredning och uppföljning av diabetes typ 1 och typ 2. 
+        Mallen innehåller olika delar. Utredning och symptom är avsedda att användas en gång, medan årskontroll och NDR används 
+        vid upprepade tillfällen.</description>
+    
+    <block type='initial' repeats='no' title='Diagnostik och utredning' templateUuid='BA2BC279-C461-49B0-AC5F-2A48F0A9A437'>
+        <description type='template'>Symptom och utredningsmallen läggs till som första mall och är avsedd att hjälpa urskilja om diagnosen i fråga
+            är den rätta samt att göra den initiella utredningen. Om det visar sig inte vara så kan mallen tas bort igen. De införda värdena bevaras och kommer att synas i andra mallar som använder samma värden, samt alltid i den kronologiska delen "Journal".</description>
+        <item bold='yes'>Kriterium:</item>
+        <item indentlevel='1'>fP-Glukos &gt;= 7,0 mmol/L vid 2 på varandra följande tillfällen, eller ett glukosvärde (ej fastande) över 11,1 venöst
+            alt. över 12,2 kapillärt med symtom på hyperglykemi.</item>
+        <item indentlevel='2'>Plasmaglukos<observation name='PGlukos' type='numeric' direction='getput'/></item>
+        <item bold='yes'>IFG och IGT</item>
+        <item>IFG (Impaired Fasting Glucose): Icke-diabetisk fastehyperglykemi, dvs fP-glukos 6,1-6,9 mmol/L.</item>
+        <item>Överväg peroral glukosbelastning för att utreda om patienten har IGT eller diabetes (se Utredning).</item>
+        <item bold='yes'>Graviditetsdiabetes</item>
+        <item>Störning av glukosmetabolismen under graviditet. Ökar risken avsevärt för typ 2 diabetes senare i livet.
+            Alla kvinnor som haft graviditetsdiabetes bör glukosbelastas postpartum. De med patologisk glukosbelastning ska följas upp 
+            på vårdcentralen med glukoskontroller varje år, de med normaliserad glukostolerans följas vart 3:e år med fasteglukos, lipidstatus och blodtryck.
+            Kontakt bör upprättas med MVC för att upprätta rutiner.</item>
+        <item bold='yes'>Vårdnivå och remisser</item>
+        <item>Remiss till diabetesklinik, dagavdelning och mottagning:</item>
+        <item indentlevel='1'>Bedömning av bristfällig metabol kontroll i särskilda fall
+            <observation direction='get' name='RemMetabolkontroll'/>
+            <action type='referral' cause='Typ 2 med bristfällig metabol kontroll' to='Diabetesmottagningen|UAS'
+                status='Senaste P-Glukos: $(PGlukos)'/>
+        </item>
+        <item indentlevel='1'>Bedömning av följdtillstånd och riskfaktorer i särskilda fall
+            <observation direction='get' name='RemRiskfakt'/>
+            <action type='referral' cause='Bedömning av riskfaktorer:' to='Diabetesmottagningen|UAS'/>
+        </item>
+        <item indentlevel='1'>Remiss till sjukhusklinik för inläggning: akut sjuka med typ 1- eller typ 2-diabetes.
+            <observation direction='get' name='RemDiabSjukhus'/>
+            <action type='referral' cause='Akut sjuk diabetes, bör läggas in' to='Akutmottagning|UAS'/>
+        </item>
+        <item indentlevel='1'>Remiss till geriatrik för justering av behandling och uppföljning
+            <observation direction='get' name='RemDiabGeriatrik'/>
+            <action type='referral' cause='Tacksam för justering av behandling och uppföljning'/>
+        </item>
+        <item indentlevel='1'>Remiss till ögonmottagning
+            <observation direction='get' name='RemDiabÖgonmott'/>
+            <action type='referral' cause='Tacksam för ögonbottenundersökning vid diabetes' to='Ögonmottagningen|Ögonbotten diabetes|UAS'/>
+        </item>
+        
+        <item bold='yes'>Vid akuta fall</item>
+        <item>Viktnedgång<observation name='Viktnedgång' type='numeric' direction='getput'/></item>
+        <item>törst<observation name='Törst' type='check' direction='getput'/></item>
+        <item>polyuri<observation name='Polyuri' type='check' direction='getput'/></item>
+        <item>kostvanor (söta drycker)<observation name='Kostvanor' type='check' direction='getput'/></item>
+        <item>Lab: glukos, ketoner i urin, Hb, HbA1c, Na, K, Krea, ALAT, ASAT, ALP, KOL, LDL, HDL, Trig, TSH, MU-alb/krea-index
+            <observation direction='get' name='LabDiabUtr'/>
+            <action type='lab' name='LabDiabUtr'>
+                <test name='Glukos'/>
+                <test name='Hb'/>
+                <test name='HbA1c'/>
+                <test name='Na'/>
+                <test name='K'/>
+                <test name='Krea'/>
+                <test name='ALAT'/>
+                <test name='ASAT'/>
+                <test name='ALP'/>
+                <test name='KOL'/>
+                <test name='LDL'/>
+                <test name='HDL'/>
+                <test name='Trig'/>
+                <test name='TSH'/>
+                <test name='MU-Alb/krea-index'/>
+            </action>
+        </item>
+        <item>Blodtryck, bör vara 130/80 eller lägre<observation name='Blodtryck' type='numeric' direction='getput'/></item>
+        
+        <item bold='yes'>Andra sjukdomar</item>
+        <item>Ischemisk hjärtsjukdom<observation name='IschemiskHjärtsjukdom' type='check' direction='getput'/></item>
+        <item>Cerebrovaskulär sjukdom<observation name='CerebrovaskulärSjukdom' direction='getput' type='check'/></item>
+        
+    </block>
+    
+    <block type='any' repeats='yes' title='Behandling' templateUuid='E1BEF2E2-1653-44EC-92B4-F9C49FCEF045'>
+        
+        <item bold='yes'>Mål HbA1c</item>
+        <item indentlevel='1'>Nationellt mål: 42-52 mmol/mol (5,0 - 6,0 %)</item>
+        <item indentlevel='1'>När enbart symtomfrihet eftersträvas: &lt; 73 mmol/mol (&lt; 8,0 %)</item>
+        
+        <item bold='yes'>Metformin</item>
+        <item indentlevel='1'>Metformin 500 mg/dag - 2000 mg/dag
+            <observation direction='get' name='RecMetformin'/>
+            <action type='prescription' ATC='A10BA02' showaction='yes'>
+                <dose name='500 mg'>500 mg - 1x1</dose>
+                <dose name='850 mg'>850 mg - 1x1</dose>
+                <dose name='1000 mg'>500 mg - 1x2</dose>
+                <dose name='1500 mg'>500 mg - 1x3</dose>
+                <dose name='2000 mg'>1000 mg - 1x2</dose>
+            </action>
+        </item>
+        
+        <item bold='yes'>Sulfonylurea</item>
+        <item bold='no' indentlevel='1'>Glimepirid, startdos 1 mg/dag, höj med 1-2 mg var 2-6 vecka, maxdos 4 mg/dag
+            <observation direction='get' name='RecGlimepirid'/>
+            <action type='prescription' ATC='A10BB12' showaction='yes'>
+                <dose name='1 mg'>1 mg - 1x1</dose>
+                <dose name='2 mg'>1 mg - 1x2</dose>
+                <dose name='3 mg'>1 mg - 1x3</dose>
+                <dose name='4 mg'>2 mg - 1x2</dose>
+            </action>
+            
+            
+        </item>
+        
+        <item bold='no' indentlevel='1'>Glipizid, startdos 2,5 mg/dag, höj med 2,5-5 mg var 2-6 vecka, maxdos 10 mg/dag
+            <observation direction='get' name='RecGlipizid'/>
+            <action type='prescription' ATC='A10BB07' showaction='yes'>
+                <dose name='2,5 mg'>2,5 mg - 1x1</dose>
+                <dose name='5,0 mg'>2,5 mg - 1x2</dose>
+                <dose name='7,5 mg'>2,5 mg - 1x3</dose>
+                <dose name='10 mg'>5 mg - 1x2</dose>
+                <dose name='15 mg'>5 mg - 1x3</dose>
+            </action>
+        </item>
+        
+        <item bold='yes'>Meglitinider</item>
+        <item indentlevel='1'>Kan förskrivas i enstaka fall, tex till dem som förskrivas hypoglykemi vid lägsta SU-dos.</item>
+        
+        <item bold='yes'>Akarbos</item>
+        <item indentlevel='1'>Kan förskrivas i enstaka fall, tex som tillägg till patienter med mild glukosstegring efter måltid. Påverkar nedrytningen av kolhydrat i tarmen. 
+            Minskar glukosstegring efter måltid. Sänker HbA1c 5-10 mmol/mol (0,5-1%). Intas före varje måltid.</item>
+    </block>
+
+    <block type='followup' repeats='yes' title='Årskontroll' prompt='År' templateUuid='9BCC6E10-7E5E-4187-B8BD-8EFC026E04AB'>
+        <item bold='yes'>Registrera i Nationella diabetesregistret - NDR.</item>
+        <item>Peta här om du vill lägga till rapportering till NDR för detta besök.
+            <action type='block' templateUuid='6CC38624-FDEF-479F-BCD3-7E7D096101A7'/>
+        </item>
+        
+        <item bold='yes'>Allmänt</item>
+        <item>Debutår<observation name='DiabDiagÅr' direction='getput' type='numeric'/></item>
+        <item>Typ av diabetes<observation name='TypDiabetes' direction='getput' type='string'/></item>
+        <item>Diabetesbehandling<observation name='BehandlingDiabetes' direction='getput'/></item>
+        <item>Metod att ge insulin<observation name='MetodAttGeInsulin' direction='getput'/></item>
+        
+        <item bold='yes'>Anamnes</item>
+        <item indentlevel='1'>Rökning<observation name='Rökning' direction='getput'/></item>
+        <item indentlevel='1'>Fysisk aktivitet (rask promenad 30 min eller motsvarande - hur ofta?).
+            <observation name='FysisktAktiv' type='numeric' direction='getput'/>
+        </item>
+        <item indentlevel='1'>Egenkontroller<observation name='Egenkontroller' type='check' direction='getput'/></item>
+        <item indentlevel='1'>Hypoglykemier, svåra, senaste året<observation name='Hypos' type='numeric' direction='getput'/></item>
+        
+        <item bold='yes'>Kontroll av status med tanke på komplikationer.</item>
+        <item indentlevel='1'>Fotstatus<observation name='Fotstatus' type='string' direction='getput'/></item>
+        <item indentlevel='1'>Perifera pulsar<observation name='Periferapulsar' direction='getput'/></item>
+        <item indentlevel='1'>Neurologi i fötter (stämgaffel, monofilament)<observation name='NeurologiFötter' type='string' direction='getput'/></item>
+        <item indentlevel='1'>Blodtryck<observation name='Blodtryck' direction='getput' type='numeric'/></item>
+        <item indentlevel='1'>Vikt<observation name='Vikt' direction='getput' type='numeric'/></item>
+        <item indentlevel='1'>Längd<observation name='Längd' direction='getput' type='numeric'/></item>
+        <item indentlevel='1'>Bukomfång<observation name='Bukomfång' direction='getput' type='numeric'/></item>
+        <item indentlevel='1'>Remiss till ögonmottagning
+            <observation direction='get' name='RemDiabÖgonmott'/>
+            <action type='referral' to='Ögonmottagningen|UAS' cause='Tacksam för ögonbottenundersökning vid diabetes'/>
+        </item>
+        
+        <item bold='yes'>Metabol kontroll</item>
+        <item indentlevel='1'>Beställ labbprover: HbA1c, MU-alb/krea index, Kreatinin, Kolesterol, LDL, HDL, triglycerider
+            <observation direction='get' name='LabDiabÅrskontroll'/>
+            <action type='lab'>
+                <test name='HbA1c'/>
+                <test name='MU-Alb/krea-index'/>
+                <test name='Krea'/>
+                <test name='Kol'/>
+                <test name='LDL'/>
+                <test name='HDL'/>
+                <test name='Triglyc'/>
+            </action>
+        </item>
+        <item>Lipider<observation name='Lipider' type='string' direction='getput'/></item>
+        <item>HbA1c<observation name='HbA1c' direction='getput' type='numeric'/></item>
+        <item>Makroalbuminuri<observation name='Makroalbuminuri' direction='getput' type='check'/></item>
+        <item>Mikroalbuminuri<observation name='Mikroalbuminuri' direction='getput' type='check'/></item>
+        <item>S-Krea<observation name='SKrea' direction='getput' type='numeric'/></item>
+        
+        <item bold='yes'>Diabetesbehandling</item>
+        <item bold='yes'>Metformin</item>
+        <item indentlevel='1'>Metformin 500 mg/dag - 2000 mg/dag
+            <observation direction='get' name='RecMetformin'/>
+            <action type='prescription' ATC='A10BA02' showaction='yes'>
+                <dose name='500 mg'>500 mg - 1x1</dose>
+                <dose name='850 mg'>850 mg - 1x1</dose>
+                <dose name='1000 mg'>500 mg - 1x2</dose>
+                <dose name='1500 mg'>500 mg - 1x3</dose>
+                <dose name='2000 mg'>1000 mg - 1x2</dose>
+            </action>
+        </item>
+        
+        <item bold='yes'>Sulfonylurea</item>
+        <item bold='no' indentlevel='1'>Glimepirid, startdos 1 mg/dag, höj med 1-2 mg var 2-6 vecka, maxdos 4 mg/dag
+            <observation direction='get' name='RecGlimepirid'/>
+            <action type='prescription' ATC='A10BB12' showaction='yes'>
+                <dose name='1 mg'>1 mg - 1x1</dose>
+                <dose name='2 mg'>1 mg - 1x2</dose>
+                <dose name='3 mg'>1 mg - 1x3</dose>
+                <dose name='4 mg'>2 mg - 1x2</dose>
+            </action>
+            
+            
+        </item>
+        
+        <item bold='no' indentlevel='1'>Glipizid, startdos 2,5 mg/dag, höj med 2,5-5 mg var 2-6 vecka, maxdos 10 mg/dag
+            <observation direction='get' name='RecGlipizid'/>
+            <action type='prescription' ATC='A10BB07' showaction='yes'>
+                <dose name='2,5 mg'>2,5 mg - 1x1</dose>
+                <dose name='5,0 mg'>2,5 mg - 1x2</dose>
+                <dose name='7,5 mg'>2,5 mg - 1x3</dose>
+                <dose name='10 mg'>5 mg - 1x2</dose>
+                <dose name='15 mg'>5 mg - 1x3</dose>
+            </action>
+        </item>
+        
+        <item bold='yes'>Övrig medicinering</item>
+        <item>Antihypertensiva läkemedel<observation name='MedsAntiHypertoni' direction='getput'/></item>
+        <item>Lipidsänkande läkemedel<observation name='MedsLipidsänkande' direction='getput'/></item>
+        <item>ASA<observation name='MedsASA' direction='getput'/></item>
+        
+        
+    </block>
+    
+    <block type='qr' repeats='yes' title='Kvalitetsregister NDR' prompt='År' templateUuid='6CC38624-FDEF-479F-BCD3-7E7D096101A7'>
+        <description type='template'>
+            Kvalitetsregistermallen innehåller ett antal element som bestäms av registerhållaren. Alla dessa element förekommer i
+            utredning eller uppföljningsmallar och deras värden hämtas därifrån. Därför innehåller en registermall helst aldrig
+            fält som ska fyllas i av användaren. Meningen är att användaren endast skall bekräfta att dom upphämtade värdena är
+            rätt och sedan godkänna innehållet för utförsel till kvalitetsregistret, i detta fall det Nationella Diabetes Registret (NDR).
+        </description>
+        <item>Debutår<observation name='DiabDiagÅr' type='numeric' direction='get'/></item>
+        <item>Typ av diabetes<observation name='TypDiabetes' direction='get'/></item>
+        <item>Diabetesbehandling<observation name='BehandlingDiabetes' direction='get'/></item>
+        <item>Metod att ge insulin<observation name='MetodAttGeInsulin' direction='get'/></item>
+        <item>HbA1c<observation name='HbA1c' direction='get'/></item>
+        <item>Vikt<observation name='Vikt' direction='get'/></item>
+        <item>Längd<observation name='Längd' direction='get'/></item>
+        <item>Midjemått<observation name='Bukomfång' direction='get'/></item>
+        <item>Blodtryck<observation name='Blodtryck' direction='get'/></item>
+        <item>Antihypertensiva läkemedel<observation name='MedsAntiHypertoni' direction='get'/></item>
+        <item>Blodlipider<observation name='Lipider' direction='get'/></item>
+        <item>Lipidsänkande läkemedel<observation name='MedsLipidsänkande' direction='get'/></item>
+        <item>Makroalbuminuri<observation name='Makroalbuminuri' direction='get' type='check'/></item>
+        <item>S-kreatinin<observation name='SKrea' direction='get' type='numeric'/></item>
+        <item>Mikroalbuminuri<observation name='Mikroalbuminuri' direction='get' type='check'/></item>
+        <item>Ischemisk hjärtsjukdom<observation name='IschemiskHjärtsjukdom' direction='get'/></item>
+        <item>Cerebrovaskulär sjukdom<observation name='CerebrovaskulärSjukdom' direction='get'/></item>
+        <item>ASA<observation name='MedsASA' direction='get'/></item>
+        <item>Ögonbottenundersökning<observation name='RemDiabÖgonmott' direction='get'/></item>
+        <item>Diabetesretinopati<observation name='DiabetesRetinopati' direction='get'/></item>
+        <item>Synnedsättning pga diabetes<observation name='Synnedsättning' direction='get'/></item>
+        <item>Fotundersökning senaste året<observation name='Fotstatus' direction='get'/></item>
+        <item>Riskkategori<observation name='DiabetesRiskkategori' direction='get'/></item>
+        <item>Rökare<observation name='Rökning' direction='get'/></item>
+        <item>Fysisk aktivitet<observation name='FysisktAktiv' direction='get'/></item>
+        <item>Hypoglykemi, svåra, senaste året<observation name='Hypos' direction='get'/></item>
+        <item>Har patienten gett sitt medgivande till registreringen hos NDR?<observation name='NDRMedgivande' direction='getput' type='check'/></item>
+    </block>
+    
+    <block type='patient' repeats='yes' title='Patient feedback' templateUuid='6DCBCA63-5EF9-4985-8686-C662E1C4D5EF'>
+        <description type='template'>
+            Om du aktiverar denna mall kommer den att presenteras till patienten via applikationen "minIota" som patienten kan
+            köra på sin egen iPad. Befintliga data ur journalen kan användas i mallen automatiskt, medan patienten själv kan
+            fylla i data som sedan kan importeras i journalen vid nästa kontakt.
+        </description>
+        <item>Har du gjort egenkontroller?<observation name='Egenkontroller' type='check' direction='getput'/></item>
+    </block>
+
+</template>

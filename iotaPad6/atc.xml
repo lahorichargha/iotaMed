@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<atc>
+	<group code='A' title='Matsmältningsorgan och ämnesomsättning'/>
+	<group code='A01' title='Medel vid mun- och tandsjukdomar'/>
+	<group code='A01A' title='Medel vid mun- och tandsjukdomar'/>
+	<group code='A02' title='Medel vid syrarelaterade symtom'/>
+	<product name='Gastrosan, Tablett , Medasta MedicalVet'/>
+	<product name='Samarin, Brustablett , Cederroth'/>
+	<product name='Samarin, PULVER , Cederroth'/>
+	<product name='Samarin, Pulver till oral lösning, dospåse , Cederroth'/>
+	<product name='Samarin Antacid Mint, Tuggtablett , Cederroth'/>
+	<product name='Samarin Persikacitron, Pulver till oral lösning, dospåse , Cederroth'/>
+    
+	<group code='A02A' title='Antacida'>
+		<product name='Natriumcitrat APL'/>
+	</group>
+	
+	<group code='A02B' title='Medel vid magsår och gastroesofageal refluxsjukdom'/>
+	<group code='A02D' title='Medel mot meteorism'/>
+	<group code='A02E' title='Medel vid gastroesofageal reflux'/>
+	<group code='A02X' title='Övriga medel vid hyperaciditet, medel vid magsår och meteorism'/>
+	<group code='A03' title='Medel vid funktionella mag-tarmsymtom'/>
+    <product name='Iberogast, Orala droppar, lösning , Green Medicine'/>
+    <product name='Japol, Orala droppar, vätska , Maxmedica'/>
+	<group code='A03A' title='Medel vid funktionella tarmsymtom'/>
+	<group code='A03B' title='Belladonnaalkaloider och derivat'/>
+	<group code='A03C' title='Spasmolytika i kombination med lugnande medel'/>
+	<group code='A03D' title='Spasmolytika i kombination med analgetika'/>
+	<group code='A03E' title='Övriga kombinationer'/>
+	<group code='A03F' title='Motilitetsstimulerande medel'/>
+	<group code='A04' title='Antiemetika'/>
+	<product name='IVEMEND®, Pulver till infusionsvätska, lösning 115 mg, MSD'/>
+	<group code='A04A' title='Antiemetika'/>
+	<group code='A05' title='Gallsyror och koleretika'/>
+	<group code='A05A' title='Gallsyror och koleretika'/>
+	<group code='A05B' title='Leverterapi'/>
+	<group code='A05C' title='Medel för gallterapi, kombinationer'/>
+	<group code='A06' title='Laxantia'/>
+	<group code='A06A' title='Laxantia'/>
+	<group code='A07' title='Antidiarroika och medel vid intestinala infektioner och inflammationer'/>
+	<product name='Bifolac, Enterokapsel, hård , Vitaflo'/>
+	<product name='Trevis, Kapsel, hård , Meda'/>
+	<product name='Trilac, Kapsel, hård , Allergon AB'/>
+	<group code='A07A' title='Medel vid tarminfektioner'/>
+	<group code='A07B' title='Antidiarroika'/>
+	<group code='A07C' title='Elektrolyter med kolhydrater'/>
+	<group code='A07D' title='Propulsionsdämpande medel'/>
+	<group code='A07E' title='Medel vid intestinala inflammationer'/>
+	<group code='A07F' title='Antidiarroika, mikroorganismer'/>
+	<group code='A07X' title='Övriga medel mot diarre'/>
+	<group code='A08' title='Antiobesitasmedel, exkl dietprodukter'/>
+	<group code='A08A' title='Antiobesitasmedel, exkl dietprodukter'/>
+	<group code='A09' title='Digestionsmedel, inkl enzymer'/>
+	<product name='Cynaramin, Orala droppar, lösning , Svenska Bioforce'/>
+	<product name='Galexir, Oral lösning , Maxmedica'/>
+	<group code='A09A' title='Digestionsmedel, inkl enzymer'/>
+	<group code='A10' title='Diabetesmedel'/>
+	<group code='A10A' title='Insuliner och analoger'/>
+	<group code='A10B' title='Blodglukossänkande medel, exkl insuliner'/>
+	<group code='A10X' title='Övriga diabetesmedel'/>
+	<group code='A11' title='Vitaminer'/>
+	<group code='A11A' title='Multivitaminer, kombinationer'/>
+	<group code='A11B' title='Multivitaminer, utan annan tillsats'/>
+	<group code='A11C' title='Vitamin A och D, inkl kombinationer av A + D'/>
+	<group code='A11D' title='Vitamin B1, inkl kombinationer med B6 och B12'/>
+	<group code='A11E' title='Vitamin B-komplex, inkl kombinationer'/>
+	<group code='A11G' title='Vitamin C, inkl kombinationer med kalcium'/>
+	<group code='A11H' title='Övriga vitaminer, exkl vitamin K och P'/>
+	<group code='A11J' title='Övriga kombinationer med vitaminer'/>
+	<group code='A12' title='Mineralämnen'/>
+	<group code='A12A' title='Kalcium'/>
+	<group code='A12B' title='Kalium'/>
+	<group code='A12C' title='Övriga mineralämnen'/>
+	<group code='A13' title='Tonika (aptitstimulerade medel)'/>
+	<group code='A13A' title='Tonika (aptitstimulerade medel)'/>
+	<group code='A14' title='Anabola steroider'/>
+	<group code='A14A' title='Anabola steroider'/>
+	<group code='A14B' title='Övriga anabola steroider'/>
+	<group code='A15' title='Aptitstimulerande medel'/>
+	<group code='A16' title='Övriga medel för matsmältning och ämnesomsättning'/>
+	<group code='A16A' title='Övriga medel för matsmältning och ämnesomsättning'/>
+	<group code='B' title='Blod och blodbildande organ'/>
+	<group code='B01' title='Antikoagulantia'/>
+	<group code='B02' title='Hemostatika'/>
+	<group code='B03' title='Medel vid anemier'/>
+	<group code='B05' title='Blodsubstitut och infusionsvätskor, m m'/>
+	<group code='B06' title='Övriga hematologiska medel'/>
+	<group code='C' title='Hjärta och kretslopp'/>
+	<group code='C01' title='Medel vid hjärtsjukdomar'/>
+	<group code='C02' title='Antihypertensiva medel'/>
+	<group code='C03' title='Diuretika'/>
+	<group code='C04' title='Medel vid perifera kärlsjukdomar'/>
+	<group code='C05' title='Kärlskyddande medel'/>
+	<group code='C07' title='Beta-receptorblockerande medel'/>
+	<group code='C08' title='Kalciumantagonister'/>
+	<group code='C09' title='Medel som påverkar renin-angiotensinsystemet'/>
+	<group code='C10' title='Medel som påverkar serumlipidnivåerna'/>
+	<group code='D' title='Hud'/>
+	<group code='G' title='Urin- och könsorgan samt könshormoner'/>
+	<group code='H' title='Hormoner, exkl könshormoner och insuliner'/>
+	<group code='J' title='Infektionssjukdomar'/>
+	<group code='L' title='Tumörer och rubbningar i immunsystemet'/>
+	<group code='M' title='Rörelseapparaten'/>
+	<group code='N' title='Nervsystemet'/>
+	<group code='P' title='Antiparasitära, insektsdödande och repellerande medel'/>
+	<group code='R' title='Andningsorganen'/>
+	<group code='S' title='Ögon och öron'/>
+	<group code='V' title='Varia'/>
+</atc>

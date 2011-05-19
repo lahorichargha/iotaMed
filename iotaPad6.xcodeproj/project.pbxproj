@@ -1,0 +1,1448 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA0C6285135E42B2002E50D7 /* ServerConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C6284135E42B2002E50D7 /* ServerConnect.m */; };
+		AA0C62A11360584D002E50D7 /* ServerDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C62A01360584D002E50D7 /* ServerDiscovery.m */; };
+		AA12A380137B2F010016AB24 /* IssueWorksheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA12A37F137B2F010016AB24 /* IssueWorksheetController.xib */; };
+		AA12A38E137C73EF0016AB24 /* ThemeColors.m in Sources */ = {isa = PBXBuildFile; fileRef = AA12A38D137C73EF0016AB24 /* ThemeColors.m */; };
+		AA16037B1375B4B800D03EE6 /* ServerListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16037A1375B4B800D03EE6 /* ServerListener.m */; };
+		AA1AA5471330D82B003DC2AE /* ContactSelectOrCreateForm.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1AA5451330D829003DC2AE /* ContactSelectOrCreateForm.m */; };
+		AA1AA5481330D82B003DC2AE /* ContactSelectOrCreateForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA1AA5461330D82A003DC2AE /* ContactSelectOrCreateForm.xib */; };
+		AA220A7313413A170088CBD3 /* tape4.png in Resources */ = {isa = PBXBuildFile; fileRef = AA220A7213413A170088CBD3 /* tape4.png */; };
+		AA220A88134148990088CBD3 /* fotledstrauma.xml in Resources */ = {isa = PBXBuildFile; fileRef = AA220A87134148990088CBD3 /* fotledstrauma.xml */; };
+		AA220A8B13414B260088CBD3 /* IDRImage.m in Sources */ = {isa = PBXBuildFile; fileRef = AA220A8A13414B260088CBD3 /* IDRImage.m */; };
+		AA29799C1325788C00F92D9C /* IDRValue.m in Sources */ = {isa = PBXBuildFile; fileRef = AA29799B1325788C00F92D9C /* IDRValue.m */; };
+		AA2A2D6C133560A5005B7CAC /* ItemCellJournal.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2A2D6B133560A5005B7CAC /* ItemCellJournal.m */; };
+		AA2A2D6F133560BA005B7CAC /* ItemCellIssue.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2A2D6E133560BA005B7CAC /* ItemCellIssue.m */; };
+		AA2A2D72133560CD005B7CAC /* ItemCellTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2A2D71133560CD005B7CAC /* ItemCellTemplate.m */; };
+		AA2DF2B91314763B0018A2DD /* KlinKem.xml in Resources */ = {isa = PBXBuildFile; fileRef = AA2DF2B81314763B0018A2DD /* KlinKem.xml */; };
+		AA48FE78132FBE9B008409AA /* keywordtemplates.xml in Resources */ = {isa = PBXBuildFile; fileRef = AA48FE77132FBE9B008409AA /* keywordtemplates.xml */; };
+		AA4CF7381319266900F19B45 /* XMLTagDef.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4CF7371319266900F19B45 /* XMLTagDef.m */; };
+		AA50C87C132B8EB50031D231 /* keywords.xml in Resources */ = {isa = PBXBuildFile; fileRef = AA50C87B132B8EB50031D231 /* keywords.xml */; };
+		AA50C88E132BB5B40031D231 /* ContactCreationForm.m in Sources */ = {isa = PBXBuildFile; fileRef = AA50C88C132BB5B30031D231 /* ContactCreationForm.m */; };
+		AA50C88F132BB5B40031D231 /* ContactCreationForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA50C88D132BB5B40031D231 /* ContactCreationForm.xib */; };
+		AA51D7B41312E0B000E9E1CA /* NSString+iotaAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA51D7B31312E0B000E9E1CA /* NSString+iotaAdditions.m */; };
+		AA57574713127A4F0099128F /* IssueWorksheetBlockDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = AA57574613127A4F0099128F /* IssueWorksheetBlockDescriptor.m */; };
+		AA5BF1421343D44500AB9952 /* ValueLookupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5BF1411343D44500AB9952 /* ValueLookupCell.m */; };
+		AA5DB23E131FEBC600888408 /* IDRWorksheet.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5DB23D131FEBC600888408 /* IDRWorksheet.m */; };
+		AA5DB241131FEEC600888408 /* IDRBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5DB240131FEEC500888408 /* IDRBlock.m */; };
+		AA5DB24A131FF72D00888408 /* IDRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5DB249131FF72B00888408 /* IDRItem.m */; };
+		AA5DB24D131FF78300888408 /* IDRObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5DB24C131FF78000888408 /* IDRObservation.m */; };
+		AA5DB250131FF79800888408 /* IDRAction.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5DB24F131FF79300888408 /* IDRAction.m */; };
+		AA5DB253131FF82400888408 /* IDRObsDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5DB252131FF81E00888408 /* IDRObsDefinition.m */; };
+		AA5DB256131FFA9400888408 /* diabetes.xml in Resources */ = {isa = PBXBuildFile; fileRef = AA5DB255131FFA9400888408 /* diabetes.xml */; };
+		AA5DB2731320365A00888408 /* XML2IDR.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5DB2721320365100888408 /* XML2IDR.m */; };
+		AA5DB27F132058F700888408 /* templates.xml in Resources */ = {isa = PBXBuildFile; fileRef = AA5DB27E132058F700888408 /* templates.xml */; };
+		AA6301EC13393A5B0033DB11 /* StChemistry.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6301EB13393A5A0033DB11 /* StChemistry.m */; };
+		AA6301EF13393ABF0033DB11 /* XML2StChemistry.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6301EE13393ABF0033DB11 /* XML2StChemistry.m */; };
+		AA6301FA13396A630033DB11 /* StUndersokningsresultat.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6301F913396A630033DB11 /* StUndersokningsresultat.m */; };
+		AA6301FD13396AF40033DB11 /* StBase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6301FC13396AF30033DB11 /* StBase.m */; };
+		AA6302011339FF550033DB11 /* IotaDOMBase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6302001339FF550033DB11 /* IotaDOMBase.m */; };
+		AA6302041339FF600033DB11 /* IotaDOMNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6302031339FF600033DB11 /* IotaDOMNode.m */; };
+		AA6302071339FF6F0033DB11 /* IotaDOMElement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6302061339FF6F0033DB11 /* IotaDOMElement.m */; };
+		AA63020A1339FF7F0033DB11 /* IotaDOMContent.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6302091339FF7F0033DB11 /* IotaDOMContent.m */; };
+		AA63020D133A00A50033DB11 /* Xml2IotaDom.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63020C133A00A50033DB11 /* Xml2IotaDom.m */; };
+		AA630211133AA49E0033DB11 /* b1.png in Resources */ = {isa = PBXBuildFile; fileRef = AA63020E133AA49E0033DB11 /* b1.png */; };
+		AA630212133AA49E0033DB11 /* b2.png in Resources */ = {isa = PBXBuildFile; fileRef = AA63020F133AA49E0033DB11 /* b2.png */; };
+		AA630213133AA49E0033DB11 /* b3.png in Resources */ = {isa = PBXBuildFile; fileRef = AA630210133AA49E0033DB11 /* b3.png */; };
+		AA630219133AAC210033DB11 /* b2b.png in Resources */ = {isa = PBXBuildFile; fileRef = AA630218133AAC210033DB11 /* b2b.png */; };
+		AA63021F133AB34F0033DB11 /* Lockknock.png in Resources */ = {isa = PBXBuildFile; fileRef = AA63021E133AB34F0033DB11 /* Lockknock.png */; };
+		AA630222133AC6510033DB11 /* UndersokningsResultat.m in Sources */ = {isa = PBXBuildFile; fileRef = AA630221133AC6510033DB11 /* UndersokningsResultat.m */; };
+		AA630225133AC65E0033DB11 /* AnalysTjanst.m in Sources */ = {isa = PBXBuildFile; fileRef = AA630224133AC65D0033DB11 /* AnalysTjanst.m */; };
+		AA63B5FF13055E350035A49C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA63B5FE13055E350035A49C /* UIKit.framework */; };
+		AA63B60113055E350035A49C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA63B60013055E350035A49C /* Foundation.framework */; };
+		AA63B60313055E350035A49C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA63B60213055E350035A49C /* CoreGraphics.framework */; };
+		AA63B60913055E350035A49C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA63B60713055E350035A49C /* InfoPlist.strings */; };
+		AA63B60C13055E350035A49C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63B60B13055E350035A49C /* main.m */; };
+		AA63B60F13055E350035A49C /* iotaPad6AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63B60E13055E350035A49C /* iotaPad6AppDelegate.m */; };
+		AA63B61913055E360035A49C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA63B5FE13055E350035A49C /* UIKit.framework */; };
+		AA63B61A13055E360035A49C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA63B60013055E350035A49C /* Foundation.framework */; };
+		AA63B61B13055E360035A49C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA63B60213055E350035A49C /* CoreGraphics.framework */; };
+		AA63B62313055E360035A49C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA63B62113055E360035A49C /* InfoPlist.strings */; };
+		AA63B62613055E360035A49C /* iotaPad6Tests.h in Resources */ = {isa = PBXBuildFile; fileRef = AA63B62513055E360035A49C /* iotaPad6Tests.h */; };
+		AA63B62813055E360035A49C /* iotaPad6Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63B62713055E360035A49C /* iotaPad6Tests.m */; };
+		AA63B63313055E5C0035A49C /* IssueListController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63B63213055E5C0035A49C /* IssueListController.m */; };
+		AA63B63713055E6E0035A49C /* IssueWorksheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63B63513055E6E0035A49C /* IssueWorksheetController.m */; };
+		AA63B63C13055E7B0035A49C /* EhrViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63B63A13055E7B0035A49C /* EhrViewController.m */; };
+		AA63B63D13055E7B0035A49C /* EhrViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA63B63B13055E7B0035A49C /* EhrViewController.xib */; };
+		AA63B64113055E880035A49C /* MedListController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63B63F13055E880035A49C /* MedListController.m */; };
+		AA63B64213055E880035A49C /* MedListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA63B64013055E880035A49C /* MedListController.xib */; };
+		AA63B646130562730035A49C /* JournalController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63B644130562710035A49C /* JournalController.m */; };
+		AA63B647130562730035A49C /* JournalController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA63B645130562720035A49C /* JournalController.xib */; };
+		AA63B64B13056C5D0035A49C /* AppointmentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63B64913056C5B0035A49C /* AppointmentsController.m */; };
+		AA63B64C13056C5D0035A49C /* AppointmentsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA63B64A13056C5C0035A49C /* AppointmentsController.xib */; };
+		AA63B64F1305886C0035A49C /* DemoData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63B64E1305886B0035A49C /* DemoData.m */; };
+		AA63B652130588A50035A49C /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63B651130588A20035A49C /* Patient.m */; };
+		AA63B65513058A030035A49C /* Patients.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63B65413058A000035A49C /* Patients.m */; };
+		AA66CDCA1336871500B4E2F5 /* SysTeamNPO.m in Sources */ = {isa = PBXBuildFile; fileRef = AA66CDC91336871300B4E2F5 /* SysTeamNPO.m */; };
+		AA66CDDF1337F9B900B4E2F5 /* 708_44_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = AA66CDDD1337F9B700B4E2F5 /* 708_44_landscape.png */; };
+		AA66CDE01337F9B900B4E2F5 /* 773_44_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = AA66CDDE1337F9B800B4E2F5 /* 773_44_portrait.png */; };
+		AA6FCF8B13130691008FBFFD /* IssueTemplateFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6FCF8913130690008FBFFD /* IssueTemplateFormViewController.m */; };
+		AA6FCF8C13130691008FBFFD /* IssueTemplateFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6FCF8A13130691008FBFFD /* IssueTemplateFormViewController.xib */; };
+		AA7365C6131D96FA000B6B1F /* Funcs.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7365C5131D96FA000B6B1F /* Funcs.m */; };
+		AA7EFCC9132832D900F3F3A0 /* IssueBlockInfoDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7EFCC7132832D800F3F3A0 /* IssueBlockInfoDialog.m */; };
+		AA7EFCCA132832D900F3F3A0 /* IssueBlockInfoDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA7EFCC8132832D900F3F3A0 /* IssueBlockInfoDialog.xib */; };
+		AA9081EF130E9CD800DBF856 /* PatientDB.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9081EE130E9CD800DBF856 /* PatientDB.m */; };
+		AA9081F2130E9DFF00DBF856 /* IssueTemplateDB.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9081F1130E9DFF00DBF856 /* IssueTemplateDB.m */; };
+		AA908201130EA1F000DBF856 /* IssueTemplateDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = AA908200130EA1EF00DBF856 /* IssueTemplateDescriptor.m */; };
+		AA908207130EB77000DBF856 /* IssueTemplateBlockDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = AA908206130EB76E00DBF856 /* IssueTemplateBlockDescriptor.m */; };
+		AA90820A130EE0B200DBF856 /* IssueWorksheetDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = AA908209130EE0B200DBF856 /* IssueWorksheetDescriptor.m */; };
+		AA94FC011332604F0065DC19 /* UIView+iotaExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA94FC001332604F0065DC19 /* UIView+iotaExtensions.m */; };
+		AA94FC0413327B250065DC19 /* SYSteam_EDB_webpage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA94FC0313327B250065DC19 /* SYSteam_EDB_webpage.jpg */; };
+		AA94FC0613327C3D0065DC19 /* systeam.png in Resources */ = {isa = PBXBuildFile; fileRef = AA94FC0513327C3D0065DC19 /* systeam.png */; };
+		AA94FC0B133288A20065DC19 /* KlinKemGrafController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA94FC09133288A20065DC19 /* KlinKemGrafController.m */; };
+		AA94FC0C133288A20065DC19 /* KlinKemGrafController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA94FC0A133288A20065DC19 /* KlinKemGrafController.xib */; };
+		AA94FC0F133298FA0065DC19 /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA94FC0E133298F90065DC19 /* GraphView.m */; };
+		AA94FC191333E3500065DC19 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AA94FC181333E34C0065DC19 /* Settings.bundle */; };
+		AA94FC231333E5A70065DC19 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = AA94FC1B1333E5A70065DC19 /* Icon-72.png */; };
+		AA94FC241333E5A70065DC19 /* Icon-AppStore.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA94FC1C1333E5A70065DC19 /* Icon-AppStore.jpg */; };
+		AA94FC251333E5A70065DC19 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = AA94FC1D1333E5A70065DC19 /* Icon-Small-50.png */; };
+		AA94FC261333E5A70065DC19 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = AA94FC1E1333E5A70065DC19 /* Icon-Small.png */; };
+		AA94FC271333E5A70065DC19 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA94FC1F1333E5A70065DC19 /* Icon-Small@2x.png */; };
+		AA94FC281333E5A70065DC19 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA94FC201333E5A70065DC19 /* Icon.png */; };
+		AA94FC291333E5A70065DC19 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA94FC211333E5A70065DC19 /* Icon@2x.png */; };
+		AA94FC2A1333E5A70065DC19 /* iotaAppIcon.opacity in Resources */ = {isa = PBXBuildFile; fileRef = AA94FC221333E5A70065DC19 /* iotaAppIcon.opacity */; };
+		AA94FC32133411D00065DC19 /* Soap12.m in Sources */ = {isa = PBXBuildFile; fileRef = AA94FC31133411B10065DC19 /* Soap12.m */; };
+		AA96805C133BCFC5006E6AF0 /* IDRTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AA96805B133BCFC5006E6AF0 /* IDRTest.m */; };
+		AA968060133BE053006E6AF0 /* LabOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA96805E133BE052006E6AF0 /* LabOrderController.m */; };
+		AA968061133BE053006E6AF0 /* LabOrderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA96805F133BE053006E6AF0 /* LabOrderController.xib */; };
+		AA968069133CD007006E6AF0 /* ReferralController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA968067133CD004006E6AF0 /* ReferralController.m */; };
+		AA96806E133CD01E006E6AF0 /* PrescriptionController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA96806C133CD01B006E6AF0 /* PrescriptionController.m */; };
+		AA96806F133CD01E006E6AF0 /* PrescriptionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA96806D133CD01C006E6AF0 /* PrescriptionController.xib */; };
+		AA9680C4133D3F6D006E6AF0 /* ValueLookupForm.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9680C2133D3F67006E6AF0 /* ValueLookupForm.m */; };
+		AA9680C5133D3F6D006E6AF0 /* ValueLookupForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9680C3133D3F6A006E6AF0 /* ValueLookupForm.xib */; };
+		AA9680C8133D5060006E6AF0 /* IDRDose.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9680C7133D505F006E6AF0 /* IDRDose.m */; };
+		AA9680CC133D574B006E6AF0 /* PrescriptionDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9680CA133D5746006E6AF0 /* PrescriptionDetailController.m */; };
+		AA9680CD133D574B006E6AF0 /* PrescriptionDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9680CB133D5748006E6AF0 /* PrescriptionDetailController.xib */; };
+		AA9AFF4C13151DB40027E667 /* Diagnosis.xml in Resources */ = {isa = PBXBuildFile; fileRef = AA9AFF4B13151DB40027E667 /* Diagnosis.xml */; };
+		AA9AFF4E13151DCD0027E667 /* MedicalRecord.xml in Resources */ = {isa = PBXBuildFile; fileRef = AA9AFF4D13151DCD0027E667 /* MedicalRecord.xml */; };
+		AA9AFF5013151DD60027E667 /* Microbiology.xml in Resources */ = {isa = PBXBuildFile; fileRef = AA9AFF4F13151DD60027E667 /* Microbiology.xml */; };
+		AA9B47CC1323915600C96675 /* backg1.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B47C91323915600C96675 /* backg1.png */; };
+		AA9B47CD1323915600C96675 /* backg2.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B47CA1323915600C96675 /* backg2.png */; };
+		AA9B47CE1323915600C96675 /* backg3.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B47CB1323915600C96675 /* backg3.png */; };
+		AA9B47F31323CF2400C96675 /* title_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B47F21323CF2400C96675 /* title_bar.png */; };
+		AA9B47F61323CF5100C96675 /* MyNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9B47F51323CF4F00C96675 /* MyNavigationBar.m */; };
+		AA9B47F91323D16E00C96675 /* MyToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9B47F81323D16B00C96675 /* MyToolBar.m */; };
+		AA9B47FD1323F01A00C96675 /* titlebar_light.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B47FC1323F01A00C96675 /* titlebar_light.png */; };
+		AA9B47FF1323F25500C96675 /* atc.xml in Resources */ = {isa = PBXBuildFile; fileRef = AA9B47FE1323F25500C96675 /* atc.xml */; };
+		AA9B480213244C5300C96675 /* IDRDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9B480113244C4A00C96675 /* IDRDescription.m */; };
+		AAA9EEED1320FC8F00D36C54 /* IssueTemplateBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA9EEEB1320FC8300D36C54 /* IssueTemplateBlockViewController.m */; };
+		AAA9EEEE1320FC8F00D36C54 /* IssueTemplateBlockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAA9EEEC1320FC8800D36C54 /* IssueTemplateBlockViewController.xib */; };
+		AAA9EF0213210AAF00D36C54 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA9EF0013210A9A00D36C54 /* ItemCell.m */; };
+		AAA9EF0613210CB200D36C54 /* BulletView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA9EF0513210CA500D36C54 /* BulletView.m */; };
+		AAB05C03133810C7008FD031 /* issues_iota.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB05C02133810C7008FD031 /* issues_iota.png */; };
+		AAB05C0613381305008FD031 /* mallar_iotas.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB05C0513381305008FD031 /* mallar_iotas.png */; };
+		AAB05C0813381319008FD031 /* laboratorium.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB05C0713381319008FD031 /* laboratorium.png */; };
+		AAB05C0A13381327008FD031 /* journalnotat.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB05C0913381327008FD031 /* journalnotat.png */; };
+		AAB05C0C133816B3008FD031 /* recept.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB05C0B133816B3008FD031 /* recept.png */; };
+		AAB05C1013381ACB008FD031 /* cross.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB05C0F13381ACB008FD031 /* cross.png */; };
+		AAB76FFA1355A7C200388BF5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AAB76FFC1355A7C200388BF5 /* Localizable.strings */; };
+		AAB7700A1355AB0B00388BF5 /* ReferralController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB7700B1355AB0B00388BF5 /* ReferralController.xib */; };
+		AAB7700C1355AB4400388BF5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB7700D1355AB4400388BF5 /* MainWindow.xib */; };
+		AAB7700F1357077700388BF5 /* stroke.xml in Resources */ = {isa = PBXBuildFile; fileRef = AAB7700E1357077700388BF5 /* stroke.xml */; };
+		AAB84B1113262B3600ACC980 /* IDRContact.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB84B1013262B3600ACC980 /* IDRContact.m */; };
+		AAB84B151326D16700ACC980 /* PatientContext.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB84B141326D16700ACC980 /* PatientContext.m */; };
+		AAB84B181326D1E700ACC980 /* IDRWorksheets.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB84B171326D1D700ACC980 /* IDRWorksheets.m */; };
+		AAB84B1B1326D33500ACC980 /* PatientContextDB.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB84B1A1326D33500ACC980 /* PatientContextDB.m */; };
+		AAC2FC22130BDF85009E8384 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC2FC21130BDF85009E8384 /* DetailViewController.m */; };
+		AAC2FC26130BE157009E8384 /* DetailViewControllerWithToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC2FC25130BE157009E8384 /* DetailViewControllerWithToolbar.m */; };
+		AAC2FC2B130BFC8E009E8384 /* PatientListController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC2FC29130BFC8D009E8384 /* PatientListController.m */; };
+		AAC2FC2C130BFC8E009E8384 /* PatientListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAC2FC2A130BFC8D009E8384 /* PatientListController.xib */; };
+		AACDD398132E8F610065C457 /* ObservationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AACDD397132E8F5B0065C457 /* ObservationCell.m */; };
+		AAD2906413436D8700D9CAF0 /* 44A11.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD2906313436D8700D9CAF0 /* 44A11.png */; };
+		AAD2906613436DBB00D9CAF0 /* 44A21.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD2906513436DBB00D9CAF0 /* 44A21.png */; };
+		AAD2906813436DE300D9CAF0 /* 44A31.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD2906713436DE300D9CAF0 /* 44A31.png */; };
+		AAD2906A13436E0100D9CAF0 /* 44B11.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD2906913436E0100D9CAF0 /* 44B11.png */; };
+		AAD2906C13436E1C00D9CAF0 /* 44B21.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD2906B13436E1C00D9CAF0 /* 44B21.png */; };
+		AAD2906E13436E3900D9CAF0 /* 44B31.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD2906D13436E3900D9CAF0 /* 44B31.png */; };
+		AAD2907013436E5700D9CAF0 /* 44C11.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD2906F13436E5700D9CAF0 /* 44C11.png */; };
+		AAD2907213436E7300D9CAF0 /* 44C21.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD2907113436E7300D9CAF0 /* 44C21.png */; };
+		AAD2907413436E8E00D9CAF0 /* 44C31.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD2907313436E8E00D9CAF0 /* 44C31.png */; };
+		AAD67BEA13183DE100D3A031 /* KlinKemController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD67BE813183DE100D3A031 /* KlinKemController.m */; };
+		AAD67BEB13183DE100D3A031 /* KlinKemController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD67BE913183DE100D3A031 /* KlinKemController.xib */; };
+		AAD696C8132D5E28008E95C4 /* IotaXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD696C7132D5E1B008E95C4 /* IotaXMLParser.m */; };
+		AADAE3101313E9B3005E1FE5 /* IssueTemplatesMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AADAE30E1313E9B3005E1FE5 /* IssueTemplatesMasterViewController.m */; };
+		AADAE3111313E9B3005E1FE5 /* IssueTemplatesMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AADAE30F1313E9B3005E1FE5 /* IssueTemplatesMasterViewController.xib */; };
+		AAECB6A8138159AD00EAB251 /* IotaContext.m in Sources */ = {isa = PBXBuildFile; fileRef = AAECB6A7138159AD00EAB251 /* IotaContext.m */; };
+		AAECB6BD13815BF000EAB251 /* inkorg.png in Resources */ = {isa = PBXBuildFile; fileRef = AAECB6BC13815BF000EAB251 /* inkorg.png */; };
+		AAECB6C41381601C00EAB251 /* InboxForm.m in Sources */ = {isa = PBXBuildFile; fileRef = AAECB6BF1381601C00EAB251 /* InboxForm.m */; };
+		AAECB6C51381601C00EAB251 /* InboxForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAECB6C01381601C00EAB251 /* InboxForm.xib */; };
+		AAECB6C61381601C00EAB251 /* InboxMyIotaForm.m in Sources */ = {isa = PBXBuildFile; fileRef = AAECB6C21381601C00EAB251 /* InboxMyIotaForm.m */; };
+		AAECB6C71381601C00EAB251 /* InboxMyIotaForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAECB6C31381601C00EAB251 /* InboxMyIotaForm.xib */; };
+		AAECB6CD1381834C00EAB251 /* MyIotaPatientContext.m in Sources */ = {isa = PBXBuildFile; fileRef = AAECB6CC1381834C00EAB251 /* MyIotaPatientContext.m */; };
+		AAF16F67130DB1BB00A86E3E /* DetailViewControllerWithNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF16F66130DB1BB00A86E3E /* DetailViewControllerWithNavbar.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AA63B61C13055E360035A49C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA63B5F113055E350035A49C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA63B5F913055E350035A49C;
+			remoteInfo = iotaPad6;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AA0C6283135E42B2002E50D7 /* ServerConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerConnect.h; sourceTree = "<group>"; };
+		AA0C6284135E42B2002E50D7 /* ServerConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnect.m; sourceTree = "<group>"; };
+		AA0C629F1360584D002E50D7 /* ServerDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerDiscovery.h; sourceTree = "<group>"; };
+		AA0C62A01360584D002E50D7 /* ServerDiscovery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerDiscovery.m; sourceTree = "<group>"; };
+		AA12A37F137B2F010016AB24 /* IssueWorksheetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueWorksheetController.xib; sourceTree = "<group>"; };
+		AA12A384137C70220016AB24 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		AA12A38C137C73EF0016AB24 /* ThemeColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeColors.h; sourceTree = "<group>"; };
+		AA12A38D137C73EF0016AB24 /* ThemeColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeColors.m; sourceTree = "<group>"; };
+		AA1603791375B4B800D03EE6 /* ServerListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerListener.h; sourceTree = "<group>"; };
+		AA16037A1375B4B800D03EE6 /* ServerListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerListener.m; sourceTree = "<group>"; };
+		AA1AA5441330D828003DC2AE /* ContactSelectOrCreateForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactSelectOrCreateForm.h; sourceTree = "<group>"; };
+		AA1AA5451330D829003DC2AE /* ContactSelectOrCreateForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactSelectOrCreateForm.m; sourceTree = "<group>"; };
+		AA1AA5461330D82A003DC2AE /* ContactSelectOrCreateForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactSelectOrCreateForm.xib; sourceTree = "<group>"; };
+		AA220A7213413A170088CBD3 /* tape4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tape4.png; sourceTree = "<group>"; };
+		AA220A87134148990088CBD3 /* fotledstrauma.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = fotledstrauma.xml; sourceTree = "<group>"; };
+		AA220A8913414B260088CBD3 /* IDRImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRImage.h; sourceTree = "<group>"; };
+		AA220A8A13414B260088CBD3 /* IDRImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRImage.m; sourceTree = "<group>"; };
+		AA29799A1325788C00F92D9C /* IDRValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRValue.h; sourceTree = "<group>"; };
+		AA29799B1325788C00F92D9C /* IDRValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRValue.m; sourceTree = "<group>"; };
+		AA2A2D6A133560A5005B7CAC /* ItemCellJournal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCellJournal.h; sourceTree = "<group>"; };
+		AA2A2D6B133560A5005B7CAC /* ItemCellJournal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCellJournal.m; sourceTree = "<group>"; };
+		AA2A2D6D133560BA005B7CAC /* ItemCellIssue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCellIssue.h; sourceTree = "<group>"; };
+		AA2A2D6E133560BA005B7CAC /* ItemCellIssue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCellIssue.m; sourceTree = "<group>"; };
+		AA2A2D70133560CD005B7CAC /* ItemCellTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCellTemplate.h; sourceTree = "<group>"; };
+		AA2A2D71133560CD005B7CAC /* ItemCellTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCellTemplate.m; sourceTree = "<group>"; };
+		AA2DF2B81314763B0018A2DD /* KlinKem.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = KlinKem.xml; sourceTree = "<group>"; };
+		AA2FF4151382851700C3ABA4 /* IotaContextDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IotaContextDelegate.h; sourceTree = "<group>"; };
+		AA3C546A131AC24100F573B0 /* KlinKemProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KlinKemProtocols.h; sourceTree = "<group>"; };
+		AA48FE77132FBE9B008409AA /* keywordtemplates.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = keywordtemplates.xml; path = ../keywordtemplates.xml; sourceTree = "<group>"; };
+		AA4CF7361319266800F19B45 /* XMLTagDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLTagDef.h; sourceTree = "<group>"; };
+		AA4CF7371319266900F19B45 /* XMLTagDef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLTagDef.m; sourceTree = "<group>"; };
+		AA50C87B132B8EB50031D231 /* keywords.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = keywords.xml; sourceTree = "<group>"; };
+		AA50C88B132BB5B30031D231 /* ContactCreationForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactCreationForm.h; sourceTree = "<group>"; };
+		AA50C88C132BB5B30031D231 /* ContactCreationForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactCreationForm.m; sourceTree = "<group>"; };
+		AA50C88D132BB5B40031D231 /* ContactCreationForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactCreationForm.xib; sourceTree = "<group>"; };
+		AA51D7B21312E0B000E9E1CA /* NSString+iotaAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+iotaAdditions.h"; sourceTree = "<group>"; };
+		AA51D7B31312E0B000E9E1CA /* NSString+iotaAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+iotaAdditions.m"; sourceTree = "<group>"; };
+		AA57574513127A4F0099128F /* IssueWorksheetBlockDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IssueWorksheetBlockDescriptor.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AA57574613127A4F0099128F /* IssueWorksheetBlockDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IssueWorksheetBlockDescriptor.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		AA5BF1401343D44500AB9952 /* ValueLookupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueLookupCell.h; sourceTree = "<group>"; };
+		AA5BF1411343D44500AB9952 /* ValueLookupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValueLookupCell.m; sourceTree = "<group>"; };
+		AA5DB23C131FEBC600888408 /* IDRWorksheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IDRWorksheet.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AA5DB23D131FEBC600888408 /* IDRWorksheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IDRWorksheet.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		AA5DB23F131FEEC500888408 /* IDRBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IDRBlock.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AA5DB240131FEEC500888408 /* IDRBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IDRBlock.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		AA5DB248131FF72B00888408 /* IDRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRItem.h; sourceTree = "<group>"; };
+		AA5DB249131FF72B00888408 /* IDRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRItem.m; sourceTree = "<group>"; };
+		AA5DB24B131FF77E00888408 /* IDRObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRObservation.h; sourceTree = "<group>"; };
+		AA5DB24C131FF78000888408 /* IDRObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRObservation.m; sourceTree = "<group>"; };
+		AA5DB24E131FF79200888408 /* IDRAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRAction.h; sourceTree = "<group>"; };
+		AA5DB24F131FF79300888408 /* IDRAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRAction.m; sourceTree = "<group>"; };
+		AA5DB251131FF81C00888408 /* IDRObsDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRObsDefinition.h; sourceTree = "<group>"; };
+		AA5DB252131FF81E00888408 /* IDRObsDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRObsDefinition.m; sourceTree = "<group>"; };
+		AA5DB255131FFA9400888408 /* diabetes.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; lineEnding = 0; path = diabetes.xml; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.xml; };
+		AA5DB2711320364E00888408 /* XML2IDR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XML2IDR.h; sourceTree = "<group>"; };
+		AA5DB2721320365100888408 /* XML2IDR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XML2IDR.m; sourceTree = "<group>"; };
+		AA5DB2741320400D00888408 /* IDRAttribs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRAttribs.h; sourceTree = "<group>"; };
+		AA5DB27E132058F700888408 /* templates.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = templates.xml; sourceTree = "<group>"; };
+		AA6301EA13393A5A0033DB11 /* StChemistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StChemistry.h; sourceTree = "<group>"; };
+		AA6301EB13393A5A0033DB11 /* StChemistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StChemistry.m; sourceTree = "<group>"; };
+		AA6301ED13393ABF0033DB11 /* XML2StChemistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XML2StChemistry.h; sourceTree = "<group>"; };
+		AA6301EE13393ABF0033DB11 /* XML2StChemistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XML2StChemistry.m; sourceTree = "<group>"; };
+		AA6301F813396A630033DB11 /* StUndersokningsresultat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StUndersokningsresultat.h; sourceTree = "<group>"; };
+		AA6301F913396A630033DB11 /* StUndersokningsresultat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StUndersokningsresultat.m; sourceTree = "<group>"; };
+		AA6301FB13396AF30033DB11 /* StBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StBase.h; sourceTree = "<group>"; };
+		AA6301FC13396AF30033DB11 /* StBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StBase.m; sourceTree = "<group>"; };
+		AA6301FF1339FF550033DB11 /* IotaDOMBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IotaDOMBase.h; sourceTree = "<group>"; };
+		AA6302001339FF550033DB11 /* IotaDOMBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IotaDOMBase.m; sourceTree = "<group>"; };
+		AA6302021339FF600033DB11 /* IotaDOMNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IotaDOMNode.h; sourceTree = "<group>"; };
+		AA6302031339FF600033DB11 /* IotaDOMNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IotaDOMNode.m; sourceTree = "<group>"; };
+		AA6302051339FF6F0033DB11 /* IotaDOMElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IotaDOMElement.h; sourceTree = "<group>"; };
+		AA6302061339FF6F0033DB11 /* IotaDOMElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IotaDOMElement.m; sourceTree = "<group>"; };
+		AA6302081339FF7F0033DB11 /* IotaDOMContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IotaDOMContent.h; sourceTree = "<group>"; };
+		AA6302091339FF7F0033DB11 /* IotaDOMContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IotaDOMContent.m; sourceTree = "<group>"; };
+		AA63020B133A00A40033DB11 /* Xml2IotaDom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Xml2IotaDom.h; sourceTree = "<group>"; };
+		AA63020C133A00A50033DB11 /* Xml2IotaDom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Xml2IotaDom.m; sourceTree = "<group>"; };
+		AA63020E133AA49E0033DB11 /* b1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b1.png; sourceTree = "<group>"; };
+		AA63020F133AA49E0033DB11 /* b2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b2.png; sourceTree = "<group>"; };
+		AA630210133AA49E0033DB11 /* b3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b3.png; sourceTree = "<group>"; };
+		AA630218133AAC210033DB11 /* b2b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b2b.png; sourceTree = "<group>"; };
+		AA63021E133AB34F0033DB11 /* Lockknock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lockknock.png; sourceTree = "<group>"; };
+		AA630220133AC6500033DB11 /* UndersokningsResultat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UndersokningsResultat.h; sourceTree = "<group>"; };
+		AA630221133AC6510033DB11 /* UndersokningsResultat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UndersokningsResultat.m; sourceTree = "<group>"; };
+		AA630223133AC65D0033DB11 /* AnalysTjanst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalysTjanst.h; sourceTree = "<group>"; };
+		AA630224133AC65D0033DB11 /* AnalysTjanst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalysTjanst.m; sourceTree = "<group>"; };
+		AA63B5FA13055E350035A49C /* iotaMed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iotaMed.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA63B5FE13055E350035A49C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AA63B60013055E350035A49C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AA63B60213055E350035A49C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AA63B60613055E350035A49C /* iotaPad6-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iotaPad6-Info.plist"; sourceTree = "<group>"; };
+		AA63B60813055E350035A49C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AA63B60A13055E350035A49C /* iotaPad6-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iotaPad6-Prefix.pch"; sourceTree = "<group>"; };
+		AA63B60B13055E350035A49C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AA63B60D13055E350035A49C /* iotaPad6AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iotaPad6AppDelegate.h; sourceTree = "<group>"; };
+		AA63B60E13055E350035A49C /* iotaPad6AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iotaPad6AppDelegate.m; sourceTree = "<group>"; };
+		AA63B61813055E360035A49C /* iotaPad6Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iotaPad6Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA63B62013055E360035A49C /* iotaPad6Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iotaPad6Tests-Info.plist"; sourceTree = "<group>"; };
+		AA63B62213055E360035A49C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AA63B62413055E360035A49C /* iotaPad6Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iotaPad6Tests-Prefix.pch"; sourceTree = "<group>"; };
+		AA63B62513055E360035A49C /* iotaPad6Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iotaPad6Tests.h; sourceTree = "<group>"; };
+		AA63B62713055E360035A49C /* iotaPad6Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iotaPad6Tests.m; sourceTree = "<group>"; };
+		AA63B63113055E5C0035A49C /* IssueListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueListController.h; sourceTree = "<group>"; };
+		AA63B63213055E5C0035A49C /* IssueListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueListController.m; sourceTree = "<group>"; };
+		AA63B63413055E6E0035A49C /* IssueWorksheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueWorksheetController.h; sourceTree = "<group>"; };
+		AA63B63513055E6E0035A49C /* IssueWorksheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueWorksheetController.m; sourceTree = "<group>"; };
+		AA63B63913055E7B0035A49C /* EhrViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EhrViewController.h; sourceTree = "<group>"; };
+		AA63B63A13055E7B0035A49C /* EhrViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EhrViewController.m; sourceTree = "<group>"; };
+		AA63B63B13055E7B0035A49C /* EhrViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EhrViewController.xib; sourceTree = "<group>"; };
+		AA63B63E13055E880035A49C /* MedListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedListController.h; sourceTree = "<group>"; };
+		AA63B63F13055E880035A49C /* MedListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedListController.m; sourceTree = "<group>"; };
+		AA63B64013055E880035A49C /* MedListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MedListController.xib; sourceTree = "<group>"; };
+		AA63B643130562710035A49C /* JournalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JournalController.h; sourceTree = "<group>"; };
+		AA63B644130562710035A49C /* JournalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JournalController.m; sourceTree = "<group>"; };
+		AA63B645130562720035A49C /* JournalController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JournalController.xib; sourceTree = "<group>"; };
+		AA63B64813056C5B0035A49C /* AppointmentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentsController.h; sourceTree = "<group>"; };
+		AA63B64913056C5B0035A49C /* AppointmentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentsController.m; sourceTree = "<group>"; };
+		AA63B64A13056C5C0035A49C /* AppointmentsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppointmentsController.xib; sourceTree = "<group>"; };
+		AA63B64D1305886B0035A49C /* DemoData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoData.h; sourceTree = "<group>"; };
+		AA63B64E1305886B0035A49C /* DemoData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoData.m; sourceTree = "<group>"; };
+		AA63B650130588A20035A49C /* Patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patient.h; sourceTree = "<group>"; };
+		AA63B651130588A20035A49C /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
+		AA63B653130589FE0035A49C /* Patients.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patients.h; sourceTree = "<group>"; };
+		AA63B65413058A000035A49C /* Patients.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patients.m; sourceTree = "<group>"; };
+		AA66CDC81336871200B4E2F5 /* SysTeamNPO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysTeamNPO.h; sourceTree = "<group>"; };
+		AA66CDC91336871300B4E2F5 /* SysTeamNPO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysTeamNPO.m; sourceTree = "<group>"; };
+		AA66CDDD1337F9B700B4E2F5 /* 708_44_landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 708_44_landscape.png; sourceTree = "<group>"; };
+		AA66CDDE1337F9B800B4E2F5 /* 773_44_portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 773_44_portrait.png; sourceTree = "<group>"; };
+		AA6FCF8813130690008FBFFD /* IssueTemplateFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IssueTemplateFormViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AA6FCF8913130690008FBFFD /* IssueTemplateFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IssueTemplateFormViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		AA6FCF8A13130691008FBFFD /* IssueTemplateFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueTemplateFormViewController.xib; sourceTree = "<group>"; };
+		AA7365C4131D96FA000B6B1F /* Funcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Funcs.h; sourceTree = "<group>"; };
+		AA7365C5131D96FA000B6B1F /* Funcs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Funcs.m; sourceTree = "<group>"; };
+		AA7D8F91133F475200757DA1 /* ReferralControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferralControllerDelegate.h; sourceTree = "<group>"; };
+		AA7EFCC6132832D800F3F3A0 /* IssueBlockInfoDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueBlockInfoDialog.h; sourceTree = "<group>"; };
+		AA7EFCC7132832D800F3F3A0 /* IssueBlockInfoDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueBlockInfoDialog.m; sourceTree = "<group>"; };
+		AA7EFCC8132832D900F3F3A0 /* IssueBlockInfoDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueBlockInfoDialog.xib; sourceTree = "<group>"; };
+		AA817C101344D46F00500F0C /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
+		AA9081ED130E9CD800DBF856 /* PatientDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientDB.h; sourceTree = "<group>"; };
+		AA9081EE130E9CD800DBF856 /* PatientDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientDB.m; sourceTree = "<group>"; };
+		AA9081F0130E9DFF00DBF856 /* IssueTemplateDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IssueTemplateDB.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AA9081F1130E9DFF00DBF856 /* IssueTemplateDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IssueTemplateDB.m; sourceTree = "<group>"; };
+		AA9081FF130EA1EF00DBF856 /* IssueTemplateDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IssueTemplateDescriptor.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AA908200130EA1EF00DBF856 /* IssueTemplateDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IssueTemplateDescriptor.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		AA908205130EB76E00DBF856 /* IssueTemplateBlockDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IssueTemplateBlockDescriptor.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AA908206130EB76E00DBF856 /* IssueTemplateBlockDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IssueTemplateBlockDescriptor.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		AA908208130EE0B200DBF856 /* IssueWorksheetDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IssueWorksheetDescriptor.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AA908209130EE0B200DBF856 /* IssueWorksheetDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IssueWorksheetDescriptor.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		AA94FBFF1332604F0065DC19 /* UIView+iotaExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+iotaExtensions.h"; sourceTree = "<group>"; };
+		AA94FC001332604F0065DC19 /* UIView+iotaExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+iotaExtensions.m"; sourceTree = "<group>"; };
+		AA94FC0313327B250065DC19 /* SYSteam_EDB_webpage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SYSteam_EDB_webpage.jpg; sourceTree = "<group>"; };
+		AA94FC0513327C3D0065DC19 /* systeam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = systeam.png; sourceTree = "<group>"; };
+		AA94FC08133288A20065DC19 /* KlinKemGrafController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KlinKemGrafController.h; sourceTree = "<group>"; };
+		AA94FC09133288A20065DC19 /* KlinKemGrafController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KlinKemGrafController.m; sourceTree = "<group>"; };
+		AA94FC0A133288A20065DC19 /* KlinKemGrafController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KlinKemGrafController.xib; sourceTree = "<group>"; };
+		AA94FC0D133298F90065DC19 /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
+		AA94FC0E133298F90065DC19 /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
+		AA94FC181333E34C0065DC19 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		AA94FC1B1333E5A70065DC19 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		AA94FC1C1333E5A70065DC19 /* Icon-AppStore.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Icon-AppStore.jpg"; sourceTree = "<group>"; };
+		AA94FC1D1333E5A70065DC19 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		AA94FC1E1333E5A70065DC19 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		AA94FC1F1333E5A70065DC19 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		AA94FC201333E5A70065DC19 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		AA94FC211333E5A70065DC19 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		AA94FC221333E5A70065DC19 /* iotaAppIcon.opacity */ = {isa = PBXFileReference; lastKnownFileType = file; path = iotaAppIcon.opacity; sourceTree = "<group>"; };
+		AA94FC30133411A30065DC19 /* Soap12.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Soap12.h; sourceTree = "<group>"; };
+		AA94FC31133411B10065DC19 /* Soap12.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Soap12.m; sourceTree = "<group>"; };
+		AA96805A133BCFC5006E6AF0 /* IDRTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRTest.h; sourceTree = "<group>"; };
+		AA96805B133BCFC5006E6AF0 /* IDRTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRTest.m; sourceTree = "<group>"; };
+		AA96805D133BE051006E6AF0 /* LabOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabOrderController.h; sourceTree = "<group>"; };
+		AA96805E133BE052006E6AF0 /* LabOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabOrderController.m; sourceTree = "<group>"; };
+		AA96805F133BE053006E6AF0 /* LabOrderController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabOrderController.xib; sourceTree = "<group>"; };
+		AA968062133BE296006E6AF0 /* ItemCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCellDelegate.h; sourceTree = "<group>"; };
+		AA968066133CD003006E6AF0 /* ReferralController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferralController.h; sourceTree = "<group>"; };
+		AA968067133CD004006E6AF0 /* ReferralController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReferralController.m; sourceTree = "<group>"; };
+		AA96806B133CD019006E6AF0 /* PrescriptionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrescriptionController.h; sourceTree = "<group>"; };
+		AA96806C133CD01B006E6AF0 /* PrescriptionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrescriptionController.m; sourceTree = "<group>"; };
+		AA96806D133CD01C006E6AF0 /* PrescriptionController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrescriptionController.xib; sourceTree = "<group>"; };
+		AA9680C1133D3F66006E6AF0 /* ValueLookupForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueLookupForm.h; sourceTree = "<group>"; };
+		AA9680C2133D3F67006E6AF0 /* ValueLookupForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValueLookupForm.m; sourceTree = "<group>"; };
+		AA9680C3133D3F6A006E6AF0 /* ValueLookupForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValueLookupForm.xib; sourceTree = "<group>"; };
+		AA9680C6133D505F006E6AF0 /* IDRDose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRDose.h; sourceTree = "<group>"; };
+		AA9680C7133D505F006E6AF0 /* IDRDose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRDose.m; sourceTree = "<group>"; };
+		AA9680C9133D5743006E6AF0 /* PrescriptionDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrescriptionDetailController.h; sourceTree = "<group>"; };
+		AA9680CA133D5746006E6AF0 /* PrescriptionDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrescriptionDetailController.m; sourceTree = "<group>"; };
+		AA9680CB133D5748006E6AF0 /* PrescriptionDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrescriptionDetailController.xib; sourceTree = "<group>"; };
+		AA98F0471327B488000E1AEB /* Notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notifications.h; sourceTree = "<group>"; };
+		AA9AFF4B13151DB40027E667 /* Diagnosis.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Diagnosis.xml; sourceTree = "<group>"; };
+		AA9AFF4D13151DCD0027E667 /* MedicalRecord.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MedicalRecord.xml; sourceTree = "<group>"; };
+		AA9AFF4F13151DD60027E667 /* Microbiology.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Microbiology.xml; sourceTree = "<group>"; };
+		AA9B47C91323915600C96675 /* backg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backg1.png; sourceTree = "<group>"; };
+		AA9B47CA1323915600C96675 /* backg2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backg2.png; sourceTree = "<group>"; };
+		AA9B47CB1323915600C96675 /* backg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backg3.png; sourceTree = "<group>"; };
+		AA9B47F21323CF2400C96675 /* title_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_bar.png; sourceTree = "<group>"; };
+		AA9B47F41323CF4E00C96675 /* MyNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNavigationBar.h; sourceTree = "<group>"; };
+		AA9B47F51323CF4F00C96675 /* MyNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNavigationBar.m; sourceTree = "<group>"; };
+		AA9B47F71323D16A00C96675 /* MyToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyToolBar.h; sourceTree = "<group>"; };
+		AA9B47F81323D16B00C96675 /* MyToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyToolBar.m; sourceTree = "<group>"; };
+		AA9B47FC1323F01A00C96675 /* titlebar_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titlebar_light.png; sourceTree = "<group>"; };
+		AA9B47FE1323F25500C96675 /* atc.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = atc.xml; sourceTree = "<group>"; };
+		AA9B480013244C4600C96675 /* IDRDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRDescription.h; sourceTree = "<group>"; };
+		AA9B480113244C4A00C96675 /* IDRDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRDescription.m; sourceTree = "<group>"; };
+		AAA9EEE81320F0F300D36C54 /* DebugDump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugDump.h; sourceTree = "<group>"; };
+		AAA9EEEA1320FC8100D36C54 /* IssueTemplateBlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueTemplateBlockViewController.h; sourceTree = "<group>"; };
+		AAA9EEEB1320FC8300D36C54 /* IssueTemplateBlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IssueTemplateBlockViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		AAA9EEEC1320FC8800D36C54 /* IssueTemplateBlockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueTemplateBlockViewController.xib; sourceTree = "<group>"; };
+		AAA9EEFF13210A9700D36C54 /* ItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCell.h; sourceTree = "<group>"; };
+		AAA9EF0013210A9A00D36C54 /* ItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCell.m; sourceTree = "<group>"; };
+		AAA9EF0413210CA000D36C54 /* BulletView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulletView.h; sourceTree = "<group>"; };
+		AAA9EF0513210CA500D36C54 /* BulletView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulletView.m; sourceTree = "<group>"; };
+		AAB05C02133810C7008FD031 /* issues_iota.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = issues_iota.png; sourceTree = "<group>"; };
+		AAB05C0513381305008FD031 /* mallar_iotas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mallar_iotas.png; sourceTree = "<group>"; };
+		AAB05C0713381319008FD031 /* laboratorium.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laboratorium.png; sourceTree = "<group>"; };
+		AAB05C0913381327008FD031 /* journalnotat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = journalnotat.png; sourceTree = "<group>"; };
+		AAB05C0B133816B3008FD031 /* recept.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recept.png; sourceTree = "<group>"; };
+		AAB05C0F13381ACB008FD031 /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross.png; sourceTree = "<group>"; };
+		AAB76FFB1355A7C200388BF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AAB76FFD1355A7CD00388BF5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AAB7700B1355AB0B00388BF5 /* ReferralController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReferralController.xib; sourceTree = "<group>"; };
+		AAB7700D1355AB4400388BF5 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		AAB7700E1357077700388BF5 /* stroke.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = stroke.xml; sourceTree = "<group>"; };
+		AAB84B0F13262B3600ACC980 /* IDRContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRContact.h; sourceTree = "<group>"; };
+		AAB84B1013262B3600ACC980 /* IDRContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRContact.m; sourceTree = "<group>"; };
+		AAB84B131326D16700ACC980 /* PatientContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientContext.h; sourceTree = "<group>"; };
+		AAB84B141326D16700ACC980 /* PatientContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientContext.m; sourceTree = "<group>"; };
+		AAB84B161326D1D100ACC980 /* IDRWorksheets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IDRWorksheets.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		AAB84B171326D1D700ACC980 /* IDRWorksheets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IDRWorksheets.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		AAB84B191326D33500ACC980 /* PatientContextDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientContextDB.h; sourceTree = "<group>"; };
+		AAB84B1A1326D33500ACC980 /* PatientContextDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientContextDB.m; sourceTree = "<group>"; };
+		AAC2FC20130BDF85009E8384 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		AAC2FC21130BDF85009E8384 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		AAC2FC24130BE157009E8384 /* DetailViewControllerWithToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewControllerWithToolbar.h; sourceTree = "<group>"; };
+		AAC2FC25130BE157009E8384 /* DetailViewControllerWithToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewControllerWithToolbar.m; sourceTree = "<group>"; };
+		AAC2FC28130BFC8D009E8384 /* PatientListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientListController.h; sourceTree = "<group>"; };
+		AAC2FC29130BFC8D009E8384 /* PatientListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientListController.m; sourceTree = "<group>"; };
+		AAC2FC2A130BFC8D009E8384 /* PatientListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PatientListController.xib; sourceTree = "<group>"; };
+		AACDD396132E8F570065C457 /* ObservationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObservationCell.h; path = iotaPad6.xcodeproj/ObservationCell.h; sourceTree = SOURCE_ROOT; };
+		AACDD397132E8F5B0065C457 /* ObservationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObservationCell.m; path = iotaPad6.xcodeproj/ObservationCell.m; sourceTree = SOURCE_ROOT; };
+		AAD2906313436D8700D9CAF0 /* 44A11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 44A11.png; sourceTree = "<group>"; };
+		AAD2906513436DBB00D9CAF0 /* 44A21.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 44A21.png; sourceTree = "<group>"; };
+		AAD2906713436DE300D9CAF0 /* 44A31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 44A31.png; sourceTree = "<group>"; };
+		AAD2906913436E0100D9CAF0 /* 44B11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 44B11.png; sourceTree = "<group>"; };
+		AAD2906B13436E1C00D9CAF0 /* 44B21.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 44B21.png; sourceTree = "<group>"; };
+		AAD2906D13436E3900D9CAF0 /* 44B31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 44B31.png; sourceTree = "<group>"; };
+		AAD2906F13436E5700D9CAF0 /* 44C11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 44C11.png; sourceTree = "<group>"; };
+		AAD2907113436E7300D9CAF0 /* 44C21.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 44C21.png; sourceTree = "<group>"; };
+		AAD2907313436E8E00D9CAF0 /* 44C31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 44C31.png; sourceTree = "<group>"; };
+		AAD67BE713183DE100D3A031 /* KlinKemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KlinKemController.h; sourceTree = "<group>"; };
+		AAD67BE813183DE100D3A031 /* KlinKemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KlinKemController.m; sourceTree = "<group>"; };
+		AAD67BE913183DE100D3A031 /* KlinKemController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KlinKemController.xib; sourceTree = "<group>"; };
+		AAD696C6132D5E17008E95C4 /* IotaXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IotaXMLParser.h; sourceTree = "<group>"; };
+		AAD696C7132D5E1B008E95C4 /* IotaXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IotaXMLParser.m; sourceTree = "<group>"; };
+		AADAE30D1313E9B3005E1FE5 /* IssueTemplatesMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueTemplatesMasterViewController.h; sourceTree = "<group>"; };
+		AADAE30E1313E9B3005E1FE5 /* IssueTemplatesMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IssueTemplatesMasterViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		AADAE30F1313E9B3005E1FE5 /* IssueTemplatesMasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueTemplatesMasterViewController.xib; sourceTree = "<group>"; };
+		AAECB6A6138159AD00EAB251 /* IotaContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IotaContext.h; sourceTree = "<group>"; };
+		AAECB6A7138159AD00EAB251 /* IotaContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IotaContext.m; sourceTree = "<group>"; };
+		AAECB6BC13815BF000EAB251 /* inkorg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inkorg.png; sourceTree = "<group>"; };
+		AAECB6BE1381601C00EAB251 /* InboxForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InboxForm.h; path = iotaPad6/InboxForm.h; sourceTree = "<group>"; };
+		AAECB6BF1381601C00EAB251 /* InboxForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InboxForm.m; path = iotaPad6/InboxForm.m; sourceTree = "<group>"; };
+		AAECB6C01381601C00EAB251 /* InboxForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InboxForm.xib; path = iotaPad6/InboxForm.xib; sourceTree = "<group>"; };
+		AAECB6C11381601C00EAB251 /* InboxMyIotaForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InboxMyIotaForm.h; path = iotaPad6/InboxMyIotaForm.h; sourceTree = "<group>"; };
+		AAECB6C21381601C00EAB251 /* InboxMyIotaForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InboxMyIotaForm.m; path = iotaPad6/InboxMyIotaForm.m; sourceTree = "<group>"; };
+		AAECB6C31381601C00EAB251 /* InboxMyIotaForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InboxMyIotaForm.xib; path = iotaPad6/InboxMyIotaForm.xib; sourceTree = "<group>"; };
+		AAECB6CB1381834C00EAB251 /* MyIotaPatientContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyIotaPatientContext.h; sourceTree = "<group>"; };
+		AAECB6CC1381834C00EAB251 /* MyIotaPatientContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyIotaPatientContext.m; sourceTree = "<group>"; };
+		AAF16F65130DB1BA00A86E3E /* DetailViewControllerWithNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewControllerWithNavbar.h; sourceTree = "<group>"; };
+		AAF16F66130DB1BB00A86E3E /* DetailViewControllerWithNavbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewControllerWithNavbar.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA63B5F713055E350035A49C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA63B5FF13055E350035A49C /* UIKit.framework in Frameworks */,
+				AA63B60113055E350035A49C /* Foundation.framework in Frameworks */,
+				AA63B60313055E350035A49C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA63B61413055E360035A49C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA63B61913055E360035A49C /* UIKit.framework in Frameworks */,
+				AA63B61A13055E360035A49C /* Foundation.framework in Frameworks */,
+				AA63B61B13055E360035A49C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA12A383137C6FF60016AB24 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				AA12A384137C70220016AB24 /* Constants.h */,
+				AA12A38C137C73EF0016AB24 /* ThemeColors.h */,
+				AA12A38D137C73EF0016AB24 /* ThemeColors.m */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		AA220A76134147320088CBD3 /* AO */ = {
+			isa = PBXGroup;
+			children = (
+				AAD2906313436D8700D9CAF0 /* 44A11.png */,
+				AAD2906513436DBB00D9CAF0 /* 44A21.png */,
+				AAD2906713436DE300D9CAF0 /* 44A31.png */,
+				AAD2906913436E0100D9CAF0 /* 44B11.png */,
+				AAD2906B13436E1C00D9CAF0 /* 44B21.png */,
+				AAD2906D13436E3900D9CAF0 /* 44B31.png */,
+				AAD2906F13436E5700D9CAF0 /* 44C11.png */,
+				AAD2907113436E7300D9CAF0 /* 44C21.png */,
+				AAD2907313436E8E00D9CAF0 /* 44C31.png */,
+			);
+			name = AO;
+			sourceTree = "<group>";
+		};
+		AA2A2D681335607E005B7CAC /* Item Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AA6301FE1339FF3F0033DB11 /* IotaDOM */,
+				AAA9EEFF13210A9700D36C54 /* ItemCell.h */,
+				AAA9EF0013210A9A00D36C54 /* ItemCell.m */,
+				AA968062133BE296006E6AF0 /* ItemCellDelegate.h */,
+				AA2A2D6A133560A5005B7CAC /* ItemCellJournal.h */,
+				AA2A2D6B133560A5005B7CAC /* ItemCellJournal.m */,
+				AA2A2D6D133560BA005B7CAC /* ItemCellIssue.h */,
+				AA2A2D6E133560BA005B7CAC /* ItemCellIssue.m */,
+				AA2A2D70133560CD005B7CAC /* ItemCellTemplate.h */,
+				AA2A2D71133560CD005B7CAC /* ItemCellTemplate.m */,
+			);
+			name = "Item Cell";
+			sourceTree = "<group>";
+		};
+		AA2DF2B6131476230018A2DD /* External files Systeam */ = {
+			isa = PBXGroup;
+			children = (
+				AA9AFF4F13151DD60027E667 /* Microbiology.xml */,
+				AA9AFF4D13151DCD0027E667 /* MedicalRecord.xml */,
+				AA2DF2B81314763B0018A2DD /* KlinKem.xml */,
+				AA9AFF4B13151DB40027E667 /* Diagnosis.xml */,
+			);
+			name = "External files Systeam";
+			sourceTree = "<group>";
+		};
+		AA50C884132B9C5D0031D231 /* Issue List */ = {
+			isa = PBXGroup;
+			children = (
+				AA63B63113055E5C0035A49C /* IssueListController.h */,
+				AA63B63213055E5C0035A49C /* IssueListController.m */,
+			);
+			name = "Issue List";
+			sourceTree = "<group>";
+		};
+		AA50C885132B9C7E0031D231 /* Issue Worksheet */ = {
+			isa = PBXGroup;
+			children = (
+				AA63B63413055E6E0035A49C /* IssueWorksheetController.h */,
+				AA63B63513055E6E0035A49C /* IssueWorksheetController.m */,
+				AA12A37F137B2F010016AB24 /* IssueWorksheetController.xib */,
+			);
+			name = "Issue Worksheet";
+			sourceTree = "<group>";
+		};
+		AA50C886132B9CA80031D231 /* Contact List */ = {
+			isa = PBXGroup;
+			children = (
+				AA50C88B132BB5B30031D231 /* ContactCreationForm.h */,
+				AA50C88C132BB5B30031D231 /* ContactCreationForm.m */,
+				AA50C88D132BB5B40031D231 /* ContactCreationForm.xib */,
+				AA1AA5441330D828003DC2AE /* ContactSelectOrCreateForm.h */,
+				AA1AA5451330D829003DC2AE /* ContactSelectOrCreateForm.m */,
+				AA1AA5461330D82A003DC2AE /* ContactSelectOrCreateForm.xib */,
+			);
+			name = "Contact List";
+			sourceTree = "<group>";
+		};
+		AA50C887132B9D290031D231 /* Journal */ = {
+			isa = PBXGroup;
+			children = (
+				AA63B643130562710035A49C /* JournalController.h */,
+				AA63B644130562710035A49C /* JournalController.m */,
+				AA63B645130562720035A49C /* JournalController.xib */,
+			);
+			name = Journal;
+			sourceTree = "<group>";
+		};
+		AA5DB23A131FEBB000888408 /* IDR Worksheet */ = {
+			isa = PBXGroup;
+			children = (
+				AAB84B161326D1D100ACC980 /* IDRWorksheets.h */,
+				AAB84B171326D1D700ACC980 /* IDRWorksheets.m */,
+				AA5DB23C131FEBC600888408 /* IDRWorksheet.h */,
+				AA5DB23D131FEBC600888408 /* IDRWorksheet.m */,
+				AA5DB23F131FEEC500888408 /* IDRBlock.h */,
+				AA5DB240131FEEC500888408 /* IDRBlock.m */,
+				AA5DB248131FF72B00888408 /* IDRItem.h */,
+				AA5DB249131FF72B00888408 /* IDRItem.m */,
+				AA5DB24B131FF77E00888408 /* IDRObservation.h */,
+				AA5DB24C131FF78000888408 /* IDRObservation.m */,
+				AA5DB24E131FF79200888408 /* IDRAction.h */,
+				AA5DB24F131FF79300888408 /* IDRAction.m */,
+				AA5DB251131FF81C00888408 /* IDRObsDefinition.h */,
+				AA5DB252131FF81E00888408 /* IDRObsDefinition.m */,
+				AA5DB2741320400D00888408 /* IDRAttribs.h */,
+				AA9B480013244C4600C96675 /* IDRDescription.h */,
+				AA9B480113244C4A00C96675 /* IDRDescription.m */,
+				AA29799A1325788C00F92D9C /* IDRValue.h */,
+				AA29799B1325788C00F92D9C /* IDRValue.m */,
+				AAB84B0F13262B3600ACC980 /* IDRContact.h */,
+				AAB84B1013262B3600ACC980 /* IDRContact.m */,
+				AA96805A133BCFC5006E6AF0 /* IDRTest.h */,
+				AA96805B133BCFC5006E6AF0 /* IDRTest.m */,
+				AA9680C6133D505F006E6AF0 /* IDRDose.h */,
+				AA9680C7133D505F006E6AF0 /* IDRDose.m */,
+				AA220A8913414B260088CBD3 /* IDRImage.h */,
+				AA220A8A13414B260088CBD3 /* IDRImage.m */,
+			);
+			name = "IDR Worksheet";
+			sourceTree = "<group>";
+		};
+		AA5DB254131FFA1E00888408 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				AA5DB255131FFA9400888408 /* diabetes.xml */,
+				AA5DB27E132058F700888408 /* templates.xml */,
+				AA9B47FE1323F25500C96675 /* atc.xml */,
+				AA50C87B132B8EB50031D231 /* keywords.xml */,
+				AA48FE77132FBE9B008409AA /* keywordtemplates.xml */,
+				AA220A87134148990088CBD3 /* fotledstrauma.xml */,
+				AAB7700E1357077700388BF5 /* stroke.xml */,
+			);
+			name = Templates;
+			sourceTree = "<group>";
+		};
+		AA6301FE1339FF3F0033DB11 /* IotaDOM */ = {
+			isa = PBXGroup;
+			children = (
+				AA6301FF1339FF550033DB11 /* IotaDOMBase.h */,
+				AA6302001339FF550033DB11 /* IotaDOMBase.m */,
+				AA6302021339FF600033DB11 /* IotaDOMNode.h */,
+				AA6302031339FF600033DB11 /* IotaDOMNode.m */,
+				AA6302051339FF6F0033DB11 /* IotaDOMElement.h */,
+				AA6302061339FF6F0033DB11 /* IotaDOMElement.m */,
+				AA6302081339FF7F0033DB11 /* IotaDOMContent.h */,
+				AA6302091339FF7F0033DB11 /* IotaDOMContent.m */,
+				AA63020B133A00A40033DB11 /* Xml2IotaDom.h */,
+				AA63020C133A00A50033DB11 /* Xml2IotaDom.m */,
+			);
+			name = IotaDOM;
+			sourceTree = "<group>";
+		};
+		AA63B5EF13055E350035A49C = {
+			isa = PBXGroup;
+			children = (
+				AAB76FFC1355A7C200388BF5 /* Localizable.strings */,
+				AA817C101344D46F00500F0C /* Version.h */,
+				AA94FC181333E34C0065DC19 /* Settings.bundle */,
+				AA63B60413055E350035A49C /* iotaPad6 */,
+				AA63B61E13055E360035A49C /* iotaPad6Tests */,
+				AA63B5FD13055E350035A49C /* Frameworks */,
+				AA63B5FB13055E350035A49C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA63B5FB13055E350035A49C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA63B5FA13055E350035A49C /* iotaMed.app */,
+				AA63B61813055E360035A49C /* iotaPad6Tests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA63B5FD13055E350035A49C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA63B5FE13055E350035A49C /* UIKit.framework */,
+				AA63B60013055E350035A49C /* Foundation.framework */,
+				AA63B60213055E350035A49C /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA63B60413055E350035A49C /* iotaPad6 */ = {
+			isa = PBXGroup;
+			children = (
+				AAECB6A913815A0600EAB251 /* Inbox */,
+				AA12A383137C6FF60016AB24 /* Constants */,
+				AA220A76134147320088CBD3 /* AO */,
+				AA94FC1A1333E59D0065DC19 /* opacity */,
+				AA9B47C81323915600C96675 /* background */,
+				AA5DB254131FFA1E00888408 /* Templates */,
+				AA5DB23A131FEBB000888408 /* IDR Worksheet */,
+				AA2DF2B6131476230018A2DD /* External files Systeam */,
+				AA9081E5130E9C6C00DBF856 /* Database */,
+				AAC2FC2D130C4052009E8384 /* Context and Patient */,
+				AAC2FC27130BE588009E8384 /* Base classes */,
+				AA63B60D13055E350035A49C /* iotaPad6AppDelegate.h */,
+				AA63B60E13055E350035A49C /* iotaPad6AppDelegate.m */,
+				AA63B60513055E350035A49C /* Supporting Files */,
+				AAB7700D1355AB4400388BF5 /* MainWindow.xib */,
+				AA50C884132B9C5D0031D231 /* Issue List */,
+				AA50C885132B9C7E0031D231 /* Issue Worksheet */,
+				AA50C886132B9CA80031D231 /* Contact List */,
+				AA50C887132B9D290031D231 /* Journal */,
+				AA94FC07133288530065DC19 /* Klin kem */,
+				AA2A2D681335607E005B7CAC /* Item Cell */,
+				AA66CDCB1336AF8100B4E2F5 /* Ehr NPO Cross */,
+				AA63B63E13055E880035A49C /* MedListController.h */,
+				AA63B63F13055E880035A49C /* MedListController.m */,
+				AA63B64013055E880035A49C /* MedListController.xib */,
+				AA63B64813056C5B0035A49C /* AppointmentsController.h */,
+				AA63B64913056C5B0035A49C /* AppointmentsController.m */,
+				AA63B64A13056C5C0035A49C /* AppointmentsController.xib */,
+				AA96805D133BE051006E6AF0 /* LabOrderController.h */,
+				AA96805E133BE052006E6AF0 /* LabOrderController.m */,
+				AA96805F133BE053006E6AF0 /* LabOrderController.xib */,
+				AA968066133CD003006E6AF0 /* ReferralController.h */,
+				AA968067133CD004006E6AF0 /* ReferralController.m */,
+				AAB7700B1355AB0B00388BF5 /* ReferralController.xib */,
+				AA7D8F91133F475200757DA1 /* ReferralControllerDelegate.h */,
+				AA96806B133CD019006E6AF0 /* PrescriptionController.h */,
+				AA96806C133CD01B006E6AF0 /* PrescriptionController.m */,
+				AA96806D133CD01C006E6AF0 /* PrescriptionController.xib */,
+				AA9680C9133D5743006E6AF0 /* PrescriptionDetailController.h */,
+				AA9680CA133D5746006E6AF0 /* PrescriptionDetailController.m */,
+				AA9680CB133D5748006E6AF0 /* PrescriptionDetailController.xib */,
+				AA9680C1133D3F66006E6AF0 /* ValueLookupForm.h */,
+				AA9680C2133D3F67006E6AF0 /* ValueLookupForm.m */,
+				AA9680C3133D3F6A006E6AF0 /* ValueLookupForm.xib */,
+				AA5BF1401343D44500AB9952 /* ValueLookupCell.h */,
+				AA5BF1411343D44500AB9952 /* ValueLookupCell.m */,
+				AADAE30D1313E9B3005E1FE5 /* IssueTemplatesMasterViewController.h */,
+				AADAE30E1313E9B3005E1FE5 /* IssueTemplatesMasterViewController.m */,
+				AADAE30F1313E9B3005E1FE5 /* IssueTemplatesMasterViewController.xib */,
+				AA6FCF8813130690008FBFFD /* IssueTemplateFormViewController.h */,
+				AA6FCF8913130690008FBFFD /* IssueTemplateFormViewController.m */,
+				AA6FCF8A13130691008FBFFD /* IssueTemplateFormViewController.xib */,
+				AAA9EEEA1320FC8100D36C54 /* IssueTemplateBlockViewController.h */,
+				AAA9EEEB1320FC8300D36C54 /* IssueTemplateBlockViewController.m */,
+				AAA9EEEC1320FC8800D36C54 /* IssueTemplateBlockViewController.xib */,
+				AACDD396132E8F570065C457 /* ObservationCell.h */,
+				AACDD397132E8F5B0065C457 /* ObservationCell.m */,
+				AAA9EF0413210CA000D36C54 /* BulletView.h */,
+				AAA9EF0513210CA500D36C54 /* BulletView.m */,
+				AA63B64D1305886B0035A49C /* DemoData.h */,
+				AA63B64E1305886B0035A49C /* DemoData.m */,
+				AA4CF7361319266800F19B45 /* XMLTagDef.h */,
+				AA4CF7371319266900F19B45 /* XMLTagDef.m */,
+				AA3C546A131AC24100F573B0 /* KlinKemProtocols.h */,
+				AA7365C4131D96FA000B6B1F /* Funcs.h */,
+				AA7365C5131D96FA000B6B1F /* Funcs.m */,
+				AA5DB2711320364E00888408 /* XML2IDR.h */,
+				AA5DB2721320365100888408 /* XML2IDR.m */,
+				AAA9EEE81320F0F300D36C54 /* DebugDump.h */,
+				AA9B47F41323CF4E00C96675 /* MyNavigationBar.h */,
+				AA9B47F51323CF4F00C96675 /* MyNavigationBar.m */,
+				AA9B47F71323D16A00C96675 /* MyToolBar.h */,
+				AA9B47F81323D16B00C96675 /* MyToolBar.m */,
+				AA98F0471327B488000E1AEB /* Notifications.h */,
+				AAD696C6132D5E17008E95C4 /* IotaXMLParser.h */,
+				AAD696C7132D5E1B008E95C4 /* IotaXMLParser.m */,
+				AA94FBFF1332604F0065DC19 /* UIView+iotaExtensions.h */,
+				AA94FC001332604F0065DC19 /* UIView+iotaExtensions.m */,
+			);
+			path = iotaPad6;
+			sourceTree = "<group>";
+		};
+		AA63B60513055E350035A49C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AA63B60613055E350035A49C /* iotaPad6-Info.plist */,
+				AA63B60713055E350035A49C /* InfoPlist.strings */,
+				AA63B60A13055E350035A49C /* iotaPad6-Prefix.pch */,
+				AA63B60B13055E350035A49C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA63B61E13055E360035A49C /* iotaPad6Tests */ = {
+			isa = PBXGroup;
+			children = (
+				AA63B62513055E360035A49C /* iotaPad6Tests.h */,
+				AA63B62713055E360035A49C /* iotaPad6Tests.m */,
+				AA63B61F13055E360035A49C /* Supporting Files */,
+			);
+			path = iotaPad6Tests;
+			sourceTree = "<group>";
+		};
+		AA63B61F13055E360035A49C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AA63B62013055E360035A49C /* iotaPad6Tests-Info.plist */,
+				AA63B62113055E360035A49C /* InfoPlist.strings */,
+				AA63B62413055E360035A49C /* iotaPad6Tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA66CDCB1336AF8100B4E2F5 /* Ehr NPO Cross */ = {
+			isa = PBXGroup;
+			children = (
+				AA63B63913055E7B0035A49C /* EhrViewController.h */,
+				AA63B63A13055E7B0035A49C /* EhrViewController.m */,
+				AA63B63B13055E7B0035A49C /* EhrViewController.xib */,
+				AA94FC30133411A30065DC19 /* Soap12.h */,
+				AA94FC31133411B10065DC19 /* Soap12.m */,
+				AA66CDC81336871200B4E2F5 /* SysTeamNPO.h */,
+				AA66CDC91336871300B4E2F5 /* SysTeamNPO.m */,
+				AA6301EA13393A5A0033DB11 /* StChemistry.h */,
+				AA6301EB13393A5A0033DB11 /* StChemistry.m */,
+				AA6301F813396A630033DB11 /* StUndersokningsresultat.h */,
+				AA6301F913396A630033DB11 /* StUndersokningsresultat.m */,
+				AA6301FB13396AF30033DB11 /* StBase.h */,
+				AA6301FC13396AF30033DB11 /* StBase.m */,
+				AA6301ED13393ABF0033DB11 /* XML2StChemistry.h */,
+				AA6301EE13393ABF0033DB11 /* XML2StChemistry.m */,
+			);
+			name = "Ehr NPO Cross";
+			sourceTree = "<group>";
+		};
+		AA9081E5130E9C6C00DBF856 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				AA9081E9130E9C9300DBF856 /* Issue worksheets */,
+				AA9081E8130E9C8800DBF856 /* Issue templates */,
+				AA9081E7130E9C7F00DBF856 /* Patients */,
+			);
+			name = Database;
+			sourceTree = "<group>";
+		};
+		AA9081E7130E9C7F00DBF856 /* Patients */ = {
+			isa = PBXGroup;
+			children = (
+				AA9081ED130E9CD800DBF856 /* PatientDB.h */,
+				AA9081EE130E9CD800DBF856 /* PatientDB.m */,
+			);
+			name = Patients;
+			sourceTree = "<group>";
+		};
+		AA9081E8130E9C8800DBF856 /* Issue templates */ = {
+			isa = PBXGroup;
+			children = (
+				AA9081F0130E9DFF00DBF856 /* IssueTemplateDB.h */,
+				AA9081F1130E9DFF00DBF856 /* IssueTemplateDB.m */,
+				AA9081FF130EA1EF00DBF856 /* IssueTemplateDescriptor.h */,
+				AA908200130EA1EF00DBF856 /* IssueTemplateDescriptor.m */,
+				AA908205130EB76E00DBF856 /* IssueTemplateBlockDescriptor.h */,
+				AA908206130EB76E00DBF856 /* IssueTemplateBlockDescriptor.m */,
+				AA7EFCC6132832D800F3F3A0 /* IssueBlockInfoDialog.h */,
+				AA7EFCC7132832D800F3F3A0 /* IssueBlockInfoDialog.m */,
+				AA7EFCC8132832D900F3F3A0 /* IssueBlockInfoDialog.xib */,
+			);
+			name = "Issue templates";
+			sourceTree = "<group>";
+		};
+		AA9081E9130E9C9300DBF856 /* Issue worksheets */ = {
+			isa = PBXGroup;
+			children = (
+				AA908208130EE0B200DBF856 /* IssueWorksheetDescriptor.h */,
+				AA908209130EE0B200DBF856 /* IssueWorksheetDescriptor.m */,
+				AA57574513127A4F0099128F /* IssueWorksheetBlockDescriptor.h */,
+				AA57574613127A4F0099128F /* IssueWorksheetBlockDescriptor.m */,
+			);
+			name = "Issue worksheets";
+			sourceTree = "<group>";
+		};
+		AA94FC07133288530065DC19 /* Klin kem */ = {
+			isa = PBXGroup;
+			children = (
+				AAD67BE713183DE100D3A031 /* KlinKemController.h */,
+				AAD67BE813183DE100D3A031 /* KlinKemController.m */,
+				AAD67BE913183DE100D3A031 /* KlinKemController.xib */,
+				AA94FC08133288A20065DC19 /* KlinKemGrafController.h */,
+				AA94FC09133288A20065DC19 /* KlinKemGrafController.m */,
+				AA94FC0A133288A20065DC19 /* KlinKemGrafController.xib */,
+				AA94FC0D133298F90065DC19 /* GraphView.h */,
+				AA94FC0E133298F90065DC19 /* GraphView.m */,
+				AA630220133AC6500033DB11 /* UndersokningsResultat.h */,
+				AA630221133AC6510033DB11 /* UndersokningsResultat.m */,
+				AA630223133AC65D0033DB11 /* AnalysTjanst.h */,
+				AA630224133AC65D0033DB11 /* AnalysTjanst.m */,
+			);
+			name = "Klin kem";
+			sourceTree = "<group>";
+		};
+		AA94FC1A1333E59D0065DC19 /* opacity */ = {
+			isa = PBXGroup;
+			children = (
+				AAECB6BC13815BF000EAB251 /* inkorg.png */,
+				AA220A7213413A170088CBD3 /* tape4.png */,
+				AAB05C02133810C7008FD031 /* issues_iota.png */,
+				AAB05C0B133816B3008FD031 /* recept.png */,
+				AAB05C0513381305008FD031 /* mallar_iotas.png */,
+				AAB05C0F13381ACB008FD031 /* cross.png */,
+				AAB05C0713381319008FD031 /* laboratorium.png */,
+				AAB05C0913381327008FD031 /* journalnotat.png */,
+				AA94FC1B1333E5A70065DC19 /* Icon-72.png */,
+				AA94FC1C1333E5A70065DC19 /* Icon-AppStore.jpg */,
+				AA94FC1D1333E5A70065DC19 /* Icon-Small-50.png */,
+				AA94FC1E1333E5A70065DC19 /* Icon-Small.png */,
+				AA94FC1F1333E5A70065DC19 /* Icon-Small@2x.png */,
+				AA94FC201333E5A70065DC19 /* Icon.png */,
+				AA94FC211333E5A70065DC19 /* Icon@2x.png */,
+				AA94FC221333E5A70065DC19 /* iotaAppIcon.opacity */,
+			);
+			path = opacity;
+			sourceTree = "<group>";
+		};
+		AA9B47C81323915600C96675 /* background */ = {
+			isa = PBXGroup;
+			children = (
+				AA63021E133AB34F0033DB11 /* Lockknock.png */,
+				AA63020E133AA49E0033DB11 /* b1.png */,
+				AA63020F133AA49E0033DB11 /* b2.png */,
+				AA630218133AAC210033DB11 /* b2b.png */,
+				AA630210133AA49E0033DB11 /* b3.png */,
+				AA66CDDD1337F9B700B4E2F5 /* 708_44_landscape.png */,
+				AA66CDDE1337F9B800B4E2F5 /* 773_44_portrait.png */,
+				AA9B47FC1323F01A00C96675 /* titlebar_light.png */,
+				AA9B47F21323CF2400C96675 /* title_bar.png */,
+				AA9B47C91323915600C96675 /* backg1.png */,
+				AA9B47CA1323915600C96675 /* backg2.png */,
+				AA9B47CB1323915600C96675 /* backg3.png */,
+				AA94FC0313327B250065DC19 /* SYSteam_EDB_webpage.jpg */,
+				AA94FC0513327C3D0065DC19 /* systeam.png */,
+			);
+			path = background;
+			sourceTree = "<group>";
+		};
+		AAC2FC27130BE588009E8384 /* Base classes */ = {
+			isa = PBXGroup;
+			children = (
+				AA51D7B21312E0B000E9E1CA /* NSString+iotaAdditions.h */,
+				AA51D7B31312E0B000E9E1CA /* NSString+iotaAdditions.m */,
+				AAC2FC20130BDF85009E8384 /* DetailViewController.h */,
+				AAC2FC21130BDF85009E8384 /* DetailViewController.m */,
+				AAC2FC24130BE157009E8384 /* DetailViewControllerWithToolbar.h */,
+				AAC2FC25130BE157009E8384 /* DetailViewControllerWithToolbar.m */,
+				AAF16F65130DB1BA00A86E3E /* DetailViewControllerWithNavbar.h */,
+				AAF16F66130DB1BB00A86E3E /* DetailViewControllerWithNavbar.m */,
+			);
+			name = "Base classes";
+			sourceTree = "<group>";
+		};
+		AAC2FC2D130C4052009E8384 /* Context and Patient */ = {
+			isa = PBXGroup;
+			children = (
+				AAECB6A6138159AD00EAB251 /* IotaContext.h */,
+				AAECB6A7138159AD00EAB251 /* IotaContext.m */,
+				AAB84B191326D33500ACC980 /* PatientContextDB.h */,
+				AAB84B1A1326D33500ACC980 /* PatientContextDB.m */,
+				AA2FF4151382851700C3ABA4 /* IotaContextDelegate.h */,
+				AA63B650130588A20035A49C /* Patient.h */,
+				AA63B651130588A20035A49C /* Patient.m */,
+				AA63B653130589FE0035A49C /* Patients.h */,
+				AA63B65413058A000035A49C /* Patients.m */,
+				AAB84B131326D16700ACC980 /* PatientContext.h */,
+				AAB84B141326D16700ACC980 /* PatientContext.m */,
+				AAECB6CB1381834C00EAB251 /* MyIotaPatientContext.h */,
+				AAECB6CC1381834C00EAB251 /* MyIotaPatientContext.m */,
+				AAC2FC28130BFC8D009E8384 /* PatientListController.h */,
+				AAC2FC29130BFC8D009E8384 /* PatientListController.m */,
+				AAC2FC2A130BFC8D009E8384 /* PatientListController.xib */,
+				AA0C6283135E42B2002E50D7 /* ServerConnect.h */,
+				AA0C6284135E42B2002E50D7 /* ServerConnect.m */,
+				AA0C629F1360584D002E50D7 /* ServerDiscovery.h */,
+				AA0C62A01360584D002E50D7 /* ServerDiscovery.m */,
+				AA1603791375B4B800D03EE6 /* ServerListener.h */,
+				AA16037A1375B4B800D03EE6 /* ServerListener.m */,
+			);
+			name = "Context and Patient";
+			sourceTree = "<group>";
+		};
+		AAECB6A913815A0600EAB251 /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				AAECB6BE1381601C00EAB251 /* InboxForm.h */,
+				AAECB6BF1381601C00EAB251 /* InboxForm.m */,
+				AAECB6C01381601C00EAB251 /* InboxForm.xib */,
+				AAECB6C11381601C00EAB251 /* InboxMyIotaForm.h */,
+				AAECB6C21381601C00EAB251 /* InboxMyIotaForm.m */,
+				AAECB6C31381601C00EAB251 /* InboxMyIotaForm.xib */,
+			);
+			name = Inbox;
+			path = ..;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA63B5F913055E350035A49C /* iotaPad6 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA63B62B13055E360035A49C /* Build configuration list for PBXNativeTarget "iotaPad6" */;
+			buildPhases = (
+				AA63B5F613055E350035A49C /* Sources */,
+				AA63B5F713055E350035A49C /* Frameworks */,
+				AA63B5F813055E350035A49C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iotaPad6;
+			productName = iotaPad6;
+			productReference = AA63B5FA13055E350035A49C /* iotaMed.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AA63B61713055E360035A49C /* iotaPad6Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA63B62E13055E360035A49C /* Build configuration list for PBXNativeTarget "iotaPad6Tests" */;
+			buildPhases = (
+				AA63B61313055E360035A49C /* Sources */,
+				AA63B61413055E360035A49C /* Frameworks */,
+				AA63B61513055E360035A49C /* Resources */,
+				AA63B61613055E360035A49C /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA63B61D13055E360035A49C /* PBXTargetDependency */,
+			);
+			name = iotaPad6Tests;
+			productName = iotaPad6Tests;
+			productReference = AA63B61813055E360035A49C /* iotaPad6Tests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA63B5F113055E350035A49C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "MITM AB";
+			};
+			buildConfigurationList = AA63B5F413055E350035A49C /* Build configuration list for PBXProject "iotaPad6" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				sv,
+			);
+			mainGroup = AA63B5EF13055E350035A49C;
+			productRefGroup = AA63B5FB13055E350035A49C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA63B5F913055E350035A49C /* iotaPad6 */,
+				AA63B61713055E360035A49C /* iotaPad6Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA63B5F813055E350035A49C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA63B60913055E350035A49C /* InfoPlist.strings in Resources */,
+				AAB7700C1355AB4400388BF5 /* MainWindow.xib in Resources */,
+				AA63B63D13055E7B0035A49C /* EhrViewController.xib in Resources */,
+				AA63B64213055E880035A49C /* MedListController.xib in Resources */,
+				AA63B647130562730035A49C /* JournalController.xib in Resources */,
+				AA63B64C13056C5D0035A49C /* AppointmentsController.xib in Resources */,
+				AAC2FC2C130BFC8E009E8384 /* PatientListController.xib in Resources */,
+				AA6FCF8C13130691008FBFFD /* IssueTemplateFormViewController.xib in Resources */,
+				AADAE3111313E9B3005E1FE5 /* IssueTemplatesMasterViewController.xib in Resources */,
+				AA2DF2B91314763B0018A2DD /* KlinKem.xml in Resources */,
+				AA9AFF4C13151DB40027E667 /* Diagnosis.xml in Resources */,
+				AA9AFF4E13151DCD0027E667 /* MedicalRecord.xml in Resources */,
+				AA9AFF5013151DD60027E667 /* Microbiology.xml in Resources */,
+				AAD67BEB13183DE100D3A031 /* KlinKemController.xib in Resources */,
+				AA5DB256131FFA9400888408 /* diabetes.xml in Resources */,
+				AA5DB27F132058F700888408 /* templates.xml in Resources */,
+				AAA9EEEE1320FC8F00D36C54 /* IssueTemplateBlockViewController.xib in Resources */,
+				AA9B47CC1323915600C96675 /* backg1.png in Resources */,
+				AA9B47CD1323915600C96675 /* backg2.png in Resources */,
+				AA9B47CE1323915600C96675 /* backg3.png in Resources */,
+				AA9B47F31323CF2400C96675 /* title_bar.png in Resources */,
+				AA9B47FD1323F01A00C96675 /* titlebar_light.png in Resources */,
+				AA9B47FF1323F25500C96675 /* atc.xml in Resources */,
+				AA7EFCCA132832D900F3F3A0 /* IssueBlockInfoDialog.xib in Resources */,
+				AA50C87C132B8EB50031D231 /* keywords.xml in Resources */,
+				AA50C88F132BB5B40031D231 /* ContactCreationForm.xib in Resources */,
+				AA48FE78132FBE9B008409AA /* keywordtemplates.xml in Resources */,
+				AA1AA5481330D82B003DC2AE /* ContactSelectOrCreateForm.xib in Resources */,
+				AA94FC0413327B250065DC19 /* SYSteam_EDB_webpage.jpg in Resources */,
+				AA94FC0613327C3D0065DC19 /* systeam.png in Resources */,
+				AA94FC0C133288A20065DC19 /* KlinKemGrafController.xib in Resources */,
+				AA94FC191333E3500065DC19 /* Settings.bundle in Resources */,
+				AA94FC231333E5A70065DC19 /* Icon-72.png in Resources */,
+				AA94FC241333E5A70065DC19 /* Icon-AppStore.jpg in Resources */,
+				AA94FC251333E5A70065DC19 /* Icon-Small-50.png in Resources */,
+				AA94FC261333E5A70065DC19 /* Icon-Small.png in Resources */,
+				AA94FC271333E5A70065DC19 /* Icon-Small@2x.png in Resources */,
+				AA94FC281333E5A70065DC19 /* Icon.png in Resources */,
+				AA94FC291333E5A70065DC19 /* Icon@2x.png in Resources */,
+				AA94FC2A1333E5A70065DC19 /* iotaAppIcon.opacity in Resources */,
+				AA66CDDF1337F9B900B4E2F5 /* 708_44_landscape.png in Resources */,
+				AA66CDE01337F9B900B4E2F5 /* 773_44_portrait.png in Resources */,
+				AAB05C03133810C7008FD031 /* issues_iota.png in Resources */,
+				AAB05C0613381305008FD031 /* mallar_iotas.png in Resources */,
+				AAB05C0813381319008FD031 /* laboratorium.png in Resources */,
+				AAB05C0A13381327008FD031 /* journalnotat.png in Resources */,
+				AAB05C0C133816B3008FD031 /* recept.png in Resources */,
+				AAB05C1013381ACB008FD031 /* cross.png in Resources */,
+				AA630211133AA49E0033DB11 /* b1.png in Resources */,
+				AA630212133AA49E0033DB11 /* b2.png in Resources */,
+				AA630213133AA49E0033DB11 /* b3.png in Resources */,
+				AA630219133AAC210033DB11 /* b2b.png in Resources */,
+				AA63021F133AB34F0033DB11 /* Lockknock.png in Resources */,
+				AA968061133BE053006E6AF0 /* LabOrderController.xib in Resources */,
+				AAB7700A1355AB0B00388BF5 /* ReferralController.xib in Resources */,
+				AA96806F133CD01E006E6AF0 /* PrescriptionController.xib in Resources */,
+				AA9680C5133D3F6D006E6AF0 /* ValueLookupForm.xib in Resources */,
+				AA9680CD133D574B006E6AF0 /* PrescriptionDetailController.xib in Resources */,
+				AA220A7313413A170088CBD3 /* tape4.png in Resources */,
+				AA220A88134148990088CBD3 /* fotledstrauma.xml in Resources */,
+				AAD2906413436D8700D9CAF0 /* 44A11.png in Resources */,
+				AAD2906613436DBB00D9CAF0 /* 44A21.png in Resources */,
+				AAD2906813436DE300D9CAF0 /* 44A31.png in Resources */,
+				AAD2906A13436E0100D9CAF0 /* 44B11.png in Resources */,
+				AAD2906C13436E1C00D9CAF0 /* 44B21.png in Resources */,
+				AAD2906E13436E3900D9CAF0 /* 44B31.png in Resources */,
+				AAD2907013436E5700D9CAF0 /* 44C11.png in Resources */,
+				AAD2907213436E7300D9CAF0 /* 44C21.png in Resources */,
+				AAD2907413436E8E00D9CAF0 /* 44C31.png in Resources */,
+				AAB76FFA1355A7C200388BF5 /* Localizable.strings in Resources */,
+				AAB7700F1357077700388BF5 /* stroke.xml in Resources */,
+				AA12A380137B2F010016AB24 /* IssueWorksheetController.xib in Resources */,
+				AAECB6BD13815BF000EAB251 /* inkorg.png in Resources */,
+				AAECB6C51381601C00EAB251 /* InboxForm.xib in Resources */,
+				AAECB6C71381601C00EAB251 /* InboxMyIotaForm.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA63B61513055E360035A49C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA63B62313055E360035A49C /* InfoPlist.strings in Resources */,
+				AA63B62613055E360035A49C /* iotaPad6Tests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AA63B61613055E360035A49C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA63B5F613055E350035A49C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA63B60C13055E350035A49C /* main.m in Sources */,
+				AA63B60F13055E350035A49C /* iotaPad6AppDelegate.m in Sources */,
+				AA63B63313055E5C0035A49C /* IssueListController.m in Sources */,
+				AA63B63713055E6E0035A49C /* IssueWorksheetController.m in Sources */,
+				AA63B63C13055E7B0035A49C /* EhrViewController.m in Sources */,
+				AA63B64113055E880035A49C /* MedListController.m in Sources */,
+				AA63B646130562730035A49C /* JournalController.m in Sources */,
+				AA63B64B13056C5D0035A49C /* AppointmentsController.m in Sources */,
+				AA63B64F1305886C0035A49C /* DemoData.m in Sources */,
+				AA63B652130588A50035A49C /* Patient.m in Sources */,
+				AA63B65513058A030035A49C /* Patients.m in Sources */,
+				AAC2FC22130BDF85009E8384 /* DetailViewController.m in Sources */,
+				AAC2FC26130BE157009E8384 /* DetailViewControllerWithToolbar.m in Sources */,
+				AAC2FC2B130BFC8E009E8384 /* PatientListController.m in Sources */,
+				AAF16F67130DB1BB00A86E3E /* DetailViewControllerWithNavbar.m in Sources */,
+				AA9081EF130E9CD800DBF856 /* PatientDB.m in Sources */,
+				AA9081F2130E9DFF00DBF856 /* IssueTemplateDB.m in Sources */,
+				AA908201130EA1F000DBF856 /* IssueTemplateDescriptor.m in Sources */,
+				AA908207130EB77000DBF856 /* IssueTemplateBlockDescriptor.m in Sources */,
+				AA90820A130EE0B200DBF856 /* IssueWorksheetDescriptor.m in Sources */,
+				AA57574713127A4F0099128F /* IssueWorksheetBlockDescriptor.m in Sources */,
+				AA51D7B41312E0B000E9E1CA /* NSString+iotaAdditions.m in Sources */,
+				AA6FCF8B13130691008FBFFD /* IssueTemplateFormViewController.m in Sources */,
+				AADAE3101313E9B3005E1FE5 /* IssueTemplatesMasterViewController.m in Sources */,
+				AAD67BEA13183DE100D3A031 /* KlinKemController.m in Sources */,
+				AA4CF7381319266900F19B45 /* XMLTagDef.m in Sources */,
+				AA7365C6131D96FA000B6B1F /* Funcs.m in Sources */,
+				AA5DB23E131FEBC600888408 /* IDRWorksheet.m in Sources */,
+				AA5DB241131FEEC600888408 /* IDRBlock.m in Sources */,
+				AA5DB24A131FF72D00888408 /* IDRItem.m in Sources */,
+				AA5DB24D131FF78300888408 /* IDRObservation.m in Sources */,
+				AA5DB250131FF79800888408 /* IDRAction.m in Sources */,
+				AA5DB253131FF82400888408 /* IDRObsDefinition.m in Sources */,
+				AA5DB2731320365A00888408 /* XML2IDR.m in Sources */,
+				AAA9EEED1320FC8F00D36C54 /* IssueTemplateBlockViewController.m in Sources */,
+				AAA9EF0213210AAF00D36C54 /* ItemCell.m in Sources */,
+				AAA9EF0613210CB200D36C54 /* BulletView.m in Sources */,
+				AA9B47F61323CF5100C96675 /* MyNavigationBar.m in Sources */,
+				AA9B47F91323D16E00C96675 /* MyToolBar.m in Sources */,
+				AA9B480213244C5300C96675 /* IDRDescription.m in Sources */,
+				AA29799C1325788C00F92D9C /* IDRValue.m in Sources */,
+				AAB84B1113262B3600ACC980 /* IDRContact.m in Sources */,
+				AAB84B151326D16700ACC980 /* PatientContext.m in Sources */,
+				AAB84B181326D1E700ACC980 /* IDRWorksheets.m in Sources */,
+				AAB84B1B1326D33500ACC980 /* PatientContextDB.m in Sources */,
+				AA7EFCC9132832D900F3F3A0 /* IssueBlockInfoDialog.m in Sources */,
+				AA50C88E132BB5B40031D231 /* ContactCreationForm.m in Sources */,
+				AAD696C8132D5E28008E95C4 /* IotaXMLParser.m in Sources */,
+				AACDD398132E8F610065C457 /* ObservationCell.m in Sources */,
+				AA1AA5471330D82B003DC2AE /* ContactSelectOrCreateForm.m in Sources */,
+				AA94FC011332604F0065DC19 /* UIView+iotaExtensions.m in Sources */,
+				AA94FC0B133288A20065DC19 /* KlinKemGrafController.m in Sources */,
+				AA94FC0F133298FA0065DC19 /* GraphView.m in Sources */,
+				AA94FC32133411D00065DC19 /* Soap12.m in Sources */,
+				AA2A2D6C133560A5005B7CAC /* ItemCellJournal.m in Sources */,
+				AA2A2D6F133560BA005B7CAC /* ItemCellIssue.m in Sources */,
+				AA2A2D72133560CD005B7CAC /* ItemCellTemplate.m in Sources */,
+				AA66CDCA1336871500B4E2F5 /* SysTeamNPO.m in Sources */,
+				AA6301EC13393A5B0033DB11 /* StChemistry.m in Sources */,
+				AA6301EF13393ABF0033DB11 /* XML2StChemistry.m in Sources */,
+				AA6301FA13396A630033DB11 /* StUndersokningsresultat.m in Sources */,
+				AA6301FD13396AF40033DB11 /* StBase.m in Sources */,
+				AA6302011339FF550033DB11 /* IotaDOMBase.m in Sources */,
+				AA6302041339FF600033DB11 /* IotaDOMNode.m in Sources */,
+				AA6302071339FF6F0033DB11 /* IotaDOMElement.m in Sources */,
+				AA63020A1339FF7F0033DB11 /* IotaDOMContent.m in Sources */,
+				AA63020D133A00A50033DB11 /* Xml2IotaDom.m in Sources */,
+				AA630222133AC6510033DB11 /* UndersokningsResultat.m in Sources */,
+				AA630225133AC65E0033DB11 /* AnalysTjanst.m in Sources */,
+				AA96805C133BCFC5006E6AF0 /* IDRTest.m in Sources */,
+				AA968060133BE053006E6AF0 /* LabOrderController.m in Sources */,
+				AA968069133CD007006E6AF0 /* ReferralController.m in Sources */,
+				AA96806E133CD01E006E6AF0 /* PrescriptionController.m in Sources */,
+				AA9680C4133D3F6D006E6AF0 /* ValueLookupForm.m in Sources */,
+				AA9680C8133D5060006E6AF0 /* IDRDose.m in Sources */,
+				AA9680CC133D574B006E6AF0 /* PrescriptionDetailController.m in Sources */,
+				AA220A8B13414B260088CBD3 /* IDRImage.m in Sources */,
+				AA5BF1421343D44500AB9952 /* ValueLookupCell.m in Sources */,
+				AA0C6285135E42B2002E50D7 /* ServerConnect.m in Sources */,
+				AA0C62A11360584D002E50D7 /* ServerDiscovery.m in Sources */,
+				AA16037B1375B4B800D03EE6 /* ServerListener.m in Sources */,
+				AA12A38E137C73EF0016AB24 /* ThemeColors.m in Sources */,
+				AAECB6A8138159AD00EAB251 /* IotaContext.m in Sources */,
+				AAECB6C41381601C00EAB251 /* InboxForm.m in Sources */,
+				AAECB6C61381601C00EAB251 /* InboxMyIotaForm.m in Sources */,
+				AAECB6CD1381834C00EAB251 /* MyIotaPatientContext.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA63B61313055E360035A49C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA63B62813055E360035A49C /* iotaPad6Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA63B61D13055E360035A49C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA63B5F913055E350035A49C /* iotaPad6 */;
+			targetProxy = AA63B61C13055E360035A49C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AA63B60713055E350035A49C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA63B60813055E350035A49C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		AA63B62113055E360035A49C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA63B62213055E360035A49C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		AAB76FFC1355A7C200388BF5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAB76FFB1355A7C200388BF5 /* en */,
+				AAB76FFD1355A7CD00388BF5 /* sv */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AA63B62913055E360035A49C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				PRODUCT_NAME = iotaMed;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		AA63B62A13055E360035A49C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = iotaMed;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		AA63B62C13055E360035A49C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iotaPad6/iotaPad6-Prefix.pch";
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = IOTAMED;
+				INFOPLIST_FILE = "iotaPad6/iotaPad6-Info.plist";
+				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				PRODUCT_NAME = iotaMed;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AA63B62D13055E360035A49C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iotaPad6/iotaPad6-Prefix.pch";
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = IOTAMED;
+				INFOPLIST_FILE = "iotaPad6/iotaPad6-Info.plist";
+				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				PRODUCT_NAME = iotaMed;
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		AA63B62F13055E360035A49C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iotaPad6.app/iotaPad6";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iotaPad6Tests/iotaPad6Tests-Prefix.pch";
+				INFOPLIST_FILE = "iotaPad6Tests/iotaPad6Tests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		AA63B63013055E360035A49C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iotaPad6.app/iotaPad6";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iotaPad6Tests/iotaPad6Tests-Prefix.pch";
+				INFOPLIST_FILE = "iotaPad6Tests/iotaPad6Tests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA63B5F413055E350035A49C /* Build configuration list for PBXProject "iotaPad6" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA63B62913055E360035A49C /* Debug */,
+				AA63B62A13055E360035A49C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA63B62B13055E360035A49C /* Build configuration list for PBXNativeTarget "iotaPad6" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA63B62C13055E360035A49C /* Debug */,
+				AA63B62D13055E360035A49C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA63B62E13055E360035A49C /* Build configuration list for PBXNativeTarget "iotaPad6Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA63B62F13055E360035A49C /* Debug */,
+				AA63B63013055E360035A49C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA63B5F113055E350035A49C /* Project object */;
+}

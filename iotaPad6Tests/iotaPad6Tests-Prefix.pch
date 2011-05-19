@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'iotaPad6Tests' target in the 'iotaPad6Tests' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+#endif

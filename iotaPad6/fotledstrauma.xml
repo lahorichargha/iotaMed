@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<template type='issue' title='Fotledstrauma' fromICD10='S82' toICD10='S82' lang='SE' templateUuid='CE224E67-095D-46DF-896D-BF047031A820'>
+    
+    <description type='template'>Denna mall är avsedd för akutmottagning på sjukhus för initiell bedömning och åtgärd av trauma i fotledsregionen. 
+        Mallen innehåller olika delar vilka man väljer utgående från första undersökningsresultaten. Andra delmallar används vid uppföljning.</description>
+    
+    <block type='initial' repeats='no' title='Utredning' templateUuid='BD20A01D-AB71-4185-A5B0-2E612153FEA5'>
+        <description type='template'>Symptom och utredningsmallen läggs till som första mall och är avsedd att hjälpa urskilja om diagnosen i fråga
+            är den rätta samt att göra den initiella utredningen. Om det visar sig inte vara så kan mallen tas bort igen. De införda värdena bevaras och kommer att synas i andra mallar som använder samma värden, samt alltid i den kronologiska delen "Journal".</description>
+        <item>Finns anamnes på externt trauma?<observation name='ExterntTrauma' direction='getput' type='check'/></item>
+        <item>Högenergi (ja) eller lågenergiskada (nej)?<observation name='EnergiSkadaHög' direction='getput' type='check'/></item>
+        <item>Våldets riktning?<observation name='VåldRiktning' type='string' direction='getput'/></item>
+        <item>Vilken sida?<observation name='TraumaSida' direction='getput'/></item>
+        <item>Belastningsbar fot?<observation name='BelastningsbarFot' type='check' direction='getput'/></item>
+        <item>Tidpunkt?<observation name='TidpunktSkada' type='string' direction='getput'/></item>
+        <item>Akutbehandling, t.ex. reposition av ambulanspersonal<observation name='AkutBehandlingSkada' type='string' direction='getput'/></item>
+        
+        <item bold='yes'>Status</item>
+        <item indentlevel='1'>Inspektera hudkostym<observation name='HudKostymFotled' type='string' direction='getput'/></item>
+        <item indentlevel='1'>Felställning<observation name='FelställningFotled' type='string' direction='getput'/></item>
+        <item indentlevel='1'>Svullnadsgrad<observation name='SvullnadsgradFotled' type='string' direction='getput'/></item>
+        <item indentlevel='1'>Öppna sår, skrapsår, blåsbildning<observation name='SårFotled' type='string' direction='getput'/></item>
+        <item indentlevel='1'>Palpera för ruckömhet<observation name='RuckömhetFotled' type='string' direction='getput'/></item>
+        <item indentlevel='1'>Palpera proximala fibula<observation name='PalperaProximalaFibulaFotled' type='string' direction='getput'/></item>
+        <item indentlevel='1'>Hälsena, Thompsons test<observation name='HälsenaThompsonTest' type='string' direction='getput'/></item>
+        <item indentlevel='1'>Ligamentapparaten<observation name='LigamentapparatenFotled' type='string' direction='getput'/></item>
+        <item indentlevel='1'>Calcaneus palpation<observation name='PalperaCalcaneus' type='string' direction='getput'/></item>
+        <item indentlevel='1'>Os naviculare<observation name='OsNaviculare' type='string' direction='getput'/></item>
+        <item indentlevel='1'>Metatarsal V proximalt<observation name='MTVProximalt' type='string' direction='getput'/></item>
+        
+        <item bold='yes'>Röntgen, välj en av två följande:</item>
+        <item indentlevel='1'>Oftast behövs röntgen vid svullen, ej belastningsbar fot. 4 standardprojektioner: frontal, sida, vridning och gaffelbild.
+            <observation name='RtgFotled4Projektioner' direction='get'/>
+            <action type='referral' to='Röntgenavdelningen|Akutmottagning|UAS' cause='Fotled frontal, sida, vridning och gaffelbild.'
+                        history='Fotledstrauma $(TraumaSida) sida.'/>
+        </item>
+
+        <item indentlevel='1'>Vid proximal ömhet bör man beställa 4 standardprojektioner plus rtg av hela fibula.
+            <observation name='RtgFotled5Projektioner' direction='get'/>
+            <action type='referral' to='Röntgenavdelningen|Akutmottagning|UAS' cause='Fotled frontal, sida, vridning, gaffelbild, samt hela fibula.'/>
+        </item>
+        
+        <item>
+            Det finns i huvudsak 3 klassifikationssystem för fotledsfrakturer: Lauge-Hansen, Danis-Weber, samt AO. Vi följer i denna mall
+            AO systemet. I bilderna som följer visar vi de tre huvudtyperna med vardera tre undertyper. Välj den som passar din patient bäst och ladda
+            en mer specifik mall genom att röra texten för den önskade mallen. Du kan alltid ta bort och byta mall om du tagit fel. Du kan
+            även aktivera mer än en mall, men det har nog ingen klinisk mening att göra detta, förutom om patienten faktiskt brutit båda fotleder på
+            samma gång.
+        </item>
+        
+        <item>Slutsats angående frakturtyp efter klinik och röntgen<observation name='FotledSlutsats' direction='getput' type='string'/></item>
+        
+        <item bold='yes'>Vidare planering</item>
+        
+        <item>Inläggningsfall?<observation name='FotledInläggning' type='check' direction='getput'/></item>
+        <item>Diskutera på röntgenrond?<observation name='FotledDiskuteraRöntgenrond' type='check' direction='getput'/></item>
+        <item>Operationsfall?<observation name='FotledOperationsfall' type='check' direction='getput'/></item>
+        <item>Gå hem med gipsskena?<observation name='FotledGipsskena' type='check' direction='getput'/></item>
+        
+        <item bold='yes'>Behandlingsmallar:</item>
+        
+        <item>
+            AO Typ A: Fraktur nedom syndesmodhöjd. Typ B: Fraktur i syndesmoshöjd. Typ C: Fraktur ovan syndesmoshöjd.
+        </item>
+        
+        <item>
+            Typ A1: Adduktionsvåld mot supinerad fot ger lateral skada, antingen en tvär avulsionsfraktur genom laterala malleolen 
+            nedom syndesmoshöjd eller en lateral ligamentruptur.
+            <image imagename='44A11'/>
+            <action type='block' templateUuid='F2B88172-44D2-48E2-86B4-CAC6F6A33001'/>
+        </item>
+        
+        <item>
+            Typ A2: Vid vidare adduktionsvåld komprimeras fotleden medialt med vertikal fraktur genom mediala malleolen som följd.
+            <image imagename='44A21'/>
+            <action type='block' templateUuid='4F9AFD17-FBDD-4B2F-B97F-3B1BBDC7A9C1'/>
+        </item>
+        
+        <item>
+            Typ A3: Alternativt uppkommer en trimalleolär fraktur.
+            <image imagename='44A31'/>
+            <action type='block' templateUuid='5333B170-1ACC-4A0D-B878-38511D34BA17'/>
+        </item>
+        
+        <item>
+            Typ B1: Axialt våld mot en supinerad fot ger utåtrotation av talus vilket resulterar i en snedfraktur av laterala malleolen
+            i syndesmoshöjd.
+            <image imagename='44B11'/>
+            <action type='block' templateUuid='2016F4D3-DF9A-4B31-8843-48CF68B3E805'/>
+        </item>
+        
+        <item>
+            Typ B3: (Den omvända ordningen är avsiktlig.) Fortsatt utåtrotation av talus ger först skada på bakre
+            syndesmosligamenten alternativt en fraktur genom processus posterior tibiae.
+            <image imagename='44B31'/>
+            <action type='block' templateUuid='FA6B4472-BD38-4FCF-85AB-A54FCFC5389F'/>
+        </item>
+        
+        <item>
+            Typ B2: Slutligen sker skada på mediala strukturer med antingen ruptur av ligamentum deltoideum eller en tvärfraktur
+            genom mediala malleolen och frakturen är därmed trimalleolär. B3 frakturen uppkommer således tidigare än B2 med detta
+            resonemang.
+            <image imagename='44B21'/>
+            <action type='block' templateUuid='318AE419-414C-4983-9104-B835F0742DFB'/>
+        </item>
+        
+        <item>
+            Typ C1: Pronerad for som utsätts för utåtrotationsvåld ger skada på deltoidligamentet eller tvär avulsionsfraktur
+            genom mediala malleolen. Talus trycker sedan mot fibula som roterar utåt och rupturerar främre syndesmosen och
+            membrana interossea för att till sist frakturera ovan syndesmosen.
+            <image imagename='44C11'/>
+            <action type='block' templateUuid='DAE4CA3C-55D6-457F-A420-5667748D0AA3'/>
+        </item>
+        
+        <item>
+            Typ C2: Som ovan men med splittrad fibulafraktur.
+            <image imagename='44C21'/>
+            <action type='block' templateUuid='85EC3A0E-306F-47A1-A7C6-A6242AC1D35C'/>
+        </item>
+        
+        <item>
+            Typ C3: Maisonneuvefrakturen är en C-skada som ibland missas. Här föreligger skador på deltoidligamentet,
+            främre syndesmosen och hela membrana interossea samt proximal fibulafraktur.
+            <image imagename='44C31'/>
+            <action type='block' templateUuid='063FA318-C7E1-4AE7-8C2C-CDF3270C1563'/>
+        </item>
+        
+    </block>
+    
+    <block type='any' repeats='no' title='AO Typ A1' templateUuid='F2B88172-44D2-48E2-86B4-CAC6F6A33001'>    
+        <item bold='yes'>Fotledsfraktur AO typ A1, distal fraktur laterala malleolen alt ligamentruptur.</item>
+        <item>
+            Kan behandlas med elastisk linda, alt Air-Cast stirrup. Om svår belastningssmärta gips.
+        </item>
+        <item>Gaffelvidgning (acceptabelt är mindre än 2 mm)<observation name='GaffelVidgningFotled' type='numeric' direction='getput'/></item>
+        <item>Laterala malleolen<observation name='KTLateralaMalleolen' direction='getput'/></item>
+        <item bold='no'>Gips och belastning. Walkerortos är mest lämplad för yngre och aktiva, men inte bra vid sårläkningsproblem.
+            <observation direction='get' name='KTGipsOchBelastning'/>
+            <action type='prescription' showaction='yes'>
+                <dose name='Gips 6v'>Cirkulärgips, full belastning och åter om 6 veckor för avgipsning och start av fri mobilisering.</dose>
+                <dose name='Walker 6v'>Walker ortos med full belastning samt obelastad rörelseträning i 6 veckor.</dose>
+                <dose name='Gips bel 6v'>Gips med markeringsbelastning, åter om 6 veckor för avgipsning och fri mobilisering.</dose>
+                <dose name='Walker 6v obel'>Walker ortos med markeringsbelastning, åter om 6 veckor.</dose>
+                <dose name='Gips 1v'>Cirkulärgips, åter kontroll om en vecka</dose>
+            </action>
+        </item>
+        
+        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
+        
+    </block>
+
+    <block type='any' repeats='no' title='AO Typ A2' templateUuid='4F9AFD17-FBDD-4B2F-B97F-3B1BBDC7A9C1'>
+        <item bold='yes'>Fotledsfraktur AO Typ A2, lateral ligamentruptur alt distal fraktur, plus vertikal fraktur genom mediala malleolen</item>
+        <item>
+            Operation brukar rekommenderas inom 6-8 timmar vid höggradigt instabil fraktur samt annan fraktur
+            där man kan misstänka att tilltagande svullnad kan omöjliggöra akut ingrepp. Det finns dock lite
+            evidens för just detta tidsintervall. För att undvika postoperativa sårkomplikationer får dock inte fotleden vara svullen.
+            Om huden går att "rynka" torde fotleden klara operation. Svullen fotled läggs i extremt högläge eller behandlas
+            med fotpump och operabiliteten får därefter bedömas dagligen.
+        </item>
+        <item bold='yes'>Kirurgisk teknik</item>
+        <item>Tillgångsväg<observation name='KTTillgångsväg' direction='getput'/></item>
+        <item>Laterala malleolen<observation name='KTLateralaMalleolen' direction='getput'/></item>
+        <item>Mediala malleolen<observation name='KTMedialaMalleolen' direction='getput'/></item>
+        <item>Operationstid<observation name='KTOpTid' direction='getput'/></item>
+        <item>Peroperativ blödning<observation name='KTPeropBlödning' direction='getput'/></item>
+        
+        
+        <item bold='no'>Gips och belastning. Walkerortos är mest lämplad för yngre och aktiva, men inte bra vid sårläkningsproblem.
+            <observation direction='get' name='KTGipsOchBelastning'/>
+            <action type='prescription' showaction='yes'>
+                <dose name='Gips 6v'>Cirkulärgips, full belastning och åter om 6 veckor för avgipsning och start av fri mobilisering.</dose>
+                <dose name='Walker 6v'>Walker ortos med full belastning samt obelastad rörelseträning i 6 veckor.</dose>
+                <dose name='Gips bel 6v'>Gips med markeringsbelastning, åter om 6 veckor för avgipsning och fri mobilisering.</dose>
+                <dose name='Walker 6v obel'>Walker ortos med markeringsbelastning, åter om 6 veckor.</dose>
+                <dose name='Gips 1v'>Cirkulärgips, åter kontroll om en vecka</dose>
+            </action>
+        </item>
+        
+        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
+    </block>
+
+    <block type='any' repeats='no' title='AO typ A3' templateUuid='5333B170-1ACC-4A0D-B878-38511D34BA17'>
+        <item bold='yes'>
+            Fotledsfraktur AO Typ A3. Trimalleolär.
+        </item>
+        <item>
+            Operation brukar rekommenderas inom 6-8 timmar vid höggradigt instabil fraktur samt annan fraktur
+            där man kan misstänka att tilltagande svullnad kan omöjliggöra akut ingrepp. Det finns dock lite
+            evidens för just detta tidsintervall. För att undvika postoperativa sårkomplikationer får dock inte fotleden vara svullen.
+            Om huden går att "rynka" torde fotleden klara operation. Svullen fotled läggs i extremt högläge eller behandlas
+            med fotpump och operabiliteten får därefter bedömas dagligen.
+        </item>
+        <item bold='yes'>Kirurgisk teknik</item>
+        <item>Tillgångsväg<observation name='KTTillgångsväg' direction='getput'/></item>
+        <item>Laterala malleolen<observation name='KTLateralaMalleolen' direction='getput'/></item>
+        <item>Mediala malleolen<observation name='KTMedialaMalleolen' direction='getput'/></item>
+        <item>Posteriora malleolen<observation name='KTPosterioraMalleolen' direction='getput'/></item>
+        <item>Operationstid<observation name='KTOpTid' direction='getput'/></item>
+        <item>Peroperativ blödning<observation name='KTPeropBlödning' direction='getput'/></item>
+        <item bold='no'>Gips och belastning. Walkerortos är mest lämplad för yngre och aktiva, men inte bra vid sårläkningsproblem.
+            <observation direction='get' name='KTGipsOchBelastning'/>
+            <action type='prescription' showaction='yes'>
+                <dose name='Gips 6v'>Cirkulärgips, full belastning och åter om 6 veckor för avgipsning och start av fri mobilisering.</dose>
+                <dose name='Walker 6v'>Walker ortos med full belastning samt obelastad rörelseträning i 6 veckor.</dose>
+                <dose name='Gips bel 6v'>Gips med markeringsbelastning, åter om 6 veckor för avgipsning och fri mobilisering.</dose>
+                <dose name='Walker 6v obel'>Walker ortos med markeringsbelastning, åter om 6 veckor.</dose>
+                <dose name='Gips 1v'>Cirkulärgips, åter kontroll om en vecka</dose>
+            </action>
+        </item>
+        
+        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
+    </block>
+
+    <block type='any' repeats='no' title='AO typ B1' templateUuid='2016F4D3-DF9A-4B31-8843-48CF68B3E805'>
+        <item bold='yes'>
+            Fotledsfraktur AO Typ B1.
+        </item>
+        <item>
+            Utan gaffelvidgning. Anlägg belastningsbar cirkulärgips under 6 veckor. Återbesök med röntgen efter 10-14 dagar.
+            Frakturer med stor initial svullnad kan behöva omgipsas vid denna tid då gipsen sannolikt sitter för löst vid åb.
+        </item>
+        <item>Gaffelvidgning (acceptabelt är mindre än 2 mm)<observation name='GaffelVidgningFotled' type='numeric' direction='getput'/></item>
+        <item bold='yes'>Kirurgisk teknik</item>
+        <item>Tillgångsväg<observation name='KTTillgångsväg' direction='getput'/></item>
+        <item>Laterala malleolen<observation name='KTLateralaMalleolen' direction='getput'/></item>
+        <item>Syndesmosskada<observation name='KTSyndesmosSkada' direction='getput'/></item>
+        <item>Operationstid<observation name='KTOpTid' direction='getput'/></item>
+        <item>Peroperativ blödning<observation name='KTPeropBlödning' direction='getput'/></item>
+        <item bold='no'>Gips och belastning. Walkerortos är mest lämplad för yngre och aktiva, men inte bra vid sårläkningsproblem.
+            <observation direction='get' name='KTGipsOchBelastning'/>
+            <action type='prescription' showaction='yes'>
+                <dose name='Gips 6v'>Cirkulärgips, full belastning och åter om 6 veckor för avgipsning och start av fri mobilisering.</dose>
+                <dose name='Walker 6v'>Walker ortos med full belastning samt obelastad rörelseträning i 6 veckor.</dose>
+                <dose name='Gips bel 6v'>Gips med markeringsbelastning, åter om 6 veckor för avgipsning och fri mobilisering.</dose>
+                <dose name='Walker 6v obel'>Walker ortos med markeringsbelastning, åter om 6 veckor.</dose>
+                <dose name='Gips 1v'>Cirkulärgips, åter kontroll om en vecka</dose>
+            </action>
+        </item>
+        
+        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
+    </block>
+
+    <block type='any' repeats='no' title='AO typ B2' templateUuid='318AE419-414C-4983-9104-B835F0742DFB'>
+        <item bold='yes'>
+            Fotledsfraktur AO Typ B2.
+        </item>
+        <item>
+            Operation brukar rekommenderas inom 6-8 timmar vid höggradigt instabil fraktur samt annan fraktur
+            där man kan misstänka att tilltagande svullnad kan omöjliggöra akut ingrepp. Det finns dock lite
+            evidens för just detta tidsintervall. För att undvika postoperativa sårkomplikationer får dock inte fotleden vara svullen.
+            Om huden går att "rynka" torde fotleden klara operation. Svullen fotled läggs i extremt högläge eller behandlas
+            med fotpump och operabiliteten får därefter bedömas dagligen.
+        </item>
+        <item bold='yes'>Kirurgisk teknik</item>
+        <item>Tillgångsväg<observation name='KTTillgångsväg' direction='getput'/></item>
+        <item>Laterala malleolen<observation name='KTLateralaMalleolen' direction='getput'/></item>
+        <item>Mediala malleolen<observation name='KTMedialaMalleolen' direction='getput'/></item>
+        <item>Posteriora malleolen<observation name='KTPosterioraMalleolen' direction='getput'/></item>
+        <item>Syndesmosskada<observation name='KTSyndesmosSkada' direction='getput'/></item>
+        <item>Operationstid<observation name='KTOpTid' direction='getput'/></item>
+        <item>Peroperativ blödning<observation name='KTPeropBlödning' direction='getput'/></item>
+        <item bold='no'>Gips och belastning. Walkerortos är mest lämplad för yngre och aktiva, men inte bra vid sårläkningsproblem.
+            <observation direction='get' name='KTGipsOchBelastning'/>
+            <action type='prescription' showaction='yes'>
+                <dose name='Gips 6v'>Cirkulärgips, full belastning och åter om 6 veckor för avgipsning och start av fri mobilisering.</dose>
+                <dose name='Walker 6v'>Walker ortos med full belastning samt obelastad rörelseträning i 6 veckor.</dose>
+                <dose name='Gips bel 6v'>Gips med markeringsbelastning, åter om 6 veckor för avgipsning och fri mobilisering.</dose>
+                <dose name='Walker 6v obel'>Walker ortos med markeringsbelastning, åter om 6 veckor.</dose>
+                <dose name='Gips 1v'>Cirkulärgips, åter kontroll om en vecka</dose>
+            </action>
+        </item>
+        
+        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
+    </block>
+
+    <block type='any' repeats='no' title='AO typ B3' templateUuid='FA6B4472-BD38-4FCF-85AB-A54FCFC5389F'>
+        <item bold='yes'>
+            Fotledsfraktur AO Typ B3.
+        </item>
+        <item>
+            Operation brukar rekommenderas inom 6-8 timmar vid höggradigt instabil fraktur samt annan fraktur
+            där man kan misstänka att tilltagande svullnad kan omöjliggöra akut ingrepp. Det finns dock lite
+            evidens för just detta tidsintervall. För att undvika postoperativa sårkomplikationer får dock inte fotleden vara svullen.
+            Om huden går att "rynka" torde fotleden klara operation. Svullen fotled läggs i extremt högläge eller behandlas
+            med fotpump och operabiliteten får därefter bedömas dagligen.
+        </item>
+        <item bold='yes'>
+            Kirurgisk teknik.
+        </item>
+        <item>Tillgångsväg<observation name='KTTillgångsväg' direction='getput'/></item>
+        <item>Laterala malleolen<observation name='KTLateralaMalleolen' direction='getput'/></item>
+        <item>Posteriora malleolen<observation name='KTPosterioraMalleolen' direction='getput'/></item>
+        <item>Syndesmosskada<observation name='KTSyndesmosSkada' direction='getput'/></item>
+        <item>Operationstid<observation name='KTOpTid' direction='getput'/></item>
+        <item>Peroperativ blödning<observation name='KTPeropBlödning' direction='getput'/></item>
+        <item bold='no'>Gips och belastning. Walkerortos är mest lämplad för yngre och aktiva, men inte bra vid sårläkningsproblem.
+            <observation direction='get' name='KTGipsOchBelastning'/>
+            <action type='prescription' showaction='yes'>
+                <dose name='Gips 6v'>Cirkulärgips, full belastning och åter om 6 veckor för avgipsning och start av fri mobilisering.</dose>
+                <dose name='Walker 6v'>Walker ortos med full belastning samt obelastad rörelseträning i 6 veckor.</dose>
+                <dose name='Gips bel 6v'>Gips med markeringsbelastning, åter om 6 veckor för avgipsning och fri mobilisering.</dose>
+                <dose name='Walker 6v obel'>Walker ortos med markeringsbelastning, åter om 6 veckor.</dose>
+                <dose name='Gips 1v'>Cirkulärgips, åter kontroll om en vecka</dose>
+            </action>
+        </item>
+        
+        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
+    </block>
+
+    <block type='any' repeats='no' title='AO typ C1' templateUuid='DAE4CA3C-55D6-457F-A420-5667748D0AA3'>
+        <item bold='yes'>
+            Fotledsfraktur AO Typ C1.
+        </item>
+        <item>
+            Operation brukar rekommenderas inom 6-8 timmar vid höggradigt instabil fraktur samt annan fraktur
+            där man kan misstänka att tilltagande svullnad kan omöjliggöra akut ingrepp. Det finns dock lite
+            evidens för just detta tidsintervall. För att undvika postoperativa sårkomplikationer får dock inte fotleden vara svullen.
+            Om huden går att "rynka" torde fotleden klara operation. Svullen fotled läggs i extremt högläge eller behandlas
+            med fotpump och operabiliteten får därefter bedömas dagligen.
+        </item>
+        <item bold='yes'>Kirurgisk teknik</item>
+        <item>Tillgångsväg<observation name='KTTillgångsväg' direction='getput'/></item>
+        <item>Laterala malleolen<observation name='KTLateralaMalleolen' direction='getput'/></item>
+        <item>Mediala malleolen<observation name='KTMedialaMalleolen' direction='getput'/></item>
+        <item>Syndesmosskada<observation name='KTSyndesmosSkada' direction='getput'/></item>
+        <item>Operationstid<observation name='KTOpTid' direction='getput'/></item>
+        <item>Peroperativ blödning<observation name='KTPeropBlödning' direction='getput'/></item>
+        <item bold='no'>Gips och belastning. Walkerortos är mest lämplad för yngre och aktiva, men inte bra vid sårläkningsproblem.
+            <observation direction='get' name='KTGipsOchBelastning'/>
+            <action type='prescription' showaction='yes'>
+                <dose name='Gips 6v'>Cirkulärgips, full belastning och åter om 6 veckor för avgipsning och start av fri mobilisering.</dose>
+                <dose name='Walker 6v'>Walker ortos med full belastning samt obelastad rörelseträning i 6 veckor.</dose>
+                <dose name='Gips bel 6v'>Gips med markeringsbelastning, åter om 6 veckor för avgipsning och fri mobilisering.</dose>
+                <dose name='Walker 6v obel'>Walker ortos med markeringsbelastning, åter om 6 veckor.</dose>
+                <dose name='Gips 1v'>Cirkulärgips, åter kontroll om en vecka</dose>
+            </action>
+        </item>
+        
+        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
+    </block>
+
+    <block type='any' repeats='no' title='AO typ C2' templateUuid='85EC3A0E-306F-47A1-A7C6-A6242AC1D35C'>
+        <item bold='yes'>
+            Fotledsfraktur AO Typ C2.
+        </item>
+        <item>
+            Operation brukar rekommenderas inom 6-8 timmar vid höggradigt instabil fraktur samt annan fraktur
+            där man kan misstänka att tilltagande svullnad kan omöjliggöra akut ingrepp. Det finns dock lite
+            evidens för just detta tidsintervall. För att undvika postoperativa sårkomplikationer får dock inte fotleden vara svullen.
+            Om huden går att "rynka" torde fotleden klara operation. Svullen fotled läggs i extremt högläge eller behandlas
+            med fotpump och operabiliteten får därefter bedömas dagligen.
+        </item>
+        <item bold='yes'>Kirurgisk teknik</item>
+        <item>Tillgångsväg<observation name='KTTillgångsväg' direction='getput'/></item>
+        <item>Laterala malleolen<observation name='KTLateralaMalleolen' direction='getput'/></item>
+        <item>Mediala malleolen<observation name='KTMedialaMalleolen' direction='getput'/></item>
+        <item>Syndesmosskada<observation name='KTSyndesmosSkada' direction='getput'/></item>
+        <item>Operationstid<observation name='KTOpTid' direction='getput'/></item>
+        <item>Peroperativ blödning<observation name='KTPeropBlödning' direction='getput'/></item>
+        <item bold='no'>Gips och belastning. Walkerortos är mest lämplad för yngre och aktiva, men inte bra vid sårläkningsproblem.
+            <observation direction='get' name='KTGipsOchBelastning'/>
+            <action type='prescription' showaction='yes'>
+                <dose name='Gips 6v'>Cirkulärgips, full belastning och åter om 6 veckor för avgipsning och start av fri mobilisering.</dose>
+                <dose name='Walker 6v'>Walker ortos med full belastning samt obelastad rörelseträning i 6 veckor.</dose>
+                <dose name='Gips bel 6v'>Gips med markeringsbelastning, åter om 6 veckor för avgipsning och fri mobilisering.</dose>
+                <dose name='Walker 6v obel'>Walker ortos med markeringsbelastning, åter om 6 veckor.</dose>
+                <dose name='Gips 1v'>Cirkulärgips, åter kontroll om en vecka</dose>
+            </action>
+        </item>
+        
+        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
+    </block>
+
+    <block type='any' repeats='no' title='AO typ C3' templateUuid='063FA318-C7E1-4AE7-8C2C-CDF3270C1563'>
+        <item bold='yes'>
+            Fotledsfraktur AO Typ C3.
+        </item>
+        <item>
+            Operation brukar rekommenderas inom 6-8 timmar vid höggradigt instabil fraktur samt annan fraktur
+            där man kan misstänka att tilltagande svullnad kan omöjliggöra akut ingrepp. Det finns dock lite
+            evidens för just detta tidsintervall. För att undvika postoperativa sårkomplikationer får dock inte fotleden vara svullen.
+            Om huden går att "rynka" torde fotleden klara operation. Svullen fotled läggs i extremt högläge eller behandlas
+            med fotpump och operabiliteten får därefter bedömas dagligen.
+        </item>
+        <item bold='yes'>Kirurgisk teknik</item>
+        <item>Tillgångsväg<observation name='KTTillgångsväg' direction='getput'/></item>
+        <item>Laterala malleolen<observation name='KTLateralaMalleolen' direction='getput'/></item>
+        <item>Mediala malleolen<observation name='KTMedialaMalleolen' direction='getput'/></item>
+        <item>Posteriora malleolen<observation name='KTPosterioraMalleolen' direction='getput'/></item>
+        <item>Syndesmosskada<observation name='KTSyndesmosSkada' direction='getput'/></item>
+        <item>Proximal fibulafraktur<observation name='KTProximalFibula' direction='getput'/></item>
+        <item>Operationstid<observation name='KTOpTid' direction='getput'/></item>
+        <item>Peroperativ blödning<observation name='KTPeropBlödning' direction='getput'/></item>
+        <item bold='no'>Gips och belastning. Walkerortos är mest lämplad för yngre och aktiva, men inte bra vid sårläkningsproblem.
+            <observation direction='get' name='KTGipsOchBelastning'/>
+            <action type='prescription' showaction='yes'>
+                <dose name='Gips 6v'>Cirkulärgips, full belastning och åter om 6 veckor för avgipsning och start av fri mobilisering.</dose>
+                <dose name='Walker 6v'>Walker ortos med full belastning samt obelastad rörelseträning i 6 veckor.</dose>
+                <dose name='Gips bel 6v'>Gips med markeringsbelastning, åter om 6 veckor för avgipsning och fri mobilisering.</dose>
+                <dose name='Walker 6v obel'>Walker ortos med markeringsbelastning, åter om 6 veckor.</dose>
+                <dose name='Gips 1v'>Cirkulärgips, åter kontroll om en vecka</dose>
+            </action>
+        </item>
+        
+        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
+    </block>
+    
+    
+    
+</template>

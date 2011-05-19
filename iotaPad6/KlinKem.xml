@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<GetChemistryResult xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <undersokningsresultat xmlns="http://Cross/NPOIntegrationService/L05RspUndersokning">
+
+    <system-id>SE162321000032-00AJ</system-id>
+
+    <journal-id>SE162321000032-00AJ_1703016806</journal-id>
+
+    <agande_vardenhet-id>30030011</agande_vardenhet-id>
+
+    <agande_vardgivare-id />
+
+    <rc_id>
+
+      <kod>MEEBMKP_1215121_1_202</kod>
+
+      <kodverk>SYSteam Internal</kodverk>
+
+    </rc_id>
+
+    <svarstyp>Slutgiltigt svar</svarstyp>
+
+    <svarsstidpunkt>2010-11-04T11:46:46.62</svarsstidpunkt>
+
+    <signeringstidpunkt xsi:nil="true" />
+
+    <registreringstidpunkt>2010-11-04T11:46:46.62</registreringstidpunkt>
+
+    <utlatande> </utlatande>
+
+    <labenhet>Klinisk kemi</labenhet>
+
+    <svarskommentar>Svar: </svarskommentar>
+
+    <utford_analystjanst>
+
+      <atgardsid>10677423</atgardsid>
+
+      <atgardskod>NPU10504</atgardskod>
+
+      <atgardskod_text>Acetoacetat-U</atgardskod_text>
+
+      <atgardsstatus>Avklarad</atgardsstatus>
+
+      <atgardstid>2010-11-04T10:31:00</atgardstid>
+
+      <analyskommentarer>
+Frga: 
+Svar: </analyskommentarer>
+
+      <provmaterial />
+
+      <metod />
+
+      <utfall_resultat>
+
+        <varde>3</varde>
+
+        <varde_enhet />
+
+        <patologiskmarkerad>False</patologiskmarkerad>
+
+        <referensintervall />
+
+        <referenspopulation />
+
+        <beskrivning>
+Frga: 
+Svar: </beskrivning>
+
+      </utfall_resultat>
+
+    </utford_analystjanst>
+
+    <utford_analystjanst>
+
+      <atgardsid>10677424</atgardsid>
+
+      <atgardskod />
+
+      <atgardskod_text>ACE-S</atgardskod_text>
+
+      <atgardsstatus>Avklarad</atgardsstatus>
+
+      <atgardstid>2010-11-04T10:31:00</atgardstid>
+
+      <analyskommentarer>
+Frga: 
+Svar: </analyskommentarer>
+
+      <provmaterial />
+
+      <metod />
+
+      <utfall_resultat>
+
+        <varde>4</varde>
+
+        <varde_enhet />
+
+        <patologiskmarkerad>False</patologiskmarkerad>
+
+        <referensintervall />
+
+        <referenspopulation />
+
+        <beskrivning>
+Frga: 
+Svar: </beskrivning>
+
+      </utfall_resultat>
+
+    </utford_analystjanst>
+
+    <vardbegaran>
+
+      <vardbegaranid>1215121_1_202</vardbegaranid>
+
+      <fragestallning />
+
+      <vard_och_omsorgskontakt>
+
+        <kontakt-id>
+
+          <kod>3583428</kod>
+
+        </kontakt-id>
+
+      </vard_och_omsorgskontakt>
+
+      <vard_och_omsorgspersonal>
+
+        <personal-id>
+
+          <kod />
+
+          <kodverk>HSA-id</kodverk>
+
+        </personal-id>
+
+        <namn>Ingegerd Hagg</namn>
+
+        <befattning>Lakare</befattning>
+
+        <enhet>
+
+          <enhets-id>
+
+            <kod>30030011</kod>
+
+            <kodverk>HSA-id</kodverk>
+
+          </enhets-id>
+
+          <enhetsnamn>Medicinkliniken KSK</enhetsnamn>
+
+          <telefonnummer>08-55665566</telefonnummer>
+
+          <e-postadress />
+
+          <postadress>Kullbergska sjukhuset Box 110,641 22,Katrineholm</postadress>
+
+          <geografisk_plats>Katrineholm</geografisk_plats>
+
+        </enhet>
+
+      </vard_och_omsorgspersonal>
+
+    </vardbegaran>
+
+    <vard_och_omsorgspersonal>
+
+      <personal-id>
+
+        <kod />
+
+        <kodverk>HSA-id</kodverk>
+
+      </personal-id>
+
+      <namn>Ingegerd Hagg</namn>
+
+      <befattning>Lakare</befattning>
+
+      <enhet>
+
+        <enhets-id>
+
+          <kod>30030011</kod>
+
+          <kodverk>HSA-id</kodverk>
+
+        </enhets-id>
+
+        <enhetsnamn>Medicinkliniken KSK</enhetsnamn>
+
+        <telefonnummer>08-55665566</telefonnummer>
+
+        <e-postadress />
+
+        <postadress>Kullbergska sjukhuset Box 110,641 22,Katrineholm</postadress>
+
+        <geografisk_plats>Katrineholm</geografisk_plats>
+
+      </enhet>
+
+    </vard_och_omsorgspersonal>
+
+    <vard_och_omsorgstagare>
+
+      <person-id>
+
+        <kod>191703016806</kod>
+
+        <kodverk>P</kodverk>
+
+      </person-id>
+
+    </vard_och_omsorgstagare>
+
+  </undersokningsresultat>
+
+  <undersokningsresultat xmlns="http://Cross/NPOIntegrationService/L05RspUndersokning">
+
+    <system-id>SE162321000032-00AJ</system-id>
+
+    <journal-id>SE162321000032-00AJ_1703016806</journal-id>
+
+    <agande_vardenhet-id>30030011</agande_vardenhet-id>
+
+    <agande_vardgivare-id />
+
+    <rc_id>
+
+      <kod>MEEBMKP_2912444_1_202</kod>
+
+      <kodverk>SYSteam Internal</kodverk>
+
+    </rc_id>
+
+    <svarstyp>Slutgiltigt svar</svarstyp>
+
+    <svarsstidpunkt>2010-11-04T11:47:08.152</svarsstidpunkt>
+
+    <signeringstidpunkt xsi:nil="true" />
+
+    <registreringstidpunkt>2010-11-04T11:47:08.152</registreringstidpunkt>
+
+    <utlatande> </utlatande>
+
+    <labenhet>Klinisk kemi</labenhet>
+
+    <svarskommentar>Svar: </svarskommentar>
+
+    <utford_analystjanst>
+
+      <atgardsid>10677441</atgardsid>
+
+      <atgardskod>NPU10504</atgardskod>
+
+      <atgardskod_text>Acetoacetat-U</atgardskod_text>
+
+      <atgardsstatus>Avklarad</atgardsstatus>
+
+      <atgardstid>2010-11-04T11:30:00</atgardstid>
+
+      <analyskommentarer>
+Frga: 
+Svar: </analyskommentarer>
+
+      <provmaterial />
+
+      <metod />
+
+      <utfall_resultat>
+
+        <varde>5</varde>
+
+        <varde_enhet />
+
+        <patologiskmarkerad>False</patologiskmarkerad>
+
+        <referensintervall />
+
+        <referenspopulation />
+
+        <beskrivning>
+Frga: 
+Svar: </beskrivning>
+
+      </utfall_resultat>
+
+    </utford_analystjanst>
+
+    <utford_analystjanst>
+
+      <atgardsid>10677442</atgardsid>
+
+      <atgardskod />
+
+      <atgardskod_text>ACE-S</atgardskod_text>
+
+      <atgardsstatus>Avklarad</atgardsstatus>
+
+      <atgardstid>2010-11-04T11:30:00</atgardstid>
+
+      <analyskommentarer>
+Frga: 
+Svar: </analyskommentarer>
+
+      <provmaterial />
+
+      <metod />
+
+      <utfall_resultat>
+
+        <varde>6</varde>
+
+        <varde_enhet />
+
+        <patologiskmarkerad>False</patologiskmarkerad>
+
+        <referensintervall />
+
+        <referenspopulation />
+
+        <beskrivning>
+Frga: 
+Svar: </beskrivning>
+
+      </utfall_resultat>
+
+    </utford_analystjanst>
+
+    <vardbegaran>
+
+      <vardbegaranid>2912444_1_202</vardbegaranid>
+
+      <fragestallning />
+
+      <vard_och_omsorgskontakt>
+
+        <kontakt-id>
+
+          <kod>3583428</kod>
+
+        </kontakt-id>
+
+      </vard_och_omsorgskontakt>
+
+      <vard_och_omsorgspersonal>
+
+        <personal-id>
+
+          <kod />
+
+          <kodverk>HSA-id</kodverk>
+
+        </personal-id>
+
+        <namn>Ingegerd Hagg</namn>
+
+        <befattning>Lakare</befattning>
+
+        <enhet>
+
+          <enhets-id>
+
+            <kod>30030011</kod>
+
+            <kodverk>HSA-id</kodverk>
+
+          </enhets-id>
+
+          <enhetsnamn>Medicinkliniken KSK</enhetsnamn>
+
+          <telefonnummer>08-55665566</telefonnummer>
+
+          <e-postadress />
+
+          <postadress>Kullbergska sjukhuset Box 110,641 22,Katrineholm</postadress>
+
+          <geografisk_plats>Katrineholm</geografisk_plats>
+
+        </enhet>
+
+      </vard_och_omsorgspersonal>
+
+    </vardbegaran>
+
+    <vard_och_omsorgspersonal>
+
+      <personal-id>
+
+        <kod />
+
+        <kodverk>HSA-id</kodverk>
+
+      </personal-id>
+
+      <namn>Ingegerd Hagg</namn>
+
+      <befattning>Lakare</befattning>
+
+      <enhet>
+
+        <enhets-id>
+
+          <kod>30030011</kod>
+
+          <kodverk>HSA-id</kodverk>
+
+        </enhets-id>
+
+        <enhetsnamn>Medicinkliniken KSK</enhetsnamn>
+
+        <telefonnummer>08-55665566</telefonnummer>
+
+        <e-postadress />
+
+        <postadress>Kullbergska sjukhuset Box 110,641 22,Katrineholm</postadress>
+
+        <geografisk_plats>Katrineholm</geografisk_plats>
+
+      </enhet>
+
+    </vard_och_omsorgspersonal>
+
+    <vard_och_omsorgstagare>
+
+      <person-id>
+
+        <kod>191703016806</kod>
+
+        <kodverk>P</kodverk>
+
+      </person-id>
+
+    </vard_och_omsorgstagare>
+
+  </undersokningsresultat>
+
+  <description xsi:nil="true" xmlns="http://Cross/NPOIntegrationService/L05RspUndersokning" />
+
+</GetChemistryResult>

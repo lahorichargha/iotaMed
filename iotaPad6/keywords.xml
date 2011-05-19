@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<keywords>
+    <keyworddef name='Subj'><lang name='SE' attrib='title'>Anamnes</lang></keyworddef>
+    <keyworddef name='AT'><lang name='SE' attrib='title'>Allmäntillstånd</lang></keyworddef>
+    <keyworddef name='Cor'><lang name='SE' attrib='title'>Hjärta</lang></keyworddef>
+    <keyworddef name='Pulm'><lang name='SE' attrib='title'>Lungor</lang></keyworddef>
+    <keyworddef name='BP'><lang name='SE' attrib='title'>Blodtryck</lang></keyworddef>
+    <keyworddef name='Abdomen'><lang name='SE' attrib='title'>Buk</lang></keyworddef>
+    <keyworddef name='Skin'><lang name='SE' attrib='title'>Hud</lang></keyworddef>
+    <keyworddef name='Discussion'><lang name='SE' attrib='title'>Bedömning</lang></keyworddef>
+    <keyworddef name='Ears'><lang name='SE' attrib='title'>Öron</lang></keyworddef>
+    <keyworddef name='Throat'><lang name='SE' attrib='title'>Hals</lang></keyworddef>
+    <keyworddef name='Romberg'/>
+    <keyworddef name='Nystagmia'><lang name='SE' attrib='title'>Nystagmus</lang></keyworddef>
+    <keyworddef name='Babinski'/>
+        
+    <template name='Standard' type='default'><lang name='SE' attrib='title'>Standard sökord</lang>
+        <keyword name='Subj'/>
+        <keyword name='AT'/>
+        <keyword name='Cor'/>
+        <keyword name='Pulm'/>
+        <keyword name='BP'/>
+        <keyword name='Abdomen'/>
+        <keyword name='Skin'/>
+        <keyword name='Discussion'/>
+    </template>
+    
+    <template name='Kids' type='replace'><lang name='SE' attrib='title'>Barn</lang>
+        <keyword name='Subj'/>
+        <keyword name='AT'/>
+        <keyword name='Cor'/>
+        <keyword name='Pulm'/>
+        <keyword name='Ears'/>
+        <keyword name='Throat'/>
+        <keyword name='Abdomen'/>
+        <keyword name='Skin'/>
+        <keyword name='Discussion'/>
+    </template>
+    
+    <template name='StenhagenVCAdults' type='replace'><lang name='SE' attrib='title'>Stenhagen VC vuxna</lang>
+        <keyword name='Subj'/>
+        <keyword name='AT'/>
+        <keyword name='Cor'/>
+        <keyword name='Pulm'/>
+        <keyword name='Abdomen'/>
+        <keyword name='Skin'/>
+    </template>
+
+    <template name='Neurology' type='addon'><lang name='SE' attrib='title'>Neurologisk status</lang>
+        <keyword name='Romberg'/>
+        <keyword name='Nystagmia'/>
+        <keyword name='Babinski'/>
+    </template>
+    
+</keywords>
