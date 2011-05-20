@@ -406,6 +406,7 @@
 		AAB05C0913381327008FD031 /* journalnotat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = journalnotat.png; sourceTree = "<group>"; };
 		AAB05C0B133816B3008FD031 /* recept.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recept.png; sourceTree = "<group>"; };
 		AAB05C0F13381ACB008FD031 /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross.png; sourceTree = "<group>"; };
+		AAB19FC61386F58500C03028 /* libiotaShared.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libiotaShared.a; path = "../../../Library/Developer/Xcode/DerivedData/iotaShared-eklfomehickbklcxeappepdtcpwu/Build/Products/Debug-iphoneos/libiotaShared.a"; sourceTree = "<group>"; };
 		AAB76FFB1355A7C200388BF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AAB76FFD1355A7CD00388BF5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AAB7700B1355AB0B00388BF5 /* ReferralController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReferralController.xib; sourceTree = "<group>"; };
@@ -650,6 +651,7 @@
 			children = (
 				AAB76FFC1355A7C200388BF5 /* Localizable.strings */,
 				AA817C101344D46F00500F0C /* Version.h */,
+				AAB19FC61386F58500C03028 /* libiotaShared.a */,
 				AA94FC181333E34C0065DC19 /* Settings.bundle */,
 				AA63B60413055E350035A49C /* iotaPad6 */,
 				AA63B61E13055E360035A49C /* iotaPad6Tests */,
@@ -1345,6 +1347,10 @@
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = IOTAMED;
 				INFOPLIST_FILE = "iotaPad6/iotaPad6-Info.plist";
 				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/iotaShared-eklfomehickbklcxeappepdtcpwu/Build/Products/Debug-iphoneos\"",
+				);
 				PRODUCT_NAME = iotaMed;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1360,6 +1366,10 @@
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = IOTAMED;
 				INFOPLIST_FILE = "iotaPad6/iotaPad6-Info.plist";
 				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/iotaShared-eklfomehickbklcxeappepdtcpwu/Build/Products/Debug-iphoneos\"",
+				);
 				PRODUCT_NAME = iotaMed;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
