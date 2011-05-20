@@ -13,7 +13,9 @@
 #import "IDRObservation.h"
 #import "IDRObsDefinition.h"
 #import "IDRValue.h"
+#import "MyIotaPatientContext.h"
 #import "PatientContext.h"
+#import "IotaContext.h"
 
 @interface InboxMyIotaForm()
 
@@ -69,6 +71,10 @@
     self.navigationItem.title = [NSString stringWithFormat:@"%@: %@", self.block.worksheet.title, self.block.title];
     [self _loadArrays];
     // Do any additional setup after loading the view from its nib.
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Importera" 
+                                                                               style:UIBarButtonItemStylePlain 
+                                                                              target:self 
+                                                                              action:@selector(importButton:)] autorelease];
 }
 
 - (void)viewDidUnload {
@@ -80,6 +86,17 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
 	return YES;
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Actions
+// -----------------------------------------------------------
+
+- (IBAction)importButton:(id)sender {
+    PatientContext *pCtx = [IotaContext getCurrentPatientContext];
+    [pCtx addBlockAndValuesToCurrentContact:self.block];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 // -----------------------------------------------------------
@@ -120,7 +137,12 @@
     NSArray *values = [self.miContext getAllValuesForObsName:item.observation.name];
     if (values && [values count] > 0) {
         IDRValue *val = [values objectAtIndex:0];
-        cell.detailTextLabel.text = val.value;
+        if ([item.observation.type isEqualToString:@"check"]) {
+            cell.detailTextLabel.text = ([val.value isEqualToString:@"yes"]) ? @"Ja" : @"Nej";
+        }
+        else {
+            cell.detailTextLabel.text = val.value;
+        }
     }
     else {
         cell.detailTextLabel.text = @"<inget>";

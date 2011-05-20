@@ -1,6 +1,6 @@
 //
 //  IotaContextDelegate.h
-//  iotaPad6
+//  iotaMed
 //
 //  Created by Martin on 2011-02-15.
 //  Copyright © 2011, MITM AB, Sweden

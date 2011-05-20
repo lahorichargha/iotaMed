@@ -1,6 +1,6 @@
 //
 //  IotaContext.h
-//  iotaPad6
+//  iotaMed
 //
 //  Created by Martin on 2011-02-15.
 //  Copyright © 2011, MITM AB, Sweden
@@ -35,35 +35,28 @@
 #import <Foundation/Foundation.h>
 #import "IotaContextDelegate.h"
 #import "PatientContext.h"
+#import "MyIotaPatientContext.h"
 #import "PatientContextDB.h"
 
 @class Patient;
 @class IDRWorksheet;
 @class IDRBlock;
 
-@interface IotaContext : NSObject <PatientContextDbDelegate> {}
+@interface IotaContext : NSObject {}
 
 + (void)addObserver:(id <IotaContextDelegate>) observer;
 + (void)removeObserver:(id <IotaContextDelegate>) observer;
 + (PatientContext *)getCurrentPatientContext;
-+ (PatientContext *)getCurrentMyIotaContext;
++ (MyIotaPatientContext *)getCurrentMyIotaContext;
++ (MyIotaPatientContext *)getOrCreateCurrentMyIotaContext;
 + (void)saveCurrentPatientContext;
++ (void)saveCurrentMyIotaPatientContext;
 + (CGFloat)minRowHeight;
 
-#ifdef IOTAMED
 + (void)changeToPatient:(Patient *)newPatient;
 + (Patient *)getCurrentPatient;
 + (NSString *)nameOfCurrentUser;
 + (NSString *)crossServerIPNumber;
-+ (void)resetAllPatientContexts;
-#endif
-
-#ifdef MINIOTA
-+ (void)setPresetPatient;
-+ (NSString *)patientFirstName;
-+ (NSString *)patientLastName;
-+ (NSString *)patientId;
-#endif
 
 + (IDRWorksheet *)worksheetForUuid:(NSString *)uuid;
 + (IDRBlock *)blockForUuid:(NSString *)uuid;

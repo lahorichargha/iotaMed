@@ -39,6 +39,7 @@
 
 
 #import "PatientContext.h"
+#import "MyIotaPatientContext.h"
 #import "IDRContact.h"
 #import "IDRBlock.h"
 #import "IDRWorksheet.h"
@@ -48,6 +49,7 @@
 #import "IDRValue.h"
 #import "Notifications.h"
 #import "Patient.h"
+#import "IotaContext.h"
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -173,6 +175,33 @@ static NSString *kPatientKey = @"patientKey";
 #pragma mark Worksheet and block functions
 // -----------------------------------------------------------
 
+- (void)addBlockAndValuesToCurrentContact:(IDRBlock *)block {
+
+    MyIotaPatientContext *miCtx = [IotaContext getCurrentMyIotaContext];
+    PatientContext *pCtx = [IotaContext getCurrentPatientContext];
+    
+    for (IDRItem *item in block.items) {
+        if ([item hasObservation]) {
+            IDRObservation *obs = item.observation;
+            NSArray *values = [miCtx getAllValuesForObsName:obs.name];
+            IDRObsDefinition *obsDef = [self getOrAddObsDefinitionForName:obs.name type:obs.type];
+            
+            for (IDRValue *value in values) {
+                IDRValue *oldValue = [pCtx getCurrentValueForObsName:obs.name];
+                if (oldValue) {
+                    oldValue.value = value.value;
+                }
+                else {
+                    value.contact = self.currentContact;
+                    value.obsDefinition = obsDef;
+                    [[obsDef values] addObject:value];
+                }
+            }
+        }
+    }
+    [self addBlock:block toExistingWorksheet:block.worksheet customTitle:@""];
+}
+
 // add block using current contact
 - (void)addBlock:(IDRBlock *)block toExistingWorksheet:(IDRWorksheet *)worksheet customTitle:(NSString *)customTitle {
     IDRContact *contact = self.currentContact;
@@ -224,15 +253,6 @@ static NSString *kPatientKey = @"patientKey";
         if ([obsDef.name isEqualToString:name]) {
             IDRValue *value = [obsDef valueForContact:[self currentContact]];
             return value;
-        }
-    }
-    return nil;
-}
-
-- (NSArray *)getAllValuesForObsName:(NSString *)name {
-    for (IDRObsDefinition *obsDef in self.obsDefinitions) {
-        if ([obsDef.name isEqualToString:name]) {
-            return [[obsDef.values copy] autorelease];
         }
     }
     return nil;

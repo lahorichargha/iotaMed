@@ -156,20 +156,11 @@
     [super viewDidLoad];
     [self loadArrays];
     
-#ifdef IOTAMED
     self.navigationItem.title = NSLocalizedString(@"Issues", @"Title for issue list and popover");
     UIBarButtonItem *bbiAdd = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addIssue:)];
     self.navigationItem.rightBarButtonItem = bbiAdd;
     [bbiAdd release];
-#endif
 
-#ifdef MINIOTA
-    self.navigationItem.title = NSLocalizedString(@"minIota", @"Name of the executable minIota");
-    UIBarButtonItem *bbiRefresh = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshFromServer:)];
-    self.navigationItem.rightBarButtonItem = bbiRefresh;
-    [bbiRefresh release];
-#endif
-    
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -284,7 +275,8 @@
     IDRBlock *addedBlock = [[notification userInfo] objectForKey:kIssueListChangedNotificationBlockKey];
     [self loadArrays];
     [self.tableView reloadData];
-    [self selectBlock:addedBlock];
+    if (addedBlock != nil)
+        [self selectBlock:addedBlock];
     // if some patient data is returned, we need to add a button for that
     if ([IotaContext getCurrentMyIotaContext] != nil) {
         UIImage *inboxImage = [UIImage imageNamed:@"inkorg.png"];
@@ -337,7 +329,6 @@
     [self presentModalViewController:unc animated:YES];
 }
 
-#ifdef IOTAMED
 - (void)addIssue:(id)sender {
     IssueTemplatesMasterViewController *itmvc = [[[IssueTemplatesMasterViewController alloc] 
                                                   initWithNibName:@"IssueTemplatesMasterViewController" bundle:nil] autorelease];
@@ -346,14 +337,6 @@
     unc.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentModalViewController:unc animated:YES];
 }
-#endif
-
-#ifdef MINIOTA
-- (void)refreshFromServer:(id)sender {
-    [self _refreshPatient:nil];
-}
-#endif
-
 
 - (void)btnUndo:(id)sender {
     
@@ -402,8 +385,8 @@
     [self loadArrays];
     [self.tableView reloadData];
     // if some patient data is returned, we should add a button to the title bar
-    PatientContext *miCtx = [IotaContext getCurrentMyIotaContext];
-    if (miCtx != nil && [miCtx.contacts count] > 0) {
+    MyIotaPatientContext *miCtx = [IotaContext getCurrentMyIotaContext];
+    if (miCtx != nil && [miCtx.blocks count] > 0) {
         UIImage *btn = [UIImage imageNamed:@"inkorg.png"];
         self.myIotaButton = [[[UIBarButtonItem alloc]
                               initWithImage:btn 

@@ -12,7 +12,7 @@
 @class IDRContact;
 @class IDRBlock;
 
-@interface MyIotaPatientContext : NSObject {
+@interface MyIotaPatientContext : NSObject <NSCoding> {
     
 }
 
@@ -25,5 +25,7 @@
 
 - (id)init;
 - (BOOL)addBlockIfNew:(IDRBlock *)theBlock;
+- (NSArray *)getAllValuesForObsName:(NSString *)name;
+- (BOOL)hasAnyValues;
 
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class IDRBlock;
-@class PatientContext;
+@class MyIotaPatientContext;
 
 @interface InboxMyIotaForm : UIViewController <UITableViewDelegate, UITableViewDataSource> {
     
@@ -17,5 +17,5 @@
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) IDRBlock *block;
-@property (nonatomic, retain) PatientContext *miContext;
+@property (nonatomic, retain) MyIotaPatientContext *miContext;
 @end

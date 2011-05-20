@@ -1,6 +1,6 @@
 //
 //  PatientContextDB.h
-//  iotaPad6
+//  iotaMed
 //
 //  Created by Martin on 2011-03-08.
 //  Copyright © 2011, MITM AB, Sweden
@@ -35,28 +35,18 @@
 #import "ServerConnect.h"
 
 @class PatientContext;
+@class MyIotaPatientContext;
 @class Patient;
 
-@protocol PatientContextDbDelegate <NSObject>
-
-- (void)saveToDbDone:(BOOL)success;
-- (void)saveMyIotaToDbDone:(BOOL)success;
-- (void)loadFromDbDone:(PatientContext *)loadedContext;
-- (void)loadMyIotaFromDbDone:(PatientContext *)loadedContext;
-
-@end
 
 @interface PatientContextDB : NSObject {
     
 }
 
-@property (nonatomic, assign) id <PatientContextDbDelegate> delegate;
++ (PatientContext *)getPatientContextForPatient:(Patient *)patient;
++ (MyIotaPatientContext *)getMyIotaPatientContextForPatient:(Patient *)patient;
++ (BOOL)putPatientContext:(PatientContext *)patientContext;
++ (BOOL)putMyIotaPatientContext:(MyIotaPatientContext *)myIotaPatientContext;
 
-+ (PatientContext *)getPatientContextForPatientID:(NSString *)patientID;
-+ (void)putPatientContextForPatientID:(NSString *)patientID patientContext:(PatientContext *)patientContext;
-- (id)initForPatientID:(NSString *)patientID withPatientContext:(PatientContext *)patientContext;
-
-- (void)loadDataForPatient:(Patient *)patient;
-- (void)putData;
 
 @end

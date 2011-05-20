@@ -58,7 +58,7 @@
 - (IDRObsDefinition *)getOrAddObsDefinitionForName:(NSString *)name type:(NSString *)type;
 - (void)addBlock:(IDRBlock *)block toExistingWorksheet:(IDRWorksheet *)worksheet customTitle:(NSString *)customTitle;
 - (IDRValue *)getCurrentValueForObsName:(NSString *)name;
-- (NSArray *)getAllValuesForObsName:(NSString *)name;
 - (NSString *)replaceObsNamesInString:(NSString *)inputStr;
+- (void)addBlockAndValuesToCurrentContact:(IDRBlock *)block;
 
 @end

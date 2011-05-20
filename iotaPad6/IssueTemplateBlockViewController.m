@@ -158,14 +158,16 @@
         
         // so, first check if block is already present in minIotaContext
         // and if it is, say so and do nothing more
-        MyIotaPatientContext *miCtx = [IotaContext getCurrentMyIotaContext];
+        MyIotaPatientContext *miCtx = [IotaContext getOrCreateCurrentMyIotaContext];
+        self.idrBlock.worksheet = self.idrWorksheet;
         if ([miCtx addBlockIfNew:self.idrBlock])
-            [IotaContext saveCurrentMyIotaContext];
+            [IotaContext saveCurrentMyIotaPatientContext];
         
         // else add it to minIotaContext and do a save to server
         
         // then tell the user what happened and why you won't see this block in the issue list,
         // but only in the inbox form
+        [self dismissModalViewControllerAnimated:YES];
     }
     else if ((self.idrBlock.repeats == NO) && [self blockAlreadyExists]) {
         UIAlertView *alertView = [[UIAlertView alloc] 

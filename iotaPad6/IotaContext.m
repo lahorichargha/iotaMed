@@ -1,6 +1,6 @@
 //
 //  IotaContext.m
-//  iotaPad6
+//  iotaMed
 //
 //  Created by Martin on 2011-02-15.
 //  Copyright © 2011, MITM AB, Sweden
@@ -44,10 +44,8 @@
 #import "ServerDiscovery.h"
 #import "MyIotaPatientContext.h"
 
-#ifdef IOTAMED
 #import "Patients.h"
 #import "DemoData.h"
-#endif
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -59,21 +57,15 @@
 - (void)_addObserver:(id <IotaContextDelegate>) observer;
 - (void)_removeObserver:(id <IotaContextDelegate>) observer;
 - (void)_saveCurrentPatientContext;
-- (void)_loadNewPatient:(Patient *)newPatient;
-
-#ifdef IOTAMED
+- (void)_saveCurrentMyIotaPatientContext;
 - (void)changeToPatient:(Patient *)newPatient;
-#endif
 
 @property (nonatomic, retain) NSMutableArray *observers;
 @property (nonatomic, retain) PatientContext *currentPatientContext;
-@property (nonatomic, retain) PatientContext *currentMyIotaContext;
+@property (nonatomic, retain) MyIotaPatientContext *currentMyIotaContext;
 
 @property (nonatomic, retain) NSMutableDictionary *worksheets;
 @property (nonatomic, retain) NSMutableDictionary *blocks;
-
-@property (nonatomic, retain) Patient *newPatient;
-@property (nonatomic, retain) PatientContextDB *patientContextDb;
 
 @end
 
@@ -90,9 +82,6 @@
 
 @synthesize worksheets = _worksheets;
 @synthesize blocks = _blocks;
-
-@synthesize newPatient = _newPatient;
-@synthesize patientContextDb = _patientContextDb;
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -127,13 +116,11 @@ static IotaContext * volatile _sharedInstance = nil;
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    self.newPatient = nil;
     self.observers = nil;
     self.currentPatientContext = nil;
     self.currentMyIotaContext = nil;
     self.worksheets = nil;
     self.blocks = nil;
-    self.patientContextDb = nil;
     [super dealloc];
 }
 
@@ -142,12 +129,6 @@ static IotaContext * volatile _sharedInstance = nil;
 #pragma mark Class methods
 // -----------------------------------------------------------
 
-#ifdef MINIOTA
-+ (void)setPresetPatient {
-    Patient *patient = [Patient patientWithID:[self patientId] firstName:[self patientFirstName] lastName:[self patientLastName]];
-    [[self _sharedInstance] _loadNewPatient:patient];
-}
-#endif
 
 + (void)addObserver:(id <IotaContextDelegate>)observer {
     [[self _sharedInstance] _addObserver:observer];
@@ -157,7 +138,6 @@ static IotaContext * volatile _sharedInstance = nil;
     [[self _sharedInstance] _removeObserver:observer];
 }
 
-#ifdef IOTAMED
 + (void)changeToPatient:(Patient *)newPatient {
     [[self _sharedInstance] changeToPatient:newPatient];
 }
@@ -182,24 +162,6 @@ static IotaContext * volatile _sharedInstance = nil;
 + (NSString *)crossServerIPNumber {
     return [[NSUserDefaults standardUserDefaults] objectForKey:@"cross_ip"];
 }
-#endif
-
-#ifdef MINIOTA
-
-+ (NSString *)patientFirstName {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"patientFirstName"];
-}
-
-+ (NSString *)patientLastName {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"patientLastName"];
-}
-
-+ (NSString *)patientId {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"patientId"];
-}
-
-#endif
-
 
 + (CGFloat)minRowHeight {
     CGFloat rowHeight = [[[NSUserDefaults standardUserDefaults] objectForKey:@"minRowHeight"] floatValue];
@@ -261,9 +223,21 @@ static IotaContext * volatile _sharedInstance = nil;
     }
 }
 
-+ (PatientContext *)getCurrentMyIotaContext {
++ (MyIotaPatientContext *)getCurrentMyIotaContext {
     @synchronized(self) {
         return [self _sharedInstance].currentMyIotaContext;
+    }
+}
+
++ (MyIotaPatientContext *)getOrCreateCurrentMyIotaContext {
+    @synchronized(self) {
+        MyIotaPatientContext *miCtx = [self getCurrentMyIotaContext];
+        if (miCtx == nil) {
+            miCtx = [[[MyIotaPatientContext alloc] init] autorelease];
+            miCtx.patient = [self _sharedInstance].currentPatientContext.patient;
+            [self _sharedInstance].currentMyIotaContext = miCtx;
+        }
+        return miCtx;
     }
 }
 
@@ -271,18 +245,10 @@ static IotaContext * volatile _sharedInstance = nil;
     [[self _sharedInstance] _saveCurrentPatientContext];
 }
 
-#ifdef IOTAMED
-+ (void)resetAllPatientContexts {
-    @synchronized(self) {
-        NSArray *demoPatients = [DemoData getDemoPatients];
-        for (Patient *pat in demoPatients) {
-            PatientContext *pCtx = [[PatientContext alloc] init];
-            [PatientContextDB putPatientContextForPatientID:pat.patientID patientContext:pCtx];
-            [pCtx release];
-        }
-    }
++ (void)saveCurrentMyIotaPatientContext {
+    [[self _sharedInstance] _saveCurrentMyIotaPatientContext];
 }
-#endif
+
 
 
 // -----------------------------------------------------------
@@ -314,138 +280,60 @@ static IotaContext * volatile _sharedInstance = nil;
 }
 
 
-// Changing patient
-// ================
-//  save patient we want to change to
-//  if there is a current patient context, tell patient context to save itself
-//  else goto load new patient
-
-#ifdef IOTAMED
 - (void)changeToPatient:(Patient *)newPatient {
-    NSLog(@"changeToPatient: %@", newPatient.patientID);
     @synchronized(self) {
         if (self.currentPatientContext != nil) {
-            NSLog(@"need to save current patient first");
-            self.newPatient = newPatient;
-            [self _saveCurrentPatientContext];
+            [PatientContextDB putPatientContext:self.currentPatientContext];
         }
-        else {
-            NSLog(@"No current patient, so we're just loading new patient straightaway");
-            [self _loadNewPatient:newPatient];
+        PatientContext *pCtx = [PatientContextDB getPatientContextForPatient:newPatient];
+        if (pCtx == nil) {
+            NSLog(@"Failed to load new patient: %@", [Patient buttonTitleForPatient:newPatient]);
+            [[NSNotificationCenter defaultCenter] postNotificationName:kPatientChangeEnded object:[NSNumber numberWithBool:NO]];
         }
-    }
-}
-#endif
-
-// Callback after saving patient context
-// =====================================
-//  if saving failed
-//      send or show error message
-//  else if saving was successful
-//      tell observers we're about to switch from the patient
-//      if any observer says 'NO', stop
-//      load new patient
-
-- (void)patientContextSaved:(BOOL)success {
-    NSLog(@"patientContextSaved");
-    if (!success) {
-        NSLog(@"Failed miserably in saving patient context");
-        return;
-    }
-    
-#ifdef IOTAMED
-    if (self.newPatient != nil && self.newPatient != [self _currentPatient]) {
-        NSLog(@"There is a new patient and it differs from our old patient, so we send willSwitch and load the new one");
-        for (id <IotaContextDelegate> observer in _observers) {
-            if (![observer willSwitchFromPatient:[self _currentPatient]])
-                return;
+        // miCtx does not necessarily have to exist, so a nil return is not unexpected
+        MyIotaPatientContext *miCtx = [PatientContextDB getMyIotaPatientContextForPatient:newPatient];
+        
+        if (newPatient != nil && newPatient != [self _currentPatient]) {
+            for (id<IotaContextDelegate> observer in _observers) {
+                if (![observer willSwitchFromPatient:[self _currentPatient]]) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kPatientChangeEnded object:[NSNumber numberWithBool:NO]];
+                    return;
+                }
+            }
+            
+            self.currentPatientContext = pCtx;
+            self.currentMyIotaContext = miCtx;
+            
+            for (id<IotaContextDelegate> observer in _observers) {
+                [observer didSwitchToPatient:pCtx.patient];
+            }
+            [[NSNotificationCenter defaultCenter] postNotificationName:kPatientChangeEnded object:[NSNumber numberWithBool:YES]];
         }
-        [self _loadNewPatient:self.newPatient];
+        
     }
-    else {
-        NSLog(@"There is no new patient, or it is the same as the old one, so we don't do anything more now");
-    }
-    self.currentPatientContext.dirty = NO;
-#endif
 }
 
-- (void)_loadNewPatient:(Patient *)newPatient {
-    NSLog(@"loadNewPatient: %@", newPatient.patientID);
-    self.patientContextDb = [[[PatientContextDB alloc] init] autorelease];
-    self.patientContextDb.delegate = self;
-    [self.patientContextDb loadDataForPatient:newPatient];
-}
-
-
-
-// Callback after loading new patient
-// ==================================
-//  if loading failed
-//      send or show error message
-//  else if loading succeeded
-//      tell observers we switched to new patient
-
-- (void)loadFromDbDone:(PatientContext *)loadedContext {
-    if (loadedContext == nil) {
-        NSLog(@"We failed loading patient context");
-        [[NSNotificationCenter defaultCenter] postNotificationName:kPatientChangeEnded object:[NSNumber numberWithBool:NO]];
-    }
-    else {
-        NSLog(@"loadFromDbDone");
-        self.currentPatientContext = loadedContext;
-        for (id <IotaContextDelegate> observer in _observers) {
-            [observer didSwitchToPatient:[loadedContext patient]];
-        }
-        [[NSNotificationCenter defaultCenter] postNotificationName:kPatientChangeEnded object:[NSNumber numberWithBool:YES]];
-    }
-    self.patientContextDb = nil;
-}
-
-- (void)loadMyIotaFromDbDone:(PatientContext *)loadedContext {
-    self.currentMyIotaContext = loadedContext;
-#ifdef MINIOTA
-    
-    self.currentPatientContext = loadedContext;
-    for (id <IotaContextDelegate> observer in _observers) {
-        [observer didSwitchToPatient:[loadedContext patient]];
-    }
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPatientChangeEnded object:[NSNumber numberWithBool:YES]];
-#endif
-    self.patientContextDb = nil;
-}
 
 - (void)_saveCurrentPatientContext {
     @synchronized(self) {
         NSLog(@"saveCurrentPatientContext: %@", self.currentPatientContext.patient.patientID);
         PatientContext *pCtx = self.currentPatientContext;
         if (pCtx != nil) {
-            pCtx.patient = [self _currentPatient];
-            self.patientContextDb = [[[PatientContextDB alloc] initForPatientID:pCtx.patient.patientID withPatientContext:pCtx] autorelease];
-            self.patientContextDb.delegate = self;
-            [self.patientContextDb putData];
+            [PatientContextDB putPatientContext:pCtx];
         }
     }
 }
 
-- (void)saveToDbDone:(BOOL)success {
-    if (!success) {
-        NSLog(@"Failed miserably in saving patient context");
-        return;
+- (void)_saveCurrentMyIotaPatientContext {
+    @synchronized(self) {
+        NSLog(@"saveCurrentMyIotaPatientContext");
+        MyIotaPatientContext *miCtx = self.currentMyIotaContext;
+        if (miCtx != nil) {
+            [PatientContextDB putMyIotaPatientContext:miCtx];
+        }
     }
-    [self patientContextSaved:success];
-    self.patientContextDb = nil;
 }
 
-- (void)saveMyIotaToDbDone:(BOOL)success {
-    if (!success) {
-        NSLog(@"Failed miserably in saving patient myIota");
-    }
-    self.patientContextDb = nil;
-}
 
-// -----------------------------------------------------------
-#pragma mark -
-#pragma mark PatientContextDelegate
-// -----------------------------------------------------------
 
 @end

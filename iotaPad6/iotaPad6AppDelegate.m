@@ -49,12 +49,6 @@
     NSString *loc = NSLocalizedString(@"LocalizedLanguage", @"Just checking");
     NSLog(@"Current language string file: %@", loc);
     
-    BOOL resetAllPatients = [[[NSUserDefaults standardUserDefaults] objectForKey:@"reset_all_patients"] boolValue];
-    if (resetAllPatients) {
-        [IotaContext resetAllPatientContexts];
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"reset_all_patients"];
-    }
-    
     
     return YES;
 }

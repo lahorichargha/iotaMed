@@ -8,7 +8,8 @@
 
 #import "InboxForm.h"
 #import "IotaContext.h"
-#import "PatientContext.h"
+//#import "PatientContext.h"
+#import "MyIotaPatientContext.h"
 #import "IDRContact.h"
 #import "IDRBlock.h"
 #import "IDRWorksheet.h"
@@ -86,11 +87,9 @@
 
 - (void)_loadMyIotaIssues {
     self.myIotaIssues = [[[NSMutableArray alloc] initWithCapacity:10] autorelease];
-    PatientContext *miCtx = [IotaContext getCurrentMyIotaContext];
-    for (IDRContact *contact in miCtx.contacts) {
-        for (IDRBlock *block in contact.idrBlocks) {
-            [self.myIotaIssues addObject:block];
-        }
+    MyIotaPatientContext *miCtx = [IotaContext getCurrentMyIotaContext];
+    for (IDRBlock *block in miCtx.blocks) {
+        [self.myIotaIssues addObject:block];
     }
 }
 
