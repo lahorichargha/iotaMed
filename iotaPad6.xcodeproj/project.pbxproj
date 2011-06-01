@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA0C6285135E42B2002E50D7 /* ServerConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C6284135E42B2002E50D7 /* ServerConnect.m */; };
-		AA0C62A11360584D002E50D7 /* ServerDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0C62A01360584D002E50D7 /* ServerDiscovery.m */; };
 		AA12A380137B2F010016AB24 /* IssueWorksheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA12A37F137B2F010016AB24 /* IssueWorksheetController.xib */; };
 		AA12A38E137C73EF0016AB24 /* ThemeColors.m in Sources */ = {isa = PBXBuildFile; fileRef = AA12A38D137C73EF0016AB24 /* ThemeColors.m */; };
 		AA16037B1375B4B800D03EE6 /* ServerListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16037A1375B4B800D03EE6 /* ServerListener.m */; };
@@ -120,6 +118,7 @@
 		AA9680C8133D5060006E6AF0 /* IDRDose.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9680C7133D505F006E6AF0 /* IDRDose.m */; };
 		AA9680CC133D574B006E6AF0 /* PrescriptionDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9680CA133D5746006E6AF0 /* PrescriptionDetailController.m */; };
 		AA9680CD133D574B006E6AF0 /* PrescriptionDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9680CB133D5748006E6AF0 /* PrescriptionDetailController.xib */; };
+		AA97B6DD13938DDB002E6C11 /* libiotaShared.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA97B6DC13938DDB002E6C11 /* libiotaShared.a */; };
 		AA9AFF4C13151DB40027E667 /* Diagnosis.xml in Resources */ = {isa = PBXBuildFile; fileRef = AA9AFF4B13151DB40027E667 /* Diagnosis.xml */; };
 		AA9AFF4E13151DCD0027E667 /* MedicalRecord.xml in Resources */ = {isa = PBXBuildFile; fileRef = AA9AFF4D13151DCD0027E667 /* MedicalRecord.xml */; };
 		AA9AFF5013151DD60027E667 /* Microbiology.xml in Resources */ = {isa = PBXBuildFile; fileRef = AA9AFF4F13151DD60027E667 /* Microbiology.xml */; };
@@ -177,6 +176,7 @@
 		AAECB6C71381601C00EAB251 /* InboxMyIotaForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAECB6C31381601C00EAB251 /* InboxMyIotaForm.xib */; };
 		AAECB6CD1381834C00EAB251 /* MyIotaPatientContext.m in Sources */ = {isa = PBXBuildFile; fileRef = AAECB6CC1381834C00EAB251 /* MyIotaPatientContext.m */; };
 		AAF16F67130DB1BB00A86E3E /* DetailViewControllerWithNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF16F66130DB1BB00A86E3E /* DetailViewControllerWithNavbar.m */; };
+		AAF9B5541392A78C0049BA69 /* test5.xml in Resources */ = {isa = PBXBuildFile; fileRef = AAF9B5531392A78C0049BA69 /* test5.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,13 +187,30 @@
 			remoteGlobalIDString = AA63B5F913055E350035A49C;
 			remoteInfo = iotaPad6;
 		};
+		AA97B6D513938D9A002E6C11 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA97B6CD13938D9A002E6C11 /* iotaShared.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AAB19E8F1386EEBE00C03028;
+			remoteInfo = iotaShared;
+		};
+		AA97B6D713938D9A002E6C11 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA97B6CD13938D9A002E6C11 /* iotaShared.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AAB19E9C1386EEBE00C03028;
+			remoteInfo = iotaSharedTests;
+		};
+		AA97B6DA13938DC8002E6C11 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA97B6CD13938D9A002E6C11 /* iotaShared.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AAB19E8E1386EEBE00C03028;
+			remoteInfo = iotaShared;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AA0C6283135E42B2002E50D7 /* ServerConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerConnect.h; sourceTree = "<group>"; };
-		AA0C6284135E42B2002E50D7 /* ServerConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnect.m; sourceTree = "<group>"; };
-		AA0C629F1360584D002E50D7 /* ServerDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerDiscovery.h; sourceTree = "<group>"; };
-		AA0C62A01360584D002E50D7 /* ServerDiscovery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerDiscovery.m; sourceTree = "<group>"; };
 		AA12A37F137B2F010016AB24 /* IssueWorksheetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueWorksheetController.xib; sourceTree = "<group>"; };
 		AA12A384137C70220016AB24 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		AA12A38C137C73EF0016AB24 /* ThemeColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeColors.h; sourceTree = "<group>"; };
@@ -376,6 +393,8 @@
 		AA9680C9133D5743006E6AF0 /* PrescriptionDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrescriptionDetailController.h; sourceTree = "<group>"; };
 		AA9680CA133D5746006E6AF0 /* PrescriptionDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrescriptionDetailController.m; sourceTree = "<group>"; };
 		AA9680CB133D5748006E6AF0 /* PrescriptionDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrescriptionDetailController.xib; sourceTree = "<group>"; };
+		AA97B6CD13938D9A002E6C11 /* iotaShared.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iotaShared.xcodeproj; path = Components/iotaShared/iotaShared.xcodeproj; sourceTree = "<group>"; };
+		AA97B6DC13938DDB002E6C11 /* libiotaShared.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libiotaShared.a; sourceTree = SOURCE_ROOT; };
 		AA98F0471327B488000E1AEB /* Notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notifications.h; sourceTree = "<group>"; };
 		AA9AFF4B13151DB40027E667 /* Diagnosis.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Diagnosis.xml; sourceTree = "<group>"; };
 		AA9AFF4D13151DCD0027E667 /* MedicalRecord.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MedicalRecord.xml; sourceTree = "<group>"; };
@@ -406,7 +425,6 @@
 		AAB05C0913381327008FD031 /* journalnotat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = journalnotat.png; sourceTree = "<group>"; };
 		AAB05C0B133816B3008FD031 /* recept.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recept.png; sourceTree = "<group>"; };
 		AAB05C0F13381ACB008FD031 /* cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross.png; sourceTree = "<group>"; };
-		AAB19FC61386F58500C03028 /* libiotaShared.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libiotaShared.a; path = "../../../Library/Developer/Xcode/DerivedData/iotaShared-eklfomehickbklcxeappepdtcpwu/Build/Products/Debug-iphoneos/libiotaShared.a"; sourceTree = "<group>"; };
 		AAB76FFB1355A7C200388BF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AAB76FFD1355A7CD00388BF5 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AAB7700B1355AB0B00388BF5 /* ReferralController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReferralController.xib; sourceTree = "<group>"; };
@@ -459,6 +477,7 @@
 		AAECB6CC1381834C00EAB251 /* MyIotaPatientContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyIotaPatientContext.m; sourceTree = "<group>"; };
 		AAF16F65130DB1BA00A86E3E /* DetailViewControllerWithNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewControllerWithNavbar.h; sourceTree = "<group>"; };
 		AAF16F66130DB1BB00A86E3E /* DetailViewControllerWithNavbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewControllerWithNavbar.m; sourceTree = "<group>"; };
+		AAF9B5531392A78C0049BA69 /* test5.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test5.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -466,6 +485,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA97B6DD13938DDB002E6C11 /* libiotaShared.a in Frameworks */,
 				AA63B5FF13055E350035A49C /* UIKit.framework in Frameworks */,
 				AA63B60113055E350035A49C /* Foundation.framework in Frameworks */,
 				AA63B60313055E350035A49C /* CoreGraphics.framework in Frameworks */,
@@ -618,6 +638,7 @@
 		AA5DB254131FFA1E00888408 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
+				AAF9B5531392A78C0049BA69 /* test5.xml */,
 				AA5DB255131FFA9400888408 /* diabetes.xml */,
 				AA5DB27E132058F700888408 /* templates.xml */,
 				AA9B47FE1323F25500C96675 /* atc.xml */,
@@ -649,9 +670,10 @@
 		AA63B5EF13055E350035A49C = {
 			isa = PBXGroup;
 			children = (
+				AA97B6DC13938DDB002E6C11 /* libiotaShared.a */,
+				AA97B6CD13938D9A002E6C11 /* iotaShared.xcodeproj */,
 				AAB76FFC1355A7C200388BF5 /* Localizable.strings */,
 				AA817C101344D46F00500F0C /* Version.h */,
-				AAB19FC61386F58500C03028 /* libiotaShared.a */,
 				AA94FC181333E34C0065DC19 /* Settings.bundle */,
 				AA63B60413055E350035A49C /* iotaPad6 */,
 				AA63B61E13055E360035A49C /* iotaPad6Tests */,
@@ -905,6 +927,15 @@
 			path = opacity;
 			sourceTree = "<group>";
 		};
+		AA97B6CE13938D9A002E6C11 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA97B6D613938D9A002E6C11 /* libiotaShared.a */,
+				AA97B6D813938D9A002E6C11 /* iotaSharedTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		AA9B47C81323915600C96675 /* background */ = {
 			isa = PBXGroup;
 			children = (
@@ -960,10 +991,6 @@
 				AAC2FC28130BFC8D009E8384 /* PatientListController.h */,
 				AAC2FC29130BFC8D009E8384 /* PatientListController.m */,
 				AAC2FC2A130BFC8D009E8384 /* PatientListController.xib */,
-				AA0C6283135E42B2002E50D7 /* ServerConnect.h */,
-				AA0C6284135E42B2002E50D7 /* ServerConnect.m */,
-				AA0C629F1360584D002E50D7 /* ServerDiscovery.h */,
-				AA0C62A01360584D002E50D7 /* ServerDiscovery.m */,
 				AA1603791375B4B800D03EE6 /* ServerListener.h */,
 				AA16037A1375B4B800D03EE6 /* ServerListener.m */,
 			);
@@ -998,6 +1025,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				AA97B6DB13938DC8002E6C11 /* PBXTargetDependency */,
 			);
 			name = iotaPad6;
 			productName = iotaPad6;
@@ -1042,6 +1070,12 @@
 			mainGroup = AA63B5EF13055E350035A49C;
 			productRefGroup = AA63B5FB13055E350035A49C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AA97B6CE13938D9A002E6C11 /* Products */;
+					ProjectRef = AA97B6CD13938D9A002E6C11 /* iotaShared.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				AA63B5F913055E350035A49C /* iotaPad6 */,
@@ -1049,6 +1083,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AA97B6D613938D9A002E6C11 /* libiotaShared.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libiotaShared.a;
+			remoteRef = AA97B6D513938D9A002E6C11 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AA97B6D813938D9A002E6C11 /* iotaSharedTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = iotaSharedTests.octest;
+			remoteRef = AA97B6D713938D9A002E6C11 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		AA63B5F813055E350035A49C /* Resources */ = {
@@ -1130,6 +1181,7 @@
 				AAECB6BD13815BF000EAB251 /* inkorg.png in Resources */,
 				AAECB6C51381601C00EAB251 /* InboxForm.xib in Resources */,
 				AAECB6C71381601C00EAB251 /* InboxMyIotaForm.xib in Resources */,
+				AAF9B5541392A78C0049BA69 /* test5.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1243,8 +1295,6 @@
 				AA9680CC133D574B006E6AF0 /* PrescriptionDetailController.m in Sources */,
 				AA220A8B13414B260088CBD3 /* IDRImage.m in Sources */,
 				AA5BF1421343D44500AB9952 /* ValueLookupCell.m in Sources */,
-				AA0C6285135E42B2002E50D7 /* ServerConnect.m in Sources */,
-				AA0C62A11360584D002E50D7 /* ServerDiscovery.m in Sources */,
 				AA16037B1375B4B800D03EE6 /* ServerListener.m in Sources */,
 				AA12A38E137C73EF0016AB24 /* ThemeColors.m in Sources */,
 				AAECB6A8138159AD00EAB251 /* IotaContext.m in Sources */,
@@ -1269,6 +1319,11 @@
 			isa = PBXTargetDependency;
 			target = AA63B5F913055E350035A49C /* iotaPad6 */;
 			targetProxy = AA63B61C13055E360035A49C /* PBXContainerItemProxy */;
+		};
+		AA97B6DB13938DC8002E6C11 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = iotaShared;
+			targetProxy = AA97B6DA13938DC8002E6C11 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1350,8 +1405,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/iotaShared-eklfomehickbklcxeappepdtcpwu/Build/Products/Debug-iphoneos\"",
+					"\"$(SRCROOT)\"",
 				);
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = iotaMed;
+				USER_HEADER_SEARCH_PATHS = "Components/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1369,8 +1427,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/iotaShared-eklfomehickbklcxeappepdtcpwu/Build/Products/Debug-iphoneos\"",
+					"\"$(SRCROOT)\"",
 				);
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = iotaMed;
+				USER_HEADER_SEARCH_PATHS = "Components/**";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

@@ -59,10 +59,6 @@
 - (void)unregisterForNotifications;
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 
-#ifdef MINIOTA
-- (void)_refreshPatient:(id)obj;
-#endif
-
 @end
 
 // -----------------------------------------------------------
@@ -200,9 +196,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-#ifdef MINIOTA
-    [self performSelector:@selector(_refreshPatient:) withObject:nil afterDelay:0.5];
-#endif
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -242,20 +235,6 @@
         [self didSelectRowAtIndexPath:indexPath];
     }
 }
-
-// -----------------------------------------------------------
-#pragma mark -
-#pragma mark Refresh patient
-// -----------------------------------------------------------
-
-#ifdef MINIOTA
-- (void)_refreshPatient:(id)obj {
-    [self.wsController.activityIndicator startAnimating];
-    [IotaContext saveCurrentPatientContext];
-    [IotaContext setPresetPatient];
-    [self.wsController.activityIndicator stopAnimating];
-}
-#endif
 
 // -----------------------------------------------------------
 #pragma mark -

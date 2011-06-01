@@ -260,13 +260,22 @@
         <item>Har patienten gett sitt medgivande till registreringen hos NDR?<observation name='NDRMedgivande' direction='getput' type='check'/></item>
     </block>
     
-    <block type='patient' repeats='yes' title='Patient feedback' templateUuid='6DCBCA63-5EF9-4985-8686-C662E1C4D5EF'>
+    <block type='patient' repeats='yes' title='Patientformulär' templateUuid='6DCBCA63-5EF9-4985-8686-C662E1C4D5EF'>
         <description type='template'>
             Om du aktiverar denna mall kommer den att presenteras till patienten via applikationen "minIota" som patienten kan
             köra på sin egen iPad. Befintliga data ur journalen kan användas i mallen automatiskt, medan patienten själv kan
             fylla i data som sedan kan importeras i journalen vid nästa kontakt.
         </description>
+        <item>Du som har diabetes bör sträva efter att uppnå bästa möjliga blodsockerkontroll. Grunden är att kunna
+        mäta sitt eget blodsocker, att kunna tolka resultaten och att vidta rätt åtgärder grundat på mätvärden.
+        Dina måltider bör vara regelbundna och följa ett visst mönster. Du kan i vad som följer finna en
+        rekommenderad diet. Mot slutet av detta dokument finner du även några frågor som vi gärna vill att du svarar på
+        inför ditt nästa återbesök hos din läkare.</item>
         <item>Har du gjort egenkontroller?<observation name='Egenkontroller' type='check' direction='getput'/></item>
+        <item>Hur många allvarliga hypoglykemier har du haft senaste året?<observation name='Hypos' direction='getput'/></item>
+        <item>Vad är din vikt?<observation name='Vikt' direction='getput'/></item>
+        <item>Om du röker, hur många cig/dag?<observation name='Rökning' direction='getput'/></item>
+        <item>Hur ofta promenerar du 30 min i veckan?<observation name='FysisktAktiv' direction='getput'/></item>
     </block>
 
 </template>

@@ -34,8 +34,8 @@
 #import "PatientContextDB.h"
 #import "PatientContext.h"
 #import "IotaContext.h"
-#import "ServerConnect.h"
-#import "ServerDiscovery.h"
+#import "IMServerConnect.h"
+#import "IMServerDiscovery.h"
 #import "Notifications.h"
 #import "Patient.h"
 #import "IDRContact.h"
@@ -82,7 +82,7 @@ static NSString *kMyIotaPatientContextKey = @"myIotaPatientContextKey";
 // -----------------------------------------------------------
 
 - (PatientContext *)_getPatientContextForPatient:(Patient *)patient {
-    ServerConnect *sc = [[ServerConnect alloc] init];
+    IMServerConnect *sc = [[IMServerConnect alloc] init];
     NSData *data = [sc recvDataForPatient:patient.patientID datatype:eDataTypeCompleteRecord];
     [sc release];
     PatientContext *pCtx = nil;
@@ -99,7 +99,7 @@ static NSString *kMyIotaPatientContextKey = @"myIotaPatientContextKey";
 }
 
 - (MyIotaPatientContext *)_getMyIotaPatientContextForPatient:(Patient *)patient {
-    ServerConnect *sc = [[ServerConnect alloc] init];
+    IMServerConnect *sc = [[IMServerConnect alloc] init];
     NSData *data = [sc recvDataForPatient:patient.patientID datatype:eDataTypePatientWorksheet];
     [sc release];
     MyIotaPatientContext *miCtx = nil;
@@ -119,7 +119,7 @@ static NSString *kMyIotaPatientContextKey = @"myIotaPatientContextKey";
     [arch encodeObject:ctx forKey:kPatientContextKey];
     [arch finishEncoding];
     
-    ServerConnect *sc = [[ServerConnect alloc] init];
+    IMServerConnect *sc = [[IMServerConnect alloc] init];
     BOOL success = [sc sendData:dataToSend forPatientId:ctx.patient.patientID datatype:eDataTypeCompleteRecord];
     
     [sc release];
@@ -135,7 +135,7 @@ static NSString *kMyIotaPatientContextKey = @"myIotaPatientContextKey";
     [arch encodeObject:miCtx forKey:kMyIotaPatientContextKey];
     [arch finishEncoding];
     
-    ServerConnect *sc = [[ServerConnect alloc] init];
+    IMServerConnect *sc = [[IMServerConnect alloc] init];
     NSString *patientID = miCtx.patient.patientID;
     BOOL success = [sc sendData:dataToSend forPatientId:patientID datatype:eDataTypePatientWorksheet];
     

@@ -41,7 +41,7 @@
 #import "IssueTemplateDescriptor.h"
 #import "NSString+iotaAdditions.h"
 #import "Notifications.h"
-#import "ServerDiscovery.h"
+#import "IMServerDiscovery.h"
 #import "MyIotaPatientContext.h"
 
 #import "Patients.h"
