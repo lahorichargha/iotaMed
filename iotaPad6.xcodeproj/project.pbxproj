@@ -25,7 +25,6 @@
 		AA50C87C132B8EB50031D231 /* keywords.xml in Resources */ = {isa = PBXBuildFile; fileRef = AA50C87B132B8EB50031D231 /* keywords.xml */; };
 		AA50C88E132BB5B40031D231 /* ContactCreationForm.m in Sources */ = {isa = PBXBuildFile; fileRef = AA50C88C132BB5B30031D231 /* ContactCreationForm.m */; };
 		AA50C88F132BB5B40031D231 /* ContactCreationForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA50C88D132BB5B40031D231 /* ContactCreationForm.xib */; };
-		AA51D7B41312E0B000E9E1CA /* NSString+iotaAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA51D7B31312E0B000E9E1CA /* NSString+iotaAdditions.m */; };
 		AA57574713127A4F0099128F /* IssueWorksheetBlockDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = AA57574613127A4F0099128F /* IssueWorksheetBlockDescriptor.m */; };
 		AA5BF1421343D44500AB9952 /* ValueLookupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5BF1411343D44500AB9952 /* ValueLookupCell.m */; };
 		AA5DB23E131FEBC600888408 /* IDRWorksheet.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5DB23D131FEBC600888408 /* IDRWorksheet.m */; };
@@ -41,11 +40,6 @@
 		AA6301EF13393ABF0033DB11 /* XML2StChemistry.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6301EE13393ABF0033DB11 /* XML2StChemistry.m */; };
 		AA6301FA13396A630033DB11 /* StUndersokningsresultat.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6301F913396A630033DB11 /* StUndersokningsresultat.m */; };
 		AA6301FD13396AF40033DB11 /* StBase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6301FC13396AF30033DB11 /* StBase.m */; };
-		AA6302011339FF550033DB11 /* IotaDOMBase.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6302001339FF550033DB11 /* IotaDOMBase.m */; };
-		AA6302041339FF600033DB11 /* IotaDOMNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6302031339FF600033DB11 /* IotaDOMNode.m */; };
-		AA6302071339FF6F0033DB11 /* IotaDOMElement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6302061339FF6F0033DB11 /* IotaDOMElement.m */; };
-		AA63020A1339FF7F0033DB11 /* IotaDOMContent.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6302091339FF7F0033DB11 /* IotaDOMContent.m */; };
-		AA63020D133A00A50033DB11 /* Xml2IotaDom.m in Sources */ = {isa = PBXBuildFile; fileRef = AA63020C133A00A50033DB11 /* Xml2IotaDom.m */; };
 		AA630211133AA49E0033DB11 /* b1.png in Resources */ = {isa = PBXBuildFile; fileRef = AA63020E133AA49E0033DB11 /* b1.png */; };
 		AA630212133AA49E0033DB11 /* b2.png in Resources */ = {isa = PBXBuildFile; fileRef = AA63020F133AA49E0033DB11 /* b2.png */; };
 		AA630213133AA49E0033DB11 /* b3.png in Resources */ = {isa = PBXBuildFile; fileRef = AA630210133AA49E0033DB11 /* b3.png */; };
@@ -242,8 +236,6 @@
 		AA50C88B132BB5B30031D231 /* ContactCreationForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactCreationForm.h; sourceTree = "<group>"; };
 		AA50C88C132BB5B30031D231 /* ContactCreationForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactCreationForm.m; sourceTree = "<group>"; };
 		AA50C88D132BB5B40031D231 /* ContactCreationForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactCreationForm.xib; sourceTree = "<group>"; };
-		AA51D7B21312E0B000E9E1CA /* NSString+iotaAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+iotaAdditions.h"; sourceTree = "<group>"; };
-		AA51D7B31312E0B000E9E1CA /* NSString+iotaAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+iotaAdditions.m"; sourceTree = "<group>"; };
 		AA57574513127A4F0099128F /* IssueWorksheetBlockDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IssueWorksheetBlockDescriptor.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		AA57574613127A4F0099128F /* IssueWorksheetBlockDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IssueWorksheetBlockDescriptor.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AA5BF1401343D44500AB9952 /* ValueLookupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueLookupCell.h; sourceTree = "<group>"; };
@@ -273,16 +265,6 @@
 		AA6301F913396A630033DB11 /* StUndersokningsresultat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StUndersokningsresultat.m; sourceTree = "<group>"; };
 		AA6301FB13396AF30033DB11 /* StBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StBase.h; sourceTree = "<group>"; };
 		AA6301FC13396AF30033DB11 /* StBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StBase.m; sourceTree = "<group>"; };
-		AA6301FF1339FF550033DB11 /* IotaDOMBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IotaDOMBase.h; sourceTree = "<group>"; };
-		AA6302001339FF550033DB11 /* IotaDOMBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IotaDOMBase.m; sourceTree = "<group>"; };
-		AA6302021339FF600033DB11 /* IotaDOMNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IotaDOMNode.h; sourceTree = "<group>"; };
-		AA6302031339FF600033DB11 /* IotaDOMNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IotaDOMNode.m; sourceTree = "<group>"; };
-		AA6302051339FF6F0033DB11 /* IotaDOMElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IotaDOMElement.h; sourceTree = "<group>"; };
-		AA6302061339FF6F0033DB11 /* IotaDOMElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IotaDOMElement.m; sourceTree = "<group>"; };
-		AA6302081339FF7F0033DB11 /* IotaDOMContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IotaDOMContent.h; sourceTree = "<group>"; };
-		AA6302091339FF7F0033DB11 /* IotaDOMContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IotaDOMContent.m; sourceTree = "<group>"; };
-		AA63020B133A00A40033DB11 /* Xml2IotaDom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Xml2IotaDom.h; sourceTree = "<group>"; };
-		AA63020C133A00A50033DB11 /* Xml2IotaDom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Xml2IotaDom.m; sourceTree = "<group>"; };
 		AA63020E133AA49E0033DB11 /* b1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b1.png; sourceTree = "<group>"; };
 		AA63020F133AA49E0033DB11 /* b2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b2.png; sourceTree = "<group>"; };
 		AA630210133AA49E0033DB11 /* b3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b3.png; sourceTree = "<group>"; };
@@ -534,7 +516,6 @@
 		AA2A2D681335607E005B7CAC /* Item Cell */ = {
 			isa = PBXGroup;
 			children = (
-				AA6301FE1339FF3F0033DB11 /* IotaDOM */,
 				AAA9EEFF13210A9700D36C54 /* ItemCell.h */,
 				AAA9EF0013210A9A00D36C54 /* ItemCell.m */,
 				AA968062133BE296006E6AF0 /* ItemCellDelegate.h */,
@@ -648,23 +629,6 @@
 				AAB7700E1357077700388BF5 /* stroke.xml */,
 			);
 			name = Templates;
-			sourceTree = "<group>";
-		};
-		AA6301FE1339FF3F0033DB11 /* IotaDOM */ = {
-			isa = PBXGroup;
-			children = (
-				AA6301FF1339FF550033DB11 /* IotaDOMBase.h */,
-				AA6302001339FF550033DB11 /* IotaDOMBase.m */,
-				AA6302021339FF600033DB11 /* IotaDOMNode.h */,
-				AA6302031339FF600033DB11 /* IotaDOMNode.m */,
-				AA6302051339FF6F0033DB11 /* IotaDOMElement.h */,
-				AA6302061339FF6F0033DB11 /* IotaDOMElement.m */,
-				AA6302081339FF7F0033DB11 /* IotaDOMContent.h */,
-				AA6302091339FF7F0033DB11 /* IotaDOMContent.m */,
-				AA63020B133A00A40033DB11 /* Xml2IotaDom.h */,
-				AA63020C133A00A50033DB11 /* Xml2IotaDom.m */,
-			);
-			name = IotaDOM;
 			sourceTree = "<group>";
 		};
 		AA63B5EF13055E350035A49C = {
@@ -960,8 +924,6 @@
 		AAC2FC27130BE588009E8384 /* Base classes */ = {
 			isa = PBXGroup;
 			children = (
-				AA51D7B21312E0B000E9E1CA /* NSString+iotaAdditions.h */,
-				AA51D7B31312E0B000E9E1CA /* NSString+iotaAdditions.m */,
 				AAC2FC20130BDF85009E8384 /* DetailViewController.h */,
 				AAC2FC21130BDF85009E8384 /* DetailViewController.m */,
 				AAC2FC24130BE157009E8384 /* DetailViewControllerWithToolbar.h */,
@@ -1238,7 +1200,6 @@
 				AA908207130EB77000DBF856 /* IssueTemplateBlockDescriptor.m in Sources */,
 				AA90820A130EE0B200DBF856 /* IssueWorksheetDescriptor.m in Sources */,
 				AA57574713127A4F0099128F /* IssueWorksheetBlockDescriptor.m in Sources */,
-				AA51D7B41312E0B000E9E1CA /* NSString+iotaAdditions.m in Sources */,
 				AA6FCF8B13130691008FBFFD /* IssueTemplateFormViewController.m in Sources */,
 				AADAE3101313E9B3005E1FE5 /* IssueTemplatesMasterViewController.m in Sources */,
 				AAD67BEA13183DE100D3A031 /* KlinKemController.m in Sources */,
@@ -1279,11 +1240,6 @@
 				AA6301EF13393ABF0033DB11 /* XML2StChemistry.m in Sources */,
 				AA6301FA13396A630033DB11 /* StUndersokningsresultat.m in Sources */,
 				AA6301FD13396AF40033DB11 /* StBase.m in Sources */,
-				AA6302011339FF550033DB11 /* IotaDOMBase.m in Sources */,
-				AA6302041339FF600033DB11 /* IotaDOMNode.m in Sources */,
-				AA6302071339FF6F0033DB11 /* IotaDOMElement.m in Sources */,
-				AA63020A1339FF7F0033DB11 /* IotaDOMContent.m in Sources */,
-				AA63020D133A00A50033DB11 /* Xml2IotaDom.m in Sources */,
 				AA630222133AC6510033DB11 /* UndersokningsResultat.m in Sources */,
 				AA630225133AC65E0033DB11 /* AnalysTjanst.m in Sources */,
 				AA96805C133BCFC5006E6AF0 /* IDRTest.m in Sources */,
