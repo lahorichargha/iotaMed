@@ -38,7 +38,6 @@
 #import "DetailViewControllerWithToolbar.h"
 #import "ItemCellDelegate.h"
 
-#ifdef IOTAMED
 #import "LabOrderController.h"
 #import "PrescriptionController.h"
 #import "ReferralControllerDelegate.h"
@@ -49,13 +48,6 @@
     PrescriptionControllerDelegate,
     ReferralControllerDelegate> {
 }
-#endif
-
-#ifdef MINIOTA
-@interface IssueWorksheetController : DetailViewControllerWithToolbar <UITableViewDelegate, UITableViewDataSource, 
-            ItemCellDelegate> {
-}
-#endif
 
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
