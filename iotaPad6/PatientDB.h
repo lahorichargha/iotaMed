@@ -33,11 +33,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class Patient;
 
 @interface PatientDB : NSObject {
     
 }
 
 + (NSArray *)allPatients;
++ (void)addOrUpdatePatient:(Patient *)patient;
++ (void)deletePatient:(Patient *)patient;
 
 @end

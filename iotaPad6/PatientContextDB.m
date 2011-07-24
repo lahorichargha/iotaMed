@@ -159,6 +159,7 @@ static NSString *kMyIotaPatientContextKey = @"myIotaPatientContextKey";
         NSData *data = [[NSMutableData alloc] initWithContentsOfFile:filePath];
         NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
         pCtx = [unarchiver decodeObjectForKey:kPatientContextKey];
+        [unarchiver finishDecoding];
         [unarchiver release];
         [data release];
     }
@@ -176,6 +177,7 @@ static NSString *kMyIotaPatientContextKey = @"myIotaPatientContextKey";
         NSData *data = [[NSMutableData alloc] initWithContentsOfFile:filePath];
         NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
         miCtx = [unarchiver decodeObjectForKey:kMyIotaPatientContextKey];
+        [unarchiver finishDecoding];
         [unarchiver release];
         [data release];
     }
@@ -211,6 +213,24 @@ static NSString *kMyIotaPatientContextKey = @"myIotaPatientContextKey";
     [arch release];
     [dataToSend release];
     return YES;
+}
+
+- (void)deleteAllContextsForPatient:(Patient *)patient {
+    NSString *contextFile = [self dataFilePathForPatientId:patient.patientID];
+    NSString *myIotaFile = [self dataFilePathForPatientId:patient.patientID subFolder:@"minIota"];
+                            
+    NSError *error = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:contextFile error:&error];
+    // if some other error than 'not found'
+    if (error && error.code != 4) {
+        NSLog(@"remove context file error: %@", error);
+        error = nil;
+    }
+    [[NSFileManager defaultManager] removeItemAtPath:myIotaFile error:&error];
+    if (error && error.code != 4) { 
+        NSLog(@"remove myIota file error: %@", error);
+        error = nil;
+    }
 }
 
 // -----------------------------------------------------------
@@ -267,6 +287,14 @@ static NSString *kMyIotaPatientContextKey = @"myIotaPatientContextKey";
         return [pcdb _putMyIotaPatientContext:myIotaPatientContext];
     else
         return [pcdb _putMyIotaPatientContextToFile:myIotaPatientContext];
+}
+
++ (void)deleteAllContextsForPatient:(Patient *)patient {
+    PatientContextDB *pcdb = [[[self alloc] init] autorelease];
+    // only works locally for now
+    if (![IotaContext useRemoteServer]) {
+        [pcdb deleteAllContextsForPatient:patient];
+    }
 }
 
 

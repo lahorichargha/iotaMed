@@ -47,6 +47,6 @@
 + (MyIotaPatientContext *)getMyIotaPatientContextForPatient:(Patient *)patient;
 + (BOOL)putPatientContext:(PatientContext *)patientContext;
 + (BOOL)putMyIotaPatientContext:(MyIotaPatientContext *)myIotaPatientContext;
-
++ (void)deleteAllContextsForPatient:(Patient *)patient;
 
 @end

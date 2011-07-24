@@ -143,6 +143,8 @@
 		AAB84B151326D16700ACC980 /* PatientContext.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB84B141326D16700ACC980 /* PatientContext.m */; };
 		AAB84B181326D1E700ACC980 /* IDRWorksheets.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB84B171326D1D700ACC980 /* IDRWorksheets.m */; };
 		AAB84B1B1326D33500ACC980 /* PatientContextDB.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB84B1A1326D33500ACC980 /* PatientContextDB.m */; };
+		AAC0397F13DC6010008F38C3 /* PatientController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC0397D13DC6010008F38C3 /* PatientController.m */; };
+		AAC0398013DC6010008F38C3 /* PatientController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAC0397E13DC6010008F38C3 /* PatientController.xib */; };
 		AAC2FC22130BDF85009E8384 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC2FC21130BDF85009E8384 /* DetailViewController.m */; };
 		AAC2FC26130BE157009E8384 /* DetailViewControllerWithToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC2FC25130BE157009E8384 /* DetailViewControllerWithToolbar.m */; };
 		AAC2FC2B130BFC8E009E8384 /* PatientListController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC2FC29130BFC8D009E8384 /* PatientListController.m */; };
@@ -420,6 +422,10 @@
 		AAB84B171326D1D700ACC980 /* IDRWorksheets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IDRWorksheets.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AAB84B191326D33500ACC980 /* PatientContextDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientContextDB.h; sourceTree = "<group>"; };
 		AAB84B1A1326D33500ACC980 /* PatientContextDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientContextDB.m; sourceTree = "<group>"; };
+		AAC0397C13DC6010008F38C3 /* PatientController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientController.h; sourceTree = "<group>"; };
+		AAC0397D13DC6010008F38C3 /* PatientController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientController.m; sourceTree = "<group>"; };
+		AAC0397E13DC6010008F38C3 /* PatientController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PatientController.xib; sourceTree = "<group>"; };
+		AAC0398113DC652F008F38C3 /* PatientControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientControllerDelegate.h; sourceTree = "<group>"; };
 		AAC2FC20130BDF85009E8384 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		AAC2FC21130BDF85009E8384 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		AAC2FC24130BE157009E8384 /* DetailViewControllerWithToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewControllerWithToolbar.h; sourceTree = "<group>"; };
@@ -955,6 +961,10 @@
 				AAC2FC2A130BFC8D009E8384 /* PatientListController.xib */,
 				AA1603791375B4B800D03EE6 /* ServerListener.h */,
 				AA16037A1375B4B800D03EE6 /* ServerListener.m */,
+				AAC0397C13DC6010008F38C3 /* PatientController.h */,
+				AAC0398113DC652F008F38C3 /* PatientControllerDelegate.h */,
+				AAC0397D13DC6010008F38C3 /* PatientController.m */,
+				AAC0397E13DC6010008F38C3 /* PatientController.xib */,
 			);
 			name = "Context and Patient";
 			sourceTree = "<group>";
@@ -1144,6 +1154,7 @@
 				AAECB6C51381601C00EAB251 /* InboxForm.xib in Resources */,
 				AAECB6C71381601C00EAB251 /* InboxMyIotaForm.xib in Resources */,
 				AAF9B5541392A78C0049BA69 /* test5.xml in Resources */,
+				AAC0398013DC6010008F38C3 /* PatientController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1257,6 +1268,7 @@
 				AAECB6C41381601C00EAB251 /* InboxForm.m in Sources */,
 				AAECB6C61381601C00EAB251 /* InboxMyIotaForm.m in Sources */,
 				AAECB6CD1381834C00EAB251 /* MyIotaPatientContext.m in Sources */,
+				AAC0397F13DC6010008F38C3 /* PatientController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

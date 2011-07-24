@@ -42,6 +42,14 @@
 @class IDRWorksheet;
 @class IDRBlock;
 
+enum enumNamingOfPatients {
+    namingNone = 0,
+    namingNumbered = 1,
+    namingFakeNames = 2,
+    namingRealNames = 3,
+};
+
+
 @interface IotaContext : NSObject {}
 
 + (void)addObserver:(id <IotaContextDelegate>) observer;
@@ -58,6 +66,7 @@
 + (NSString *)nameOfCurrentUser;
 + (NSString *)crossServerIPNumber;
 + (BOOL)useRemoteServer;
++ (enum enumNamingOfPatients)namingOfPatients;
 
 + (IDRWorksheet *)worksheetForUuid:(NSString *)uuid;
 + (IDRBlock *)blockForUuid:(NSString *)uuid;

@@ -8,6 +8,34 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
+			<string>Patients type</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Naming of patients</string>
+			<key>Key</key>
+			<string>patientType</string>
+			<key>DefaultValue</key>
+			<string>namingFakeNames</string>
+			<key>Titles</key>
+			<array>
+				<string>Numbered</string>
+				<string>Fake names</string>
+				<string>Real names</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>namingNumbered</string>
+				<string>namingFakeNames</string>
+				<string>namingRealNames</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
 			<string>iotaMed server</string>
 		</dict>
 		<dict>

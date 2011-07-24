@@ -51,6 +51,8 @@
 #import "PatientContext.h"
 #import "Patients.h"
 #import "Patient.h"
+#import "PatientController.h"
+#import "PatientDB.h"
 #import "Notifications.h"
 
 // -----------------------------------------------------------
@@ -62,6 +64,7 @@
 - (void)enableOkButton;
 - (void)disableOkButton;
 - (void)updateOkButtonState;
+@property (retain) NSIndexPath *deletePath;
 @end
 
 
@@ -75,6 +78,7 @@
 @synthesize patientTableView = _patientTableView;
 @synthesize btnOk = _btnOk;
 @synthesize activityIndicator = _activityIndicator;
+@synthesize deletePath = _deletePath;
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -105,6 +109,7 @@
     self.btnOk = nil;
     self.patientTableView = nil;
     self.activityIndicator = nil;
+    self.deletePath = nil;
     [super dealloc];
 }
 
@@ -148,13 +153,17 @@
 #pragma mark Actions
 // -----------------------------------------------------------
 
-- (Patient *)_selectedPatient {
-    NSIndexPath *indexPath = [self.patientTableView indexPathForSelectedRow];
+- (Patient *)_patientAt:(NSIndexPath *)indexPath {
     Patient *selected = nil;
     if (indexPath != nil) {
         selected = (Patient *)[[Patients allPatients] objectAtIndex:[indexPath row]];
     }
     return selected;
+}
+
+- (Patient *)_selectedPatient {
+    NSIndexPath *indexPath = [self.patientTableView indexPathForSelectedRow];
+    return [self _patientAt:indexPath];
 }
 
 - (IBAction)btnOk:(id)sender {
@@ -169,6 +178,42 @@
 
 - (IBAction)btnCancel:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)btnNew:(id)sender {
+    Patient *patient = [[Patient alloc] init];
+    
+    PatientController *pc = [[[PatientController alloc] initWithNibName:@"PatientController" bundle:nil] autorelease];
+    pc.delegate = self;
+    pc.modalPresentationStyle = UIModalPresentationFormSheet;
+    pc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentModalViewController:pc animated:YES];
+    
+    [patient release];
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark PatientControllerDelegate
+// -----------------------------------------------------------
+
+- (void)createPatient:(Patient *)patient {
+    [PatientDB addOrUpdatePatient:patient];
+    [self.patientTableView reloadData];
+}
+
+- (void)updatePatient:(Patient *)patient {
+    [PatientDB addOrUpdatePatient:patient];
+    [self.patientTableView reloadData];
+}
+
+- (void)deletePatient:(Patient *)patient {
+    [PatientDB deletePatient:patient];
+    [self.patientTableView reloadData];
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
 }
 
 // -----------------------------------------------------------
@@ -227,6 +272,41 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self updateOkButtonState];
 }
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        self.deletePath = indexPath;
+        Patient *patient = [self _patientAt:self.deletePath];
+        if (patient) {
+            NSString *msg = [NSString stringWithFormat:@"Är du säker att du vill ta bort hela journalen för patient %@?", [Patient buttonTitleForPatient:patient]];
+            UIAlertView *aw = [[UIAlertView alloc] initWithTitle:@"Ta bort patient" 
+                                                         message:msg
+                                                        delegate:self 
+                                               cancelButtonTitle:@"Avbryt" 
+                                               otherButtonTitles:@"Ok", nil];
+            aw.delegate = self;
+            [aw show];
+            [aw release];
+        }
+    }
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Modal warning for delete, UIAlertViewDelegate
+// -----------------------------------------------------------
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    // cancel = 0, ok = 1
+    if (buttonIndex == 1) {
+        [PatientDB deletePatient:[self _patientAt:self.deletePath]];
+        [self.patientTableView beginUpdates];
+        [self.patientTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:self.deletePath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.patientTableView endUpdates];
+    }
+    self.deletePath = nil;
+}
+
 
 // -----------------------------------------------------------
 #pragma mark -

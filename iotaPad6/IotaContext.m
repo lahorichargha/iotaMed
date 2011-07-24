@@ -151,6 +151,11 @@ static IotaContext * volatile _sharedInstance = nil;
     }
 }
 
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Values from the settings pane in iOS
+// -----------------------------------------------------------
+
 + (NSString *)nameOfCurrentUser {
     NSString *drName = [[NSUserDefaults standardUserDefaults] objectForKey:@"dr_name"];
     if ((drName == nil) || [drName length] < 1)
@@ -170,6 +175,18 @@ static IotaContext * volatile _sharedInstance = nil;
 
 + (BOOL)useRemoteServer {
     return [[[NSUserDefaults standardUserDefaults] objectForKey:@"remoteServer"] boolValue];
+}
+
++ (enum enumNamingOfPatients)namingOfPatients {
+    NSString *val = [[NSUserDefaults standardUserDefaults] objectForKey:@"patientType"];
+    if ([val isEqualToString:@"namingNumbered"])
+        return namingNumbered;
+    else if ([val isEqualToString:@"namingFakeNames"])
+        return namingFakeNames;
+    else if ([val isEqualToString:@"namingRealNames"])
+        return namingRealNames;
+    else
+        return namingNone;
 }
 
 // -----------------------------------------------------------

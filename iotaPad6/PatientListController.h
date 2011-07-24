@@ -32,9 +32,10 @@
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <UIKit/UIKit.h>
+#import "PatientControllerDelegate.h"
 
-
-@interface PatientListController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchDisplayDelegate> {
+@interface PatientListController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchDisplayDelegate, PatientControllerDelegate,
+                    UIAlertViewDelegate> {
     
 }
 
@@ -44,6 +45,7 @@
 
 - (IBAction)btnOk:(id)sender;
 - (IBAction)btnCancel:(id)sender;
+- (IBAction)btnNew:(id)sender;
 
 + (void)showList:(UIViewController *)parent;
 

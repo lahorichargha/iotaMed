@@ -34,6 +34,8 @@
 #import "PatientDB.h"
 #import "Patient.h"
 #import "DemoData.h"
+#import "IotaContext.h"
+#import "PatientContextDB.h"
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -48,10 +50,68 @@
 
 @implementation PatientDB
 
-+ (NSArray *)allPatients {
-    return [DemoData getDemoPatients];
+static NSString *kPatientKey = @"patientKey";
+
+
++ (NSString *)dataFilePathForPatientList {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [documentsDirectory stringByAppendingPathComponent:@"patientlist"];
 }
 
+
++ (NSArray *)allPatients {
+    if ([IotaContext namingOfPatients] == namingRealNames) {
+        NSString *filePath = [self dataFilePathForPatientList];
+        NSError *error = nil;
+        NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:filePath error:&error];
+        if (error)
+            NSLog(@"error: %@", error);
+        if (files == nil || [files count] == 0)
+            return nil;
+        
+        NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:5];
+        for (NSString *fn in files) {
+            NSString *fileName = [filePath stringByAppendingPathComponent:fn];
+            NSMutableData *data = [[NSMutableData alloc] initWithContentsOfFile:fileName];
+            NSKeyedUnarchiver *unarch = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+            [data release];
+            Patient *patient = [unarch decodeObjectForKey:kPatientKey];
+            [unarch finishDecoding];
+            [unarch release];
+            [array addObject:patient];
+        }
+        return [array autorelease];
+    }
+    else {
+        return [DemoData getDemoPatients];
+    }
+}
+
++ (void)addOrUpdatePatient:(Patient *)patient {
+    NSString *path = [self dataFilePathForPatientList];
+    NSError *error = nil;
+    [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+    if (error)
+        NSLog(@"createDirectoryAtPath error: %@", error);
+    
+    NSMutableData *data = [[NSMutableData alloc] init];
+    NSKeyedArchiver *arch = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [arch encodeObject:patient forKey:kPatientKey];
+    [arch finishEncoding];
+    [arch release];
+
+    NSString *fullPath = [path stringByAppendingPathComponent:patient.patientID];
+    [data writeToFile:fullPath atomically:YES];
+    
+    [data release];
+}
+
++ (void)deletePatient:(Patient *)patient {
+    NSString *fullPath = [[self dataFilePathForPatientList] stringByAppendingPathComponent:patient.patientID];
+    [[NSFileManager defaultManager] removeItemAtPath:fullPath error:nil];
+    [PatientContextDB deleteAllContextsForPatient:patient];
+}
 
 
 @end
