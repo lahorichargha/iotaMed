@@ -54,15 +54,9 @@
 @property (nonatomic, retain) IDRWorksheet *idrWorkSheet;
 @property (nonatomic, retain) IDRBlock *idrBlock;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicator;
-
-#ifdef IOTAMED
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *btnContact;
-#endif
 
 - (void)refresh;
-
-#ifdef IOTAMED
 - (IBAction)btnContact:(id)sender;
-#endif
 
 @end

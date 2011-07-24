@@ -47,10 +47,7 @@
 #import "ValueLookupForm.h"
 #import "Funcs.h"
 #import "ThemeColors.h"
-
-#ifdef IOTAMED
 #import "ContactSelectOrCreateForm.h"
-#endif
 
 @implementation IssueWorksheetController
 
@@ -58,10 +55,7 @@
 @synthesize idrWorkSheet = _idrWorkSheet;
 @synthesize idrBlock = _idrBlock;
 @synthesize activityIndicator = _activityIndicator;
-
-#ifdef IOTAMED
 @synthesize btnContact = _btnContact;
-#endif
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -81,9 +75,7 @@
     self.idrWorkSheet = nil;
     self.idrBlock = nil;
     self.activityIndicator = nil;
-#ifdef IOTAMED
     self.btnContact = nil;
-#endif
     [super dealloc];
 }
 
@@ -112,9 +104,7 @@
 - (void)setTableHeader {
 
     IDRContact *currentContact = [[IotaContext getCurrentPatientContext] currentContact];
-#ifdef IOTAMED
     self.btnContact.title = (currentContact) ? [currentContact contactAsHeader] : @"<Inga kontakter>";
-#endif
     
     if (!self.idrBlock) {
         self.tableView.tableHeaderView = nil;
@@ -208,7 +198,6 @@
 #pragma mark Item cell delegate
 // -----------------------------------------------------------
 
-#ifdef IOTAMED
 - (void)presentLabOrderForm:(IDRItem *)item {
     LabOrderController *loc = [[LabOrderController alloc] initWithNibName:@"LabOrderController" bundle:nil];
     loc.idrItem = item;
@@ -222,11 +211,9 @@
 - (void)sentLabOrderForItem:(IDRItem *)item {
     [self.tableView reloadData];
 }
-#endif
 
 // -----------------------------------------------------------
     
-#ifdef IOTAMED
 - (void)presentReferralForm:(IDRItem *)item {
     ReferralController *rc = [[ReferralController alloc] initWithNibName:@"ReferralController" bundle:nil];
     rc.item = item;
@@ -241,11 +228,9 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kObservationDataChangedNotification object:nil];
     [self refresh];
 }
-#endif
 
 // -----------------------------------------------------------
 
-#ifdef IOTAMED
 - (void)presentPrescriptionForm:(IDRItem *)item {
     PrescriptionController *pc = [[[PrescriptionController alloc] initWithNibName:@"PrescriptionController" bundle:nil] autorelease];
     pc.idrItem = item;
@@ -259,7 +244,6 @@
 - (void)sentPrescriptionForItem:(IDRItem *)item {
     [[NSNotificationCenter defaultCenter] postNotificationName:kObservationDataChangedNotification object:nil];
 }
-#endif
 
 // -----------------------------------------------------------
 
@@ -299,9 +283,7 @@
     self.idrWorkSheet = nil;
     [self refresh];
     self.patientButton.title = [Patient buttonTitleForPatient:newPatient];
-#ifdef IOTAMED
     self.btnContact.enabled = (newPatient != nil);
-#endif
 }
 
 // -----------------------------------------------------------
@@ -309,7 +291,6 @@
 #pragma mark Action handler
 // -----------------------------------------------------------
 
-#ifdef IOTAMED
 - (void)btnContact:(id)sender {
     ContactSelectOrCreateForm *cscf = [[ContactSelectOrCreateForm alloc] initWithNibName:@"ContactSelectOrCreateForm" 
                                                                                   bundle:nil];
@@ -326,6 +307,5 @@
         return;
     [self refresh];
 }
-#endif
 
 @end
