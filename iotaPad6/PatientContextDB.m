@@ -56,6 +56,8 @@
 //@property (nonatomic, retain) ServerConnect *serverConnect;
 //@property (nonatomic, retain) PatientContextDB *patientContextDb;
 
+- (NSString *)dataFilePathForPatientId:(NSString *)patientId;
+- (NSString *)dataFilePathForPatientId:(NSString *)patientId subFolder:(NSString *)subFolder;
 - (BOOL)_putMyIotaPatientContext:(MyIotaPatientContext *)myIotaPatientContext;
 - (BOOL)_putPatientContext:(PatientContext *)patientContext;
 @end
@@ -145,30 +147,126 @@ static NSString *kMyIotaPatientContextKey = @"myIotaPatientContextKey";
     return success;
 }
 
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Alternates used when running without a server, just local files
+// -----------------------------------------------------------
+
+- (PatientContext *)_getPatientContextForPatientFromFile:(Patient *)patient {
+    NSString *filePath = [self dataFilePathForPatientId:patient.patientID];
+    PatientContext *pCtx = nil;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        NSData *data = [[NSMutableData alloc] initWithContentsOfFile:filePath];
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+        pCtx = [unarchiver decodeObjectForKey:kPatientContextKey];
+        [unarchiver release];
+        [data release];
+    }
+    else {
+        pCtx = [[[PatientContext alloc] init] autorelease];
+        pCtx.patient = patient;
+    }
+    return pCtx;
+}
+
+- (MyIotaPatientContext *)_getMyIotaPatientContextForPatientFromFile:(Patient *)patient {
+    NSString *filePath = [self dataFilePathForPatientId:patient.patientID subFolder:@"minIota"];
+    MyIotaPatientContext *miCtx = nil;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        NSData *data = [[NSMutableData alloc] initWithContentsOfFile:filePath];
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+        miCtx = [unarchiver decodeObjectForKey:kMyIotaPatientContextKey];
+        [unarchiver release];
+        [data release];
+    }
+    else {
+        miCtx = [[[MyIotaPatientContext alloc] init] autorelease];
+    }
+    return miCtx;
+}
+
+- (BOOL)_putPatientContextToFile:(PatientContext *)pCtx {
+    NSMutableData *data = [[NSMutableData alloc] init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver encodeObject:pCtx forKey:kPatientContextKey];
+    [archiver finishEncoding];
+    
+    NSString *filePath = [self dataFilePathForPatientId:pCtx.patient.patientID];
+    [data writeToFile:filePath atomically:YES];
+    [archiver release];
+    [data release];
+    return YES;
+}
+
+- (BOOL)_putMyIotaPatientContextToFile:(MyIotaPatientContext *)miCtx {
+    NSMutableData *dataToSend = [[NSMutableData alloc] init];
+    NSKeyedArchiver *arch = [[NSKeyedArchiver alloc] initForWritingWithMutableData:dataToSend];
+    //    arch.outputFormat = NSPropertyListXMLFormat_v1_0;
+    [arch encodeObject:miCtx forKey:kMyIotaPatientContextKey];
+    [arch finishEncoding];
+    
+    NSString *filePath = [self dataFilePathForPatientId:miCtx.patient.patientID subFolder:@"minIota"];
+    [dataToSend writeToFile:filePath atomically:YES];
+    
+    [arch release];
+    [dataToSend release];
+    return YES;
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Helpers
+// -----------------------------------------------------------
+
+- (NSString *)dataFilePathForPatientId:(NSString *)patientId subFolder:(NSString *)subFolder {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    documentsDirectory = [documentsDirectory stringByAppendingPathComponent:subFolder];
+    return [documentsDirectory stringByAppendingPathComponent:patientId];
+}
+
+- (NSString *)dataFilePathForPatientId:(NSString *)patientId {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [documentsDirectory stringByAppendingPathComponent:patientId];
+}
 
 // -----------------------------------------------------------
 #pragma mark -
 #pragma mark Convenience constructors
 // -----------------------------------------------------------
 
+
 + (PatientContext *)getPatientContextForPatient:(Patient *)patient {
     PatientContextDB *pcdb = [[[self alloc] init] autorelease];
-    return [pcdb _getPatientContextForPatient:patient];
+    if ([IotaContext useRemoteServer]) 
+        return [pcdb _getPatientContextForPatient:patient];
+    else 
+        return [pcdb _getPatientContextForPatientFromFile:patient];
 }
 
 + (MyIotaPatientContext *)getMyIotaPatientContextForPatient:(Patient *)patient {
     PatientContextDB *pcdb = [[[self alloc] init] autorelease];
-    return [pcdb _getMyIotaPatientContextForPatient:patient];
+    if ([IotaContext useRemoteServer]) 
+        return [pcdb _getMyIotaPatientContextForPatient:patient];
+    else
+        return [pcdb _getMyIotaPatientContextForPatientFromFile:patient];
 }
 
 + (BOOL)putPatientContext:(PatientContext *)patientContext {
     PatientContextDB *pcdb = [[[self alloc] init] autorelease];
-    return [pcdb _putPatientContext:patientContext];
+    if ([IotaContext useRemoteServer]) 
+        return [pcdb _putPatientContext:patientContext];
+    else 
+        return [pcdb _putPatientContextToFile:patientContext];
 }
 
 + (BOOL)putMyIotaPatientContext:(MyIotaPatientContext *)myIotaPatientContext {
     PatientContextDB *pcdb = [[[self alloc] init] autorelease];
-    return [pcdb _putMyIotaPatientContext:myIotaPatientContext];
+    if ([IotaContext useRemoteServer]) 
+        return [pcdb _putMyIotaPatientContext:myIotaPatientContext];
+    else
+        return [pcdb _putMyIotaPatientContextToFile:myIotaPatientContext];
 }
 
 

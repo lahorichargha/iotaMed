@@ -168,6 +168,10 @@ static IotaContext * volatile _sharedInstance = nil;
     return fmax(rowHeight, 30.0);
 }
 
++ (BOOL)useRemoteServer {
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:@"remoteServer"] boolValue];
+}
+
 // -----------------------------------------------------------
 #pragma mark -
 #pragma mark Templates index

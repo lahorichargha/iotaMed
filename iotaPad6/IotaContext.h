@@ -57,6 +57,7 @@
 + (Patient *)getCurrentPatient;
 + (NSString *)nameOfCurrentUser;
 + (NSString *)crossServerIPNumber;
++ (BOOL)useRemoteServer;
 
 + (IDRWorksheet *)worksheetForUuid:(NSString *)uuid;
 + (IDRBlock *)blockForUuid:(NSString *)uuid;
