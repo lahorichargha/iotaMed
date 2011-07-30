@@ -530,9 +530,8 @@ enum eCellContents {
             [aw show];
             return NO;
         }
-        else {
+        else
             return YES;
-        }   
     }
     @catch (NSException *ex) {
         NSLog(@"*** Exception: %@", ex);

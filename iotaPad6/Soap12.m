@@ -97,10 +97,10 @@ static NSString *soapRequestWrapper =
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[requestString dataUsingEncoding:NSUTF8StringEncoding]];
 //    NSLog(@"%@", [request description]);
-    self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    self.connection = [[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
     
     if (self.connection)
-        self.webData = [[NSMutableData alloc] init];
+        self.webData = [[[NSMutableData alloc] init] autorelease];
     
     
 }

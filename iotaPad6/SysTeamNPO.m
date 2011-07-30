@@ -119,7 +119,6 @@ static NSString *getDiagnosisRequest =
     NSURL *url = [NSURL URLWithString:urlString];
     Soap12 *soap12 = [[Soap12 alloc] init];
     soap12.url = url;
-    [url release];
     soap12.soapAction = @"http://Cross/NPOIntegrationService/GetDiagnosis";
     soap12.requestBody = [[self class] formDiagnosisRequestForPatientId:self.patientId fromDate:self.fromDate toDate:self.toDate];
     [soap12 executeRequestWithTarget:self];
