@@ -40,6 +40,7 @@
 @class IDRAction;
 @class IDRBlock;
 @class IDRImage;
+@class ItemCell;
 
 @interface IDRItem : NSObject <IDRAttribs, DebugDump, NSCoding, NSCopying> {
     
@@ -54,6 +55,7 @@
 @property (nonatomic, retain) NSMutableString *content;
 @property (nonatomic, retain) IDRBlock *parentBlock;
 @property (nonatomic, retain) IDRImage *idrImage;
+@property (nonatomic, retain) ItemCell *itemCell;
 
 - (void)setItemValue:(NSString *)value;
 - (void)setItemValue:(NSString *)value extendedValue:(NSString *)extendedValue;

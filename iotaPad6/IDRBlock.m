@@ -114,13 +114,11 @@ static NSString *kWorksheetKey = @"worksheetKey";
         self.repeats = [aDecoder decodeBoolForKey:kRepeatsKey];
         self.contact = [aDecoder decodeObjectForKey:kContactKey];
         self.worksheet = [aDecoder decodeObjectForKey:kWorksheetKey];
-        NSLog(@"decoding IDRBlock %@, %@", self.type, self.title);
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    NSLog(@"encoding IDRBlock %@, %@", self.type, self.title);
     [aCoder encodeObject:self.type forKey:kTypeKey];
     [aCoder encodeObject:self.title forKey:kTitleKey];
     [aCoder encodeObject:self.items forKey:kItemsKey];
@@ -189,7 +187,7 @@ static NSString *kWorksheetKey = @"worksheetKey";
 // -----------------------------------------------------------
 
 - (void)dumpWithIndent:(NSUInteger)indent {
-    NSLog(@"%@IDRBlock: %@", [NSString spacesOfLength:indent], self.title);
+    //    NSLog(@"%@IDRBlock: %@", [NSString spacesOfLength:indent], self.title);
     for (IDRItem *item in self.items) {
         [item dumpWithIndent:indent + 4];
     }

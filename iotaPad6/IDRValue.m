@@ -66,13 +66,11 @@ static NSString *kObsDefinitionKey = @"obsDefinitionKey";
         self.extendedValue = [aDecoder decodeObjectForKey:kExtendedValueKey];
         self.contact = [aDecoder decodeObjectForKey:kContactKey];
         self.obsDefinition = [aDecoder decodeObjectForKey:kObsDefinitionKey];
-        NSLog(@"Decoding value: %@ for obsdef name: %@", self.value, _obsDefinition.name);
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    NSLog(@"Encoding value: %@ for obsdef name: %@", self.value, _obsDefinition.name);
     [aCoder encodeObject:self.value forKey:kValueKey];
     [aCoder encodeObject:self.extendedValue forKey:kExtendedValueKey];
     [aCoder encodeObject:self.contact forKey:kContactKey];

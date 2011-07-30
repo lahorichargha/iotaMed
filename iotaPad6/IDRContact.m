@@ -90,13 +90,11 @@ static NSString *kNameOfDoctorKey = @"nameOfDoctorKey";
         self.idrValues = [aDecoder decodeObjectForKey:kValuesKey];
         self.idrBlocks = [aDecoder decodeObjectForKey:kBlocksKey];
         self.nameOfDoctor = [aDecoder decodeObjectForKey:kNameOfDoctorKey];
-        NSLog(@"Decoding contact, IDRValues: %d, IDRBlocks: %d", [self.idrValues count], [self.idrBlocks count]);
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    NSLog(@"Encoding contact, IDRValues: %d, IDRBlocks: %d", [self.idrValues count], [self.idrBlocks count]);
     [aCoder encodeObject:self.date forKey:kDateKey];
     [aCoder encodeObject:self.idrValues forKey:kValuesKey];
     [aCoder encodeObject:self.idrBlocks forKey:kBlocksKey];

@@ -53,6 +53,7 @@
 @synthesize hasBullet = _hasBullet;
 @synthesize parentBlock = _parentBlock;
 @synthesize idrImage = _idrImage;
+@synthesize itemCell = _itemCell;
 
 - (id)init {
     if ((self = [super init])) {
@@ -62,6 +63,7 @@
 }
 
 - (void)dealloc {
+    self.itemCell = nil;
     self.observation = nil;
     self.action = nil;
     self.content = nil;
@@ -99,7 +101,7 @@ static NSString *kIdrImageKey = @"idrImageKey";
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    NSLog(@"encoding IDRItem");
+    //    NSLog(@"encoding IDRItem");
     [aCoder encodeObject:self.observation forKey:kObservationKey];
     [aCoder encodeObject:self.action forKey:kActionKey];
     [aCoder encodeObject:self.content forKey:kContentKey];

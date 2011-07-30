@@ -96,13 +96,11 @@ static NSString *kOptionsKey = @"optionsKey";
         self.direction = [aDecoder decodeObjectForKey:kDirectionKey];
         self.obsDefinition = [aDecoder decodeObjectForKey:kObsDefinitionKey];
         self.options = [aDecoder decodeObjectForKey:kOptionsKey];
-        NSLog(@"Decoding IDRObservation name: %@", self.name);
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    NSLog(@"Encoding IDRObservation name: %@", self.name);
     [aCoder encodeObject:self.name forKey:kNameKey];
     [aCoder encodeObject:self.type forKey:kTypeKey];
     [aCoder encodeObject:self.direction forKey:kDirectionKey];

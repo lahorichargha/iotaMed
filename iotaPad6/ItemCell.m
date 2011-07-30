@@ -73,6 +73,7 @@
 #import "PatientContext.h"
 #import "IDRWorksheet.h"
 #import "ThemeColors.h"
+//#import "ItemTextFieldView.h"
 
 #define TAG_LBLCONTENT  1001
 #define TAG_TEXTFIELD   1002
@@ -153,6 +154,10 @@ enum eCellContents {
     ecTextWithImage
 };
 
+@interface ItemCell()
+@property (assign) UITableView *parentTableView;
+@end
+
 // -----------------------------------------------------------
 #pragma mark -
 #pragma mark Lifecycle
@@ -170,6 +175,7 @@ enum eCellContents {
 @synthesize bulletView = _bulletView;
 @synthesize checkView = _checkView;
 @synthesize itemCellDelegate = _itemCellDelegate;
+@synthesize parentTableView = _parentTableView;
 
 - (UIView *)viewOfClass:(Class)cls frame:(CGRect)frame tag:(NSUInteger)tag {
     UIView *view = [[cls alloc] initWithFrame:frame];
@@ -238,17 +244,15 @@ enum eCellContents {
 #pragma mark Convenience constructors
 // -----------------------------------------------------------
 
-// TODO: split the creation of the cell into different cell lines, so that they don't need
-// reconfiguration in the layout routine, at the cost of more queued cells.
-
 + (ItemCell *)cellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
-    static NSString *cellId = @"itemCellID";
-    ItemCell *cell = (ItemCell *)[tableView dequeueReusableCellWithIdentifier:cellId];
+    ItemCell *cell = idrItem.itemCell;
     if (cell == nil) {
-        cell = [[[ItemCell alloc] init] autorelease];
-        cell.lblContent.backgroundColor = [UIColor clearColor];
-        cell.checkView.backgroundColor = [UIColor clearColor];
+        idrItem.itemCell = [[[ItemCell alloc] init] autorelease];
+        idrItem.itemCell.lblContent.backgroundColor = [UIColor clearColor];
+        idrItem.itemCell.checkView.backgroundColor = [UIColor clearColor];
+        cell = idrItem.itemCell;
     }
+    cell.parentTableView = tableView;
     cell.idrItem = idrItem;
     cell.lblContent.text = [idrItem.content iotaNormalize];
     cell.lblContent.font = (idrItem.isBold) ? [UIFont boldSystemFontOfSize:kBoldFontSize] : [UIFont systemFontOfSize:kNormalFontSize];
@@ -257,12 +261,10 @@ enum eCellContents {
     IDRBlock *block = item.parentBlock;
     NSAssert(block != nil, @"Item has no parent");
     if (item.idrImage != nil) {
-        NSLog(@"Image name: %@", item.idrImage.imageName);
         cell.imageView.image = [item.idrImage image];
         CGSize idrImageSize = [[item.idrImage image] size];
         CGRect newFrame = CGRectMake(0, 0, idrImageSize.width, idrImageSize.height);
         cell.imageView.frame = newFrame;
-        NSLog(@"hi");
     }
     if ([item hasObservation]) {
         IDRObservation *observation = item.observation;
@@ -283,7 +285,6 @@ enum eCellContents {
             }
         }
         if ([item hasGet]) {
-            NSLog(@"hasGet for obs %@", obsDef.name);
             IDRValue *getValue;
             if ([item hasInput]) 
                 getValue = [obsDef valueBeforeContact:contact];
@@ -499,10 +500,6 @@ enum eCellContents {
 #pragma mark Text field delegate
 // -----------------------------------------------------------
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    
-}
-
 - (void)setValue:(NSString *)value {
     [self.idrItem setItemValue:value];
 }
@@ -510,16 +507,11 @@ enum eCellContents {
 // the item should only be enabled for edit if the contact the item belongs
 // to is the same as the current contact according to the context
 - (BOOL)isItemCurrentlyEnabled {
-#ifdef MINIOTA
-    return YES;
-#endif
-#ifdef IOTAMED
     if (!self.isActive)
         return NO;
     IDRContact *currentContact = [[IotaContext getCurrentPatientContext] currentContact];
     IDRContact *itemContact = self.idrItem.parentBlock.contact;
     return (currentContact == itemContact);
-#endif
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
@@ -539,14 +531,8 @@ enum eCellContents {
             return NO;
         }
         else {
-            // need to hang on to the item cell even if the cell has scrolled away from view
-            // and the subviews have been released, else crashes on resignFirstResponder
-            // TODO: I wonder what happens if the system
-            // reuses the cell while I'm still hanging on to it... huh...
-            // IOW, I don't think this is a good solution.
-            [self retain]; 
             return YES;
-        }
+        }   
     }
     @catch (NSException *ex) {
         NSLog(@"*** Exception: %@", ex);
@@ -559,7 +545,6 @@ enum eCellContents {
     NSString *newText = textField.text;
     [self setValue:newText];
     [[NSNotificationCenter defaultCenter] postNotificationName:kObservationDataChangedNotification object:nil];
-    [self release];
 }
 
 // -----------------------------------------------------------
@@ -605,6 +590,7 @@ enum eCellContents {
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
+    [self.parentTableView endEditing:YES];
     if (!self.isActive)
         return;
     
@@ -622,7 +608,7 @@ enum eCellContents {
         return;
     }
         
-    NSLog(@"Eeek! Somebody touched me at tag: %d! for %@", touch.view.tag, self.idrItem.observation.obsDefinition.name);
+//    NSLog(@"Eeek! Somebody touched me at tag: %d! for %@", touch.view.tag, self.idrItem.observation.obsDefinition.name);
     
     switch (touch.view.tag) {
         case TAG_LBLCONTENT:

@@ -87,13 +87,11 @@ static NSString *kTypeKey = @"typeKey";
         self.name = [aDecoder decodeObjectForKey:kNameKey];
         self.values = [aDecoder decodeObjectForKey:kValuesKey];
         self.type = [aDecoder decodeObjectForKey:kTypeKey];
-        NSLog(@"Decoding IDRObsDefinition: %@", self.name);
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    NSLog(@"Encoding IDRObsDefinition: %@", self.name);
     [aCoder encodeObject:self.name forKey:kNameKey];
     [aCoder encodeObject:self.values forKey:kValuesKey];
     [aCoder encodeObject:self.type forKey:kTypeKey];
@@ -130,7 +128,7 @@ static NSString *kTypeKey = @"typeKey";
 }
 
 - (IDRValue *)valueForOrBeforeContact:(IDRContact *)contact {
-    NSLog(@"%@ valueForOrBeforeContact: %@", self.name, date2str(contact.date));
+    //    NSLog(@"%@ valueForOrBeforeContact: %@", self.name, date2str(contact.date));
     IDRValue *value = [self valueForContact:contact];
     if (value == nil)
         value = [self valueBeforeContact:contact];

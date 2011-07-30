@@ -83,7 +83,6 @@
 
 - (void)notificationReceived:(NSNotification *)notification {
     self.navigationItem.title = @"got notification";
-    NSLog(@"Received notification: %@", notification);
 }
 
 @end
