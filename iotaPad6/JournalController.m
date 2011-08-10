@@ -133,6 +133,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     self.jBlocks = nil;
+    [self reload];
     [super viewWillAppear:animated];
 }
 

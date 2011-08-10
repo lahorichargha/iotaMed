@@ -55,8 +55,11 @@
 @property (nonatomic, retain) IDRBlock *idrBlock;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *btnContact;
+@property (nonatomic, retain) IBOutlet UIImageView *imageView;
 
 - (void)refresh;
 - (IBAction)btnContact:(id)sender;
+- (void)settingTableViewFrameForPortrait;
+- (void)settingTableViewFrameForLandscape;
 
 @end

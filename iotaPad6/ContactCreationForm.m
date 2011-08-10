@@ -156,7 +156,7 @@
 // -----------------------------------------------------------
 
 - (NSArray *)chosenObservations {
-    NSMutableArray *result = [[[NSMutableDictionary alloc] initWithCapacity:25] autorelease];
+    NSMutableArray *result = [[[NSMutableArray alloc] initWithCapacity:25] autorelease];
     for (int i = 0; i < [self.selections count]; i++) {
         NSNumber *number = [self.selections objectAtIndex:i];
         if ([number boolValue]) {

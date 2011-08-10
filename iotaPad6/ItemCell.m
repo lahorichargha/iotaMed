@@ -112,7 +112,7 @@ static float kInputHeight = 26.0;
 //static float kPadHeight = 6.0;
 static float kIndentSize = 20.0;
 
-static float kContentTextOffsetFromLeft = 5.0;
+static float kContentTextOffsetFromLeft = 10.0;
 static float kContentTextOffsetFromTop = 3.0;
 //static float kTextViewFontSize = 14.0;
 
@@ -135,7 +135,7 @@ static float kWideRight = 600.0;
 // images
 
 //static float kImageXOffset = 300.0;
-static float kImageXOffsetFromRight = 50.0;
+static float kImageXOffsetFromRight = 40.0;
 static float kImageTopMargin = 8.0;
 static float kImageBottomMargin = 8.0;
 //static float kImageLeftMargin = 12.0;

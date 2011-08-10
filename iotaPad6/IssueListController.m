@@ -152,13 +152,28 @@
     [super viewDidLoad];
     [self loadArrays];
     
-    self.navigationItem.title = NSLocalizedString(@"Issues", @"Title for issue list and popover");
+    UILabel *newTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
+    newTitle.text = @"Issues";
+    newTitle.backgroundColor = [UIColor clearColor];
+    newTitle.textColor = [UIColor whiteColor];
+    UIFont *newFont = [UIFont fontWithName:@"Helvetica" size:20];
+    newTitle.font = newFont;
+    self.navigationItem.titleView = newTitle;
+    [newTitle release];
+    
     UIBarButtonItem *bbiAdd = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addIssue:)];
     self.navigationItem.rightBarButtonItem = bbiAdd;
     [bbiAdd release];
 
+    UITableView *aTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 600) style:UITableViewStyleGrouped];
+    self.tableView = aTableView;
+    [aTableView release];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background2.png"]];
+    self.tableView.backgroundView = image;
+    [image release];
     
     [IotaContext addObserver:self];
     [self registerForNotifications];
@@ -175,7 +190,7 @@
     
 #ifndef SYSteam
     UITabBarItem *tbiCross = [[self.tabBarController.tabBar items] objectAtIndex:2];
-    tbiCross.image = nil;
+    tbiCross.image = [UIImage imageNamed:@"diagnoser.png"];
     tbiCross.title = @"Diagnoser";
 #endif
 }
@@ -404,7 +419,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        cell.textLabel.font = [UIFont systemFontOfSize:18.0];
+        cell.textLabel.font = [UIFont systemFontOfSize:16.0];
+        UIImage *rowImage = [UIImage imageNamed:@"rowImage.png"];
+        cell.imageView.image = rowImage;
     }
 
     IDRBlock *ip = [[self.arrayOfBlockLists objectAtIndex:[indexPath section]] objectAtIndex:[indexPath row]];

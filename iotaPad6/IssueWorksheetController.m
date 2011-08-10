@@ -56,6 +56,7 @@
 @synthesize idrBlock = _idrBlock;
 @synthesize activityIndicator = _activityIndicator;
 @synthesize btnContact = _btnContact;
+@synthesize imageView = _imageView;
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -76,6 +77,7 @@
     self.idrBlock = nil;
     self.activityIndicator = nil;
     self.btnContact = nil;
+    [_imageView release];
     [super dealloc];
 }
 
@@ -101,19 +103,65 @@
 #pragma mark View lifecycle
 // -----------------------------------------------------------
 
+- (void)settingTableViewFrameForPortrait {
+    if (!self.idrBlock) {
+        self.tableView.frame = CGRectMake(0, 44, 768, 911);
+        UIImageView *tableBackg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background5.png"]];
+        self.tableView.backgroundView = tableBackg;
+        [tableBackg release];
+        self.imageView.image = nil;
+    } else {
+        self.tableView.frame = CGRectMake(30, 79, 708, 841);
+        UIImageView *tableBackg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background6.png"]];
+        self.tableView.backgroundView = tableBackg;
+        [tableBackg release];
+        self.imageView.frame = CGRectMake(0, 44, 768, 911);
+        self.imageView.image = [UIImage imageNamed:@"background8.png"];
+    }
+}
+
+- (void)settingTableViewFrameForLandscape {
+    if (!self.idrBlock) {
+        self.tableView.frame = CGRectMake(0, 44, 704, 655);
+        UIImageView *tableBackg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background4.png"]];
+        self.tableView.backgroundView = tableBackg;
+        [tableBackg release];
+        self.imageView.image = nil;
+    } else {
+        self.tableView.frame = CGRectMake(30, 64, 644, 615);
+        UIImageView *tableBackg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background6.png"]];
+        self.tableView.backgroundView = tableBackg;
+        [tableBackg release];
+        self.imageView.frame = CGRectMake(0, 44, 704, 655);
+        self.imageView.image = [UIImage imageNamed:@"background7.png"];
+    }
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [self refresh];
+}
+
 - (void)setTableHeader {
+    if (self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
+        [self settingTableViewFrameForPortrait];
+    } else {
+        [self settingTableViewFrameForLandscape];
+    }
 
     IDRContact *currentContact = [[IotaContext getCurrentPatientContext] currentContact];
     self.btnContact.title = (currentContact) ? [currentContact contactAsHeader] : @"<Inga kontakter>";
     
     if (!self.idrBlock) {
         self.tableView.tableHeaderView = nil;
-        [self.tableView setBackgroundColor:[UIColor whiteColor]];
         return;
     }
-    UIView *thView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 760, 66)] autorelease];
-    UILabel *thLabel = [[[UILabel alloc] initWithFrame:CGRectMake(35, 0, 710, 66)] autorelease];
+    UIView *thView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 760, 120)] autorelease];
+    UIImageView *backround = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"doctor.png"]];
+    [thView addSubview:backround];
+    [backround release];
+    UILabel *thLabel = [[[UILabel alloc] initWithFrame:CGRectMake(140, 20, 620, 66)] autorelease];
     thLabel.backgroundColor = [UIColor clearColor];
+    thLabel.textColor = [UIColor brownColor];
     [thView addSubview:thLabel];
     
     IDRContact *issueWSContact = self.idrBlock.contact;
@@ -132,14 +180,6 @@
         [thView addSubview:imageView];
     }
     self.tableView.tableHeaderView = thView;
-    if ([self.idrBlock blockType] == eBlockTypePatient) {
-        [self.tableView setBackgroundColor:[[ThemeColors themeColors] worksheetBackgroundPatientBlock]];
-    }
-    else {
-        [self.tableView setBackgroundColor:[UIColor whiteColor]];
-    }
-        
-
 }
 
 
@@ -153,6 +193,7 @@
 
 
 - (void)viewDidUnload {
+    [self setImageView:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super viewDidUnload];
 }
@@ -160,6 +201,10 @@
 - (void)refresh {
     [self.tableView reloadData];
     [self setTableHeader];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self refresh];
 }
 
 - (void)obsDataChanged:(NSNotification *)notification {

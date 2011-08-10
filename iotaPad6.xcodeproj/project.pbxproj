@@ -175,6 +175,16 @@
 		AAF9B5541392A78C0049BA69 /* test5.xml in Resources */ = {isa = PBXBuildFile; fileRef = AAF9B5531392A78C0049BA69 /* test5.xml */; };
 		AAFB52BD13E4336B00F9CC59 /* ItemTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB52BC13E4336B00F9CC59 /* ItemTextFieldView.m */; };
 		AAFB52C013E44F6900F9CC59 /* IssueWorksheetTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB52BF13E44F6900F9CC59 /* IssueWorksheetTableView.m */; };
+		EE3A18E813F2D55D00A2A16E /* diagnoser.png in Resources */ = {isa = PBXBuildFile; fileRef = EE3A18E713F2D55D00A2A16E /* diagnoser.png */; };
+		EE4159CD13F291E500199032 /* background2.png in Resources */ = {isa = PBXBuildFile; fileRef = EE4159C513F291E500199032 /* background2.png */; };
+		EE4159CE13F291E500199032 /* background4.png in Resources */ = {isa = PBXBuildFile; fileRef = EE4159C613F291E500199032 /* background4.png */; };
+		EE4159CF13F291E500199032 /* background5.png in Resources */ = {isa = PBXBuildFile; fileRef = EE4159C713F291E500199032 /* background5.png */; };
+		EE4159D013F291E500199032 /* background6.png in Resources */ = {isa = PBXBuildFile; fileRef = EE4159C813F291E500199032 /* background6.png */; };
+		EE4159D113F291E500199032 /* background7.png in Resources */ = {isa = PBXBuildFile; fileRef = EE4159C913F291E500199032 /* background7.png */; };
+		EE4159D213F291E500199032 /* background8.png in Resources */ = {isa = PBXBuildFile; fileRef = EE4159CA13F291E500199032 /* background8.png */; };
+		EE4159D313F291E500199032 /* doctor.png in Resources */ = {isa = PBXBuildFile; fileRef = EE4159CB13F291E500199032 /* doctor.png */; };
+		EE4159D413F291E500199032 /* titlebar_light1.png in Resources */ = {isa = PBXBuildFile; fileRef = EE4159CC13F291E500199032 /* titlebar_light1.png */; };
+		EE4159D613F291FE00199032 /* rowImage.png in Resources */ = {isa = PBXBuildFile; fileRef = EE4159D513F291FE00199032 /* rowImage.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -472,6 +482,16 @@
 		AAFB52BC13E4336B00F9CC59 /* ItemTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTextFieldView.m; sourceTree = "<group>"; };
 		AAFB52BE13E44F6900F9CC59 /* IssueWorksheetTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueWorksheetTableView.h; sourceTree = "<group>"; };
 		AAFB52BF13E44F6900F9CC59 /* IssueWorksheetTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueWorksheetTableView.m; sourceTree = "<group>"; };
+		EE3A18E713F2D55D00A2A16E /* diagnoser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diagnoser.png; sourceTree = "<group>"; };
+		EE4159C513F291E500199032 /* background2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background2.png; sourceTree = "<group>"; };
+		EE4159C613F291E500199032 /* background4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background4.png; sourceTree = "<group>"; };
+		EE4159C713F291E500199032 /* background5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background5.png; sourceTree = "<group>"; };
+		EE4159C813F291E500199032 /* background6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background6.png; sourceTree = "<group>"; };
+		EE4159C913F291E500199032 /* background7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background7.png; sourceTree = "<group>"; };
+		EE4159CA13F291E500199032 /* background8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background8.png; sourceTree = "<group>"; };
+		EE4159CB13F291E500199032 /* doctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doctor.png; sourceTree = "<group>"; };
+		EE4159CC13F291E500199032 /* titlebar_light1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titlebar_light1.png; sourceTree = "<group>"; };
+		EE4159D513F291FE00199032 /* rowImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rowImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -903,6 +923,8 @@
 				AA94FC201333E5A70065DC19 /* Icon.png */,
 				AA94FC211333E5A70065DC19 /* Icon@2x.png */,
 				AA94FC221333E5A70065DC19 /* iotaAppIcon.opacity */,
+				EE4159D513F291FE00199032 /* rowImage.png */,
+				EE3A18E713F2D55D00A2A16E /* diagnoser.png */,
 			);
 			path = opacity;
 			sourceTree = "<group>";
@@ -933,6 +955,14 @@
 				AA9B47CB1323915600C96675 /* backg3.png */,
 				AA94FC0313327B250065DC19 /* SYSteam_EDB_webpage.jpg */,
 				AA94FC0513327C3D0065DC19 /* systeam.png */,
+				EE4159C513F291E500199032 /* background2.png */,
+				EE4159C613F291E500199032 /* background4.png */,
+				EE4159C713F291E500199032 /* background5.png */,
+				EE4159C813F291E500199032 /* background6.png */,
+				EE4159C913F291E500199032 /* background7.png */,
+				EE4159CA13F291E500199032 /* background8.png */,
+				EE4159CB13F291E500199032 /* doctor.png */,
+				EE4159CC13F291E500199032 /* titlebar_light1.png */,
 			);
 			path = background;
 			sourceTree = "<group>";
@@ -1039,6 +1069,7 @@
 		AA63B5F113055E350035A49C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = "MITM AB";
 			};
 			buildConfigurationList = AA63B5F413055E350035A49C /* Build configuration list for PBXProject "iotaPad6" */;
@@ -1165,6 +1196,16 @@
 				AAECB6C71381601C00EAB251 /* InboxMyIotaForm.xib in Resources */,
 				AAF9B5541392A78C0049BA69 /* test5.xml in Resources */,
 				AAC0398013DC6010008F38C3 /* PatientController.xib in Resources */,
+				EE4159CD13F291E500199032 /* background2.png in Resources */,
+				EE4159CE13F291E500199032 /* background4.png in Resources */,
+				EE4159CF13F291E500199032 /* background5.png in Resources */,
+				EE4159D013F291E500199032 /* background6.png in Resources */,
+				EE4159D113F291E500199032 /* background7.png in Resources */,
+				EE4159D213F291E500199032 /* background8.png in Resources */,
+				EE4159D313F291E500199032 /* doctor.png in Resources */,
+				EE4159D413F291E500199032 /* titlebar_light1.png in Resources */,
+				EE4159D613F291FE00199032 /* rowImage.png in Resources */,
+				EE3A18E813F2D55D00A2A16E /* diagnoser.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1382,6 +1423,7 @@
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = IOTAMED;
 				INFOPLIST_FILE = "iotaPad6/iotaPad6-Info.plist";
 				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/iotaShared-eklfomehickbklcxeappepdtcpwu/Build/Products/Debug-iphoneos\"",
@@ -1404,6 +1446,7 @@
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = IOTAMED;
 				INFOPLIST_FILE = "iotaPad6/iotaPad6-Info.plist";
 				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/iotaShared-eklfomehickbklcxeappepdtcpwu/Build/Products/Debug-iphoneos\"",

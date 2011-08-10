@@ -151,9 +151,9 @@
     
     // reduce size of table view
     if (UIInterfaceOrientationIsPortrait(orientation))
-        frame.size.height -= keyboardBounds.size.height;
+        frame.size.height -= keyboardBounds.size.height - 70;
     else
-        frame.size.height -= keyboardBounds.size.width;
+        frame.size.height -= keyboardBounds.size.width - 55;
     
     // apply new size
     self.viewToShrink.frame = frame;

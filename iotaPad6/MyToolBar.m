@@ -54,7 +54,7 @@
 
 - (void)drawRect:(CGRect)rect {
     UIImage *image;
-    image = [UIImage imageNamed:@"titlebar_light.png"];
+    image = [UIImage imageNamed:@"titlebar_light1.png"];
     [image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
 }
 
