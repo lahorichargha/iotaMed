@@ -149,16 +149,16 @@
 					</object>
 					<object class="IBUIActivityIndicatorView" id="842912033">
 						<reference key="NSNextResponder" ref="766721923"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{374, 460}, {20, 20}}</string>
+						<int key="NSvFlags">301</int>
+						<string key="NSFrame">{{366, 451}, {37, 37}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="759436829"/>
 						<string key="NSReuseIdentifierKey">_NS:1012</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<bool key="IBUIHidesWhenStopped">NO</bool>
-						<int key="IBUIStyle">2</int>
+						<bool key="IBUIAnimating">YES</bool>
+						<int key="IBUIStyle">0</int>
 					</object>
 				</object>
 				<string key="NSFrame">{{0, 20}, {768, 1004}}</string>

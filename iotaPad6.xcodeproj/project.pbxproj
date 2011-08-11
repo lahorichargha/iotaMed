@@ -125,6 +125,7 @@
 		AA9B47FD1323F01A00C96675 /* titlebar_light.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B47FC1323F01A00C96675 /* titlebar_light.png */; };
 		AA9B47FF1323F25500C96675 /* atc.xml in Resources */ = {isa = PBXBuildFile; fileRef = AA9B47FE1323F25500C96675 /* atc.xml */; };
 		AA9B480213244C5300C96675 /* IDRDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9B480113244C4A00C96675 /* IDRDescription.m */; };
+		AA9CD3EA13F453BE00DA80D7 /* UIImage+HackyBugfix.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9CD3E913F453BE00DA80D7 /* UIImage+HackyBugfix.m */; };
 		AAA9EEED1320FC8F00D36C54 /* IssueTemplateBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA9EEEB1320FC8300D36C54 /* IssueTemplateBlockViewController.m */; };
 		AAA9EEEE1320FC8F00D36C54 /* IssueTemplateBlockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAA9EEEC1320FC8800D36C54 /* IssueTemplateBlockViewController.xib */; };
 		AAA9EF0213210AAF00D36C54 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA9EF0013210A9A00D36C54 /* ItemCell.m */; };
@@ -407,6 +408,8 @@
 		AA9B47FE1323F25500C96675 /* atc.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = atc.xml; sourceTree = "<group>"; };
 		AA9B480013244C4600C96675 /* IDRDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRDescription.h; sourceTree = "<group>"; };
 		AA9B480113244C4A00C96675 /* IDRDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRDescription.m; sourceTree = "<group>"; };
+		AA9CD3E813F453BE00DA80D7 /* UIImage+HackyBugfix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HackyBugfix.h"; sourceTree = "<group>"; };
+		AA9CD3E913F453BE00DA80D7 /* UIImage+HackyBugfix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HackyBugfix.m"; sourceTree = "<group>"; };
 		AAA9EEE81320F0F300D36C54 /* DebugDump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugDump.h; sourceTree = "<group>"; };
 		AAA9EEEA1320FC8100D36C54 /* IssueTemplateBlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueTemplateBlockViewController.h; sourceTree = "<group>"; };
 		AAA9EEEB1320FC8300D36C54 /* IssueTemplateBlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IssueTemplateBlockViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -999,6 +1002,8 @@
 				AAC2FC28130BFC8D009E8384 /* PatientListController.h */,
 				AAC2FC29130BFC8D009E8384 /* PatientListController.m */,
 				AAC2FC2A130BFC8D009E8384 /* PatientListController.xib */,
+				AA9CD3E813F453BE00DA80D7 /* UIImage+HackyBugfix.h */,
+				AA9CD3E913F453BE00DA80D7 /* UIImage+HackyBugfix.m */,
 				AA1603791375B4B800D03EE6 /* ServerListener.h */,
 				AA16037A1375B4B800D03EE6 /* ServerListener.m */,
 				AAC0397C13DC6010008F38C3 /* PatientController.h */,
@@ -1322,6 +1327,7 @@
 				AAC0397F13DC6010008F38C3 /* PatientController.m in Sources */,
 				AAFB52BD13E4336B00F9CC59 /* ItemTextFieldView.m in Sources */,
 				AAFB52C013E44F6900F9CC59 /* IssueWorksheetTableView.m in Sources */,
+				AA9CD3EA13F453BE00DA80D7 /* UIImage+HackyBugfix.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
