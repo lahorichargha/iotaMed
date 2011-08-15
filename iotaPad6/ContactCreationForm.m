@@ -116,7 +116,6 @@
     // Do any additional setup after loading the view from its nib.
     self.datePicker.date = [NSDate date];
     self.timePicker.date = [NSDate date];
-    self.datePicker.locale = [NSLocale currentLocale]; 
     self.datePicker.datePickerMode = UIDatePickerModeDate;
     self.timePicker.datePickerMode = UIDatePickerModeTime;
 

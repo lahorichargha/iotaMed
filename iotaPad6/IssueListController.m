@@ -222,6 +222,8 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // makes sure the issue list uses our own background in the navbar
+    [self.navigationController.navigationBar setNeedsDisplay];
     // Return YES for supported orientations
 	return YES;
 }
