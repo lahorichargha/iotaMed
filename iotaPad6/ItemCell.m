@@ -61,7 +61,6 @@
 #import "IDRObservation.h"
 #import "IDRObsDefinition.h"
 #import "IDRValue.h"
-#import "IDRItem.h"
 #import "IDRImage.h"
 #import "IDRAction.h"
 #import "NSString+iotaAdditions.h"

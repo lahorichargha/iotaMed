@@ -7,7 +7,7 @@
 //
 
 #import "IDRImage.h"
-
+#import "SVGView.h"
 
 @implementation IDRImage
 
@@ -15,6 +15,7 @@ static NSString *kImageNameKey = @"imageNameKey";
 
 
 @synthesize imageName = _imageName;
+@synthesize imageType = _imageType;
 
 - (void)dealloc {
     self.imageName = nil;
@@ -38,12 +39,26 @@ static NSString *kImageNameKey = @"imageNameKey";
     return copy;
 }
 
+- (SVGView *)view {
+    if ([self.imageType isEqualToString:@"svg"]) {
+        return [SVGView viewWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.imageName ofType:@"svg"]];
+    }
+    else
+        return nil;
+}
+
 - (UIImage *)image {
-    return [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.imageName ofType:@"png"]];
+    if ([self.imageType isEqualToString:@"svg"]) {
+        return nil;
+    }
+    else {
+        return [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.imageName ofType:@"png"]];
+    }
 }
 
 - (void)takeAttributes:(NSDictionary *)attribs {
     self.imageName = [attribs valueForKey:@"imagename"];
+    self.imageType = [attribs valueForKey:@"imagetype"];
 }
 
 @end
