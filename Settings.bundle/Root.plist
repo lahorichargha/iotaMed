@@ -6,14 +6,6 @@
 	<array>
 		<dict>
 			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-			<key>Title</key>
-			<string>Legal stuff</string>
-			<key>File</key>
-			<string>Aboutx</string>
-		</dict>
-		<dict>
-			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
 			<string>Patients type</string>
@@ -104,9 +96,17 @@
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>Demo settings</string>
+			<string>Miscellaneous</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+			<key>Title</key>
+			<string>Legal stuff</string>
+			<key>File</key>
+			<string>About</string>
 		</dict>
 	</array>
 	<key>StringsTable</key>
