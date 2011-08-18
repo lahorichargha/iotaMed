@@ -158,7 +158,6 @@
     UIView *thView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 760, 120)] autorelease];
     UIImageView *backround = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"doctor.png"]];
     [thView addSubview:backround];
-    [backround release];
     UILabel *thLabel = [[[UILabel alloc] initWithFrame:CGRectMake(140, 20, 620, 66)] autorelease];
     thLabel.backgroundColor = [UIColor clearColor];
     thLabel.textColor = [UIColor brownColor];
@@ -180,6 +179,11 @@
         [thView addSubview:imageView];
     }
     self.tableView.tableHeaderView = thView;
+    if ([self.idrBlock blockType] == eBlockTypePatient) {
+        [self.tableView setBackgroundColor:[[ThemeColors themeColors] worksheetBackgroundPatientBlock]];
+        backround.image = nil;
+    }
+    [backround release];
 }
 
 
