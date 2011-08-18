@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<template type="issue" title="Frågeformulär" fromICD10="E19" toICD10="E20" lang="SE" templateUuid="2D7718F9-8110-496C-96AA-725844A43D7F">
+    <description type="template">Denna mall är avsedd för multiple choice.</description>
+    <block type="initial" repeats="no" title="En musik rundfråga." templateUuid="5C92277E-BA73-42EE-95F5-8613022DD3C8">
+        <description type="template">Följande frågor rör din favorit musik.</description>
+        <item bold="yes" indentlevel="0">Är du en musikälskare?</item>
+        <item bold="no" indentlevel="0">Lyssnar du ibland på musik?<observation name="Music" type="check" direction="getput"/></item>
+        <item bold="no" indentlevel="0">Om ja, vilken typ av musik föredrar du?
+            <observation name="Ankieta" type="select" direction="getput">
+                <select value="R">Rock</select>
+                <select value="M">Metal</select>
+                <select value="J">Jazz</select>
+            </observation>
+        </item>
+        <item bold="no" indentlevel="0">Har du favoritartister?<observation name="Stars" type="check" direction="getput"/></item>
+        <item bold="no" indentlevel="0">Vilka?
+            <observation name="Ankieta2" type="select" direction="getput">
+                <select value="JH">Jimmy Hendrix</select>
+                <select value="EC">Eric Clapton</select>
+                <select value="LG">Lady Gaga</select>
+            </observation>
+        </item>
+    </block>
+</template>

@@ -36,6 +36,7 @@
 #import "NSString+iotaAdditions.h"
 #import "IotaContext.h"
 #import "PatientContext.h"
+#import "IDRSelect.h"
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -53,6 +54,8 @@ static NSString *kDirectionGetPut = @"getput";
 @synthesize direction = _direction;
 @synthesize obsDefinition = _obsDefinition;
 @synthesize options = _options;
+@synthesize selects = _selects;
+
 
 - (void)dealloc {
     self.name = nil;
@@ -60,6 +63,7 @@ static NSString *kDirectionGetPut = @"getput";
     self.direction = nil;
     self.obsDefinition = nil;
     self.options = nil;
+    self.selects = nil;
     [super dealloc];
 }
 
@@ -88,6 +92,7 @@ static NSString *kTypeKey = @"typeKey";
 static NSString *kDirectionKey = @"directionKey";
 static NSString *kObsDefinitionKey = @"obsDefinitionKey";
 static NSString *kOptionsKey = @"optionsKey";
+static NSString *kSelectsKey = @"selectsKey";
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super init])) {
@@ -96,6 +101,7 @@ static NSString *kOptionsKey = @"optionsKey";
         self.direction = [aDecoder decodeObjectForKey:kDirectionKey];
         self.obsDefinition = [aDecoder decodeObjectForKey:kObsDefinitionKey];
         self.options = [aDecoder decodeObjectForKey:kOptionsKey];
+        self.selects = [aDecoder decodeObjectForKey:kSelectsKey];
     }
     return self;
 }
@@ -106,6 +112,7 @@ static NSString *kOptionsKey = @"optionsKey";
     [aCoder encodeObject:self.direction forKey:kDirectionKey];
     [aCoder encodeObject:self.obsDefinition forKey:kObsDefinitionKey];
     [aCoder encodeObject:self.options forKey:kOptionsKey];
+    [aCoder encodeObject:self.selects forKey:kSelectsKey];
 }
 
 // when copying, don't copy the obsdefinition pointer, since the definition remains the same
@@ -116,6 +123,7 @@ static NSString *kOptionsKey = @"optionsKey";
     copy.type = [[self.type copyWithZone:zone] autorelease];
     copy.direction = [[self.direction copyWithZone:zone] autorelease];
     copy.obsDefinition = self.obsDefinition;
+    
     
     // TODO: think about options, shouldn't they actually be in obsDefinition instead?
     copy.options = [[self.options copyWithZone:zone] autorelease];
@@ -155,6 +163,9 @@ static NSString *kOptionsKey = @"optionsKey";
     return ([self.type isEqualToString:@"check"]);
 }
 
+- (BOOL)isSelect {
+    return ([self.type isEqualToString:@"select"]);
+}
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -166,5 +177,11 @@ static NSString *kOptionsKey = @"optionsKey";
     [self.obsDefinition dumpWithIndent:indent + 4];
 }
 
+- (void)addSelect:(IDRSelect *)select {
+    if (_selects == nil) {
+        _selects = [[NSMutableArray alloc] initWithCapacity:5];
+    }
+    [_selects addObject:select];
+}
 
 @end

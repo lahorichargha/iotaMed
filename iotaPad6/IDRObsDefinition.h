@@ -45,6 +45,7 @@
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, readonly) BOOL isNumeric;       // else it's a string
 @property (nonatomic, readonly) BOOL isCheck;
+@property (nonatomic, readonly) BOOL isSelect;
 @property (nonatomic, retain) NSString *type;
 @property (nonatomic, retain) NSMutableArray *values;
 

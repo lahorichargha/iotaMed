@@ -51,6 +51,7 @@
 @property (nonatomic, retain) UIImageView *itemImageView;
 @property (nonatomic, retain) BulletView *bulletView;
 @property (nonatomic, retain) UILabel *checkView;
+@property (nonatomic, retain) UIButton *selectButton;
 @property (nonatomic, retain) id <ItemCellDelegate> itemCellDelegate;
 
 + (ItemCell *)cellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;

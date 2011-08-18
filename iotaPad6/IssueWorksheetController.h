@@ -33,6 +33,7 @@
 
 @class IDRWorksheet;
 @class IDRBlock;
+//@class IssueItemSelectViewController;
 
 #import <UIKit/UIKit.h>
 #import "DetailViewControllerWithToolbar.h"
@@ -42,11 +43,12 @@
 #import "PrescriptionController.h"
 #import "ReferralControllerDelegate.h"
 
-@interface IssueWorksheetController : DetailViewControllerWithToolbar <UITableViewDelegate, UITableViewDataSource, 
+@interface IssueWorksheetController : DetailViewControllerWithToolbar <UITableViewDelegate, UITableViewDataSource, UIPopoverControllerDelegate, 
     ItemCellDelegate, 
     LabOrderControllerDelegate, 
     PrescriptionControllerDelegate,
     ReferralControllerDelegate> {
+//        IssueItemSelectViewController *selectListController;
 }
 
 
@@ -56,10 +58,12 @@
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *btnContact;
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
+@property (nonatomic, retain) UIPopoverController *selectPopoverController;
 
 - (void)refresh;
 - (IBAction)btnContact:(id)sender;
 - (void)settingTableViewFrameForPortrait;
 - (void)settingTableViewFrameForLandscape;
+- (IBAction)selectButtonAction:(id)sender;
 
 @end

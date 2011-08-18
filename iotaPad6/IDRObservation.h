@@ -36,6 +36,7 @@
 
 @class IDRObsDefinition;
 //@class IDRContact;
+@class IDRSelect;
 
 @interface IDRObservation : NSObject <IDRAttribs, NSCoding, NSCopying> {
     
@@ -48,15 +49,18 @@
 
 @property (nonatomic, readonly) BOOL isNumeric;       // else it's a string
 @property (nonatomic, readonly) BOOL isCheck;
+@property (nonatomic, readonly) BOOL isSelect;
 
 @property (nonatomic, retain) NSString *direction;
 @property (nonatomic, retain) IDRObsDefinition *obsDefinition;
 @property (nonatomic, retain) NSMutableArray *options;      // used for 'select'
+@property (nonatomic, retain) NSMutableArray *selects;
 
 - (BOOL)hasGet;
 - (BOOL)hasPut;
 - (BOOL)hasGetPut;
 
 - (void)dumpWithIndent:(NSUInteger)indent;
+- (void)addSelect:(IDRSelect *)select;
 
 @end

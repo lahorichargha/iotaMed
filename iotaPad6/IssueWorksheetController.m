@@ -48,6 +48,9 @@
 #import "Funcs.h"
 #import "ThemeColors.h"
 #import "ContactSelectOrCreateForm.h"
+#import "IssueItemSelectViewController.h"
+#import "IDRObservation.h"
+#import "IDRSelect.h"
 
 @implementation IssueWorksheetController
 
@@ -57,6 +60,7 @@
 @synthesize activityIndicator = _activityIndicator;
 @synthesize btnContact = _btnContact;
 @synthesize imageView = _imageView;
+@synthesize selectPopoverController = _selectPopoverController;
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -78,6 +82,7 @@
     self.activityIndicator = nil;
     self.btnContact = nil;
     [_imageView release];
+    [_selectPopoverController release];
     [super dealloc];
 }
 
@@ -198,6 +203,7 @@
 
 - (void)viewDidUnload {
     [self setImageView:nil];
+    [self setSelectPopoverController:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super viewDidUnload];
 }
@@ -313,6 +319,11 @@
     return [ItemCellIssue cellHeightForTableView:tableView idrItem:[self.idrBlock.items objectAtIndex:[indexPath row]]];
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    ItemCellIssue *myCell = (ItemCellIssue *)cell;
+    [myCell.selectButton addTarget:self action:@selector(selectButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 }
@@ -354,6 +365,24 @@
     if (![okOrCreate boolValue])
         return;
     [self refresh];
+}
+
+- (IBAction)selectButtonAction:(id)sender {
+    UIView *v = (UIView *)sender;
+    ItemCell *cell = (ItemCell *)v.superview.superview;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(ItemCellIssue *) cell];
+    
+    IDRItem *item = [self.idrBlock.items objectAtIndex:[indexPath row]];
+    
+    IssueItemSelectViewController *selectListController = [[IssueItemSelectViewController alloc] init];
+    selectListController.idrItem = item;
+    
+    UIPopoverController *poc = [[UIPopoverController alloc] initWithContentViewController:selectListController];
+    
+    [poc presentPopoverFromRect:v.frame inView:v.superview permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
+    self.selectPopoverController = poc;
+    [poc release];
+    [selectListController release];
 }
 
 @end

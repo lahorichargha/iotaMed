@@ -40,6 +40,7 @@
 #import "IDRImage.h"
 #import "IDRTest.h"
 #import "IDRDose.h"
+#import "IDRSelect.h"
 #import "IDRDescription.h"
 #import "IotaContext.h"
 #import "PatientContext.h"
@@ -259,6 +260,18 @@
         }
         else {
             [self fatalError:[NSString stringWithFormat:@"Could not add dose to top of stack element: %@", [tos class]] parser:self.parser];
+            return;
+        }
+    }
+    
+    else if ([elementName isEqualToString:@"select"]) {
+        newElement = [[[IDRSelect alloc] init] autorelease];
+        id tos = [self topOfStackElement];
+        if ([tos respondsToSelector:@selector(addSelect:)]) {
+            [tos performSelector:@selector(addSelect:) withObject:newElement];
+        }
+        else {
+            [self fatalError:[NSString stringWithFormat:@"Could not add select to top of stack element: %@", [tos class]] parser:self.parser];
             return;
         }
     }

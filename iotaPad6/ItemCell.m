@@ -75,13 +75,14 @@
 #import "ThemeColors.h"
 //#import "ItemTextFieldView.h"
 
-#define TAG_LBLCONTENT  1001
-#define TAG_TEXTFIELD   1002
-#define TAG_LBLVALUE    1003
-#define TAG_LBLDATE     1004
-#define TAG_IMAGE       1005
-#define TAG_BULLET      1006
-#define TAG_CHECKVIEW   1007
+#define TAG_LBLCONTENT     1001
+#define TAG_TEXTFIELD      1002
+#define TAG_LBLVALUE       1003
+#define TAG_LBLDATE        1004
+#define TAG_IMAGE          1005
+#define TAG_BULLET         1006
+#define TAG_CHECKVIEW      1007
+#define TAG_SELECTBUTTON   1008
 
 static float kNormalFontSize = 14.0;
 static float kBoldFontSize = 18.0;
@@ -120,7 +121,7 @@ static float kContentTextOffsetFromTop = 3.0;
 // the width depends on right margin *and* indent
 static float kNarrowRight = 200.0;
 static float kMediumNarrowRight = 300.0;
-static float kMediumWideRight = 400.0;
+static float kMediumWideRight = 385.0;
 static float kWideRight = 600.0;
 
 //static float kMinimumCellHeight = 32.0; is now settable in user defaults
@@ -151,7 +152,8 @@ enum eCellContents {
     ecTextWithGetAndPutNumeric,
     ecTextWithGetAndPutString,
     ecTextWithGetAndPutCheck,
-    ecTextWithImage
+    ecTextWithImage,
+    ecTextWithGetAndPutSelect
 };
 
 @interface ItemCell()
@@ -176,6 +178,7 @@ enum eCellContents {
 @synthesize checkView = _checkView;
 @synthesize itemCellDelegate = _itemCellDelegate;
 @synthesize parentTableView = _parentTableView;
+@synthesize selectButton = _selectButton;
 
 - (UIView *)viewOfClass:(Class)cls frame:(CGRect)frame tag:(NSUInteger)tag {
     UIView *view = [[cls alloc] initWithFrame:frame];
@@ -222,6 +225,8 @@ enum eCellContents {
         
         self.checkView = (UILabel *)[self viewOfClass:[UILabel class] frame:defaultRect tag:TAG_CHECKVIEW];
         self.checkView.userInteractionEnabled = YES;
+        
+        self.selectButton = (UIButton *)[self viewOfClass:[UIButton class] frame:defaultRect tag:TAG_SELECTBUTTON];
     }
     return self;
 }
@@ -236,6 +241,7 @@ enum eCellContents {
     self.bulletView = nil;
     self.checkView = nil;
     self.itemCellDelegate = nil;
+    self.selectButton = nil;
     [super dealloc];
 }
 
@@ -280,6 +286,14 @@ enum eCellContents {
                 else
                     cell.checkView.text = @"?";
             }
+            else if ([item.observation isSelect]) {
+                UIImage *buttonUpImage = [UIImage imageNamed:@"button_up.png"];
+                UIImage *buttonDownImage = [UIImage imageNamed:@"button_down.png"];
+                [cell.selectButton setBackgroundImage:buttonUpImage
+                                             forState:UIControlStateNormal];
+                [cell.selectButton setBackgroundImage:buttonDownImage
+                                             forState:UIControlStateHighlighted];
+            }
             else {
                 cell.textField.text = value.value;
             }
@@ -315,6 +329,8 @@ enum eCellContents {
         return ecTextWithGetAndPutNumeric;
     if ([idrItem.observation isCheck])
         return ecTextWithGetAndPutCheck;
+    if ([idrItem.observation isSelect])
+        return ecTextWithGetAndPutSelect;
     return ecTextWithGetAndPutString;
 }
 
@@ -331,6 +347,8 @@ enum eCellContents {
         case ecTextWithImage:
             return kMediumWideRight;
         case ecTextWithGetAndPutCheck:
+            return kMediumWideRight;
+        case ecTextWithGetAndPutSelect: 
             return kMediumWideRight;
         default:
             return kNarrowRight;
@@ -420,6 +438,7 @@ enum eCellContents {
             self.lblDate.hidden = YES;
             self.itemImageView.hidden = NO;
             self.checkView.hidden = YES;
+            self.selectButton.hidden = YES;
             break;
         case ecPureText:
             self.textField.hidden = YES;
@@ -427,6 +446,7 @@ enum eCellContents {
             self.lblDate.hidden = YES;
             self.itemImageView.hidden = YES;
             self.checkView.hidden = YES;
+            self.selectButton.hidden = YES;
             break;
         case ecTextWithGet:
             self.textField.hidden = YES;
@@ -434,6 +454,7 @@ enum eCellContents {
             self.lblDate.hidden = NO;
             self.itemImageView.hidden = YES;
             self.checkView.hidden = YES;
+            self.selectButton.hidden = YES;
             break;
         case ecTextWithGetAndPutNumeric:
             self.textField.hidden = NO;
@@ -443,6 +464,7 @@ enum eCellContents {
             self.lblDate.hidden = NO;
             self.itemImageView.hidden = YES;
             self.checkView.hidden = YES;
+            self.selectButton.hidden = YES;
             break;
         case ecTextWithGetAndPutString:
             self.textField.hidden = NO;
@@ -452,6 +474,7 @@ enum eCellContents {
             self.lblDate.hidden = NO;
             self.itemImageView.hidden = YES;
             self.checkView.hidden = YES;
+            self.selectButton.hidden = YES;
             break;
         case ecTextWithGetAndPutCheck:
             self.textField.hidden = YES;
@@ -459,6 +482,15 @@ enum eCellContents {
             self.lblDate.hidden = NO;
             self.itemImageView.hidden = YES;
             self.checkView.hidden = NO;
+            self.selectButton.hidden = YES;
+            break;
+        case ecTextWithGetAndPutSelect:
+            self.textField.hidden = YES;
+            self.lblValue.hidden = NO;
+            self.lblDate.hidden = NO;
+            self.itemImageView.hidden = YES;
+            self.checkView.hidden = YES;
+            self.selectButton.hidden = NO;
             break;
         default:
             break;
@@ -469,6 +501,7 @@ enum eCellContents {
         self.lblDate.hidden = YES;
         self.checkView.hidden = YES;
         self.textField.hidden = YES;
+        self.selectButton.hidden = YES;
     }
 
     [self slideViewToX:contentLeftMargin rightMargin:contentRightMargin view:self.lblContent];
@@ -493,6 +526,7 @@ enum eCellContents {
         CGSize imageSize = [self.idrItem.idrImage image].size;
         self.imageView.frame = CGRectMake(currentWidth - kImageXOffsetFromRight - imageSize.width, 0, imageSize.width, imageSize.height);
     }
+    self.selectButton.frame = CGRectMake(currentWidth - kInputOffsetRightEndFromRight - kCheckViewWidth, kInputOffsetFromTop, 40, 21);
 }
 
 // -----------------------------------------------------------

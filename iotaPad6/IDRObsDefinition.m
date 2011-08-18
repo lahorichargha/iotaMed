@@ -56,6 +56,7 @@
 @synthesize name = _name;
 @synthesize isNumeric = _isNumeric;
 @synthesize isCheck = _isCheck;
+@synthesize isSelect = _isSelect;
 @synthesize values = _values;
 @synthesize type = _type;
 
@@ -109,6 +110,10 @@ static NSString *kTypeKey = @"typeKey";
 
 - (BOOL)isCheck {
     return ([self.type isEqualToString:@"check"]);
+}
+
+- (BOOL)isSelect {
+    return ([self.type isEqualToString:@"select"]);
 }
 
 - (void)valueAdd:(IDRValue *)value {
