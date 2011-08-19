@@ -16,8 +16,27 @@
         <item bold="no" indentlevel="0">Vilka?
             <observation name="Ankieta2" type="select" direction="getput">
                 <select value="JH">Jimmy Hendrix</select>
+                <select value="JS">Joe Satriani</select>
                 <select value="EC">Eric Clapton</select>
                 <select value="LG">Lady Gaga</select>
+                <select value="PF">Pink Floyd</select>
+                <select value="PT">Porcupine Tree</select>
+                <select value="CS">CarlosSantana</select>
+            </observation>
+        </item>
+        <item bold="no" indentlevel="0">11
+            <observation name="Ankieta3" type="select" direction="getput">
+                <select value="1">1</select>
+                <select value="2">2</select>
+                <select value="3">3</select>
+                <select value="4">4</select>
+                <select value="5">5</select>
+                <select value="6">6</select>
+                <select value="7">7</select>
+                <select value="8">8</select>
+                <select value="9">9</select>
+                <select value="10">10</select>
+                <select value="11">11</select>
             </observation>
         </item>
     </block>

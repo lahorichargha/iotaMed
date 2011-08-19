@@ -34,9 +34,9 @@
 #import <UIKit/UIKit.h>
 #import "ItemCellDelegate.h"
 
-
 @class IDRItem;
 @class BulletView;
+
 
 @interface ItemCell : UITableViewCell <UITextFieldDelegate> {
     
@@ -52,6 +52,7 @@
 @property (nonatomic, retain) BulletView *bulletView;
 @property (nonatomic, retain) UILabel *checkView;
 @property (nonatomic, retain) UIButton *selectButton;
+@property (nonatomic, retain) UILabel *selectLable;
 @property (nonatomic, retain) id <ItemCellDelegate> itemCellDelegate;
 
 + (ItemCell *)cellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;

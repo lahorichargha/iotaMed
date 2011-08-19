@@ -48,7 +48,7 @@
 #import "Funcs.h"
 #import "ThemeColors.h"
 #import "ContactSelectOrCreateForm.h"
-#import "IssueItemSelectViewController.h"
+//#import "IssueItemSelectViewController.h"
 #import "IDRObservation.h"
 #import "IDRSelect.h"
 
@@ -61,6 +61,9 @@
 @synthesize btnContact = _btnContact;
 @synthesize imageView = _imageView;
 @synthesize selectPopoverController = _selectPopoverController;
+@synthesize issueItemSelect = _issueItemSelect;
+@synthesize selectedText = _selectedText;
+@synthesize ipForCell = _ipForCell;
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -71,6 +74,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.selectedText = @"Text";
     }
     return self;
 }
@@ -83,6 +87,9 @@
     self.btnContact = nil;
     [_imageView release];
     [_selectPopoverController release];
+    [_issueItemSelect release];
+    [_selectedText release];
+    [_ipForCell release];
     [super dealloc];
 }
 
@@ -204,6 +211,8 @@
 - (void)viewDidUnload {
     [self setImageView:nil];
     [self setSelectPopoverController:nil];
+    [self setIssueItemSelect:nil];
+    [self setSelectedText:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super viewDidUnload];
 }
@@ -367,22 +376,37 @@
     [self refresh];
 }
 
+#pragma mark - IssueItemSelectViewDelegate 
+
+- (void)changeSelectLable:(NSString *)text {
+    self.selectedText = text;
+    UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:self.ipForCell];
+    ItemCell *myCell = (ItemCell *)cell;
+    myCell.selectLable.text = self.selectedText;
+}
+
 - (IBAction)selectButtonAction:(id)sender {
     UIView *v = (UIView *)sender;
     ItemCell *cell = (ItemCell *)v.superview.superview;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:(ItemCellIssue *) cell];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    self.ipForCell = indexPath;
     
     IDRItem *item = [self.idrBlock.items objectAtIndex:[indexPath row]];
     
     IssueItemSelectViewController *selectListController = [[IssueItemSelectViewController alloc] init];
     selectListController.idrItem = item;
-    
-    UIPopoverController *poc = [[UIPopoverController alloc] initWithContentViewController:selectListController];
-    
-    [poc presentPopoverFromRect:v.frame inView:v.superview permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
-    self.selectPopoverController = poc;
-    [poc release];
+    self.issueItemSelect = selectListController;
+    self.issueItemSelect.itemSelectDelegate = self;
     [selectListController release];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.issueItemSelect];
+    
+    UIPopoverController *poc = [[UIPopoverController alloc] initWithContentViewController:navigationController];
+    self.selectPopoverController = poc;
+    [self.selectPopoverController presentPopoverFromRect:v.frame inView:v.superview permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
+    [poc release];
+    [navigationController release];
 }
 
 @end

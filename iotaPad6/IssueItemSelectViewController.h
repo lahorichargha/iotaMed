@@ -9,8 +9,16 @@
 #import <Foundation/Foundation.h>
 @class IDRItem;
 
-@interface IssueItemSelectViewController : UITableViewController
+@protocol IssueItemSelectViewDelegate <NSObject>
+
+- (void)changeSelectLable:(NSString *)text;
+
+@end
+
+@interface IssueItemSelectViewController : UITableViewController 
 
 @property (nonatomic, retain) IDRItem *idrItem;
+@property (nonatomic, retain) NSIndexPath *lastIndexPath;
+@property (nonatomic, assign) id<IssueItemSelectViewDelegate> itemSelectDelegate;
 
 @end

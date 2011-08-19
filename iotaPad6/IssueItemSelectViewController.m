@@ -11,9 +11,13 @@
 #import "IDRObservation.h"
 #import "IDRSelect.h"
 
+static CGFloat kTableViewRowHeight = 40.0;
+
 @implementation IssueItemSelectViewController
 
 @synthesize idrItem = _idrItem;
+@synthesize lastIndexPath = _lastIndexPath;
+@synthesize itemSelectDelegate = _itemSelectDelegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -26,6 +30,9 @@
 
 - (void)dealloc {
     [_idrItem release];
+    [_lastIndexPath release];
+//    [_itemSelectDelegate release];
+
     [super dealloc];
 }
 
@@ -42,7 +49,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.contentSizeForViewInPopover = CGSizeMake(250.0, 250.0);
+    
+    self.title = @"Välja en av dem";
+    
+    NSInteger rowCount = [self.idrItem.observation.selects count];
+    if (rowCount < 10 && rowCount > 5) 
+        self.contentSizeForViewInPopover = CGSizeMake(250.0, kTableViewRowHeight * rowCount);
+    else if (rowCount < 5)
+        self.contentSizeForViewInPopover = CGSizeMake(250.0, kTableViewRowHeight * 5);
+    else
+        self.contentSizeForViewInPopover = CGSizeMake(250.0, kTableViewRowHeight * 10);
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -57,6 +73,7 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     [self setIdrItem:nil];
+    [self setLastIndexPath:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -108,8 +125,16 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    IDRSelect *select = [self.idrItem.observation.selects objectAtIndex:[indexPath row]];
+    NSInteger row = [indexPath row];
+    IDRSelect *select = [self.idrItem.observation.selects objectAtIndex:row];
+    
+    UIFont *newFont = [UIFont boldSystemFontOfSize:17];
+    cell.textLabel.font = newFont;
     cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", select.value, select.content];
+    
+    NSInteger oldRow = [self.lastIndexPath row];
+    cell.accessoryType = (row == oldRow && self.lastIndexPath != nil) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    
     return cell;
 }
 
@@ -154,16 +179,26 @@
 
 #pragma mark - Table view delegate
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return kTableViewRowHeight;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    NSInteger newRow = [indexPath row];
+    NSInteger oldRow = (self.lastIndexPath != nil) ? [self.lastIndexPath row] : -1;
+    if (newRow != oldRow) {
+        UITableViewCell *newCell = [tableView cellForRowAtIndexPath:indexPath];
+        newCell.accessoryType = UITableViewCellAccessoryCheckmark;
+        UITableViewCell *oldCell = [tableView cellForRowAtIndexPath:self.lastIndexPath];
+        oldCell.accessoryType = UITableViewCellAccessoryNone;
+        self.lastIndexPath = indexPath;
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    IDRSelect *select = [self.idrItem.observation.selects objectAtIndex:[self.lastIndexPath row]];
+    NSString *text = [NSString stringWithFormat:@"%@", select.content];
+    [self.itemSelectDelegate changeSelectLable:text];
 }
 
 
