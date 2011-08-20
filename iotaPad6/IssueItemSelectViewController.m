@@ -31,7 +31,7 @@ static CGFloat kTableViewRowHeight = 40.0;
 - (void)dealloc {
     [_idrItem release];
     [_lastIndexPath release];
-//    [_itemSelectDelegate release];
+    [_itemSelectDelegate release];
 
     [super dealloc];
 }
@@ -79,6 +79,7 @@ static CGFloat kTableViewRowHeight = 40.0;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.itemSelectDelegate changeSelectLable:@""];
 }
 
 - (void)viewDidAppear:(BOOL)animated

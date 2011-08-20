@@ -48,7 +48,6 @@
 #import "Funcs.h"
 #import "ThemeColors.h"
 #import "ContactSelectOrCreateForm.h"
-//#import "IssueItemSelectViewController.h"
 #import "IDRObservation.h"
 #import "IDRSelect.h"
 
@@ -198,8 +197,6 @@
     [backround release];
 }
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(obsDataChanged:) name:kObservationDataChangedNotification object:nil];
@@ -207,12 +204,12 @@
     [self refresh];
 }
 
-
 - (void)viewDidUnload {
     [self setImageView:nil];
     [self setSelectPopoverController:nil];
     [self setIssueItemSelect:nil];
     [self setSelectedText:nil];
+    [self setIpForCell:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super viewDidUnload];
 }
@@ -383,6 +380,12 @@
     UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:self.ipForCell];
     ItemCell *myCell = (ItemCell *)cell;
     myCell.selectLable.text = self.selectedText;
+    
+    if ([text isEqualToString:@""]) {
+        NSLog(@"selected nothing");
+    } else {
+        [self.selectPopoverController dismissPopoverAnimated:YES];
+    }
 }
 
 - (IBAction)selectButtonAction:(id)sender {
@@ -400,13 +403,29 @@
     self.issueItemSelect.itemSelectDelegate = self;
     [selectListController release];
     
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.issueItemSelect];
+//    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.issueItemSelect];
     
-    UIPopoverController *poc = [[UIPopoverController alloc] initWithContentViewController:navigationController];
+    
+//    UIPopoverController *poc = [[UIPopoverController alloc] initWithContentViewController:navigationController];
+    
+    UIPopoverController *poc = [[UIPopoverController alloc] initWithContentViewController:self.issueItemSelect];
+    [poc presentPopoverFromRect:v.frame inView:(UIView *)v.superview permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+    
     self.selectPopoverController = poc;
-    [self.selectPopoverController presentPopoverFromRect:v.frame inView:v.superview permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
+    self.selectPopoverController.delegate = self;
     [poc release];
-    [navigationController release];
+//    [navigationController release];
+}
+
+#pragma mark - UIPopoverControllerDelegate
+
+- (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController {
+    return YES;
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+//    NSLog(@"a popover was dismissed!");
 }
 
 @end
