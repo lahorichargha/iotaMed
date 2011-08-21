@@ -15,7 +15,6 @@
 }
 
 @property (nonatomic, retain) NSString *imageName;
-@property (nonatomic, retain) NSString *imageType;
 
 - (UIImage *)image;
 

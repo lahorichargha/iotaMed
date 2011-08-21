@@ -82,9 +82,6 @@
 #define TAG_BULLET      1006
 #define TAG_CHECKVIEW   1007
 
-static float kNormalFontSize = 14.0;
-static float kBoldFontSize = 18.0;
-//static float kBoldHeight = 44.0;
 
 static float kValueOffsetFromTop = 1.0;
 static float kValueOffsetFromRight = 200.0;
@@ -154,7 +151,6 @@ enum eCellContents {
 };
 
 @interface ItemCell()
-@property (assign) UITableView *parentTableView;
 @end
 
 // -----------------------------------------------------------

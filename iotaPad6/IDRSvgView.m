@@ -1,17 +1,16 @@
 //
-//  IDRImage.m
+//  IDRSvgImage.m
 //  iotaPad6
 //
-//  Created by Martin on 2011-03-29.
-//  Copyright 2011 MITM AB. All rights reserved.
+//  Created by Martin Wehlou on 2011-08-21.
+//  Copyright (c) 2011 MITM AB. All rights reserved.
 //
 
-#import "IDRImage.h"
+#import "IDRSvgView.h"
 
-@implementation IDRImage
+@implementation IDRSvgView
 
 static NSString *kImageNameKey = @"imageNameKey";
-
 
 @synthesize imageName = _imageName;
 
@@ -32,17 +31,18 @@ static NSString *kImageNameKey = @"imageNameKey";
 }
 
 - (id)copyWithZone:(NSZone *)zone {
-    IDRImage *copy = [[self class] allocWithZone:zone];
+    IDRSvgView *copy = [[self class] allocWithZone:zone];
     copy.imageName = [[self.imageName copyWithZone:zone] autorelease];
-    return copy;
+    return copy;            // retain = +1 at return
 }
 
-- (UIImage *)image {
-    return [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.imageName ofType:@"png"]];
+- (SVGView *)svgView {
+    return [SVGView viewWithContentsOfFile:[[NSBundle mainBundle] pathForResource:self.imageName ofType:@"svg"]];
 }
 
 - (void)takeAttributes:(NSDictionary *)attribs {
     self.imageName = [attribs valueForKey:@"imagename"];
 }
+
 
 @end

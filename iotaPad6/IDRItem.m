@@ -37,6 +37,7 @@
 #import "IDRObsDefinition.h"
 #import "IDRBlock.h"
 #import "IDRImage.h"
+#import "IDRSvgView.h"
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -53,6 +54,7 @@
 @synthesize hasBullet = _hasBullet;
 @synthesize parentBlock = _parentBlock;
 @synthesize idrImage = _idrImage;
+@synthesize idrSvgView = _idrSvgView;
 @synthesize itemCell = _itemCell;
 
 - (id)init {
@@ -69,6 +71,7 @@
     self.content = nil;
     self.parentBlock = nil;
     self.idrImage = nil;
+    self.idrSvgView = nil;
     [super dealloc];
 }
 
@@ -85,6 +88,7 @@ static NSString *kIndentLevelKey = @"indentLevelKey";
 static NSString *kHasBulletKey = @"hasBulletKey";
 static NSString *kParentBlockKey = @"parentBlockKey";
 static NSString *kIdrImageKey = @"idrImageKey";
+static NSString *kIdrSvgView = @"idrSvgView";
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super init])) {
@@ -96,6 +100,7 @@ static NSString *kIdrImageKey = @"idrImageKey";
         self.hasBullet = [aDecoder decodeBoolForKey:kHasBulletKey];
         self.parentBlock = [aDecoder decodeObjectForKey:kParentBlockKey];
         self.idrImage = [aDecoder decodeObjectForKey:kIdrImageKey];
+        self.idrSvgView = [aDecoder decodeObjectForKey:kIdrSvgView];
     }
     return self;
 }
@@ -110,6 +115,7 @@ static NSString *kIdrImageKey = @"idrImageKey";
     [aCoder encodeBool:self.hasBullet forKey:kHasBulletKey];
     [aCoder encodeObject:self.parentBlock forKey:kParentBlockKey];
     [aCoder encodeObject:self.idrImage forKey:kIdrImageKey];
+    [aCoder encodeObject:self.idrSvgView forKey:kIdrSvgView];
 }
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -122,6 +128,7 @@ static NSString *kIdrImageKey = @"idrImageKey";
     copy.hasBullet = self.hasBullet;
     copy.parentBlock = self.parentBlock;        // must be set by parent after copy
     copy.idrImage = [[self.idrImage copyWithZone:zone] autorelease];
+    copy.idrSvgView = [[self.idrSvgView copyWithZone:zone] autorelease];
     return copy;
 }
 

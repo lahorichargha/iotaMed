@@ -1,8 +1,3 @@
-//
-//  IDRItem.h
-//  iotaPad6
-//
-//  Created by Martin on 2011-03-03.
 //  Copyright © 2011, MITM AB, Sweden
 //  All rights reserved.
 //
@@ -31,44 +26,21 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
-#import <Foundation/Foundation.h>
-#import "IDRAttribs.h"
-#import "DebugDump.h"
-
-@class IDRObservation;
-@class IDRAction;
-@class IDRBlock;
-@class IDRImage;
-@class ItemCell;
-@class IDRSvgView;
-
-@interface IDRItem : NSObject <IDRAttribs, DebugDump, NSCoding, NSCopying> {
-    
-}
-
-@property (nonatomic, assign) BOOL isBold;
-@property (nonatomic, assign) NSUInteger indentLevel;
-@property (nonatomic, assign) BOOL hasBullet;
-
-@property (nonatomic, retain) IDRObservation *observation;
-@property (nonatomic, retain) IDRAction *action;
-@property (nonatomic, retain) NSMutableString *content;
-@property (nonatomic, retain) IDRBlock *parentBlock;
-@property (nonatomic, retain) IDRImage *idrImage;
-@property (nonatomic, retain) IDRSvgView *idrSvgView;
-@property (nonatomic, retain) ItemCell *itemCell;           // owns the table cell
-
-- (void)setItemValue:(NSString *)value;
-- (void)setItemValue:(NSString *)value extendedValue:(NSString *)extendedValue;
-- (void)addContent:(NSString *)content;
-- (void)takeAttributes:(NSDictionary *)attribs;
-- (BOOL)hasObservation;
-- (BOOL)hasAction;
-- (BOOL)hasInput;
-- (BOOL)hasGet;
-- (BOOL)hasValues;
-- (NSArray *)getValues;
+#import <UIKit/UIKit.h>
+#import "ItemCellDelegate.h"
+#import "IDRItem.h"
 
 
+@interface ItemTableCell : UITableViewCell
+
+@property (nonatomic, assign) BOOL isActive;
+@property (nonatomic, assign) IDRItem *idrItem; // IDRItem owns this ItemTableCell
+@property (nonatomic, retain) id <ItemCellDelegate> itemCellDelegate;
+@property (nonatomic, assign) UITableView *parentTableView;
+
++ (BOOL)canHandle:(IDRItem *)idrItem;
++ (ItemTableCell *)cellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
++ (CGFloat)cellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
+
++ (void)addSubclass:(Class)cls;
 @end
