@@ -123,17 +123,23 @@ static NSMutableArray *subclasses;
 }
 
 + (ItemTableCell *)cellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
+    ItemTableCell *cell = nil;
+    // we scan all the subclasses, just to be able to detect if the canHandle algorithm fails somewhere
     for (Class cls in subclasses) {
-        if ([cls canHandle:idrItem])
-            return [cls subCellForTableView:tableView idrItem:idrItem];
+        if ([cls canHandle:idrItem]) {
+            if (cell != nil) 
+                [NSException raise:@"Ambiguous canHandle" format:@"Two different classes (%@ and %@) claim to handle the same IDRItem (%@)", [cell class], cls, idrItem];
+            cell = [cls subCellForTableView:tableView idrItem:idrItem];
+        }
     }
-    return nil;
+    return cell;
 }
 
 + (CGFloat)cellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
     for (Class cls in subclasses) {
-        if ([cls canHandle:idrItem])
+        if ([cls canHandle:idrItem]) {
             return [cls subCellHeightForTableView:tableView idrItem:idrItem];
+        }
     }
     return 0.0;
 }
