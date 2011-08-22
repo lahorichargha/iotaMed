@@ -186,9 +186,9 @@
 		EE4159D313F291E500199032 /* doctor.png in Resources */ = {isa = PBXBuildFile; fileRef = EE4159CB13F291E500199032 /* doctor.png */; };
 		EE4159D413F291E500199032 /* titlebar_light1.png in Resources */ = {isa = PBXBuildFile; fileRef = EE4159CC13F291E500199032 /* titlebar_light1.png */; };
 		EE4159D613F291FE00199032 /* rowImage.png in Resources */ = {isa = PBXBuildFile; fileRef = EE4159D513F291FE00199032 /* rowImage.png */; };
+		EE48DB2A140281D0005C0498 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = EE48DB29140281D0005C0498 /* button.png */; };
 		EE929F2613FD038400BDD83F /* button_down.png in Resources */ = {isa = PBXBuildFile; fileRef = EE929F2413FD038400BDD83F /* button_down.png */; };
 		EE929F2713FD038400BDD83F /* button_up.png in Resources */ = {isa = PBXBuildFile; fileRef = EE929F2513FD038400BDD83F /* button_up.png */; };
-		EE929F2913FD03EF00BDD83F /* questionnarie.xml in Resources */ = {isa = PBXBuildFile; fileRef = EE929F2813FD03EF00BDD83F /* questionnarie.xml */; };
 		EE929F2C13FD048F00BDD83F /* IDRSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = EE929F2B13FD048F00BDD83F /* IDRSelect.m */; };
 		EE929F2F13FD068A00BDD83F /* IssueItemSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE929F2E13FD068A00BDD83F /* IssueItemSelectViewController.m */; };
 /* End PBXBuildFile section */
@@ -500,9 +500,9 @@
 		EE4159CB13F291E500199032 /* doctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doctor.png; sourceTree = "<group>"; };
 		EE4159CC13F291E500199032 /* titlebar_light1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titlebar_light1.png; sourceTree = "<group>"; };
 		EE4159D513F291FE00199032 /* rowImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rowImage.png; sourceTree = "<group>"; };
+		EE48DB29140281D0005C0498 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		EE929F2413FD038400BDD83F /* button_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_down.png; sourceTree = "<group>"; };
 		EE929F2513FD038400BDD83F /* button_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_up.png; sourceTree = "<group>"; };
-		EE929F2813FD03EF00BDD83F /* questionnarie.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = questionnarie.xml; sourceTree = "<group>"; };
 		EE929F2A13FD048F00BDD83F /* IDRSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRSelect.h; sourceTree = "<group>"; };
 		EE929F2B13FD048F00BDD83F /* IDRSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRSelect.m; sourceTree = "<group>"; };
 		EE929F2D13FD068900BDD83F /* IssueItemSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueItemSelectViewController.h; sourceTree = "<group>"; };
@@ -680,7 +680,6 @@
 				AA48FE77132FBE9B008409AA /* keywordtemplates.xml */,
 				AA220A87134148990088CBD3 /* fotledstrauma.xml */,
 				AAB7700E1357077700388BF5 /* stroke.xml */,
-				EE929F2813FD03EF00BDD83F /* questionnarie.xml */,
 			);
 			name = Templates;
 			sourceTree = "<group>";
@@ -947,6 +946,7 @@
 				EE3A18E713F2D55D00A2A16E /* diagnoser.png */,
 				EE929F2413FD038400BDD83F /* button_down.png */,
 				EE929F2513FD038400BDD83F /* button_up.png */,
+				EE48DB29140281D0005C0498 /* button.png */,
 			);
 			path = opacity;
 			sourceTree = "<group>";
@@ -1232,7 +1232,7 @@
 				EE3A18E813F2D55D00A2A16E /* diagnoser.png in Resources */,
 				EE929F2613FD038400BDD83F /* button_down.png in Resources */,
 				EE929F2713FD038400BDD83F /* button_up.png in Resources */,
-				EE929F2913FD03EF00BDD83F /* questionnarie.xml in Resources */,
+				EE48DB2A140281D0005C0498 /* button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

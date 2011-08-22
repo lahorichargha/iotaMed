@@ -389,7 +389,7 @@
     self.selectedText = text;
     UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:self.ipForCell];
     ItemCell *myCell = (ItemCell *)cell;
-    myCell.selectLable.text = self.selectedText;
+    myCell.selectLabel.text = self.selectedText;
     
     [self.selectPopoverController dismissPopoverAnimated:YES];
 }
@@ -418,7 +418,7 @@
         NSString *text = s.content;
         [array addObject:text];
     }
-    NSUInteger i = [array indexOfObject:cell.selectLable.text];
+    NSUInteger i = [array indexOfObject:cell.selectLabel.text];
     self.issueItemSelect.lastIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
     [array release];
     

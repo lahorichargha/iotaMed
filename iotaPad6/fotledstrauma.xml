@@ -10,7 +10,12 @@
         <item>Finns anamnes på externt trauma?<observation name='ExterntTrauma' direction='getput' type='check'/></item>
         <item>Högenergi (ja) eller lågenergiskada (nej)?<observation name='EnergiSkadaHög' direction='getput' type='check'/></item>
         <item>Våldets riktning?<observation name='VåldRiktning' type='string' direction='getput'/></item>
-        <item>Vilken sida?<observation name='TraumaSida' direction='getput'/></item>
+        <item>Vilken sida?<observation name="Kroppssida" type="select" direction="getput">
+            <select value="H">Höger</select>
+            <select value="V">Vänster</select>
+            <select value="B">Båda</select>
+        </observation>
+        </item>
         <item>Belastningsbar fot?<observation name='BelastningsbarFot' type='check' direction='getput'/></item>
         <item>Tidpunkt?<observation name='TidpunktSkada' type='string' direction='getput'/></item>
         <item>Akutbehandling, t.ex. reposition av ambulanspersonal<observation name='AkutBehandlingSkada' type='string' direction='getput'/></item>
