@@ -7,6 +7,7 @@
 //
 
 #import "ItemTableCellNumeric.h"
+#import "IDRObservation.h"
 
 @implementation ItemTableCellNumeric
 
@@ -15,7 +16,7 @@
 }
 
 + (BOOL)canHandle:(IDRItem *)idrItem {
-    return NO;
+    return [idrItem hasObservation] && [idrItem.observation isNumeric];
 }
 
 + (ItemTableCellNumeric *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {

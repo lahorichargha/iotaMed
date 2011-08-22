@@ -15,7 +15,7 @@
 }
 
 + (BOOL)canHandle:(IDRItem *)idrItem {
-    return NO;
+    return idrItem.idrImage != nil;
 }
 
 + (ItemTableCellImage *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {

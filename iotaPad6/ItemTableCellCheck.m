@@ -7,6 +7,7 @@
 //
 
 #import "ItemTableCellCheck.h"
+#import "IDRObservation.h"
 
 @implementation ItemTableCellCheck
 
@@ -15,7 +16,7 @@
 }
 
 + (BOOL)canHandle:(IDRItem *)idrItem {
-    return NO;
+    return [idrItem hasObservation] && [idrItem.observation isCheck];
 }
 
 + (ItemTableCellCheck *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {

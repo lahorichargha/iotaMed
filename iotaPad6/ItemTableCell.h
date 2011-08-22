@@ -38,9 +38,10 @@
 @property (nonatomic, retain) id <ItemCellDelegate> itemCellDelegate;
 @property (nonatomic, assign) UITableView *parentTableView;
 
-+ (BOOL)canHandle:(IDRItem *)idrItem;
 + (ItemTableCell *)cellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 + (CGFloat)cellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 
 + (void)addSubclass:(Class)cls;
++ (BOOL)canHandle:(IDRItem *)idrItem;
+
 @end

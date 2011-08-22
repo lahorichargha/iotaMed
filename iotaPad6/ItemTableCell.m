@@ -98,6 +98,7 @@ static NSMutableArray *subclasses;
 // -----------------------------------------------------------
 
 + (void)load {
+    [super load];
     subclasses = [[NSMutableArray alloc] initWithCapacity:5];
 }
 

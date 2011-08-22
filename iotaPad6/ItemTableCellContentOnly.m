@@ -15,7 +15,7 @@
 }
 
 + (BOOL)canHandle:(IDRItem *)idrItem {
-    return NO;
+    return ![idrItem hasObservation] && !idrItem.idrImage && !idrItem.idrSvgView;
 }
 
 + (ItemTableCellContentOnly *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
