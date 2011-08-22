@@ -202,6 +202,16 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(obsDataChanged:) name:kObservationDataChangedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contactChanged:) name:kContactListChangedNotification object:nil];
     [self refresh];
+    
+    IssueItemSelectViewController *selectListController = [[IssueItemSelectViewController alloc] init];
+    self.issueItemSelect = selectListController;
+    self.issueItemSelect.itemSelectDelegate = self;
+    [selectListController release];
+    
+    UIPopoverController *poc = [[UIPopoverController alloc] initWithContentViewController:self.issueItemSelect];
+    self.selectPopoverController = poc;
+    self.selectPopoverController.delegate = self;
+    [poc release];
 }
 
 - (void)viewDidUnload {
@@ -381,11 +391,7 @@
     ItemCell *myCell = (ItemCell *)cell;
     myCell.selectLable.text = self.selectedText;
     
-    if ([text isEqualToString:@""]) {
-        NSLog(@"selected nothing");
-    } else {
-        [self.selectPopoverController dismissPopoverAnimated:YES];
-    }
+    [self.selectPopoverController dismissPopoverAnimated:YES];
 }
 
 - (IBAction)selectButtonAction:(id)sender {
@@ -397,35 +403,35 @@
     
     IDRItem *item = [self.idrBlock.items objectAtIndex:[indexPath row]];
     
-    IssueItemSelectViewController *selectListController = [[IssueItemSelectViewController alloc] init];
-    selectListController.idrItem = item;
-    self.issueItemSelect = selectListController;
-    self.issueItemSelect.itemSelectDelegate = self;
-    [selectListController release];
+    IDRSelect *noChoice = [[IDRSelect alloc] init];
+    NSMutableString *contentText = [NSMutableString stringWithString:@"<inget val>"];
+    noChoice.content = contentText;
+    if (![[[item.observation.selects objectAtIndex:0] content] isEqualToString:@"<inget val>"]) {
+        [item.observation.selects insertObject:noChoice atIndex:0];
+    } 
+    [noChoice release];
     
-//    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.issueItemSelect];
+    self.issueItemSelect.idrItem = item;
     
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (IDRSelect *s in self.issueItemSelect.idrItem.observation.selects) {
+        NSString *text = s.content;
+        [array addObject:text];
+    }
+    NSUInteger i = [array indexOfObject:cell.selectLable.text];
+    self.issueItemSelect.lastIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
+    [array release];
     
-//    UIPopoverController *poc = [[UIPopoverController alloc] initWithContentViewController:navigationController];
+    self.selectPopoverController.contentViewController = self.issueItemSelect;
     
-    UIPopoverController *poc = [[UIPopoverController alloc] initWithContentViewController:self.issueItemSelect];
-    [poc presentPopoverFromRect:v.frame inView:(UIView *)v.superview permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
-    
-    self.selectPopoverController = poc;
-    self.selectPopoverController.delegate = self;
-    [poc release];
-//    [navigationController release];
+    [self.selectPopoverController
+     presentPopoverFromRect:v.frame inView:(UIView *)v.superview permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
 }
 
 #pragma mark - UIPopoverControllerDelegate
 
 - (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController {
     return YES;
-}
-
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
-{
-//    NSLog(@"a popover was dismissed!");
 }
 
 @end

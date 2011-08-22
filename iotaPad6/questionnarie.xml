@@ -24,19 +24,19 @@
                 <select value="CS">CarlosSantana</select>
             </observation>
         </item>
-        <item bold="no" indentlevel="0">11
+        <item bold="no" indentlevel="0">Vilken instrument spelar du?
             <observation name="Ankieta3" type="select" direction="getput">
-                <select value="1">1</select>
-                <select value="2">2</select>
-                <select value="3">3</select>
-                <select value="4">4</select>
-                <select value="5">5</select>
-                <select value="6">6</select>
-                <select value="7">7</select>
-                <select value="8">8</select>
-                <select value="9">9</select>
-                <select value="10">10</select>
-                <select value="11">11</select>
+                <select value="1">Akustisk gitarr</select>
+                <select value="2">Fiol</select>
+                <select value="3">Trumpet</select>
+                <select value="4">Slagverk</select>
+                <select value="5">Piano</select>
+                <select value="6">Bas</select>
+                <select value="7">Elgitarr</select>
+                <select value="8">Harpa</select>
+                <select value="9">Flöjt</select>
+                <select value="10">Klarinett</select>
+                <select value="11">Sax</select>
             </observation>
         </item>
     </block>

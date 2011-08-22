@@ -232,6 +232,7 @@ enum eCellContents {
         
         self.selectLable = (UILabel *)[self viewOfClass:[UILabel class] frame:defaultRect tag:TAG_SELECTLABLE];
         self.selectLable.userInteractionEnabled = NO;
+        self.selectLable.text = @"<inget val>";
     }
     return self;
 }
@@ -300,8 +301,9 @@ enum eCellContents {
                 [cell.selectButton setBackgroundImage:buttonDownImage
                                              forState:UIControlStateHighlighted];
                 
+                cell.selectLable.backgroundColor = [UIColor clearColor];
                 cell.selectLable.font = [UIFont fontWithName:@"Helvetica" size:15];
-                cell.selectLable.textColor = [UIColor blueColor];
+                cell.selectLable.textColor = [UIColor redColor];
             }
             else {
                 cell.textField.text = value.value;
