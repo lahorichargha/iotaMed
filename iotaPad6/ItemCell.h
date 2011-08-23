@@ -31,15 +31,20 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#import <Foundation/Foundation.h>
+
 #import <UIKit/UIKit.h>
 #import "ItemCellDelegate.h"
-
+#import "MyVUMeter.h"
+#import "AudioViewcontroller.h"
 
 @class IDRItem;
 @class BulletView;
 
+
 @interface ItemCell : UITableViewCell <UITextFieldDelegate> {
     
+        
 }
 
 @property (nonatomic, assign) BOOL isActive;        // true if actually in a live issue, false in template viewing
@@ -52,6 +57,10 @@
 @property (nonatomic, retain) BulletView *bulletView;
 @property (nonatomic, retain) UILabel *checkView;
 @property (nonatomic, retain) id <ItemCellDelegate> itemCellDelegate;
+
+
+
+
 
 + (ItemCell *)cellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 + (CGFloat)cellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;

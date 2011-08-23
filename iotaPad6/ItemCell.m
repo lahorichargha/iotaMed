@@ -75,6 +75,14 @@
 #import "ThemeColors.h"
 //#import "ItemTextFieldView.h"
 
+
+
+#import "AudioViewcontroller.h"
+
+@class AudioViewcontroller;
+
+#import "MyVUMeter.h"
+
 #define TAG_LBLCONTENT  1001
 #define TAG_TEXTFIELD   1002
 #define TAG_LBLVALUE    1003
@@ -158,6 +166,8 @@ enum eCellContents {
 @property (assign) UITableView *parentTableView;
 @end
 
+
+
 // -----------------------------------------------------------
 #pragma mark -
 #pragma mark Lifecycle
@@ -177,12 +187,37 @@ enum eCellContents {
 @synthesize itemCellDelegate = _itemCellDelegate;
 @synthesize parentTableView = _parentTableView;
 
+
+
+-(void)recStart:(id)sender{
+    AudioViewController *recButt=[[[AudioViewController alloc]init]autorelease];
+    [recButt recordButton:recButt];
+}
+
+-(void)playStart:(id)sender{
+    AudioViewController *playButt=[[[AudioViewController alloc]init]autorelease];
+    [playButt playButton:playButt];
+}
+-(void)doStop:(id)sender{
+    AudioViewController *stopButt=[[[AudioViewController alloc]init]autorelease];
+    [stopButt stopButton:stopButt];
+}
+-(void)doPause:(id)sender{
+    AudioViewController *pauseButt=[[[AudioViewController alloc]init]autorelease];
+    [pauseButt pauseButton:pauseButt];
+}
+
+
+
+
 - (UIView *)viewOfClass:(Class)cls frame:(CGRect)frame tag:(NSUInteger)tag {
     UIView *view = [[cls alloc] initWithFrame:frame];
     view.tag = tag;
     [self.contentView addSubview:view];
     return [view autorelease];
 }
+
+
 
 - (id)init {
     if ((self = [super init])) {
@@ -200,10 +235,33 @@ enum eCellContents {
         UIBarButtonItem *bbispacer = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
         
         UIImage *microImage = [UIImage imageNamed:@"tape4.png"];
-        UIBarButtonItem *bbirec = [[[UIBarButtonItem alloc] initWithImage:microImage style:UIBarButtonItemStylePlain target:nil action:nil] autorelease];
-        UIBarButtonItem *bbiplay = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:nil action:nil] autorelease];
+        AudioViewController *slider = [[[AudioViewController alloc] init]autorelease];
+        
+      
+        
+               
+        UIBarButtonItem *sliderAsToolbarItem = [[[UIBarButtonItem alloc] initWithCustomView:slider]autorelease];
+        
+        
+        [sliderAsToolbarItem setWidth:100.0] ;
+        
+        [sliderAsToolbarItem setAction:@selector(sliderValue:)];
+        
+         
+        
+        CGRect  viewRect = CGRectMake(100.0, 5.0, 50.0, 20.0);
+        MyVUMeter* volumeSignalView = [[[MyVUMeter alloc] initWithFrame:viewRect]autorelease];  
+        
+        
+        UIBarButtonItem *v=[[[UIBarButtonItem alloc]initWithCustomView:volumeSignalView]autorelease];
+        
+               
+        UIBarButtonItem *recordButton = [[[UIBarButtonItem alloc] initWithImage:microImage style:UIBarButtonItemStylePlain target:self action:@selector(recStart:)] autorelease];
+        UIBarButtonItem *playButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(playStart:)] autorelease];
         UIBarButtonItem *bbicamera = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:nil action:nil] autorelease];
-        tb.items = [NSArray arrayWithObjects:bbirec, bbispacer, bbicamera, bbispacer, bbiplay, nil];
+        UIBarButtonItem *pauseButton=[[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(doPause:)]autorelease];
+        UIBarButtonItem *stopButton=[[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(doStop:)]autorelease];
+        tb.items = [NSArray arrayWithObjects:recordButton,stopButton, v, bbispacer, bbicamera, bbispacer , sliderAsToolbarItem, playButton,pauseButton, nil];
         
         self.textField.inputAccessoryView = tb;
         
@@ -236,6 +294,7 @@ enum eCellContents {
     self.bulletView = nil;
     self.checkView = nil;
     self.itemCellDelegate = nil;
+        
     [super dealloc];
 }
 
