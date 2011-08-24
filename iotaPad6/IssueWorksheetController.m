@@ -50,6 +50,7 @@
 #import "ContactSelectOrCreateForm.h"
 #import "IDRObservation.h"
 #import "IDRSelect.h"
+#import "IDRMultiselect.h"
 
 @implementation IssueWorksheetController
 
@@ -61,6 +62,8 @@
 @synthesize imageView = _imageView;
 @synthesize selectPopoverController = _selectPopoverController;
 @synthesize issueItemSelect = _issueItemSelect;
+@synthesize issueItemMultiselect = _issueItemMultiselect;
+@synthesize popoverContentView = _popoverContentView;
 @synthesize selectedText = _selectedText;
 @synthesize ipForCell = _ipForCell;
 
@@ -87,6 +90,8 @@
     [_imageView release];
     [_selectPopoverController release];
     [_issueItemSelect release];
+    [_issueItemMultiselect release];
+    [_popoverContentView release];
     [_selectedText release];
     [_ipForCell release];
     [super dealloc];
@@ -208,7 +213,17 @@
     self.issueItemSelect.itemSelectDelegate = self;
     [selectListController release];
     
-    UIPopoverController *poc = [[UIPopoverController alloc] initWithContentViewController:self.issueItemSelect];
+    IssueItemMultiselectViewController *multiselectListController = [[IssueItemMultiselectViewController alloc] init];
+    self.issueItemMultiselect = multiselectListController;
+    self.issueItemMultiselect.delegate = self;
+    [multiselectListController release];
+    
+    
+    UITableViewController *tvc = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+    self.popoverContentView = tvc;
+    [tvc release];
+    
+    UIPopoverController *poc = [[UIPopoverController alloc] initWithContentViewController:self.popoverContentView];
     self.selectPopoverController = poc;
     self.selectPopoverController.delegate = self;
     [poc release];
@@ -218,6 +233,8 @@
     [self setImageView:nil];
     [self setSelectPopoverController:nil];
     [self setIssueItemSelect:nil];
+    [self setIssueItemMultiselect:nil];
+    [self setPopoverContentView:nil];
     [self setSelectedText:nil];
     [self setIpForCell:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -338,6 +355,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     ItemCellIssue *myCell = (ItemCellIssue *)cell;
     [myCell.selectButton addTarget:self action:@selector(selectButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [myCell.multiselectButton addTarget:self action:@selector(multiselectButtonAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -404,28 +422,82 @@
     IDRItem *item = [self.idrBlock.items objectAtIndex:[indexPath row]];
     
     IDRSelect *noChoice = [[IDRSelect alloc] init];
-    NSMutableString *contentText = [NSMutableString stringWithString:@"<inget val>"];
+    NSMutableString *contentText = [NSMutableString stringWithString:@"<inget valt>"];
     noChoice.content = contentText;
-    if (![[[item.observation.selects objectAtIndex:0] content] isEqualToString:@"<inget val>"]) {
+    if (![[[item.observation.selects objectAtIndex:0] content] isEqualToString:@"<inget valt>"]) {
         [item.observation.selects insertObject:noChoice atIndex:0];
     } 
     [noChoice release];
     
-    self.issueItemSelect.idrItem = item;
+    self.popoverContentView = self.issueItemSelect;
+    IssueItemSelectViewController *pc = (IssueItemSelectViewController *)self.popoverContentView;
+    pc.itemSelectDelegate = self;
+  
+    pc.idrItem = item;
     
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    for (IDRSelect *s in self.issueItemSelect.idrItem.observation.selects) {
+    for (IDRSelect *s in pc.idrItem.observation.selects) {
         NSString *text = s.content;
         [array addObject:text];
     }
     NSUInteger i = [array indexOfObject:cell.selectLabel.text];
-    self.issueItemSelect.lastIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
+    pc.lastIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
     [array release];
     
-    self.selectPopoverController.contentViewController = self.issueItemSelect;
+    self.selectPopoverController.contentViewController = pc;
     
-    [self.selectPopoverController
-     presentPopoverFromRect:v.frame inView:(UIView *)v.superview permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+    [self.selectPopoverController presentPopoverFromRect:v.frame inView:(UIView *)v.superview permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+}
+
+#pragma mark - IssueItemSelectViewDelegate
+
+- (void)dismissPopoverForMultiselect {
+    [self.selectPopoverController dismissPopoverAnimated:YES];
+}
+
+- (void)changeMultiselectLable:(IDRItem *)newItem {
+#warning TODO
+}
+
+- (IBAction)multiselectButtonAction:(id)sender {
+    UIView *v = (UIView *)sender;
+    ItemCell *cell = (ItemCell *)v.superview.superview;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    
+    IDRItem *item = [self.idrBlock.items objectAtIndex:[indexPath row]];
+    
+    IDRMultiselect *noSelections = [[IDRMultiselect alloc] init];
+    NSMutableString *contentText = [NSMutableString stringWithString:@"<inga val>"];
+    noSelections.content = contentText;
+    if (![[[item.observation.multiselects objectAtIndex:0] content] isEqualToString:@"<inga val>"]) {
+        [item.observation.multiselects insertObject:noSelections atIndex:0];
+    } 
+    [noSelections release];
+    
+    
+    self.popoverContentView = self.issueItemMultiselect;
+    IssueItemMultiselectViewController *mpc = (IssueItemMultiselectViewController *)self.popoverContentView;
+    mpc.delegate = self;
+    
+    mpc.idrItem = item;
+    
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (IDRMultiselect *ms in mpc.idrItem.observation.multiselects) {
+        NSString *text = ms.content;
+        [array addObject:text];
+    }
+//    NSUInteger i = [array indexOfObject:cell.multiselectLabel.text];
+//    mpc.lastIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
+//    [array release];
+    
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mpc];
+    
+    self.selectPopoverController.contentViewController = navigationController;
+    
+    [navigationController release];
+    
+    [self.selectPopoverController presentPopoverFromRect:v.frame inView:(UIView *)v.superview permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
 }
 
 #pragma mark - UIPopoverControllerDelegate

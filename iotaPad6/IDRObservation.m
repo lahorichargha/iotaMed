@@ -37,6 +37,7 @@
 #import "IotaContext.h"
 #import "PatientContext.h"
 #import "IDRSelect.h"
+#import "IDRMultiselect.h"
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -55,6 +56,7 @@ static NSString *kDirectionGetPut = @"getput";
 @synthesize obsDefinition = _obsDefinition;
 @synthesize options = _options;
 @synthesize selects = _selects;
+@synthesize multiselects = _multiselects;
 
 
 - (void)dealloc {
@@ -64,6 +66,7 @@ static NSString *kDirectionGetPut = @"getput";
     self.obsDefinition = nil;
     self.options = nil;
     self.selects = nil;
+    self.multiselects = nil;
     [super dealloc];
 }
 
@@ -93,6 +96,7 @@ static NSString *kDirectionKey = @"directionKey";
 static NSString *kObsDefinitionKey = @"obsDefinitionKey";
 static NSString *kOptionsKey = @"optionsKey";
 static NSString *kSelectsKey = @"selectsKey";
+static NSString *kMultiselectsKey = @"multiselectsKey";
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super init])) {
@@ -102,6 +106,7 @@ static NSString *kSelectsKey = @"selectsKey";
         self.obsDefinition = [aDecoder decodeObjectForKey:kObsDefinitionKey];
         self.options = [aDecoder decodeObjectForKey:kOptionsKey];
         self.selects = [aDecoder decodeObjectForKey:kSelectsKey];
+        self.multiselects = [aDecoder decodeObjectForKey:kMultiselectsKey];
     }
     return self;
 }
@@ -113,6 +118,7 @@ static NSString *kSelectsKey = @"selectsKey";
     [aCoder encodeObject:self.obsDefinition forKey:kObsDefinitionKey];
     [aCoder encodeObject:self.options forKey:kOptionsKey];
     [aCoder encodeObject:self.selects forKey:kSelectsKey];
+    [aCoder encodeObject:self.multiselects forKey:kMultiselectsKey];
 }
 
 // when copying, don't copy the obsdefinition pointer, since the definition remains the same
@@ -167,6 +173,10 @@ static NSString *kSelectsKey = @"selectsKey";
     return ([self.type isEqualToString:@"select"]);
 }
 
+- (BOOL)isMultiselect {
+    return ([self.type isEqualToString:@"multiselect"]);
+}
+
 // -----------------------------------------------------------
 #pragma mark -
 #pragma mark Debug stuff
@@ -182,6 +192,13 @@ static NSString *kSelectsKey = @"selectsKey";
         _selects = [[NSMutableArray alloc] initWithCapacity:5];
     }
     [_selects addObject:select];
+}
+
+- (void)addMultiselect:(IDRMultiselect *)multiselect {
+    if (_multiselects == nil) {
+        _multiselects = [[NSMutableArray alloc] initWithCapacity:5];
+    }
+    [_multiselects addObject:multiselect];
 }
 
 @end

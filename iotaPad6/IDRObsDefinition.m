@@ -57,6 +57,7 @@
 @synthesize isNumeric = _isNumeric;
 @synthesize isCheck = _isCheck;
 @synthesize isSelect = _isSelect;
+@synthesize isMultiselect = _isMultiselect;
 @synthesize values = _values;
 @synthesize type = _type;
 
@@ -114,6 +115,10 @@ static NSString *kTypeKey = @"typeKey";
 
 - (BOOL)isSelect {
     return ([self.type isEqualToString:@"select"]);
+}
+
+- (BOOL)isMultiselect {
+    return ([self.type isEqualToString:@"multiselect"]);
 }
 
 - (void)valueAdd:(IDRValue *)value {

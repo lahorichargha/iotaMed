@@ -53,6 +53,8 @@
 @property (nonatomic, retain) UILabel *checkView;
 @property (nonatomic, retain) UIButton *selectButton;
 @property (nonatomic, retain) UILabel *selectLabel;
+@property (nonatomic, retain) UIButton *multiselectButton;
+@property (nonatomic, retain) UILabel *multiselectLabel;
 @property (nonatomic, retain) id <ItemCellDelegate> itemCellDelegate;
 
 + (ItemCell *)cellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;

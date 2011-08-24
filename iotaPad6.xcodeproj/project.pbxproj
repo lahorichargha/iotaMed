@@ -173,7 +173,6 @@
 		AAECB6C71381601C00EAB251 /* InboxMyIotaForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAECB6C31381601C00EAB251 /* InboxMyIotaForm.xib */; };
 		AAECB6CD1381834C00EAB251 /* MyIotaPatientContext.m in Sources */ = {isa = PBXBuildFile; fileRef = AAECB6CC1381834C00EAB251 /* MyIotaPatientContext.m */; };
 		AAF16F67130DB1BB00A86E3E /* DetailViewControllerWithNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF16F66130DB1BB00A86E3E /* DetailViewControllerWithNavbar.m */; };
-		AAF9B5541392A78C0049BA69 /* test5.xml in Resources */ = {isa = PBXBuildFile; fileRef = AAF9B5531392A78C0049BA69 /* test5.xml */; };
 		AAFB52BD13E4336B00F9CC59 /* ItemTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB52BC13E4336B00F9CC59 /* ItemTextFieldView.m */; };
 		AAFB52C013E44F6900F9CC59 /* IssueWorksheetTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB52BF13E44F6900F9CC59 /* IssueWorksheetTableView.m */; };
 		EE3A18E813F2D55D00A2A16E /* diagnoser.png in Resources */ = {isa = PBXBuildFile; fileRef = EE3A18E713F2D55D00A2A16E /* diagnoser.png */; };
@@ -190,6 +189,9 @@
 		EE929F2713FD038400BDD83F /* button_up.png in Resources */ = {isa = PBXBuildFile; fileRef = EE929F2513FD038400BDD83F /* button_up.png */; };
 		EE929F2C13FD048F00BDD83F /* IDRSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = EE929F2B13FD048F00BDD83F /* IDRSelect.m */; };
 		EE929F2F13FD068A00BDD83F /* IssueItemSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE929F2E13FD068A00BDD83F /* IssueItemSelectViewController.m */; };
+		EEAA54C51403CE6000DFE7FE /* IDRMultiselect.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAA54C41403CE6000DFE7FE /* IDRMultiselect.m */; };
+		EEAA54C81403D69F00DFE7FE /* IssueItemMultiselectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAA54C71403D69F00DFE7FE /* IssueItemMultiselectViewController.m */; };
+		EEC804EE1403C9030088A7B6 /* questionnarie.xml in Resources */ = {isa = PBXBuildFile; fileRef = EEC804ED1403C9030088A7B6 /* questionnarie.xml */; };
 		EEED7D6B1402ECFA006E253F /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = EEED7D6A1402ECF9006E253F /* button.png */; };
 /* End PBXBuildFile section */
 
@@ -485,7 +487,6 @@
 		AAECB6CC1381834C00EAB251 /* MyIotaPatientContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyIotaPatientContext.m; sourceTree = "<group>"; };
 		AAF16F65130DB1BA00A86E3E /* DetailViewControllerWithNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewControllerWithNavbar.h; sourceTree = "<group>"; };
 		AAF16F66130DB1BB00A86E3E /* DetailViewControllerWithNavbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewControllerWithNavbar.m; sourceTree = "<group>"; };
-		AAF9B5531392A78C0049BA69 /* test5.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test5.xml; sourceTree = "<group>"; };
 		AAFB52BB13E4336B00F9CC59 /* ItemTextFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTextFieldView.h; sourceTree = "<group>"; };
 		AAFB52BC13E4336B00F9CC59 /* ItemTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTextFieldView.m; sourceTree = "<group>"; };
 		AAFB52BE13E44F6900F9CC59 /* IssueWorksheetTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueWorksheetTableView.h; sourceTree = "<group>"; };
@@ -506,6 +507,11 @@
 		EE929F2B13FD048F00BDD83F /* IDRSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRSelect.m; sourceTree = "<group>"; };
 		EE929F2D13FD068900BDD83F /* IssueItemSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueItemSelectViewController.h; sourceTree = "<group>"; };
 		EE929F2E13FD068A00BDD83F /* IssueItemSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueItemSelectViewController.m; sourceTree = "<group>"; };
+		EEAA54C31403CE6000DFE7FE /* IDRMultiselect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRMultiselect.h; sourceTree = "<group>"; };
+		EEAA54C41403CE6000DFE7FE /* IDRMultiselect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRMultiselect.m; sourceTree = "<group>"; };
+		EEAA54C61403D69F00DFE7FE /* IssueItemMultiselectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueItemMultiselectViewController.h; sourceTree = "<group>"; };
+		EEAA54C71403D69F00DFE7FE /* IssueItemMultiselectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueItemMultiselectViewController.m; sourceTree = "<group>"; };
+		EEC804ED1403C9030088A7B6 /* questionnarie.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = questionnarie.xml; sourceTree = "<group>"; };
 		EEED7D6A1402ECF9006E253F /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -663,6 +669,8 @@
 				AA9680C7133D505F006E6AF0 /* IDRDose.m */,
 				EE929F2A13FD048F00BDD83F /* IDRSelect.h */,
 				EE929F2B13FD048F00BDD83F /* IDRSelect.m */,
+				EEAA54C31403CE6000DFE7FE /* IDRMultiselect.h */,
+				EEAA54C41403CE6000DFE7FE /* IDRMultiselect.m */,
 				AA220A8913414B260088CBD3 /* IDRImage.h */,
 				AA220A8A13414B260088CBD3 /* IDRImage.m */,
 			);
@@ -672,7 +680,6 @@
 		AA5DB254131FFA1E00888408 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
-				AAF9B5531392A78C0049BA69 /* test5.xml */,
 				AA5DB255131FFA9400888408 /* diabetes.xml */,
 				AA5DB27E132058F700888408 /* templates.xml */,
 				AA9B47FE1323F25500C96675 /* atc.xml */,
@@ -680,6 +687,7 @@
 				AA48FE77132FBE9B008409AA /* keywordtemplates.xml */,
 				AA220A87134148990088CBD3 /* fotledstrauma.xml */,
 				AAB7700E1357077700388BF5 /* stroke.xml */,
+				EEC804ED1403C9030088A7B6 /* questionnarie.xml */,
 			);
 			name = Templates;
 			sourceTree = "<group>";
@@ -778,6 +786,8 @@
 				AAA9EEEC1320FC8800D36C54 /* IssueTemplateBlockViewController.xib */,
 				EE929F2D13FD068900BDD83F /* IssueItemSelectViewController.h */,
 				EE929F2E13FD068A00BDD83F /* IssueItemSelectViewController.m */,
+				EEAA54C61403D69F00DFE7FE /* IssueItemMultiselectViewController.h */,
+				EEAA54C71403D69F00DFE7FE /* IssueItemMultiselectViewController.m */,
 				AACDD396132E8F570065C457 /* ObservationCell.h */,
 				AACDD397132E8F5B0065C457 /* ObservationCell.m */,
 				AAA9EF0413210CA000D36C54 /* BulletView.h */,
@@ -1218,7 +1228,6 @@
 				AAECB6BD13815BF000EAB251 /* inkorg.png in Resources */,
 				AAECB6C51381601C00EAB251 /* InboxForm.xib in Resources */,
 				AAECB6C71381601C00EAB251 /* InboxMyIotaForm.xib in Resources */,
-				AAF9B5541392A78C0049BA69 /* test5.xml in Resources */,
 				AAC0398013DC6010008F38C3 /* PatientController.xib in Resources */,
 				EE4159CD13F291E500199032 /* background2.png in Resources */,
 				EE4159CE13F291E500199032 /* background4.png in Resources */,
@@ -1233,6 +1242,7 @@
 				EE929F2613FD038400BDD83F /* button_down.png in Resources */,
 				EE929F2713FD038400BDD83F /* button_up.png in Resources */,
 				EEED7D6B1402ECFA006E253F /* button.png in Resources */,
+				EEC804EE1403C9030088A7B6 /* questionnarie.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1352,6 +1362,8 @@
 				AA9CD3EA13F453BE00DA80D7 /* UIImage+HackyBugfix.m in Sources */,
 				EE929F2C13FD048F00BDD83F /* IDRSelect.m in Sources */,
 				EE929F2F13FD068A00BDD83F /* IssueItemSelectViewController.m in Sources */,
+				EEAA54C51403CE6000DFE7FE /* IDRMultiselect.m in Sources */,
+				EEAA54C81403D69F00DFE7FE /* IssueItemMultiselectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -46,7 +46,6 @@
     <template title="Demenssjukdomar" resourceName='' resourceType=''/>
     <template title="Depression" resourceName='' resourceType=''/>
     <template title="Diabetes " resourceName='diabetes' resourceType='xml'/>
-    <template title="Diabetes Piotr" resourceName='test5' resourceType='xml'/>
     <template title="Diabeteshanden" resourceName='' resourceType=''/>
     <template title="Diabetesfoten" resourceName='' resourceType=''/>
     <template title="Diarréer" resourceName='' resourceType=''/>
@@ -75,6 +74,9 @@
     <template title='Fotledstrauma' resourceName='fotledstrauma' resourceType='xml'/>
     <template title="Frontotemporal demens" resourceName='' resourceType=''/>
     <template title="Frusen skuldra" resourceName='' resourceType=''/>
+    
+    <template title="Frågefolmulär" resourceName='questionnarie' resourceType='xml'/>
+    
     <template title="Födelsemärken" resourceName='' resourceType=''/>
     <template title="Förmaksflimmer, FF" resourceName='' resourceType=''/>
     <template title="Förstoppning hos barn" resourceName='' resourceType=''/>

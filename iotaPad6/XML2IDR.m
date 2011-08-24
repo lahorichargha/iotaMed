@@ -276,6 +276,18 @@
         }
     }
     
+    else if ([elementName isEqualToString:@"multiselect"]) {
+        newElement = [[[IDRSelect alloc] init] autorelease];
+        id tos = [self topOfStackElement];
+        if ([tos respondsToSelector:@selector(addMultiselect:)]) {
+            [tos performSelector:@selector(addMultiselect:) withObject:newElement];
+        }
+        else {
+            [self fatalError:[NSString stringWithFormat:@"Could not add select to top of stack element: %@", [tos class]] parser:self.parser];
+            return;
+        }
+    }
+    
     else {
         [self fatalError:[NSString stringWithFormat:@"Unknown tag in document: %@", elementName] parser:self.parser];
         return;

@@ -42,13 +42,15 @@
 #import "PrescriptionController.h"
 #import "ReferralControllerDelegate.h"
 #import "IssueItemSelectViewController.h"
+#import "IssueItemMultiselectViewController.h"
 
 @interface IssueWorksheetController : DetailViewControllerWithToolbar <UITableViewDelegate, UITableViewDataSource, UIPopoverControllerDelegate, 
     ItemCellDelegate, 
     LabOrderControllerDelegate, 
     PrescriptionControllerDelegate,
     ReferralControllerDelegate,
-    IssueItemSelectViewDelegate> {
+    IssueItemSelectViewDelegate, 
+    IssueItemMultiselectViewDelegate> {
 }
 
 
@@ -60,6 +62,8 @@
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
 @property (nonatomic, retain) UIPopoverController *selectPopoverController;
 @property (nonatomic, retain) IssueItemSelectViewController *issueItemSelect;
+@property (nonatomic, retain) IssueItemMultiselectViewController *issueItemMultiselect;
+@property (nonatomic, retain) id popoverContentView;
 @property (nonatomic, copy) NSString *selectedText;
 @property (nonatomic, retain) NSIndexPath *ipForCell;
 
@@ -68,5 +72,6 @@
 - (void)settingTableViewFrameForPortrait;
 - (void)settingTableViewFrameForLandscape;
 - (IBAction)selectButtonAction:(id)sender;
+- (IBAction)multiselectButtonAction:(id)sender;
 
 @end

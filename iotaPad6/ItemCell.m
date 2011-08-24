@@ -75,15 +75,17 @@
 #import "ThemeColors.h"
 //#import "ItemTextFieldView.h"
 
-#define TAG_LBLCONTENT     1001
-#define TAG_TEXTFIELD      1002
-#define TAG_LBLVALUE       1003
-#define TAG_LBLDATE        1004
-#define TAG_IMAGE          1005
-#define TAG_BULLET         1006
-#define TAG_CHECKVIEW      1007
-#define TAG_SELECTBUTTON   1008
-#define TAG_SELECTLABEL    1009
+#define TAG_LBLCONTENT          1001
+#define TAG_TEXTFIELD           1002
+#define TAG_LBLVALUE            1003
+#define TAG_LBLDATE             1004
+#define TAG_IMAGE               1005
+#define TAG_BULLET              1006
+#define TAG_CHECKVIEW           1007
+#define TAG_SELECTBUTTON        1008
+#define TAG_SELECTLABEL         1009
+#define TAG_MULTISELECTBUTTON   1010
+#define TAG_MULTISELECTLABEL    1011
 
 static float kNormalFontSize = 14.0;
 static float kBoldFontSize = 18.0;
@@ -160,7 +162,8 @@ enum eCellContents {
     ecTextWithGetAndPutString,
     ecTextWithGetAndPutCheck,
     ecTextWithImage,
-    ecTextWithGetAndPutSelect
+    ecTextWithGetAndPutSelect,
+    ecTextWithGetAndPutMultiselect
 };
 
 @interface ItemCell()
@@ -187,6 +190,8 @@ enum eCellContents {
 @synthesize parentTableView = _parentTableView;
 @synthesize selectButton = _selectButton;
 @synthesize selectLabel = _selectLabel;
+@synthesize multiselectButton = _multiselectButton;
+@synthesize multiselectLabel = _multiselectLabel;
 
 - (UIView *)viewOfClass:(Class)cls frame:(CGRect)frame tag:(NSUInteger)tag {
     UIView *view = [[cls alloc] initWithFrame:frame];
@@ -238,6 +243,11 @@ enum eCellContents {
         
         self.selectLabel = (UILabel *)[self viewOfClass:[UILabel class] frame:defaultRect tag:TAG_SELECTLABEL];
         self.selectLabel.userInteractionEnabled = NO;
+        
+        self.multiselectButton = (UIButton *)[self viewOfClass:[UIButton class] frame:defaultRect tag:TAG_MULTISELECTBUTTON];
+        
+        self.multiselectLabel = (UILabel *)[self viewOfClass:[UILabel class] frame:defaultRect tag:TAG_MULTISELECTLABEL];
+        self.multiselectLabel.userInteractionEnabled = NO;
     }
     return self;
 }
@@ -254,6 +264,8 @@ enum eCellContents {
     self.itemCellDelegate = nil;
     self.selectButton = nil;
     self.selectLabel = nil;
+    self.multiselectButton = nil;
+    self.multiselectLabel = nil;
     [super dealloc];
 }
 
@@ -267,11 +279,27 @@ enum eCellContents {
     if (cell == nil) {
         idrItem.itemCell = [[[ItemCell alloc] init] autorelease];
         idrItem.itemCell.lblContent.backgroundColor = [UIColor clearColor];
+        
         idrItem.itemCell.checkView.backgroundColor = [UIColor clearColor];
+        
+        UIImage *button = [UIImage imageNamed:@"button.png"];
+        [idrItem.itemCell.selectButton setBackgroundImage:button
+                                     forState:UIControlStateNormal];
+        
         idrItem.itemCell.selectLabel.backgroundColor = [UIColor clearColor];
         idrItem.itemCell.selectLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
         idrItem.itemCell.selectLabel.textColor = [UIColor redColor];
-        idrItem.itemCell.selectLabel.text = @"<inget val>";
+        idrItem.itemCell.selectLabel.text = @"<inget valt>";
+        
+//        UIImage *button = [UIImage imageNamed:@"button.png"];
+        [idrItem.itemCell.multiselectButton setBackgroundImage:button
+                                                 forState:UIControlStateNormal];
+        
+        idrItem.itemCell.multiselectLabel.backgroundColor = [UIColor clearColor];
+        idrItem.itemCell.multiselectLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
+        idrItem.itemCell.multiselectLabel.textColor = [UIColor redColor];
+        idrItem.itemCell.multiselectLabel.text = @"<inga val>";
+        
         cell = idrItem.itemCell;
     }
     cell.parentTableView = tableView;
@@ -303,11 +331,6 @@ enum eCellContents {
                     cell.checkView.text = @"?";
                 
                 cell.checkView.textAlignment = UITextAlignmentCenter;
-            }
-            else if ([item.observation isSelect]) {
-                UIImage *button = [UIImage imageNamed:@"button.png"];
-                [cell.selectButton setBackgroundImage:button
-                                             forState:UIControlStateNormal];
             }
             else {
                 cell.textField.text = value.value;
@@ -346,6 +369,9 @@ enum eCellContents {
         return ecTextWithGetAndPutCheck;
     if ([idrItem.observation isSelect])
         return ecTextWithGetAndPutSelect;
+    if ([idrItem.observation isMultiselect]) {
+        return ecTextWithGetAndPutMultiselect;
+    }
     return ecTextWithGetAndPutString;
 }
 
@@ -364,6 +390,8 @@ enum eCellContents {
         case ecTextWithGetAndPutCheck:
             return kMediumWideRight;
         case ecTextWithGetAndPutSelect: 
+            return 280;
+        case ecTextWithGetAndPutMultiselect: 
             return 280;
         default:
             return kNarrowRight;
@@ -455,6 +483,8 @@ enum eCellContents {
             self.checkView.hidden = YES;
             self.selectButton.hidden = YES;
             self.selectLabel.hidden = YES;
+            self.multiselectButton.hidden = YES;
+            self.multiselectLabel.hidden = YES;
             break;
         case ecPureText:
             self.textField.hidden = YES;
@@ -464,6 +494,8 @@ enum eCellContents {
             self.checkView.hidden = YES;
             self.selectButton.hidden = YES;
             self.selectLabel.hidden = YES;
+            self.multiselectButton.hidden = YES;
+            self.multiselectLabel.hidden = YES;
             break;
         case ecTextWithGet:
             self.textField.hidden = YES;
@@ -473,6 +505,8 @@ enum eCellContents {
             self.checkView.hidden = YES;
             self.selectButton.hidden = YES;
             self.selectLabel.hidden = YES;
+            self.multiselectButton.hidden = YES;
+            self.multiselectLabel.hidden = YES;
             break;
         case ecTextWithGetAndPutNumeric:
             self.textField.hidden = NO;
@@ -484,6 +518,8 @@ enum eCellContents {
             self.checkView.hidden = YES;
             self.selectButton.hidden = YES;
             self.selectLabel.hidden = YES;
+            self.multiselectButton.hidden = YES;
+            self.multiselectLabel.hidden = YES;
             break;
         case ecTextWithGetAndPutString:
             self.textField.hidden = NO;
@@ -495,6 +531,8 @@ enum eCellContents {
             self.checkView.hidden = YES;
             self.selectButton.hidden = YES;
             self.selectLabel.hidden = YES;
+            self.multiselectButton.hidden = YES;
+            self.multiselectLabel.hidden = YES;
             break;
         case ecTextWithGetAndPutCheck:
             self.textField.hidden = YES;
@@ -504,6 +542,8 @@ enum eCellContents {
             self.checkView.hidden = NO;
             self.selectButton.hidden = YES;
             self.selectLabel.hidden = YES;
+            self.multiselectButton.hidden = YES;
+            self.multiselectLabel.hidden = YES;
             break;
         case ecTextWithGetAndPutSelect:
             self.textField.hidden = YES;
@@ -513,6 +553,19 @@ enum eCellContents {
             self.checkView.hidden = YES;
             self.selectButton.hidden = NO;
             self.selectLabel.hidden = NO;
+            self.multiselectButton.hidden = YES;
+            self.multiselectLabel.hidden = YES;
+            break;
+        case ecTextWithGetAndPutMultiselect:
+            self.textField.hidden = YES;
+            self.lblValue.hidden = NO;
+            self.lblDate.hidden = NO;
+            self.itemImageView.hidden = YES;
+            self.checkView.hidden = YES;
+            self.selectButton.hidden = YES;
+            self.selectLabel.hidden = YES;
+            self.multiselectButton.hidden = NO;
+            self.multiselectLabel.hidden = NO;
             break;
         default:
             break;
@@ -525,6 +578,8 @@ enum eCellContents {
         self.textField.hidden = YES;
         self.selectButton.hidden = YES;
         self.selectLabel.hidden = YES;
+        self.multiselectButton.hidden = YES;
+        self.multiselectLabel.hidden = YES;
     }
 
     [self slideViewToX:contentLeftMargin rightMargin:contentRightMargin view:self.lblContent];
@@ -552,6 +607,10 @@ enum eCellContents {
     self.selectButton.frame = CGRectMake(currentWidth - kInputOffsetRightEndFromRight - kCheckViewWidth, kInputOffsetFromTop, kSelectButtonViewWidth, kInputHeight);
     
     self.selectLabel.frame = CGRectMake(currentWidth - kInputOffsetRightEndFromRight - kCheckViewWidth - 100, kInputOffsetFromTop, kSelectLabelViewWidth, kInputHeight);
+    
+    self.multiselectButton.frame = CGRectMake(currentWidth - kInputOffsetRightEndFromRight - kCheckViewWidth, kInputOffsetFromTop, kSelectButtonViewWidth, kInputHeight);
+    
+    self.multiselectLabel.frame = CGRectMake(currentWidth - kInputOffsetRightEndFromRight - kCheckViewWidth - 100, kInputOffsetFromTop, kSelectLabelViewWidth, kInputHeight);
 }
 
 // -----------------------------------------------------------
