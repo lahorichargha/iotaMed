@@ -63,7 +63,8 @@
 @property (nonatomic, retain) UIPopoverController *selectPopoverController;
 @property (nonatomic, retain) IssueItemSelectViewController *issueItemSelect;
 @property (nonatomic, retain) IssueItemMultiselectViewController *issueItemMultiselect;
-@property (nonatomic, retain) id popoverContentView;
+@property (nonatomic, retain) UINavigationController *multiselectNavigationController;
+@property (nonatomic, retain) NSArray *popoverContentView;
 @property (nonatomic, copy) NSString *selectedText;
 @property (nonatomic, retain) NSIndexPath *ipForCell;
 

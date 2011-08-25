@@ -63,6 +63,7 @@
 @synthesize selectPopoverController = _selectPopoverController;
 @synthesize issueItemSelect = _issueItemSelect;
 @synthesize issueItemMultiselect = _issueItemMultiselect;
+@synthesize multiselectNavigationController = _multiselectNavigationController;
 @synthesize popoverContentView = _popoverContentView;
 @synthesize selectedText = _selectedText;
 @synthesize ipForCell = _ipForCell;
@@ -91,6 +92,7 @@
     [_selectPopoverController release];
     [_issueItemSelect release];
     [_issueItemMultiselect release];
+    [_multiselectNavigationController release];
     [_popoverContentView release];
     [_selectedText release];
     [_ipForCell release];
@@ -218,12 +220,28 @@
     self.issueItemMultiselect.delegate = self;
     [multiselectListController release];
     
+//    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.issueItemMultiselect];
+//    self.multiselectNavigationController = navigationController;
+//    [navigationController release];
     
-    UITableViewController *tvc = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
-    self.popoverContentView = tvc;
-    [tvc release];
+    UINavigationController *navigationController = [[UINavigationController alloc] init];
+    [navigationController addChildViewController:self.issueItemMultiselect];
+    self.multiselectNavigationController = navigationController;
+    [navigationController release];
     
-    UIPopoverController *poc = [[UIPopoverController alloc] initWithContentViewController:self.popoverContentView];
+    
+    
+//    UITableViewController *tvc = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+//    self.popoverContentView = tvc;
+//    [tvc release];
+    
+    NSArray *array = [[NSArray alloc] initWithObjects:self.issueItemSelect, self.multiselectNavigationController, nil];
+    self.popoverContentView = array;
+    [array release];
+    
+    UIViewController *vc = (UIViewController *)[self.popoverContentView objectAtIndex:0];
+    
+    UIPopoverController *poc = [[UIPopoverController alloc] initWithContentViewController:vc];
     self.selectPopoverController = poc;
     self.selectPopoverController.delegate = self;
     [poc release];
@@ -234,6 +252,7 @@
     [self setSelectPopoverController:nil];
     [self setIssueItemSelect:nil];
     [self setIssueItemMultiselect:nil];
+    [self setMultiselectNavigationController:nil];
     [self setPopoverContentView:nil];
     [self setSelectedText:nil];
     [self setIpForCell:nil];
@@ -429,22 +448,19 @@
     } 
     [noChoice release];
     
-    self.popoverContentView = self.issueItemSelect;
-    IssueItemSelectViewController *pc = (IssueItemSelectViewController *)self.popoverContentView;
-    pc.itemSelectDelegate = self;
-  
-    pc.idrItem = item;
+    self.issueItemSelect.idrItem = item;
     
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    for (IDRSelect *s in pc.idrItem.observation.selects) {
+    for (IDRSelect *s in self.issueItemSelect.idrItem.observation.selects) {
         NSString *text = s.content;
         [array addObject:text];
     }
     NSUInteger i = [array indexOfObject:cell.selectLabel.text];
-    pc.lastIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
+    self.issueItemSelect.lastIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
     [array release];
     
-    self.selectPopoverController.contentViewController = pc;
+//    self.selectPopoverController.contentViewController = pc;
+    [self.selectPopoverController setContentViewController:[self.popoverContentView objectAtIndex:0] animated:NO];
     
     [self.selectPopoverController presentPopoverFromRect:v.frame inView:(UIView *)v.superview permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
 }
@@ -474,28 +490,27 @@
     } 
     [noSelections release];
     
-    
-    self.popoverContentView = self.issueItemMultiselect;
-    IssueItemMultiselectViewController *mpc = (IssueItemMultiselectViewController *)self.popoverContentView;
-    mpc.delegate = self;
-    
-    mpc.idrItem = item;
-    
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    for (IDRMultiselect *ms in mpc.idrItem.observation.multiselects) {
-        NSString *text = ms.content;
-        [array addObject:text];
-    }
+    self.issueItemMultiselect.idrItem = item;
+        
+//    NSMutableArray *array = [[NSMutableArray alloc] init];
+//    for (IDRMultiselect *ms in self.issueItemMultiselect.idrItem.observation.multiselects) {
+//        NSString *text = ms.content;
+//        [array addObject:text];
+//    }
 //    NSUInteger i = [array indexOfObject:cell.multiselectLabel.text];
 //    mpc.lastIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
 //    [array release];
     
+
+//    self.selectPopoverController.contentViewController = nk;
+    [self.selectPopoverController setContentViewController:[self.popoverContentView objectAtIndex:1] animated:NO];
     
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mpc];
-    
-    self.selectPopoverController.contentViewController = navigationController;
-    
-    [navigationController release];
+    NSInteger rowCount = [self.issueItemMultiselect.idrItem.observation.multiselects count];
+    if (rowCount < 10) 
+        [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, 40 * rowCount) animated:YES];
+    else
+        [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, 40 * 10) animated:YES];
+
     
     [self.selectPopoverController presentPopoverFromRect:v.frame inView:(UIView *)v.superview permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
 }
