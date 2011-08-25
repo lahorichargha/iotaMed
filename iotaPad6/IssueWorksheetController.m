@@ -220,20 +220,10 @@
     self.issueItemMultiselect.delegate = self;
     [multiselectListController release];
     
-//    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.issueItemMultiselect];
-//    self.multiselectNavigationController = navigationController;
-//    [navigationController release];
-    
     UINavigationController *navigationController = [[UINavigationController alloc] init];
     [navigationController addChildViewController:self.issueItemMultiselect];
     self.multiselectNavigationController = navigationController;
     [navigationController release];
-    
-    
-    
-//    UITableViewController *tvc = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
-//    self.popoverContentView = tvc;
-//    [tvc release];
     
     NSArray *array = [[NSArray alloc] initWithObjects:self.issueItemSelect, self.multiselectNavigationController, nil];
     self.popoverContentView = array;
@@ -459,8 +449,14 @@
     self.issueItemSelect.lastIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
     [array release];
     
-//    self.selectPopoverController.contentViewController = pc;
     [self.selectPopoverController setContentViewController:[self.popoverContentView objectAtIndex:0] animated:NO];
+    
+    NSInteger rowCount = [self.issueItemSelect.idrItem.observation.selects count];
+    CGFloat tableViewRowHeight = 40.0;
+    if (rowCount < 10) 
+        [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, tableViewRowHeight * rowCount) animated:YES];
+    else
+        [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, tableViewRowHeight * 10) animated:YES];
     
     [self.selectPopoverController presentPopoverFromRect:v.frame inView:(UIView *)v.superview permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
 }
@@ -502,16 +498,15 @@
 //    [array release];
     
 
-//    self.selectPopoverController.contentViewController = nk;
     [self.selectPopoverController setContentViewController:[self.popoverContentView objectAtIndex:1] animated:NO];
     
     NSInteger rowCount = [self.issueItemMultiselect.idrItem.observation.multiselects count];
+    CGFloat tableViewRowHeight = 40.0;
     if (rowCount < 10) 
-        [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, 40 * rowCount) animated:YES];
+        [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, tableViewRowHeight * rowCount) animated:YES];
     else
-        [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, 40 * 10) animated:YES];
+        [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, tableViewRowHeight * 10) animated:YES];
 
-    
     [self.selectPopoverController presentPopoverFromRect:v.frame inView:(UIView *)v.superview permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
 }
 

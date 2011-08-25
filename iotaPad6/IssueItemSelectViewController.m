@@ -50,7 +50,6 @@ static CGFloat kTableViewRowHeight = 40.0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    self.title = @"Välja en av dem";
 }
 
 - (void)viewDidUnload
@@ -63,13 +62,6 @@ static CGFloat kTableViewRowHeight = 40.0;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    NSInteger rowCount = [self.idrItem.observation.selects count];
-    if (rowCount < 10) 
-        self.contentSizeForViewInPopover = CGSizeMake(250.0, kTableViewRowHeight * rowCount);
-    else
-        self.contentSizeForViewInPopover = CGSizeMake(250.0, kTableViewRowHeight * 10);
-    
     [self.tableView reloadData];
 }
 
