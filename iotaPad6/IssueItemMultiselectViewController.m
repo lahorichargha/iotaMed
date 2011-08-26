@@ -112,6 +112,9 @@ static CGFloat kTableViewRowHeight = 40.0;
     cell.textLabel.font = newFont;
     cell.textLabel.text = [NSString stringWithFormat:@"%@", multiselect.content];
     
+    
+    cell.accessoryType = (multiselect.selected) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    
 //    NSInteger oldRow = [self.lastIndexPath row];
 //    
 //    cell.accessoryType = (row == oldRow && self.lastIndexPath != nil) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
@@ -130,6 +133,11 @@ static CGFloat kTableViewRowHeight = 40.0;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    IDRMultiselect *multiselect = [self.idrItem.observation.multiselects objectAtIndex:[indexPath row]];
+    
+    multiselect.selected = !multiselect.selected;
+    [self.tableView reloadData];
+    
 //    NSInteger newRow = [indexPath row];
 //    NSInteger oldRow = (self.lastIndexPath != nil) ? [self.lastIndexPath row] : -1;
 //    if (newRow != oldRow) {

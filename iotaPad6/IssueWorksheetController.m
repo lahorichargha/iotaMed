@@ -67,6 +67,7 @@
 @synthesize popoverContentView = _popoverContentView;
 @synthesize selectedText = _selectedText;
 @synthesize ipForCell = _ipForCell;
+@synthesize multiselectedText = _multiselectedText;
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -96,6 +97,7 @@
     [_popoverContentView release];
     [_selectedText release];
     [_ipForCell release];
+    [_multiselectedText release];
     [super dealloc];
 }
 
@@ -157,6 +159,7 @@
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     [self refresh];
+    [self.selectPopoverController dismissPopoverAnimated:YES];
 }
 
 - (void)setTableHeader {
@@ -246,6 +249,7 @@
     [self setPopoverContentView:nil];
     [self setSelectedText:nil];
     [self setIpForCell:nil];
+    [self setMultiselectedText:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super viewDidUnload];
 }
@@ -362,7 +366,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    ItemCellIssue *myCell = (ItemCellIssue *)cell;
+    ItemCell *myCell = (ItemCell *)cell;
     [myCell.selectButton addTarget:self action:@selector(selectButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [myCell.multiselectButton addTarget:self action:@selector(multiselectButtonAction:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -468,7 +472,32 @@
 }
 
 - (void)changeMultiselectLable:(IDRItem *)newItem {
-#warning TODO
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (IDRMultiselect *ms in newItem.observation.multiselects) {
+        if (ms.selected == YES) {
+            NSString *text = ms.content;
+            [array addObject:text];
+        }
+    }
+    
+    NSMutableString *text = [NSMutableString stringWithCapacity:50];
+    
+    if ([array count] == 0) {
+        [text setString:@"<inga val>"];
+    } else {
+        for (NSString *s in array) {
+            [text appendFormat:@"%@, ", s];
+        }
+    }
+    [array release];
+    
+    self.selectedText = text;
+    
+    UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:self.ipForCell];
+    ItemCell *myCell = (ItemCell *)cell;
+    myCell.multiselectLabel.text = self.selectedText;
+    
+    [self.selectPopoverController dismissPopoverAnimated:YES];
 }
 
 - (IBAction)multiselectButtonAction:(id)sender {
@@ -476,27 +505,11 @@
     ItemCell *cell = (ItemCell *)v.superview.superview;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     
+    self.ipForCell = indexPath;
+    
     IDRItem *item = [self.idrBlock.items objectAtIndex:[indexPath row]];
     
-    IDRMultiselect *noSelections = [[IDRMultiselect alloc] init];
-    NSMutableString *contentText = [NSMutableString stringWithString:@"<inga val>"];
-    noSelections.content = contentText;
-    if (![[[item.observation.multiselects objectAtIndex:0] content] isEqualToString:@"<inga val>"]) {
-        [item.observation.multiselects insertObject:noSelections atIndex:0];
-    } 
-    [noSelections release];
-    
     self.issueItemMultiselect.idrItem = item;
-        
-//    NSMutableArray *array = [[NSMutableArray alloc] init];
-//    for (IDRMultiselect *ms in self.issueItemMultiselect.idrItem.observation.multiselects) {
-//        NSString *text = ms.content;
-//        [array addObject:text];
-//    }
-//    NSUInteger i = [array indexOfObject:cell.multiselectLabel.text];
-//    mpc.lastIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
-//    [array release];
-    
 
     [self.selectPopoverController setContentViewController:[self.popoverContentView objectAtIndex:1] animated:NO];
     

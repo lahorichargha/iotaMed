@@ -67,6 +67,7 @@
 @property (nonatomic, retain) NSArray *popoverContentView;
 @property (nonatomic, copy) NSString *selectedText;
 @property (nonatomic, retain) NSIndexPath *ipForCell;
+@property (nonatomic, copy) NSMutableString *multiselectedText;
 
 - (void)refresh;
 - (IBAction)btnContact:(id)sender;

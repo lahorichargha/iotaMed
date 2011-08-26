@@ -41,6 +41,7 @@
 #import "IDRTest.h"
 #import "IDRDose.h"
 #import "IDRSelect.h"
+#import "IDRMultiselect.h"
 #import "IDRDescription.h"
 #import "IotaContext.h"
 #import "PatientContext.h"
@@ -277,7 +278,7 @@
     }
     
     else if ([elementName isEqualToString:@"multiselect"]) {
-        newElement = [[[IDRSelect alloc] init] autorelease];
+        newElement = [[[IDRMultiselect alloc] init] autorelease];
         id tos = [self topOfStackElement];
         if ([tos respondsToSelector:@selector(addMultiselect:)]) {
             [tos performSelector:@selector(addMultiselect:) withObject:newElement];
