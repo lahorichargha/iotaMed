@@ -465,7 +465,7 @@
     [self.selectPopoverController presentPopoverFromRect:v.frame inView:(UIView *)v.superview permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
 }
 
-#pragma mark - IssueItemSelectViewDelegate
+#pragma mark - IssueItemMultielectViewDelegate
 
 - (void)dismissPopoverForMultiselect {
     [self.selectPopoverController dismissPopoverAnimated:YES];

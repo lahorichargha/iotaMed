@@ -19,6 +19,7 @@
 @interface IssueItemMultiselectViewController : UITableViewController
 
 @property (nonatomic, retain) IDRItem *idrItem;
+@property (nonatomic, retain) NSMutableDictionary *tempMultiselects;
 @property (nonatomic, retain) UIBarButtonItem *okButtonItem;
 @property (nonatomic, retain) UIBarButtonItem *clearButtonItem;
 @property (nonatomic, assign) id<IssueItemMultiselectViewDelegate> delegate;

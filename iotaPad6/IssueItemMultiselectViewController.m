@@ -7,7 +7,7 @@
 //
 
 #import "IssueItemMultiselectViewController.h"
-#import "IssueWorksheetController.h"
+//#import "IssueWorksheetController.h"
 #import "IDRItem.h"
 #import "IDRObservation.h"
 #import "IDRMultiselect.h"
@@ -18,6 +18,7 @@ static CGFloat kTableViewRowHeight = 40.0;
 @implementation IssueItemMultiselectViewController
 
 @synthesize idrItem = _idrItem;
+@synthesize tempMultiselects = _tempMultiselects;
 @synthesize okButtonItem = _okButtonItem;
 @synthesize clearButtonItem = _clearButtonItem;
 @synthesize delegate = _delegate;
@@ -33,6 +34,9 @@ static CGFloat kTableViewRowHeight = 40.0;
 
 - (void)dealloc {
     [_idrItem release];
+    [_okButtonItem release];
+    [_clearButtonItem release];
+    [_tempMultiselects release];
     [super dealloc];
 }
 
@@ -62,12 +66,17 @@ static CGFloat kTableViewRowHeight = 40.0;
     
     self.navigationItem.leftBarButtonItem = self.clearButtonItem;
     self.navigationItem.rightBarButtonItem = self.okButtonItem;
+    
+    self.tempMultiselects = [[NSMutableDictionary alloc] initWithCapacity:10];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     [self setIdrItem:nil];
+    [self setOkButtonItem:nil];
+    [self setClearButtonItem:nil];
+    [self setTempMultiselects:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -111,17 +120,8 @@ static CGFloat kTableViewRowHeight = 40.0;
     UIFont *newFont = [UIFont boldSystemFontOfSize:17];
     cell.textLabel.font = newFont;
     cell.textLabel.text = [NSString stringWithFormat:@"%@", multiselect.content];
-    
-    
     cell.accessoryType = (multiselect.selected) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
-    
-//    NSInteger oldRow = [self.lastIndexPath row];
-//    
-//    cell.accessoryType = (row == oldRow && self.lastIndexPath != nil) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
-//    
-//    if (self.lastIndexPath == nil && row == 0) {
-//        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//    } 
+  
     return cell;
 }
 
@@ -138,30 +138,37 @@ static CGFloat kTableViewRowHeight = 40.0;
     multiselect.selected = !multiselect.selected;
     [self.tableView reloadData];
     
-//    NSInteger newRow = [indexPath row];
-//    NSInteger oldRow = (self.lastIndexPath != nil) ? [self.lastIndexPath row] : -1;
-//    if (newRow != oldRow) {
-//        UITableViewCell *newCell = [tableView cellForRowAtIndexPath:indexPath];
-//        newCell.accessoryType = UITableViewCellAccessoryCheckmark;
-//        UITableViewCell *oldCell = [tableView cellForRowAtIndexPath:self.lastIndexPath];
-//        oldCell.accessoryType = UITableViewCellAccessoryNone;
-//        self.lastIndexPath = indexPath;
-//    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-//    IDRMultiselect *multiselect = [self.idrItem.observation.multiselects objectAtIndex:[self.lastIndexPath row]];
-//    NSString *text = [NSString stringWithFormat:@"%@", select.content];
-//    [self.itemSelectDelegate changeSelectLable:text];
+    if (multiselect.selected == YES) {
+        [self.tempMultiselects setObject:multiselect forKey:indexPath];
+    } else {
+        [self.tempMultiselects removeObjectForKey:indexPath];
+    }  
 }
 
 #pragma mark - Bar buttons actions
 
 - (IBAction)doneAction:(id)sender {
     [self.delegate changeMultiselectLable:self.idrItem];
+    [self.tempMultiselects removeAllObjects];
 }
 
 - (IBAction)dismissAction:(id)sender {
     [self.delegate dismissPopoverForMultiselect];
+    
+    NSEnumerator *enumerator = [self.tempMultiselects keyEnumerator];
+    id key;
+    
+    while ((key = [enumerator nextObject])) {
+        NSIndexPath *indexPath = (NSIndexPath *)key;
+        IDRMultiselect *multiselect = [self.idrItem.observation.multiselects objectAtIndex:[indexPath row]];
+        
+        multiselect.selected = !multiselect.selected;
+        [self.idrItem.observation.multiselects replaceObjectAtIndex:[indexPath row] withObject:multiselect];
+    }
+    [self.tableView reloadData];
+    [self.tempMultiselects removeAllObjects];
 }
 
 @end
