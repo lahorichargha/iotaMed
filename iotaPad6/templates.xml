@@ -74,9 +74,6 @@
     <template title='Fotledstrauma' resourceName='fotledstrauma' resourceType='xml'/>
     <template title="Frontotemporal demens" resourceName='' resourceType=''/>
     <template title="Frusen skuldra" resourceName='' resourceType=''/>
-    
-    <template title="Frågefolmulär" resourceName='questionnarie' resourceType='xml'/>
-    
     <template title="Födelsemärken" resourceName='' resourceType=''/>
     <template title="Förmaksflimmer, FF" resourceName='' resourceType=''/>
     <template title="Förstoppning hos barn" resourceName='' resourceType=''/>

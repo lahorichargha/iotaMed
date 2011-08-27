@@ -191,7 +191,6 @@
 		EE929F2F13FD068A00BDD83F /* IssueItemSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE929F2E13FD068A00BDD83F /* IssueItemSelectViewController.m */; };
 		EEAA54C51403CE6000DFE7FE /* IDRMultiselect.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAA54C41403CE6000DFE7FE /* IDRMultiselect.m */; };
 		EEAA54C81403D69F00DFE7FE /* IssueItemMultiselectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAA54C71403D69F00DFE7FE /* IssueItemMultiselectViewController.m */; };
-		EEC804EE1403C9030088A7B6 /* questionnarie.xml in Resources */ = {isa = PBXBuildFile; fileRef = EEC804ED1403C9030088A7B6 /* questionnarie.xml */; };
 		EEED7D6B1402ECFA006E253F /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = EEED7D6A1402ECF9006E253F /* button.png */; };
 /* End PBXBuildFile section */
 
@@ -511,7 +510,6 @@
 		EEAA54C41403CE6000DFE7FE /* IDRMultiselect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRMultiselect.m; sourceTree = "<group>"; };
 		EEAA54C61403D69F00DFE7FE /* IssueItemMultiselectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueItemMultiselectViewController.h; sourceTree = "<group>"; };
 		EEAA54C71403D69F00DFE7FE /* IssueItemMultiselectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueItemMultiselectViewController.m; sourceTree = "<group>"; };
-		EEC804ED1403C9030088A7B6 /* questionnarie.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = questionnarie.xml; sourceTree = "<group>"; };
 		EEED7D6A1402ECF9006E253F /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -687,7 +685,6 @@
 				AA48FE77132FBE9B008409AA /* keywordtemplates.xml */,
 				AA220A87134148990088CBD3 /* fotledstrauma.xml */,
 				AAB7700E1357077700388BF5 /* stroke.xml */,
-				EEC804ED1403C9030088A7B6 /* questionnarie.xml */,
 			);
 			name = Templates;
 			sourceTree = "<group>";
@@ -1242,7 +1239,6 @@
 				EE929F2613FD038400BDD83F /* button_down.png in Resources */,
 				EE929F2713FD038400BDD83F /* button_up.png in Resources */,
 				EEED7D6B1402ECFA006E253F /* button.png in Resources */,
-				EEC804EE1403C9030088A7B6 /* questionnarie.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
