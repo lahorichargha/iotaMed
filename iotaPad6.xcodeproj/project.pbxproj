@@ -1558,7 +1558,7 @@
 				AA63B62A13055E360035A49C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		AA63B62B13055E360035A49C /* Build configuration list for PBXNativeTarget "iotaPad6" */ = {
 			isa = XCConfigurationList;
@@ -1567,7 +1567,7 @@
 				AA63B62D13055E360035A49C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		AA63B62E13055E360035A49C /* Build configuration list for PBXNativeTarget "iotaPad6Tests" */ = {
 			isa = XCConfigurationList;
@@ -1576,7 +1576,7 @@
 				AA63B63013055E360035A49C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

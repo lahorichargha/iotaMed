@@ -291,7 +291,6 @@ enum eCellContents {
         idrItem.itemCell.selectLabel.textColor = [UIColor redColor];
         idrItem.itemCell.selectLabel.text = @"<inget valt>";
         
-//        UIImage *button = [UIImage imageNamed:@"button.png"];
         [idrItem.itemCell.multiselectButton setBackgroundImage:button
                                                  forState:UIControlStateNormal];
         

@@ -7,7 +7,6 @@
 //
 
 #import "IssueItemMultiselectViewController.h"
-//#import "IssueWorksheetController.h"
 #import "IDRItem.h"
 #import "IDRObservation.h"
 #import "IDRMultiselect.h"
@@ -34,6 +33,7 @@ static CGFloat kTableViewRowHeight = 40.0;
 
 - (void)dealloc {
     [_idrItem release];
+    [_tempMultiselects release];
     [_okButtonItem release];
     [_clearButtonItem release];
     [_tempMultiselects release];
@@ -67,13 +67,16 @@ static CGFloat kTableViewRowHeight = 40.0;
     self.navigationItem.leftBarButtonItem = self.clearButtonItem;
     self.navigationItem.rightBarButtonItem = self.okButtonItem;
     
-    self.tempMultiselects = [[NSMutableDictionary alloc] initWithCapacity:10];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithCapacity:10];
+    self.tempMultiselects = dict;
+    [dict release];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     [self setIdrItem:nil];
+    [self setTempMultiselects:nil];
     [self setOkButtonItem:nil];
     [self setClearButtonItem:nil];
     [self setTempMultiselects:nil];
@@ -138,13 +141,9 @@ static CGFloat kTableViewRowHeight = 40.0;
     multiselect.selected = !multiselect.selected;
     [self.tableView reloadData];
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.tempMultiselects setObject:multiselect forKey:indexPath];
     
-    if (multiselect.selected == YES) {
-        [self.tempMultiselects setObject:multiselect forKey:indexPath];
-    } else {
-        [self.tempMultiselects removeObjectForKey:indexPath];
-    }  
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Bar buttons actions

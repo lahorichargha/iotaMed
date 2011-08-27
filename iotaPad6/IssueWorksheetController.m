@@ -159,6 +159,7 @@
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     [self refresh];
+    [self.issueItemMultiselect dismissAction:nil];
     [self.selectPopoverController dismissPopoverAnimated:YES];
 }
 
@@ -527,6 +528,10 @@
 
 - (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController {
     return YES;
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    [self.issueItemMultiselect dismissAction:nil];
 }
 
 @end
