@@ -92,6 +92,13 @@ static NSMutableArray *subclasses;
     // Configure the view for the selected state
 }
 
+- (void)dealloc {
+    self.idrItem = nil;
+    self.itemCellDelegate = nil;
+    self.parentTableView = nil;
+    [super dealloc];
+}
+
 // -----------------------------------------------------------
 #pragma mark -
 #pragma mark Cluster class methods
