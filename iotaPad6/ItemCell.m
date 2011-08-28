@@ -54,7 +54,7 @@
  *
  */
 
-
+#import "ItemCellDelegate.h"
 #import "ItemCell.h"
 #import "BulletView.h"
 #import "IDRItem.h"
@@ -74,6 +74,10 @@
 #import "IDRWorksheet.h"
 #import "ThemeColors.h"
 //#import "ItemTextFieldView.h"
+
+#import "MyVUMeter.h"
+#import "AudioViewController.h"
+@class AudioViewController;
 
 #define TAG_LBLCONTENT  1001
 #define TAG_TEXTFIELD   1002
@@ -176,6 +180,7 @@ enum eCellContents {
 @synthesize checkView = _checkView;
 @synthesize itemCellDelegate = _itemCellDelegate;
 @synthesize parentTableView = _parentTableView;
+@synthesize audioViewItemCell=_audioViewItemCell;
 
 - (UIView *)viewOfClass:(Class)cls frame:(CGRect)frame tag:(NSUInteger)tag {
     UIView *view = [[cls alloc] initWithFrame:frame];
@@ -183,6 +188,27 @@ enum eCellContents {
     [self.contentView addSubview:view];
     return [view autorelease];
 }
+
+-(void)recStart{
+        [self.itemCellDelegate recordButtonItemCellDelegate:self.audioViewItemCell.recordButton];  
+}
+
+-(void)playStart{
+           [self.itemCellDelegate playButtonItemCellDelegate:self.audioViewItemCell.playButton];
+        }
+
+-(void)doStop{
+           [self.itemCellDelegate stopButtonItemCellDelegate:self.audioViewItemCell.stopButton];        }
+    
+-(void)doPause{
+           [self.itemCellDelegate pauseButtonItemCellDelegate:self.audioViewItemCell.pauseButton];
+    }
+
+- (IBAction)sliderValuechange:(UISlider*)sender{
+       
+            [self.itemCellDelegate sliderValueItemCellDelegate:self.audioViewItemCell.progressSlider];
+        }
+
 
 - (id)init {
     if ((self = [super init])) {
@@ -199,11 +225,22 @@ enum eCellContents {
         tb.barStyle = UIBarStyleBlackTranslucent;
         UIBarButtonItem *bbispacer = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
         
+        UISlider *slider = [[[UISlider alloc] init]autorelease];
+        UIBarButtonItem *sliderAsToolbarItem = [[[UIBarButtonItem alloc] initWithCustomView:slider]autorelease];
+        
+        
+        [sliderAsToolbarItem setWidth:100.0] ;
+        
+                [sliderAsToolbarItem setAction:@selector(sliderValuechange:)];
+                 
+        
         UIImage *microImage = [UIImage imageNamed:@"tape4.png"];
-        UIBarButtonItem *bbirec = [[[UIBarButtonItem alloc] initWithImage:microImage style:UIBarButtonItemStylePlain target:nil action:nil] autorelease];
-        UIBarButtonItem *bbiplay = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:nil action:nil] autorelease];
+        UIBarButtonItem *bbirec = [[[UIBarButtonItem alloc] initWithImage:microImage style:UIBarButtonItemStylePlain target:self action:@selector(recStart)] autorelease];
+        UIBarButtonItem *bbiplay = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(playStart)] autorelease];
         UIBarButtonItem *bbicamera = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:nil action:nil] autorelease];
-        tb.items = [NSArray arrayWithObjects:bbirec, bbispacer, bbicamera, bbispacer, bbiplay, nil];
+        UIBarButtonItem *pause=[[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(doPause)]autorelease];
+        UIBarButtonItem *stop=[[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(doStop)]autorelease];
+        tb.items = [NSArray arrayWithObjects:bbirec,stop, bbispacer, bbicamera, bbispacer,sliderAsToolbarItem, bbiplay,pause, nil];
         
         self.textField.inputAccessoryView = tb;
         

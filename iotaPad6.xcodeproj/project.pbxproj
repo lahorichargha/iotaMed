@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5814F29D140A254C0007A935 /* AudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5814F295140A254C0007A935 /* AudioViewController.m */; };
+		5814F29E140A254C0007A935 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5814F296140A254C0007A935 /* MainStoryboard.storyboard */; };
+		5814F29F140A254C0007A935 /* MyVUMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5814F298140A254C0007A935 /* MyVUMeter.m */; };
+		5814F2A0140A254C0007A935 /* pause_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5814F299140A254C0007A935 /* pause_image@2x.png */; };
+		5814F2A1140A254C0007A935 /* play_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5814F29A140A254C0007A935 /* play_image@2x.png */; };
+		5814F2A2140A254C0007A935 /* record_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5814F29B140A254C0007A935 /* record_image@2x.png */; };
+		5814F2A3140A254C0007A935 /* stop_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5814F29C140A254C0007A935 /* stop_image@2x.png */; };
+		5814F2A6140A2E120007A935 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5814F2A5140A2E120007A935 /* AVFoundation.framework */; };
+		5814F2A8140A2E1C0007A935 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5814F2A7140A2E1C0007A935 /* CoreAudio.framework */; };
+		5814F2AE140A2E3E0007A935 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5814F2AD140A2E3E0007A935 /* AudioToolbox.framework */; };
+		5814F2B0140A2E5E0007A935 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5814F2AF140A2E5E0007A935 /* CoreFoundation.framework */; };
 		AA12A380137B2F010016AB24 /* IssueWorksheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA12A37F137B2F010016AB24 /* IssueWorksheetController.xib */; };
 		AA12A38E137C73EF0016AB24 /* ThemeColors.m in Sources */ = {isa = PBXBuildFile; fileRef = AA12A38D137C73EF0016AB24 /* ThemeColors.m */; };
 		AA16037B1375B4B800D03EE6 /* ServerListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16037A1375B4B800D03EE6 /* ServerListener.m */; };
@@ -174,7 +185,6 @@
 		AAECB6CD1381834C00EAB251 /* MyIotaPatientContext.m in Sources */ = {isa = PBXBuildFile; fileRef = AAECB6CC1381834C00EAB251 /* MyIotaPatientContext.m */; };
 		AAF16F67130DB1BB00A86E3E /* DetailViewControllerWithNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF16F66130DB1BB00A86E3E /* DetailViewControllerWithNavbar.m */; };
 		AAF9B5541392A78C0049BA69 /* test5.xml in Resources */ = {isa = PBXBuildFile; fileRef = AAF9B5531392A78C0049BA69 /* test5.xml */; };
-		AAFB52BD13E4336B00F9CC59 /* ItemTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB52BC13E4336B00F9CC59 /* ItemTextFieldView.m */; };
 		AAFB52C013E44F6900F9CC59 /* IssueWorksheetTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB52BF13E44F6900F9CC59 /* IssueWorksheetTableView.m */; };
 		EE3A18E813F2D55D00A2A16E /* diagnoser.png in Resources */ = {isa = PBXBuildFile; fileRef = EE3A18E713F2D55D00A2A16E /* diagnoser.png */; };
 		EE4159CD13F291E500199032 /* background2.png in Resources */ = {isa = PBXBuildFile; fileRef = EE4159C513F291E500199032 /* background2.png */; };
@@ -220,6 +230,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5814F294140A254C0007A935 /* AudioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioViewController.h; sourceTree = SOURCE_ROOT; };
+		5814F295140A254C0007A935 /* AudioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioViewController.m; sourceTree = SOURCE_ROOT; };
+		5814F296140A254C0007A935 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = SOURCE_ROOT; };
+		5814F297140A254C0007A935 /* MyVUMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyVUMeter.h; sourceTree = SOURCE_ROOT; };
+		5814F298140A254C0007A935 /* MyVUMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyVUMeter.m; sourceTree = SOURCE_ROOT; };
+		5814F299140A254C0007A935 /* pause_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause_image@2x.png"; sourceTree = SOURCE_ROOT; };
+		5814F29A140A254C0007A935 /* play_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play_image@2x.png"; sourceTree = SOURCE_ROOT; };
+		5814F29B140A254C0007A935 /* record_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record_image@2x.png"; sourceTree = SOURCE_ROOT; };
+		5814F29C140A254C0007A935 /* stop_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop_image@2x.png"; sourceTree = SOURCE_ROOT; };
+		5814F2A5140A2E120007A935 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5814F2A7140A2E1C0007A935 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		5814F2AD140A2E3E0007A935 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		5814F2AF140A2E5E0007A935 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		AA12A37F137B2F010016AB24 /* IssueWorksheetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueWorksheetController.xib; sourceTree = "<group>"; };
 		AA12A384137C70220016AB24 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		AA12A38C137C73EF0016AB24 /* ThemeColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeColors.h; sourceTree = "<group>"; };
@@ -481,8 +504,6 @@
 		AAF16F65130DB1BA00A86E3E /* DetailViewControllerWithNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewControllerWithNavbar.h; sourceTree = "<group>"; };
 		AAF16F66130DB1BB00A86E3E /* DetailViewControllerWithNavbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewControllerWithNavbar.m; sourceTree = "<group>"; };
 		AAF9B5531392A78C0049BA69 /* test5.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test5.xml; sourceTree = "<group>"; };
-		AAFB52BB13E4336B00F9CC59 /* ItemTextFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTextFieldView.h; sourceTree = "<group>"; };
-		AAFB52BC13E4336B00F9CC59 /* ItemTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTextFieldView.m; sourceTree = "<group>"; };
 		AAFB52BE13E44F6900F9CC59 /* IssueWorksheetTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueWorksheetTableView.h; sourceTree = "<group>"; };
 		AAFB52BF13E44F6900F9CC59 /* IssueWorksheetTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueWorksheetTableView.m; sourceTree = "<group>"; };
 		EE3A18E713F2D55D00A2A16E /* diagnoser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diagnoser.png; sourceTree = "<group>"; };
@@ -502,6 +523,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5814F2B0140A2E5E0007A935 /* CoreFoundation.framework in Frameworks */,
+				5814F2AE140A2E3E0007A935 /* AudioToolbox.framework in Frameworks */,
+				5814F2A8140A2E1C0007A935 /* CoreAudio.framework in Frameworks */,
+				5814F2A6140A2E120007A935 /* AVFoundation.framework in Frameworks */,
 				AA97B6DD13938DDB002E6C11 /* libiotaShared.a in Frameworks */,
 				AA63B5FF13055E350035A49C /* UIKit.framework in Frameworks */,
 				AA63B60113055E350035A49C /* Foundation.framework in Frameworks */,
@@ -522,6 +547,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5814F2A4140A25780007A935 /* AudioRecord */ = {
+			isa = PBXGroup;
+			children = (
+				5814F294140A254C0007A935 /* AudioViewController.h */,
+				5814F295140A254C0007A935 /* AudioViewController.m */,
+				5814F296140A254C0007A935 /* MainStoryboard.storyboard */,
+				5814F297140A254C0007A935 /* MyVUMeter.h */,
+				5814F298140A254C0007A935 /* MyVUMeter.m */,
+				5814F299140A254C0007A935 /* pause_image@2x.png */,
+				5814F29A140A254C0007A935 /* play_image@2x.png */,
+				5814F29B140A254C0007A935 /* record_image@2x.png */,
+				5814F29C140A254C0007A935 /* stop_image@2x.png */,
+			);
+			name = AudioRecord;
+			sourceTree = "<group>";
+		};
 		AA12A383137C6FF60016AB24 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -553,6 +594,7 @@
 			children = (
 				AAA9EEFF13210A9700D36C54 /* ItemCell.h */,
 				AAA9EF0013210A9A00D36C54 /* ItemCell.m */,
+				5814F2A4140A25780007A935 /* AudioRecord */,
 				AA968062133BE296006E6AF0 /* ItemCellDelegate.h */,
 				AA2A2D6A133560A5005B7CAC /* ItemCellJournal.h */,
 				AA2A2D6B133560A5005B7CAC /* ItemCellJournal.m */,
@@ -560,8 +602,6 @@
 				AA2A2D6E133560BA005B7CAC /* ItemCellIssue.m */,
 				AA2A2D70133560CD005B7CAC /* ItemCellTemplate.h */,
 				AA2A2D71133560CD005B7CAC /* ItemCellTemplate.m */,
-				AAFB52BB13E4336B00F9CC59 /* ItemTextFieldView.h */,
-				AAFB52BC13E4336B00F9CC59 /* ItemTextFieldView.m */,
 			);
 			name = "Item Cell";
 			sourceTree = "<group>";
@@ -673,6 +713,10 @@
 		AA63B5EF13055E350035A49C = {
 			isa = PBXGroup;
 			children = (
+				5814F2AF140A2E5E0007A935 /* CoreFoundation.framework */,
+				5814F2AD140A2E3E0007A935 /* AudioToolbox.framework */,
+				5814F2A7140A2E1C0007A935 /* CoreAudio.framework */,
+				5814F2A5140A2E120007A935 /* AVFoundation.framework */,
 				AA97B6DC13938DDB002E6C11 /* libiotaShared.a */,
 				AA97B6CD13938D9A002E6C11 /* iotaShared.xcodeproj */,
 				AAB76FFC1355A7C200388BF5 /* Localizable.strings */,
@@ -1211,6 +1255,11 @@
 				EE4159D413F291E500199032 /* titlebar_light1.png in Resources */,
 				EE4159D613F291FE00199032 /* rowImage.png in Resources */,
 				EE3A18E813F2D55D00A2A16E /* diagnoser.png in Resources */,
+				5814F29E140A254C0007A935 /* MainStoryboard.storyboard in Resources */,
+				5814F2A0140A254C0007A935 /* pause_image@2x.png in Resources */,
+				5814F2A1140A254C0007A935 /* play_image@2x.png in Resources */,
+				5814F2A2140A254C0007A935 /* record_image@2x.png in Resources */,
+				5814F2A3140A254C0007A935 /* stop_image@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1325,9 +1374,10 @@
 				AAECB6C61381601C00EAB251 /* InboxMyIotaForm.m in Sources */,
 				AAECB6CD1381834C00EAB251 /* MyIotaPatientContext.m in Sources */,
 				AAC0397F13DC6010008F38C3 /* PatientController.m in Sources */,
-				AAFB52BD13E4336B00F9CC59 /* ItemTextFieldView.m in Sources */,
 				AAFB52C013E44F6900F9CC59 /* IssueWorksheetTableView.m in Sources */,
 				AA9CD3EA13F453BE00DA80D7 /* UIImage+HackyBugfix.m in Sources */,
+				5814F29D140A254C0007A935 /* AudioViewController.m in Sources */,
+				5814F29F140A254C0007A935 /* MyVUMeter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,4 +17,12 @@
 - (void)presentReferralForm:(IDRItem *)item;
 - (void)presentPrescriptionForm:(IDRItem *)item;
 
+- (IBAction)recordButtonItemCellDelegate:(id)sender;
+- (IBAction)stopButtonItemCellDelegate:(id)sender;
+- (IBAction)playButtonItemCellDelegate:(id)sender;
+- (IBAction)pauseButtonItemCellDelegate:(id)sender;
+
+- (IBAction)sliderValueItemCellDelegate:(UISlider*)sender;
+
+
 @end

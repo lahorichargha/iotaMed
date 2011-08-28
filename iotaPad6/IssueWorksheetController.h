@@ -41,6 +41,7 @@
 #import "LabOrderController.h"
 #import "PrescriptionController.h"
 #import "ReferralControllerDelegate.h"
+#import "AudioViewController.h"
 
 @interface IssueWorksheetController : DetailViewControllerWithToolbar <UITableViewDelegate, UITableViewDataSource, 
     ItemCellDelegate, 
@@ -56,6 +57,7 @@
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *btnContact;
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
+@property (nonatomic,retain) AudioViewController *audioView;
 
 - (void)refresh;
 - (IBAction)btnContact:(id)sender;

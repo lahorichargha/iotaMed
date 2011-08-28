@@ -33,10 +33,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ItemCellDelegate.h"
-
+#import "MyVUMeter.h"
+#import "AudioViewController.h"
 
 @class IDRItem;
 @class BulletView;
+@class AudioViewController;
 
 @interface ItemCell : UITableViewCell <UITextFieldDelegate> {
     
@@ -52,6 +54,7 @@
 @property (nonatomic, retain) BulletView *bulletView;
 @property (nonatomic, retain) UILabel *checkView;
 @property (nonatomic, retain) id <ItemCellDelegate> itemCellDelegate;
+@property (nonatomic,retain) AudioViewController *audioViewItemCell;
 
 + (ItemCell *)cellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 + (CGFloat)cellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;

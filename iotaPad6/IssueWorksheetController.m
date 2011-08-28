@@ -48,6 +48,14 @@
 #import "Funcs.h"
 #import "ThemeColors.h"
 #import "ContactSelectOrCreateForm.h"
+#import <AVFoundation/AVAudioPlayer.h>
+#import <AVFoundation/AVAudioRecorder.h>
+
+#import <AVFoundation/AVAudioSession.h>
+#import <CoreAudio/CoreAudioTypes.h>
+#import "MyVUMeter.h"
+
+@class AudioViewController;
 
 @implementation IssueWorksheetController
 
@@ -57,6 +65,7 @@
 @synthesize activityIndicator = _activityIndicator;
 @synthesize btnContact = _btnContact;
 @synthesize imageView = _imageView;
+@synthesize audioView=_audioView;
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -77,6 +86,7 @@
     self.idrBlock = nil;
     self.activityIndicator = nil;
     self.btnContact = nil;
+    self.audioView=nil;
     [_imageView release];
     [super dealloc];
 }
@@ -300,6 +310,39 @@
     [self presentModalViewController:vlf animated:YES];
 }
 
+//--------------------------------------------------------------
+//Shiva:
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Audiodelegate
+// -----------------------------------------------------------
+
+
+- (IBAction)recordButtonItemCellDelegate:(id)sender{
+       AudioViewController *audioRec=[[[AudioViewController alloc]init]autorelease];
+       [audioRec recordButton:audioRec];
+        
+    }    
+   
+- (IBAction)stopButtonItemCellDelegate:(id)sender{
+       AudioViewController *audioStop=[[[AudioViewController alloc]init]autorelease];
+        [audioStop stopButton:audioStop];
+    }
+
+- (IBAction)playButtonItemCellDelegate:(id)sender{
+        AudioViewController *audioPlay=[[[AudioViewController alloc]init]autorelease];
+        [audioPlay playButton:audioPlay];
+    }
+
+- (IBAction)pauseButtonItemCellDelegate:(id)sender{
+       AudioViewController *audioPause=[[[AudioViewController alloc]init]autorelease];
+        [audioPause pauseButton:audioPause];
+    }
+
+- (IBAction)sliderValueItemCellDelegate:(UISlider*)sender{
+        AudioViewController *audioSlider=[[[AudioViewController alloc]init]autorelease];
+        [audioSlider sliderValue:audioSlider.progressSlider];
+    }
 // -----------------------------------------------------------
 #pragma mark -
 #pragma mark UITableViewDelegate
