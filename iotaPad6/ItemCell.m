@@ -289,7 +289,7 @@ enum eCellContents {
         idrItem.itemCell.selectLabel.backgroundColor = [UIColor clearColor];
         idrItem.itemCell.selectLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
         idrItem.itemCell.selectLabel.textColor = [UIColor redColor];
-        idrItem.itemCell.selectLabel.text = @"<inget valt>";
+//        idrItem.itemCell.selectLabel.text = @"<inget valt>";
         
         [idrItem.itemCell.multiselectButton setBackgroundImage:button
                                                  forState:UIControlStateNormal];
@@ -297,7 +297,7 @@ enum eCellContents {
         idrItem.itemCell.multiselectLabel.backgroundColor = [UIColor clearColor];
         idrItem.itemCell.multiselectLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
         idrItem.itemCell.multiselectLabel.textColor = [UIColor redColor];
-        idrItem.itemCell.multiselectLabel.text = @"<inga val>";
+//        idrItem.itemCell.multiselectLabel.text = @"<inga val>";
         
         cell = idrItem.itemCell;
     }
@@ -330,6 +330,20 @@ enum eCellContents {
                     cell.checkView.text = @"?";
                 
                 cell.checkView.textAlignment = UITextAlignmentCenter;
+            }
+            else if ([item.observation isSelect]) {
+                if (value.value) {
+                    cell.selectLabel.text = value.value;
+                } else {
+                    cell.selectLabel.text = @"<inget valt>";
+                }
+            }
+            else if ([item.observation isMultiselect]) {
+                if (value.value) {
+                    cell.multiselectLabel.text = value.value;
+                } else {
+                    cell.multiselectLabel.text = @"<inga val>";
+                }
             }
             else {
                 cell.textField.text = value.value;

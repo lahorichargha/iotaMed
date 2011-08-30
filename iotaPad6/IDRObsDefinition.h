@@ -37,6 +37,8 @@
 @class IDRObservation;
 @class IDRValue;
 @class IDRContact;
+@class IDRSelect;
+@class IDRMultiselect;
 
 @interface IDRObsDefinition : NSObject <IDRAttribs, NSCoding> {
     
@@ -49,6 +51,8 @@
 @property (nonatomic, readonly) BOOL isMultiselect;
 @property (nonatomic, retain) NSString *type;
 @property (nonatomic, retain) NSMutableArray *values;
+@property (nonatomic, retain) NSMutableArray *selects;
+@property (nonatomic, retain) NSMutableArray *multiselects;
 
 - (void)valueAdd:(IDRValue *)value;
 - (NSUInteger)valueCount;
@@ -60,4 +64,7 @@
 - (void)setValue:(NSString *)value extendedValue:(NSString *)extendedValue forContact:(IDRContact *)contact;
 
 - (void)dumpWithIndent:(NSUInteger)indent;
+
+- (void)addSelect:(IDRSelect *)select;
+- (void)addMultiselect:(IDRMultiselect *)multiselect;
 @end

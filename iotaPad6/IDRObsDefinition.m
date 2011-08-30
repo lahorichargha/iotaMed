@@ -37,6 +37,8 @@
 #import "IDRContact.h"
 #import "NSString+iotaAdditions.h"
 #import "Funcs.h"
+#import "IDRSelect.h"
+#import "IDRMultiselect.h"
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -60,6 +62,8 @@
 @synthesize isMultiselect = _isMultiselect;
 @synthesize values = _values;
 @synthesize type = _type;
+@synthesize selects = _selects;
+@synthesize multiselects = _multiselects;
 
 - (id)init {
     if ((self = [super init])) {
@@ -72,6 +76,8 @@
     self.values = nil;
     self.name = nil;
     self.type = nil;
+    self.selects = nil;
+    self.multiselects = nil;
     [super dealloc];
 }
 
@@ -83,12 +89,16 @@
 static NSString *kNameKey = @"nameKey";
 static NSString *kValuesKey = @"valuesKey";
 static NSString *kTypeKey = @"typeKey";
+static NSString *kSelectsKey = @"selectsKey";
+static NSString *kMultiselectsKey = @"multiselectsKey";
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super init])) {
         self.name = [aDecoder decodeObjectForKey:kNameKey];
         self.values = [aDecoder decodeObjectForKey:kValuesKey];
         self.type = [aDecoder decodeObjectForKey:kTypeKey];
+        self.selects = [aDecoder decodeObjectForKey:kSelectsKey];
+        self.multiselects = [aDecoder decodeObjectForKey:kMultiselectsKey];
     }
     return self;
 }
@@ -97,6 +107,8 @@ static NSString *kTypeKey = @"typeKey";
     [aCoder encodeObject:self.name forKey:kNameKey];
     [aCoder encodeObject:self.values forKey:kValuesKey];
     [aCoder encodeObject:self.type forKey:kTypeKey];
+    [aCoder encodeObject:self.selects forKey:kSelectsKey];
+    [aCoder encodeObject:self.multiselects forKey:kMultiselectsKey];
 }
 
 
@@ -212,5 +224,18 @@ static NSString *kTypeKey = @"typeKey";
         [value dumpWithIndent:indent + 4];
 }
 
+- (void)addSelect:(IDRSelect *)select {
+    if (_selects == nil) {
+        _selects = [[NSMutableArray alloc] initWithCapacity:5];
+    }
+    [_selects addObject:select];
+}
+
+- (void)addMultiselect:(IDRMultiselect *)multiselect {
+    if (_multiselects == nil) {
+        _multiselects = [[NSMutableArray alloc] initWithCapacity:5];
+    }
+    [_multiselects addObject:multiselect];
+}
 
 @end

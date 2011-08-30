@@ -51,6 +51,8 @@
 #import "IDRObservation.h"
 #import "IDRSelect.h"
 #import "IDRMultiselect.h"
+#import "IDRValue.h"
+#import "IDRObsDefinition.h"
 
 @implementation IssueWorksheetController
 
@@ -67,7 +69,7 @@
 @synthesize popoverContentView = _popoverContentView;
 @synthesize selectedText = _selectedText;
 @synthesize ipForCell = _ipForCell;
-@synthesize multiselectedText = _multiselectedText;
+//@synthesize multiselectedText = _multiselectedText;
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -97,7 +99,7 @@
     [_popoverContentView release];
     [_selectedText release];
     [_ipForCell release];
-    [_multiselectedText release];
+//    [_multiselectedText release];
     [super dealloc];
 }
 
@@ -250,7 +252,7 @@
     [self setPopoverContentView:nil];
     [self setSelectedText:nil];
     [self setIpForCell:nil];
-    [self setMultiselectedText:nil];
+//    [self setMultiselectedText:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super viewDidUnload];
 }
@@ -421,7 +423,7 @@
     self.selectedText = text;
     UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:self.ipForCell];
     ItemCell *myCell = (ItemCell *)cell;
-    myCell.selectLabel.text = self.selectedText;
+//    myCell.selectLabel.text = self.selectedText;
     
     [self.selectPopoverController dismissPopoverAnimated:YES];
 }
@@ -444,7 +446,7 @@
     [noChoice release];
     
     self.issueItemSelect.idrItem = item;
-    
+  
     NSMutableArray *array = [[NSMutableArray alloc] init];
     for (IDRSelect *s in self.issueItemSelect.idrItem.observation.selects) {
         NSString *text = s.content;
@@ -472,7 +474,7 @@
     [self.selectPopoverController dismissPopoverAnimated:YES];
 }
 
-- (void)changeMultiselectLable:(IDRItem *)newItem {
+- (void)changeMultiselectLable:(IDRItem *)newItem { 
     NSMutableArray *array = [[NSMutableArray alloc] init];
     for (IDRMultiselect *ms in newItem.observation.multiselects) {
         if (ms.selected == YES) {
@@ -492,11 +494,17 @@
     }
     [array release];
     
-    self.selectedText = text;
-    
     UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:self.ipForCell];
     ItemCell *myCell = (ItemCell *)cell;
-    myCell.multiselectLabel.text = self.selectedText;
+    
+    self.issueItemMultiselect.idrItem = newItem;
+    [self.issueItemMultiselect.idrItem setItemValue:text];
+    
+    IDRObsDefinition *obsDef = self.issueItemMultiselect.idrItem.observation.obsDefinition;
+    IDRContact *contact = self.issueItemMultiselect.idrItem.parentBlock.contact;
+    IDRValue *value = [obsDef valueForContact:contact];
+    
+    myCell.multiselectLabel.text = value.value;
     
     [self.selectPopoverController dismissPopoverAnimated:YES];
 }
@@ -511,17 +519,28 @@
     IDRItem *item = [self.idrBlock.items objectAtIndex:[indexPath row]];
     
     self.issueItemMultiselect.idrItem = item;
-
-    [self.selectPopoverController setContentViewController:[self.popoverContentView objectAtIndex:1] animated:NO];
     
-    NSInteger rowCount = [self.issueItemMultiselect.idrItem.observation.multiselects count];
-    CGFloat tableViewRowHeight = 40.0;
-    if (rowCount < 10) 
-        [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, tableViewRowHeight * rowCount) animated:YES];
-    else
-        [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, tableViewRowHeight * 10) animated:YES];
-
-    [self.selectPopoverController presentPopoverFromRect:v.frame inView:(UIView *)v.superview permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+    IDRContact *currentContact = [[IotaContext getCurrentPatientContext] currentContact];
+    IDRContact *itemContact = self.issueItemMultiselect.idrItem.parentBlock.contact;
+    
+    if (currentContact == itemContact) {
+        [self.selectPopoverController setContentViewController:[self.popoverContentView objectAtIndex:1] animated:NO];
+        
+        NSInteger rowCount = [self.issueItemMultiselect.idrItem.observation.multiselects count];
+        CGFloat tableViewRowHeight = 40.0;
+        if (rowCount < 10) 
+            [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, tableViewRowHeight * rowCount) animated:YES];
+        else
+            [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, tableViewRowHeight * 10) animated:YES];
+        
+        [self.selectPopoverController presentPopoverFromRect:v.frame inView:(UIView *)v.superview permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+    } else {
+        UIAlertView *aw = [[[UIAlertView alloc] 
+                            initWithTitle:@"Information" 
+                            message:@"Du kan inte ändra i innehållet eftersom den valda kontakten inte är densamma som issue kontakten" 
+                            delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] autorelease];
+        [aw show];
+    }
 }
 
 #pragma mark - UIPopoverControllerDelegate
@@ -533,5 +552,5 @@
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
     [self.issueItemMultiselect dismissAction:nil];
 }
-
+ 
 @end

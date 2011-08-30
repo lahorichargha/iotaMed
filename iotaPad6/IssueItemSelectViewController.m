@@ -135,5 +135,4 @@ static CGFloat kTableViewRowHeight = 40.0;
     [self.itemSelectDelegate changeSelectLable:text];
 }
 
-
 @end

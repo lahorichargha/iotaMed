@@ -10,6 +10,7 @@
 #import "IDRItem.h"
 #import "IDRObservation.h"
 #import "IDRMultiselect.h"
+#import "IDRObsDefinition.h"
 
 
 static CGFloat kTableViewRowHeight = 40.0;
@@ -137,6 +138,9 @@ static CGFloat kTableViewRowHeight = 40.0;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     IDRMultiselect *multiselect = [self.idrItem.observation.multiselects objectAtIndex:[indexPath row]];
+//    IDRMultiselect *multi = [self.idrItem.observation.obsDefinition.multiselects objectAtIndex:[indexPath row]];
+//    
+//    NSLog(@"multi = %@", multi);
     
     multiselect.selected = !multiselect.selected;
     [self.tableView reloadData];
