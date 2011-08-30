@@ -6,9 +6,11 @@
 //  Copyright (c) 2011 MITM AB. All rights reserved.
 //
 
-#import "ItemTableCell.h"
+#import "ItemTableCellContent.h"
 
-@interface ItemTableCellString : ItemTableCell
+@interface ItemTableCellString : ItemTableCellContent <UITextFieldDelegate>
+
+@property (nonatomic, retain) UITextField *tfValue;
 
 + (ItemTableCellString *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;

@@ -32,6 +32,7 @@
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "IDRItem.h"
+#import "ItemTableCell.h"
 #import "NSString+iotaAdditions.h"
 #import "IDRObservation.h"
 #import "IDRObsDefinition.h"
@@ -56,6 +57,7 @@
 @synthesize idrImage = _idrImage;
 @synthesize idrSvgView = _idrSvgView;
 @synthesize itemCell = _itemCell;
+@synthesize itemTableCell = _itemTableCell;
 
 - (id)init {
     if ((self = [super init])) {
@@ -66,6 +68,7 @@
 
 - (void)dealloc {
     self.itemCell = nil;
+    self.itemTableCell = nil;
     self.observation = nil;
     self.action = nil;
     self.content = nil;

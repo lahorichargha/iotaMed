@@ -6,9 +6,9 @@
 //  Copyright (c) 2011 MITM AB. All rights reserved.
 //
 
-#import "ItemTableCell.h"
+#import "ItemTableCellContent.h"
 
-@interface ItemTableCellMultiSelect : ItemTableCell
+@interface ItemTableCellMultiSelect : ItemTableCellContent
 
 + (ItemTableCellMultiSelect *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;

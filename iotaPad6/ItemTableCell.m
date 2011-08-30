@@ -86,6 +86,16 @@ static NSMutableArray *subclasses;
     return self;
 }
 
+// children must override and call super:
+- (id)initWithTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
+    if ((self = [super init])) {
+        self.parentTableView = tableView;
+        self.idrItem = idrItem;
+        idrItem.itemTableCell = self;
+    }
+    return self;
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
@@ -126,7 +136,7 @@ static NSMutableArray *subclasses;
 
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
     [NSException raise:@"Should never be called" format:@"abstract subCellHeightForTableView called from %@", self];
-    return 0.0;
+    return 5.0;
 }
 
 + (ItemTableCell *)cellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
@@ -151,6 +161,20 @@ static NSMutableArray *subclasses;
     return 0.0;
 }
 
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Utility functions
+// -----------------------------------------------------------
 
+- (CGRect)defaultRect {
+    return CGRectMake(0, 0, 600, 44);
+}
+
+- (UIView *)viewOfClass:(Class)cls tag:(NSUInteger)tag {
+    UIView *view = [[cls alloc] initWithFrame:[self defaultRect]];
+    view.tag = tag;
+    [self.contentView addSubview:view];
+    return [view autorelease];
+}
 
 @end

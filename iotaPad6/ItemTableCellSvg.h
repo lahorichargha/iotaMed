@@ -6,9 +6,14 @@
 //  Copyright (c) 2011 MITM AB. All rights reserved.
 //
 
-#import "ItemTableCell.h"
+#import "ItemTableCellContent.h"
 
-@interface ItemTableCellSvg : ItemTableCell
+@class SVGView;
+
+@interface ItemTableCellSvg : ItemTableCellContent
+
+@property (nonatomic, retain) SVGView *svgView;
+
 
 + (ItemTableCellSvg *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;

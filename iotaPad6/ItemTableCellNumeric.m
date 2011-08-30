@@ -20,11 +20,27 @@
 }
 
 + (ItemTableCellNumeric *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
-    return [[self alloc] init];
+    ItemTableCellNumeric *cell = (ItemTableCellNumeric *)idrItem.itemTableCell;
+    if (cell == nil) {
+        cell = [[[self alloc] initWithTableView:tableView idrItem:idrItem] autorelease];
+    }
+    return cell;
 }
 
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
     return 1.0;
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Lifecycle
+// -----------------------------------------------------------
+
+- (id)initWithTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
+    if ((self = [super initWithTableView:tableView idrItem:idrItem])) {
+        self.tfValue.keyboardType = UIKeyboardTypeNumberPad;
+    }
+    return self;
 }
 
 

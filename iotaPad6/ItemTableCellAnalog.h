@@ -6,9 +6,11 @@
 //  Copyright (c) 2011 MITM AB. All rights reserved.
 //
 
-#import "ItemTableCell.h"
+#import "ItemTableCellContent.h"
 
-@interface ItemTableCellAnalog : ItemTableCell
+@interface ItemTableCellAnalog : ItemTableCellContent
+
+@property (nonatomic, retain) UISlider *slider;
 
 + (ItemTableCellAnalog *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;

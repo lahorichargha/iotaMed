@@ -42,6 +42,7 @@
 @class IDRImage;
 @class ItemCell;
 @class IDRSvgView;
+@class ItemTableCell;
 
 @interface IDRItem : NSObject <IDRAttribs, DebugDump, NSCoding, NSCopying> {
     
@@ -58,6 +59,7 @@
 @property (nonatomic, retain) IDRImage *idrImage;
 @property (nonatomic, retain) IDRSvgView *idrSvgView;
 @property (nonatomic, retain) ItemCell *itemCell;           // owns the table cell
+@property (nonatomic, retain) ItemTableCell *itemTableCell; // replaces itemCell with new style ItemTableCell hierarchy
 
 - (void)setItemValue:(NSString *)value;
 - (void)setItemValue:(NSString *)value extendedValue:(NSString *)extendedValue;

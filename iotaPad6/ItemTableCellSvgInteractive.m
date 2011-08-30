@@ -19,9 +19,10 @@
 }
 
 + (ItemTableCellSvgInteractive *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
-    ItemTableCellSvgInteractive *cell = [[self alloc] init];
-    cell.parentTableView = tableView;
-    cell.idrItem = idrItem;
+    ItemTableCellSvgInteractive *cell = (ItemTableCellSvgInteractive *)idrItem.itemTableCell;
+    if (cell == nil) {
+        cell = [[[self alloc] initWithTableView:tableView idrItem:idrItem] autorelease];
+    }
     return cell;
 }
 

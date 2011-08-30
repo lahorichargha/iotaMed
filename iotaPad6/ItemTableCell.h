@@ -30,6 +30,13 @@
 #import "ItemCellDelegate.h"
 #import "IDRItem.h"
 
+#define TAG_LBLCONTENT  1001
+#define TAG_TEXTFIELD   1002
+#define TAG_LBLVALUE    1003
+#define TAG_LBLDATE     1004
+#define TAG_IMAGE       1005
+#define TAG_BULLET      1006
+#define TAG_CHECKVIEW   1007
 
 @interface ItemTableCell : UITableViewCell
 
@@ -43,5 +50,8 @@
 
 + (void)addSubclass:(Class)cls;
 + (BOOL)canHandle:(IDRItem *)idrItem;
+
+- (id)initWithTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
+- (UIView *)viewOfClass:(Class)cls tag:(NSUInteger)tag;
 
 @end

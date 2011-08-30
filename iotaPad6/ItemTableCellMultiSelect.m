@@ -19,7 +19,11 @@
 }
 
 + (ItemTableCellMultiSelect *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
-    return [[self alloc] init];
+    ItemTableCellMultiSelect *cell = (ItemTableCellMultiSelect *)idrItem.itemTableCell;
+    if (cell == nil) {
+        cell = [[[self alloc] initWithTableView:tableView idrItem:idrItem] autorelease];
+    }
+    return cell;
 }
 
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {

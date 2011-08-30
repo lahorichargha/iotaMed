@@ -79,7 +79,7 @@
 		AA6FCF8C13130691008FBFFD /* IssueTemplateFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6FCF8A13130691008FBFFD /* IssueTemplateFormViewController.xib */; };
 		AA7365C6131D96FA000B6B1F /* Funcs.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7365C5131D96FA000B6B1F /* Funcs.m */; };
 		AA7EB00C14012C3900F9F918 /* ItemTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7EB00B14012C3900F9F918 /* ItemTableCell.m */; };
-		AA7EB00F14012F3E00F9F918 /* ItemTableCellContentOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7EB00E14012F3E00F9F918 /* ItemTableCellContentOnly.m */; };
+		AA7EB00F14012F3E00F9F918 /* ItemTableCellContent.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7EB00E14012F3E00F9F918 /* ItemTableCellContent.m */; };
 		AA7EB01214012F5C00F9F918 /* ItemTableCellString.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7EB01114012F5C00F9F918 /* ItemTableCellString.m */; };
 		AA7EB01514012F6C00F9F918 /* ItemTableCellNumeric.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7EB01414012F6C00F9F918 /* ItemTableCellNumeric.m */; };
 		AA7EB01814012F7A00F9F918 /* ItemTableCellCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7EB01714012F7A00F9F918 /* ItemTableCellCheck.m */; };
@@ -358,8 +358,8 @@
 		AA7D8F91133F475200757DA1 /* ReferralControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferralControllerDelegate.h; sourceTree = "<group>"; };
 		AA7EB00A14012C3900F9F918 /* ItemTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTableCell.h; sourceTree = "<group>"; };
 		AA7EB00B14012C3900F9F918 /* ItemTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableCell.m; sourceTree = "<group>"; };
-		AA7EB00D14012F3E00F9F918 /* ItemTableCellContentOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTableCellContentOnly.h; sourceTree = "<group>"; };
-		AA7EB00E14012F3E00F9F918 /* ItemTableCellContentOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableCellContentOnly.m; sourceTree = "<group>"; };
+		AA7EB00D14012F3E00F9F918 /* ItemTableCellContent.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ItemTableCellContent.h; sourceTree = "<group>"; };
+		AA7EB00E14012F3E00F9F918 /* ItemTableCellContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableCellContent.m; sourceTree = "<group>"; };
 		AA7EB01014012F5B00F9F918 /* ItemTableCellString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTableCellString.h; sourceTree = "<group>"; };
 		AA7EB01114012F5C00F9F918 /* ItemTableCellString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableCellString.m; sourceTree = "<group>"; };
 		AA7EB01314012F6C00F9F918 /* ItemTableCellNumeric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTableCellNumeric.h; sourceTree = "<group>"; };
@@ -909,8 +909,8 @@
 			children = (
 				AA7EB00A14012C3900F9F918 /* ItemTableCell.h */,
 				AA7EB00B14012C3900F9F918 /* ItemTableCell.m */,
-				AA7EB00D14012F3E00F9F918 /* ItemTableCellContentOnly.h */,
-				AA7EB00E14012F3E00F9F918 /* ItemTableCellContentOnly.m */,
+				AA7EB00D14012F3E00F9F918 /* ItemTableCellContent.h */,
+				AA7EB00E14012F3E00F9F918 /* ItemTableCellContent.m */,
 				AA7EB01014012F5B00F9F918 /* ItemTableCellString.h */,
 				AA7EB01114012F5C00F9F918 /* ItemTableCellString.m */,
 				AA7EB01314012F6C00F9F918 /* ItemTableCellNumeric.h */,
@@ -1447,7 +1447,7 @@
 				AAF8516513F93796006BFD59 /* SVGGroup.m in Sources */,
 				AAF8516613F93796006BFD59 /* SVGPath.m in Sources */,
 				AA7EB00C14012C3900F9F918 /* ItemTableCell.m in Sources */,
-				AA7EB00F14012F3E00F9F918 /* ItemTableCellContentOnly.m in Sources */,
+				AA7EB00F14012F3E00F9F918 /* ItemTableCellContent.m in Sources */,
 				AA7EB01214012F5C00F9F918 /* ItemTableCellString.m in Sources */,
 				AA7EB01514012F6C00F9F918 /* ItemTableCellNumeric.m in Sources */,
 				AA7EB01814012F7A00F9F918 /* ItemTableCellCheck.m in Sources */,
