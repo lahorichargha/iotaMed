@@ -28,11 +28,14 @@
 
 #import "ItemTableCell.h"
 
-@interface ItemTableCellContentOnly : ItemTableCell
+@class BulletView;
+
+@interface ItemTableCellContent : ItemTableCell
 
 @property (nonatomic, retain) UILabel *lblContent;
+@property (nonatomic, retain) BulletView *bulletView;
 
-+ (ItemTableCellContentOnly *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
++ (ItemTableCellContent *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 
 @end
