@@ -289,7 +289,6 @@ enum eCellContents {
         idrItem.itemCell.selectLabel.backgroundColor = [UIColor clearColor];
         idrItem.itemCell.selectLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
         idrItem.itemCell.selectLabel.textColor = [UIColor redColor];
-//        idrItem.itemCell.selectLabel.text = @"<inget valt>";
         
         [idrItem.itemCell.multiselectButton setBackgroundImage:button
                                                  forState:UIControlStateNormal];
@@ -297,7 +296,6 @@ enum eCellContents {
         idrItem.itemCell.multiselectLabel.backgroundColor = [UIColor clearColor];
         idrItem.itemCell.multiselectLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
         idrItem.itemCell.multiselectLabel.textColor = [UIColor redColor];
-//        idrItem.itemCell.multiselectLabel.text = @"<inga val>";
         
         cell = idrItem.itemCell;
     }

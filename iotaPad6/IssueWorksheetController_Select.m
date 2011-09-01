@@ -14,6 +14,7 @@
 #import "IDRObsDefinition.h"
 #import "IDRSelect.h"
 #import "IDRValue.h"
+#import "IotaContext.h"
 
 @implementation IssueWorksheetController (Select)
 
@@ -69,16 +70,27 @@
     self.issueItemSelect.lastIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
     [array release];
     
-    [self.selectPopoverController setContentViewController:[self.popoverContentView objectAtIndex:0] animated:NO];
+    IDRContact *currentContact = [[IotaContext getCurrentPatientContext] currentContact];
+    IDRContact *itemContact = self.issueItemSelect.idrItem.parentBlock.contact;
     
-    NSInteger rowCount = [self.issueItemSelect.idrItem.observation.selects count];
-    CGFloat tableViewRowHeight = 40.0;
-    if (rowCount < 10) 
-        [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, tableViewRowHeight * rowCount) animated:YES];
-    else
-        [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, tableViewRowHeight * 10) animated:YES];
-    
-    [self.selectPopoverController presentPopoverFromRect:v.frame inView:(UIView *)v.superview permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+    if (currentContact == itemContact) {
+        [self.selectPopoverController setContentViewController:[self.popoverContentView objectAtIndex:0] animated:NO];
+        
+        NSInteger rowCount = [self.issueItemSelect.idrItem.observation.selects count];
+        CGFloat tableViewRowHeight = 40.0;
+        if (rowCount < 10) 
+            [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, tableViewRowHeight * rowCount) animated:YES];
+        else
+            [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, tableViewRowHeight * 10) animated:YES];
+        
+        [self.selectPopoverController presentPopoverFromRect:v.frame inView:(UIView *)v.superview permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+    } else {
+        UIAlertView *aw = [[[UIAlertView alloc] 
+                            initWithTitle:@"Information" 
+                            message:@"Du kan inte ändra i innehållet eftersom den valda kontakten inte är densamma som issue kontakten" 
+                            delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] autorelease];
+        [aw show];
+    }
 }
 
 @end
