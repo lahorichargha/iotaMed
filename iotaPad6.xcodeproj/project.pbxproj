@@ -191,6 +191,8 @@
 		EE929F2F13FD068A00BDD83F /* IssueItemSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE929F2E13FD068A00BDD83F /* IssueItemSelectViewController.m */; };
 		EEAA54C51403CE6000DFE7FE /* IDRMultiselect.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAA54C41403CE6000DFE7FE /* IDRMultiselect.m */; };
 		EEAA54C81403D69F00DFE7FE /* IssueItemMultiselectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAA54C71403D69F00DFE7FE /* IssueItemMultiselectViewController.m */; };
+		EEAF293B140E677A0086DD79 /* IssueWorksheetController_Select.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAF293A140E677A0086DD79 /* IssueWorksheetController_Select.m */; };
+		EEAF293E140E69560086DD79 /* IssueWorksheetController_Multiselect.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAF293D140E69560086DD79 /* IssueWorksheetController_Multiselect.m */; };
 		EED11886140B9AC000E1A0E9 /* quest.xml in Resources */ = {isa = PBXBuildFile; fileRef = EED11885140B9AC000E1A0E9 /* quest.xml */; };
 		EEED7D6B1402ECFA006E253F /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = EEED7D6A1402ECF9006E253F /* button.png */; };
 /* End PBXBuildFile section */
@@ -511,6 +513,10 @@
 		EEAA54C41403CE6000DFE7FE /* IDRMultiselect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRMultiselect.m; sourceTree = "<group>"; };
 		EEAA54C61403D69F00DFE7FE /* IssueItemMultiselectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueItemMultiselectViewController.h; sourceTree = "<group>"; };
 		EEAA54C71403D69F00DFE7FE /* IssueItemMultiselectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueItemMultiselectViewController.m; sourceTree = "<group>"; };
+		EEAF2939140E677A0086DD79 /* IssueWorksheetController_Select.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueWorksheetController_Select.h; sourceTree = "<group>"; };
+		EEAF293A140E677A0086DD79 /* IssueWorksheetController_Select.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueWorksheetController_Select.m; sourceTree = "<group>"; };
+		EEAF293C140E69560086DD79 /* IssueWorksheetController_Multiselect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueWorksheetController_Multiselect.h; sourceTree = "<group>"; };
+		EEAF293D140E69560086DD79 /* IssueWorksheetController_Multiselect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueWorksheetController_Multiselect.m; sourceTree = "<group>"; };
 		EED11885140B9AC000E1A0E9 /* quest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = quest.xml; sourceTree = "<group>"; };
 		EEED7D6A1402ECF9006E253F /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -610,6 +616,7 @@
 				AA63B63413055E6E0035A49C /* IssueWorksheetController.h */,
 				AA63B63513055E6E0035A49C /* IssueWorksheetController.m */,
 				AA12A37F137B2F010016AB24 /* IssueWorksheetController.xib */,
+				EE742233140F816E005B4897 /* Issue Worksheet Categories */,
 				AAFB52BE13E44F6900F9CC59 /* IssueWorksheetTableView.h */,
 				AAFB52BF13E44F6900F9CC59 /* IssueWorksheetTableView.m */,
 			);
@@ -1057,6 +1064,17 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		EE742233140F816E005B4897 /* Issue Worksheet Categories */ = {
+			isa = PBXGroup;
+			children = (
+				EEAF2939140E677A0086DD79 /* IssueWorksheetController_Select.h */,
+				EEAF293A140E677A0086DD79 /* IssueWorksheetController_Select.m */,
+				EEAF293C140E69560086DD79 /* IssueWorksheetController_Multiselect.h */,
+				EEAF293D140E69560086DD79 /* IssueWorksheetController_Multiselect.m */,
+			);
+			name = "Issue Worksheet Categories";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1364,6 +1382,8 @@
 				EE929F2F13FD068A00BDD83F /* IssueItemSelectViewController.m in Sources */,
 				EEAA54C51403CE6000DFE7FE /* IDRMultiselect.m in Sources */,
 				EEAA54C81403D69F00DFE7FE /* IssueItemMultiselectViewController.m in Sources */,
+				EEAF293B140E677A0086DD79 /* IssueWorksheetController_Select.m in Sources */,
+				EEAF293E140E69560086DD79 /* IssueWorksheetController_Multiselect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

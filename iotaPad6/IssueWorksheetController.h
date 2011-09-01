@@ -48,9 +48,7 @@
     ItemCellDelegate, 
     LabOrderControllerDelegate, 
     PrescriptionControllerDelegate,
-    ReferralControllerDelegate,
-    IssueItemSelectViewDelegate, 
-    IssueItemMultiselectViewDelegate> {
+    ReferralControllerDelegate> {
 }
 
 
@@ -65,15 +63,11 @@
 @property (nonatomic, retain) IssueItemMultiselectViewController *issueItemMultiselect;
 @property (nonatomic, retain) UINavigationController *multiselectNavigationController;
 @property (nonatomic, retain) NSArray *popoverContentView;
-@property (nonatomic, copy) NSString *selectedText;
 @property (nonatomic, retain) NSIndexPath *ipForCell;
-//@property (nonatomic, copy) NSMutableString *multiselectedText;
 
 - (void)refresh;
 - (IBAction)btnContact:(id)sender;
 - (void)settingTableViewFrameForPortrait;
 - (void)settingTableViewFrameForLandscape;
-- (IBAction)selectButtonAction:(id)sender;
-- (IBAction)multiselectButtonAction:(id)sender;
 
 @end

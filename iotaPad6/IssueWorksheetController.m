@@ -48,11 +48,9 @@
 #import "Funcs.h"
 #import "ThemeColors.h"
 #import "ContactSelectOrCreateForm.h"
-#import "IDRObservation.h"
-#import "IDRSelect.h"
-#import "IDRMultiselect.h"
-#import "IDRValue.h"
-#import "IDRObsDefinition.h"
+
+#import "IssueWorksheetController_Select.h"
+#import "IssueWorksheetController_Multiselect.h"
 
 @implementation IssueWorksheetController
 
@@ -67,9 +65,7 @@
 @synthesize issueItemMultiselect = _issueItemMultiselect;
 @synthesize multiselectNavigationController = _multiselectNavigationController;
 @synthesize popoverContentView = _popoverContentView;
-@synthesize selectedText = _selectedText;
 @synthesize ipForCell = _ipForCell;
-//@synthesize multiselectedText = _multiselectedText;
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -80,7 +76,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.selectedText = @"Text";
     }
     return self;
 }
@@ -97,9 +92,7 @@
     [_issueItemMultiselect release];
     [_multiselectNavigationController release];
     [_popoverContentView release];
-    [_selectedText release];
     [_ipForCell release];
-//    [_multiselectedText release];
     [super dealloc];
 }
 
@@ -216,20 +209,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contactChanged:) name:kContactListChangedNotification object:nil];
     [self refresh];
     
-    IssueItemSelectViewController *selectListController = [[IssueItemSelectViewController alloc] init];
-    self.issueItemSelect = selectListController;
-    self.issueItemSelect.itemSelectDelegate = self;
-    [selectListController release];
+    [self initForIssueItemSelectViewController];        // init IssueItemSelectViewController object in Select category
     
-    IssueItemMultiselectViewController *multiselectListController = [[IssueItemMultiselectViewController alloc] init];
-    self.issueItemMultiselect = multiselectListController;
-    self.issueItemMultiselect.delegate = self;
-    [multiselectListController release];
-    
-    UINavigationController *navigationController = [[UINavigationController alloc] init];
-    [navigationController addChildViewController:self.issueItemMultiselect];
-    self.multiselectNavigationController = navigationController;
-    [navigationController release];
+    [self initForIssueItemMultiselectViewController];   // init IssueItemMultiselectViewController object in Multiselect category
     
     NSArray *array = [[NSArray alloc] initWithObjects:self.issueItemSelect, self.multiselectNavigationController, nil];
     self.popoverContentView = array;
@@ -250,9 +232,7 @@
     [self setIssueItemMultiselect:nil];
     [self setMultiselectNavigationController:nil];
     [self setPopoverContentView:nil];
-    [self setSelectedText:nil];
     [self setIpForCell:nil];
-//    [self setMultiselectedText:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super viewDidUnload];
 }
@@ -415,132 +395,6 @@
     if (![okOrCreate boolValue])
         return;
     [self refresh];
-}
-
-#pragma mark - IssueItemSelectViewDelegate 
-
-- (void)changeSelectLable:(NSString *)text {
-    self.selectedText = text;
-    UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:self.ipForCell];
-    ItemCell *myCell = (ItemCell *)cell;
-//    myCell.selectLabel.text = self.selectedText;
-    
-    [self.selectPopoverController dismissPopoverAnimated:YES];
-}
-
-- (IBAction)selectButtonAction:(id)sender {
-    UIView *v = (UIView *)sender;
-    ItemCell *cell = (ItemCell *)v.superview.superview;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    
-    self.ipForCell = indexPath;
-    
-    IDRItem *item = [self.idrBlock.items objectAtIndex:[indexPath row]];
-    
-    IDRSelect *noChoice = [[IDRSelect alloc] init];
-    NSMutableString *contentText = [NSMutableString stringWithString:@"<inget valt>"];
-    noChoice.content = contentText;
-    if (![[[item.observation.selects objectAtIndex:0] content] isEqualToString:@"<inget valt>"]) {
-        [item.observation.selects insertObject:noChoice atIndex:0];
-    } 
-    [noChoice release];
-    
-    self.issueItemSelect.idrItem = item;
-  
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    for (IDRSelect *s in self.issueItemSelect.idrItem.observation.selects) {
-        NSString *text = s.content;
-        [array addObject:text];
-    }
-    NSUInteger i = [array indexOfObject:cell.selectLabel.text];
-    self.issueItemSelect.lastIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
-    [array release];
-    
-    [self.selectPopoverController setContentViewController:[self.popoverContentView objectAtIndex:0] animated:NO];
-    
-    NSInteger rowCount = [self.issueItemSelect.idrItem.observation.selects count];
-    CGFloat tableViewRowHeight = 40.0;
-    if (rowCount < 10) 
-        [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, tableViewRowHeight * rowCount) animated:YES];
-    else
-        [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, tableViewRowHeight * 10) animated:YES];
-    
-    [self.selectPopoverController presentPopoverFromRect:v.frame inView:(UIView *)v.superview permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
-}
-
-#pragma mark - IssueItemMultielectViewDelegate
-
-- (void)dismissPopoverForMultiselect {
-    [self.selectPopoverController dismissPopoverAnimated:YES];
-}
-
-- (void)changeMultiselectLable:(IDRItem *)newItem { 
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    for (IDRMultiselect *ms in newItem.observation.multiselects) {
-        if (ms.selected == YES) {
-            NSString *text = ms.content;
-            [array addObject:text];
-        }
-    }
-    
-    NSMutableString *text = [NSMutableString stringWithCapacity:50];
-    
-    if ([array count] == 0) {
-        [text setString:@"<inga val>"];
-    } else {
-        for (NSString *s in array) {
-            [text appendFormat:@"%@, ", s];
-        }
-    }
-    [array release];
-    
-    UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:self.ipForCell];
-    ItemCell *myCell = (ItemCell *)cell;
-    
-    self.issueItemMultiselect.idrItem = newItem;
-    [self.issueItemMultiselect.idrItem setItemValue:text];
-    
-    IDRObsDefinition *obsDef = self.issueItemMultiselect.idrItem.observation.obsDefinition;
-    IDRContact *contact = self.issueItemMultiselect.idrItem.parentBlock.contact;
-    IDRValue *value = [obsDef valueForContact:contact];
-    
-    myCell.multiselectLabel.text = value.value;
-    
-    [self.selectPopoverController dismissPopoverAnimated:YES];
-}
-
-- (IBAction)multiselectButtonAction:(id)sender {
-    UIView *v = (UIView *)sender;
-    ItemCell *cell = (ItemCell *)v.superview.superview;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    
-    self.ipForCell = indexPath;
-    
-    IDRItem *item = [self.idrBlock.items objectAtIndex:[indexPath row]];
-    
-    self.issueItemMultiselect.idrItem = item;
-    
-    IDRContact *currentContact = [[IotaContext getCurrentPatientContext] currentContact];
-    IDRContact *itemContact = self.issueItemMultiselect.idrItem.parentBlock.contact;
-    
-    if (currentContact == itemContact) {
-        [self.selectPopoverController setContentViewController:[self.popoverContentView objectAtIndex:1] animated:NO];
-        
-        NSInteger rowCount = [self.issueItemMultiselect.idrItem.observation.multiselects count];
-        CGFloat tableViewRowHeight = 40.0;
-        if (rowCount < 10) 
-            [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, tableViewRowHeight * rowCount) animated:YES];
-        else
-            [self.selectPopoverController setPopoverContentSize:CGSizeMake(250.0, tableViewRowHeight * 10) animated:YES];
-        
-        [self.selectPopoverController presentPopoverFromRect:v.frame inView:(UIView *)v.superview permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
-    } else {
-        UIAlertView *aw = [[[UIAlertView alloc] 
-                            initWithTitle:@"Information" 
-                            message:@"Du kan inte ändra i innehållet eftersom den valda kontakten inte är densamma som issue kontakten" 
-                            delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] autorelease];
-        [aw show];
-    }
 }
 
 #pragma mark - UIPopoverControllerDelegate

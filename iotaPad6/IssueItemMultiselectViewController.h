@@ -11,7 +11,7 @@
 
 @protocol IssueItemMultiselectViewDelegate <NSObject>
 
-- (void)changeMultiselectLable:(IDRItem *)newItem;
+- (void)shouldChangeMultiselectLable:(IDRItem *)newItem;
 - (void)dismissPopoverForMultiselect;
 
 @end

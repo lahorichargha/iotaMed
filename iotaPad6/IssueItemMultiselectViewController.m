@@ -138,10 +138,7 @@ static CGFloat kTableViewRowHeight = 40.0;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     IDRMultiselect *multiselect = [self.idrItem.observation.multiselects objectAtIndex:[indexPath row]];
-//    IDRMultiselect *multi = [self.idrItem.observation.obsDefinition.multiselects objectAtIndex:[indexPath row]];
-//    
-//    NSLog(@"multi = %@", multi);
-    
+
     multiselect.selected = !multiselect.selected;
     [self.tableView reloadData];
     
@@ -153,7 +150,9 @@ static CGFloat kTableViewRowHeight = 40.0;
 #pragma mark - Bar buttons actions
 
 - (IBAction)doneAction:(id)sender {
-    [self.delegate changeMultiselectLable:self.idrItem];
+    if ([self.delegate conformsToProtocol:@protocol(IssueItemMultiselectViewDelegate)]) {
+        [self.delegate shouldChangeMultiselectLable:self.idrItem];
+    }
     [self.tempMultiselects removeAllObjects];
 }
 

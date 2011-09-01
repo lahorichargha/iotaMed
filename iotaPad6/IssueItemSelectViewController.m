@@ -18,7 +18,7 @@ static CGFloat kTableViewRowHeight = 40.0;
 
 @synthesize idrItem = _idrItem;
 @synthesize lastIndexPath = _lastIndexPath;
-@synthesize itemSelectDelegate = _itemSelectDelegate;
+@synthesize delegate = _delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,7 +32,7 @@ static CGFloat kTableViewRowHeight = 40.0;
 - (void)dealloc {
     [_idrItem release];
     [_lastIndexPath release];
-    [_itemSelectDelegate release];
+    [_delegate release];
 
     [super dealloc];
 }
@@ -132,7 +132,9 @@ static CGFloat kTableViewRowHeight = 40.0;
     
     IDRSelect *select = [self.idrItem.observation.selects objectAtIndex:[self.lastIndexPath row]];
     NSString *text = [NSString stringWithFormat:@"%@", select.content];
-    [self.itemSelectDelegate changeSelectLable:text];
+    if ([self.delegate conformsToProtocol:@protocol(IssueItemSelectViewDelegate)]) {
+        [self.delegate shouldChangeSelectLable:text];
+    }
 }
 
 @end

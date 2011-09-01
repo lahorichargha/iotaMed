@@ -11,7 +11,7 @@
 
 @protocol IssueItemSelectViewDelegate <NSObject>
 
-- (void)changeSelectLable:(NSString *)text;
+- (void)shouldChangeSelectLable:(NSString *)text;
 
 @end
 
@@ -19,6 +19,6 @@
 
 @property (nonatomic, retain) IDRItem *idrItem;
 @property (nonatomic, retain) NSIndexPath *lastIndexPath;
-@property (nonatomic, assign) id<IssueItemSelectViewDelegate> itemSelectDelegate;
+@property (nonatomic, assign) id<IssueItemSelectViewDelegate> delegate;
 
 @end
