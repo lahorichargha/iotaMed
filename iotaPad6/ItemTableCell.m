@@ -58,6 +58,14 @@
 
 // -----------------------------------------------------------
 #pragma mark -
+#pragma mark Constants
+// -----------------------------------------------------------
+
+static float kNormalFontSize        __attribute__ ((unused)) = 14.0;
+static float kBoldFontSize          __attribute__ ((unused)) = 18.0;
+
+// -----------------------------------------------------------
+#pragma mark -
 #pragma mark Local declarations
 // -----------------------------------------------------------
 
@@ -163,11 +171,29 @@ static NSMutableArray *subclasses;
 
 // -----------------------------------------------------------
 #pragma mark -
+#pragma mark Class helper methods
+// -----------------------------------------------------------
+
++ (UIFont *)boldContentFont {
+    return [UIFont boldSystemFontOfSize:kBoldFontSize];
+}
+
++ (UIFont *)normalContentFont {
+    return [UIFont systemFontOfSize:kNormalFontSize];
+}
+
++ (UIFont *)contentFontBold:(BOOL)bold {
+    return (bold) ? [self boldContentFont] : [self normalContentFont];
+}
+
+
+// -----------------------------------------------------------
+#pragma mark -
 #pragma mark Utility functions
 // -----------------------------------------------------------
 
 - (CGRect)defaultRect {
-    return CGRectMake(0, 0, 600, 44);
+    return CGRectMake(0, 0, 500, 44);
 }
 
 - (UIView *)viewOfClass:(Class)cls tag:(NSUInteger)tag {

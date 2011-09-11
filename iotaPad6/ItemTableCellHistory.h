@@ -1,3 +1,7 @@
+//
+//  ItemTableCellHistory.h
+//  iotaPad6
+
 //  Copyright © 2011, MITM AB, Sweden
 //  All rights reserved.
 //
@@ -26,17 +30,25 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "ItemTableCell.h"
+/*  Short description
+ *
+ *  A ItemTableCellHistory has content and history fields to the right
+ *  Any table cell needing these history fields should derive from this one
+ *
+ *  ItemTableCellHistory is an abstract class, it makes no sense to use an
+ *  instance of this one, since it contains no values to show a history for.
+ *
+ *  Cells that have no place for history fields should not derive from this class
+ *  and should thus have their own mechanism for letting the user access a history
+ */
 
-@class BulletView;
 
-@interface ItemTableCellContent : ItemTableCell
+#import <Foundation/Foundation.h>
+#import "ItemTableCellContent.h"
 
-@property (nonatomic, retain) UILabel *lblContent;
-@property (nonatomic, retain) BulletView *bulletView;
+@interface ItemTableCellHistory : ItemTableCellContent
 
-+ (CGFloat)rightMargin;
-+ (ItemTableCellContent *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
-+ (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
+@property (nonatomic, retain) UILabel *lblValue;
+@property (nonatomic, retain) UILabel *lblDate;
 
 @end

@@ -29,18 +29,34 @@
 #import "ItemTableCellContent.h"
 #import "BulletView.h"
 #import "NSString+iotaAdditions.h"
+#import "IotaContext.h"
 
 @implementation ItemTableCellContent
 
 @synthesize lblContent = _lblContent;
 @synthesize bulletView = _bulletView;
 
-+ (void)load {
-    [super addSubclass:self];
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Override in subclasses
+// -----------------------------------------------------------
+
++ (CGFloat)rightMargin {
+    return kWideRight;
 }
 
 + (BOOL)canHandle:(IDRItem *)idrItem {
     return ![idrItem hasObservation] && !idrItem.idrImage && !idrItem.idrSvgView;
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Class 
+// -----------------------------------------------------------
+
++ (void)load {
+    [super addSubclass:self];
 }
 
 + (ItemTableCellContent *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
@@ -52,10 +68,17 @@
 }
 
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
+    CGFloat contentWidth = [self rightMargin] - idrItem.indentLevel * kIndentSize - kContentTextOffsetFromLeft;
     CGFloat formWidth = tableView.frame.size.width;
+    contentWidth = fminf(contentWidth, formWidth - kMinRightMargin);
+    
     NSString *sContent = [idrItem.content iotaNormalize];
-    CGSize size = [sContent sizeWithFont:[UIFont systemFontOfSize:14.0] constrainedToSize:CGSizeMake(formWidth, 1997.0) lineBreakMode:UILineBreakModeWordWrap];
-    return size.height;
+    CGSize size = [sContent sizeWithFont:[self contentFontBold:idrItem.isBold]
+                       constrainedToSize:CGSizeMake(contentWidth, 1997.0) 
+                           lineBreakMode:UILineBreakModeWordWrap];
+    size.height += kContentTextOffsetFromTop;
+    CGFloat minCellHeight = [IotaContext minRowHeight];
+    return fmax(minCellHeight, size.height);
 }
 
 // -----------------------------------------------------------
@@ -70,12 +93,20 @@
         self.lblContent.userInteractionEnabled = YES;
         self.lblContent.backgroundColor = [UIColor clearColor];
         self.lblContent.text = [idrItem.content iotaNormalize];
+        self.lblContent.font = [[self class] contentFontBold:idrItem.isBold];
+        CGFloat leftMargin = idrItem.indentLevel * kIndentSize + kContentTextOffsetFromLeft;
+        CGFloat rightMargin = [[self class] rightMargin];
+        self.lblContent.frame = CGRectMake(leftMargin, kContentTextOffsetFromTop, rightMargin - leftMargin, 20);
+        self.lblContent.numberOfLines = 0;
+        self.lblContent.lineBreakMode = UILineBreakModeWordWrap;
+
         if ([idrItem hasAction])
             self.lblContent.textColor = [UIColor blueColor];
-        if ([idrItem indentLevel] > 0) {
+        // TODO: check why there is no bullet displayed
+        if ([idrItem hasBullet]) {
             self.bulletView = (BulletView *)[self viewOfClass:[BulletView class] tag:TAG_BULLET];
-            self.bulletView.frame = CGRectMake([idrItem indentLevel] * 5.0, 0, 16, 16);
         }
+        [self.lblContent sizeToFit];
     }
     return self;
 }
@@ -84,6 +115,15 @@
     self.lblContent = nil;
     self.bulletView = nil;
     [super dealloc];
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Layout
+// -----------------------------------------------------------
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
 }
 
 @end

@@ -6,9 +6,9 @@
 //  Copyright (c) 2011 MITM AB. All rights reserved.
 //
 
-#import "ItemTableCellContent.h"
+#import "ItemTableCellHistory.h"
 
-@interface ItemTableCellAnalog : ItemTableCellContent
+@interface ItemTableCellAnalog : ItemTableCellHistory
 
 @property (nonatomic, retain) UISlider *slider;
 

@@ -6,9 +6,9 @@
 //  Copyright (c) 2011 MITM AB. All rights reserved.
 //
 
-#import "ItemTableCellContent.h"
+#import "ItemTableCellHistory.h"
 
-@interface ItemTableCellString : ItemTableCellContent <UITextFieldDelegate>
+@interface ItemTableCellString : ItemTableCellHistory <UITextFieldDelegate>
 
 @property (nonatomic, retain) UITextField *tfValue;
 

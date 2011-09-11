@@ -30,6 +30,56 @@
 #import "ItemCellDelegate.h"
 #import "IDRItem.h"
 
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Cell metrics
+// -----------------------------------------------------------
+
+
+static float kValueOffsetFromTop            __attribute__ ((unused)) = 1.0;
+static float kValueOffsetFromRight          __attribute__ ((unused)) = 200.0;
+static float kValueWidth                    __attribute__ ((unused)) = 90.0;
+static float kValueHeight                   __attribute__ ((unused)) = 20.0;
+
+static float kDateOffsetFromTop             __attribute__ ((unused)) = 1.0;
+static float kDateOffsetFromRight           __attribute__ ((unused)) = 100.0;
+static float kDateWidth                     __attribute__ ((unused)) = 95.0;
+static float kDateHeight                    __attribute__ ((unused)) = 20.0;
+
+static float kInputOffsetFromTop            __attribute__ ((unused)) = 1.0;
+static float kInputOffsetRightEndFromRight  __attribute__ ((unused)) = 210; 
+static float kInputWidthWide                __attribute__ ((unused)) = 200.0;
+static float kInputWidthNarrow              __attribute__ ((unused)) = 150.0;
+static float kInputHeight                   __attribute__ ((unused)) = 26.0;
+
+static float kIndentSize                    __attribute__ ((unused)) = 20.0;
+
+static float kContentTextOffsetFromLeft     __attribute__ ((unused)) = 10.0;
+static float kContentTextOffsetFromTop      __attribute__ ((unused)) = 3.0;
+
+// indicate the right margin for the content text in different situation
+// the width depends on right margin *and* indent
+static float kNarrowRight                   __attribute__ ((unused)) = 200.0;
+static float kMediumNarrowRight             __attribute__ ((unused)) = 300.0;
+static float kMediumWideRight               __attribute__ ((unused)) = 400.0;
+static float kWideRight                     __attribute__ ((unused)) = 600.0;
+
+// images
+
+static float kImageXOffsetFromRight         __attribute__ ((unused)) = 40.0;
+static float kImageTopMargin                __attribute__ ((unused)) = 8.0;
+static float kImageBottomMargin             __attribute__ ((unused)) = 8.0;
+
+static float kMinRightMargin                __attribute__ ((unused)) = 5.0;
+
+// check view
+static float kCheckViewWidth                __attribute__ ((unused)) = 50.0;
+
+
+
+
+
+
 #define TAG_LBLCONTENT  1001
 #define TAG_TEXTFIELD   1002
 #define TAG_LBLVALUE    1003
@@ -50,6 +100,8 @@
 
 + (void)addSubclass:(Class)cls;
 + (BOOL)canHandle:(IDRItem *)idrItem;
+
++ (UIFont *)contentFontBold:(BOOL)bold;
 
 - (id)initWithTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 - (UIView *)viewOfClass:(Class)cls tag:(NSUInteger)tag;

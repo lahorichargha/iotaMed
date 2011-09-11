@@ -11,6 +11,10 @@
 
 @implementation ItemTableCellCheck
 
++ (CGFloat)rightMargin {
+    return kMediumWideRight;
+}
+
 + (void)load {
     [super addSubclass:self];
 }
@@ -28,7 +32,20 @@
 }
 
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
-    return 1.0;
+    return [super subCellHeightForTableView:tableView idrItem:idrItem];
 }
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Lifecycle
+// -----------------------------------------------------------
+
+- (id)initWithTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
+    if ((self = [super initWithTableView:tableView idrItem:idrItem])) {
+        
+    }
+    return self;
+}
+
 
 @end

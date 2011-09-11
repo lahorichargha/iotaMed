@@ -11,6 +11,10 @@
 
 @implementation ItemTableCellNumeric
 
++ (CGFloat)rightMargin {
+    return kMediumNarrowRight;
+}
+
 + (void)load {
     [super addSubclass:self];
 }
@@ -28,7 +32,7 @@
 }
 
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
-    return 1.0;
+    return [super subCellHeightForTableView:tableView idrItem:idrItem];
 }
 
 // -----------------------------------------------------------

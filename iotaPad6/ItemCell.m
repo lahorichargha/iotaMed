@@ -114,10 +114,10 @@ static float kContentTextOffsetFromTop = 3.0;
 
 // indicate the right margin for the content text in different situation
 // the width depends on right margin *and* indent
-static float kNarrowRight = 200.0;
-static float kMediumNarrowRight = 300.0;
-static float kMediumWideRight = 400.0;
-static float kWideRight = 600.0;
+static float kNarrowRight = 200.0;          // string and history
+static float kMediumNarrowRight = 300.0;    // numeric and history
+static float kMediumWideRight = 400.0;      // image or check
+static float kWideRight = 600.0;            // content only
 
 //static float kMinimumCellHeight = 32.0; is now settable in user defaults
 
