@@ -10,6 +10,8 @@
 
 @interface ItemTableCellImage : ItemTableCellContent
 
+@property (nonatomic, retain) UIImageView *itemImageView;
+
 + (ItemTableCellImage *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 

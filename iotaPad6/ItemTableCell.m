@@ -72,6 +72,8 @@ static float kBoldFontSize          __attribute__ ((unused)) = 18.0;
 @interface  ItemTableCell ()
 @end
 
+// holds a reference to all reported subclasses, so instances can be
+// created when needed
 static NSMutableArray *subclasses;
 
 // -----------------------------------------------------------
@@ -168,6 +170,25 @@ static NSMutableArray *subclasses;
     }
     return 0.0;
 }
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Metrics helpers
+// -----------------------------------------------------------
+
++ (CGFloat)gadgetSpaceAdd:(CGFloat)oldSpace forItem:(IDRItem *)idrItem {
+    return oldSpace;
+}
+
+
++ (CGFloat)cellWidthForTableView:(UITableView *)tableView {
+    return tableView.frame.size.width;
+}
+
+- (CGFloat)cellWidth {
+    return self.parentTableView.frame.size.width;
+}
+
 
 // -----------------------------------------------------------
 #pragma mark -

@@ -42,10 +42,6 @@
 #pragma mark Override in subclasses
 // -----------------------------------------------------------
 
-+ (CGFloat)rightMargin {
-    return kWideRight;
-}
-
 + (BOOL)canHandle:(IDRItem *)idrItem {
     return ![idrItem hasObservation] && !idrItem.idrImage && !idrItem.idrSvgView;
 }
@@ -67,8 +63,26 @@
     return cell;
 }
 
++ (CGFloat)leftMarginForIdrItem:(IDRItem *)idrItem {
+    return idrItem.indentLevel * kIndentSize + kContentTextOffsetFromLeft;
+}
+
+- (CGFloat)leftMargin {
+    return [[self class] leftMarginForIdrItem:self.idrItem];
+}
+
++ (CGFloat)contentWidthForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
+    CGFloat leftMargin = [self leftMarginForIdrItem:idrItem];
+    CGFloat rightMargin = [self cellWidthForTableView:tableView] - [self gadgetSpaceAdd:kInterGadgetSpace forItem:idrItem];
+    return rightMargin - leftMargin;
+}
+
+- (CGFloat)contentWidth {
+    return [[self class] contentWidthForTableView:self.parentTableView idrItem:self.idrItem];
+}
+
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
-    CGFloat contentWidth = [self rightMargin] - idrItem.indentLevel * kIndentSize - kContentTextOffsetFromLeft;
+    CGFloat contentWidth = [self contentWidthForTableView:tableView idrItem:idrItem];
     CGFloat formWidth = tableView.frame.size.width;
     contentWidth = fminf(contentWidth, formWidth - kMinRightMargin);
     
@@ -79,6 +93,15 @@
     size.height += kContentTextOffsetFromTop;
     CGFloat minCellHeight = [IotaContext minRowHeight];
     return fmax(minCellHeight, size.height);
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Metrics
+// -----------------------------------------------------------
+
++ (CGFloat)gadgetSpaceAdd:(CGFloat)oldSpace forItem:(IDRItem *)idrItem {
+    return [super gadgetSpaceAdd:oldSpace forItem:idrItem];     // we don't use any gadget space
 }
 
 // -----------------------------------------------------------
@@ -94,9 +117,6 @@
         self.lblContent.backgroundColor = [UIColor clearColor];
         self.lblContent.text = [idrItem.content iotaNormalize];
         self.lblContent.font = [[self class] contentFontBold:idrItem.isBold];
-        CGFloat leftMargin = idrItem.indentLevel * kIndentSize + kContentTextOffsetFromLeft;
-        CGFloat rightMargin = [[self class] rightMargin];
-        self.lblContent.frame = CGRectMake(leftMargin, kContentTextOffsetFromTop, rightMargin - leftMargin, 20);
         self.lblContent.numberOfLines = 0;
         self.lblContent.lineBreakMode = UILineBreakModeWordWrap;
 
@@ -106,7 +126,7 @@
         if ([idrItem hasBullet]) {
             self.bulletView = (BulletView *)[self viewOfClass:[BulletView class] tag:TAG_BULLET];
         }
-        [self.lblContent sizeToFit];
+        [self layoutSubviews];
     }
     return self;
 }
@@ -124,6 +144,10 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    CGFloat leftMargin =  [self leftMargin];
+    CGFloat contentWidth = [self contentWidth];
+    self.lblContent.frame = CGRectMake(leftMargin, kContentTextOffsetFromTop, contentWidth, 20);
+    [self.lblContent sizeToFit];
 }
 
 @end

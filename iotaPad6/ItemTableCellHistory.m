@@ -48,6 +48,14 @@
 @synthesize lblValue = _lblValue;
 @synthesize lblDate = _lblDate;
 
++ (void)load {
+    [self addSubclass:self];
+}
+
++ (BOOL)canHandle:(IDRItem *)idrItem {
+    return [idrItem hasGet] && ![idrItem hasInput];
+}
+
 // -----------------------------------------------------------
 #pragma mark -
 #pragma mark Lifecycle
@@ -74,13 +82,22 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    CGFloat currentWidth = self.parentTableView.frame.size.width;
-    //    CGFloat currentWidth = self.frame.size.width;
+    //CGFloat currentWidth = self.parentTableView.frame.size.width;
+    CGFloat currentWidth = self.frame.size.width;
     self.lblValue.frame = CGRectMake(currentWidth - kValueOffsetFromRight, kValueOffsetFromTop, kValueWidth, kValueHeight);
     self.lblDate.frame = CGRectMake(currentWidth - kDateOffsetFromRight, kDateOffsetFromTop, kDateWidth, kDateHeight);
     NSLog(@"lblValue frame: %@", NSStringFromCGRect(self.lblValue.frame));
     NSLog(@"lblDate frame:  %@", NSStringFromCGRect(self.lblDate.frame));
 }
 
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Metrics
+// -----------------------------------------------------------
+
++ (CGFloat)gadgetSpaceAdd:(CGFloat)oldSpace forItem:(IDRItem *)idrItem {
+    CGFloat ourGadgetSpace = kValueWidth + kDateWidth + 2 * kInterGadgetSpace;
+    return [super gadgetSpaceAdd:(oldSpace + ourGadgetSpace) forItem:idrItem];
+}
 
 @end

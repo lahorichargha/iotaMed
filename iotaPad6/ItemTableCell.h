@@ -35,6 +35,7 @@
 #pragma mark Cell metrics
 // -----------------------------------------------------------
 
+static float kInterGadgetSpace              __attribute__ ((unused)) = 10.0;
 
 static float kValueOffsetFromTop            __attribute__ ((unused)) = 1.0;
 static float kValueOffsetFromRight          __attribute__ ((unused)) = 200.0;
@@ -42,9 +43,9 @@ static float kValueWidth                    __attribute__ ((unused)) = 90.0;
 static float kValueHeight                   __attribute__ ((unused)) = 20.0;
 
 static float kDateOffsetFromTop             __attribute__ ((unused)) = 1.0;
-static float kDateOffsetFromRight           __attribute__ ((unused)) = 100.0;
 static float kDateWidth                     __attribute__ ((unused)) = 95.0;
 static float kDateHeight                    __attribute__ ((unused)) = 20.0;
+static float kDateOffsetFromRight           __attribute__ ((unused)) = 100.0;
 
 static float kInputOffsetFromTop            __attribute__ ((unused)) = 1.0;
 static float kInputOffsetRightEndFromRight  __attribute__ ((unused)) = 210; 
@@ -54,15 +55,20 @@ static float kInputHeight                   __attribute__ ((unused)) = 26.0;
 
 static float kIndentSize                    __attribute__ ((unused)) = 20.0;
 
+static float kContentSpaceRight             __attribute__ ((unused)) = 5.0;     // space between content and next gadget
 static float kContentTextOffsetFromLeft     __attribute__ ((unused)) = 10.0;
 static float kContentTextOffsetFromTop      __attribute__ ((unused)) = 3.0;
 
 // indicate the right margin for the content text in different situation
 // the width depends on right margin *and* indent
-static float kNarrowRight                   __attribute__ ((unused)) = 200.0;
-static float kMediumNarrowRight             __attribute__ ((unused)) = 300.0;
-static float kMediumWideRight               __attribute__ ((unused)) = 400.0;
-static float kWideRight                     __attribute__ ((unused)) = 600.0;
+
+// --   ok, we don't need these anymore, replaced this idea with the
+//      gadgetSpaceAdd functions instead
+// --
+//static float kNarrowRight                   __attribute__ ((unused)) = 210.0;
+//static float kMediumNarrowRight             __attribute__ ((unused)) = 300.0;
+//static float kMediumWideRight               __attribute__ ((unused)) = 400.0;
+//static float kWideRight                     __attribute__ ((unused)) = 600.0;
 
 // images
 
@@ -74,8 +80,6 @@ static float kMinRightMargin                __attribute__ ((unused)) = 5.0;
 
 // check view
 static float kCheckViewWidth                __attribute__ ((unused)) = 50.0;
-
-
 
 
 
@@ -95,9 +99,22 @@ static float kCheckViewWidth                __attribute__ ((unused)) = 50.0;
 @property (nonatomic, retain) id <ItemCellDelegate> itemCellDelegate;
 @property (nonatomic, assign) UITableView *parentTableView;
 
+// gadgetSpaceAdd keeps track of how much screen real estate 
+// counting from the right margin has been
+// consumed by the class and its superclasses,
+// each derived class adding in its own space use
++ (CGFloat)gadgetSpaceAdd:(CGFloat)oldSpace forItem:(IDRItem *)idrItem;
+
++ (CGFloat)cellWidthForTableView:(UITableView *)tableView;
+- (CGFloat)cellWidth;
+
 + (ItemTableCell *)cellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 + (CGFloat)cellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 
+// each derived class calls addSubclass on itself in its load function
+// to register for handling idrItems
+// the base class calls canHandle on them to see which one should be
+// instantiated for each idrItem
 + (void)addSubclass:(Class)cls;
 + (BOOL)canHandle:(IDRItem *)idrItem;
 

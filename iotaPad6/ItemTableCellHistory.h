@@ -34,10 +34,6 @@
  *
  *  A ItemTableCellHistory has content and history fields to the right
  *  Any table cell needing these history fields should derive from this one
- *
- *  ItemTableCellHistory is an abstract class, it makes no sense to use an
- *  instance of this one, since it contains no values to show a history for.
- *
  *  Cells that have no place for history fields should not derive from this class
  *  and should thus have their own mechanism for letting the user access a history
  */

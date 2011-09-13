@@ -35,7 +35,6 @@
 @property (nonatomic, retain) UILabel *lblContent;
 @property (nonatomic, retain) BulletView *bulletView;
 
-+ (CGFloat)rightMargin;
 + (ItemTableCellContent *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 

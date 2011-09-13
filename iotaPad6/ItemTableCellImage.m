@@ -7,12 +7,11 @@
 //
 
 #import "ItemTableCellImage.h"
+#import "IDRImage.h"
 
 @implementation ItemTableCellImage
 
-+ (CGFloat)rightMargin {
-    return kMediumWideRight;
-}
+@synthesize itemImageView = _itemImageView;
 
 + (void)load {
     [super addSubclass:self];
@@ -31,9 +30,75 @@
 }
 
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
-    return [super subCellHeightForTableView:tableView idrItem:idrItem];
+    CGFloat height = [super subCellHeightForTableView:tableView idrItem:idrItem];
+    CGFloat imageHeight = idrItem.idrImage.image.size.height + kImageTopMargin + kImageBottomMargin;
+    return fmax(height, imageHeight);
 }
 
++ (CGFloat)gadgetSpaceAdd:(CGFloat)oldSpace forItem:(IDRItem *)idrItem {
+    CGFloat usedSpace = [super gadgetSpaceAdd:oldSpace forItem:idrItem];
+    CGFloat mySpace = idrItem.idrImage.image.size.width + kImageXOffsetFromRight;
+    return usedSpace + mySpace;
+}
 
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Lifecycle
+// -----------------------------------------------------------
+
+- (id)initWithTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
+    if ((self = [super initWithTableView:tableView idrItem:idrItem])) {
+        self.itemImageView = (UIImageView *)[self viewOfClass:[UIImageView class] tag:TAG_IMAGE];
+        self.itemImageView.image = idrItem.idrImage.image;
+        self.itemImageView.userInteractionEnabled = YES;
+
+        // NEVER set the delegate on a recognizer! It's done automatically, and if you do it
+        // manually, it stops working
+        UITapGestureRecognizer *doubleTap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap)] autorelease];
+        doubleTap.numberOfTapsRequired = 2;
+        doubleTap.numberOfTouchesRequired = 1;
+        [self.imageView addGestureRecognizer:doubleTap];
+        
+        UITapGestureRecognizer *twoFingerTap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(twoFingerTap)] autorelease];
+        twoFingerTap.numberOfTapsRequired = 1;
+        twoFingerTap.numberOfTouchesRequired = 2;
+        [self.itemImageView addGestureRecognizer:twoFingerTap];
+        
+        [self layoutSubviews];
+    }
+    return self;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    if (self.idrItem.idrImage.image != nil) {
+        CGSize imageSize = self.idrItem.idrImage.image.size;
+        CGRect rect = CGRectMake([self cellWidth] - kImageXOffsetFromRight - imageSize.width, kImageTopMargin, imageSize.width, imageSize.height);
+        self.itemImageView.frame = rect;
+    }
+}
+
+- (void)dealloc {
+    self.itemImageView = nil;
+    [super dealloc];
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark User interaction
+// -----------------------------------------------------------
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    NSLog(@"simultaneously");
+    return YES;
+}
+
+- (void)doubleTap {
+    NSLog(@"Double Tap");
+}
+
+- (void)twoFingerTap {
+    NSLog(@"Two finger tap");
+}
 
 @end

@@ -10,6 +10,8 @@
 
 @interface ItemTableCellCheck : ItemTableCellHistory
 
+@property (nonatomic, retain) UILabel *lblCheck;
+
 + (ItemTableCellCheck *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 

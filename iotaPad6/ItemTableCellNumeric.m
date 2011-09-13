@@ -11,10 +11,6 @@
 
 @implementation ItemTableCellNumeric
 
-+ (CGFloat)rightMargin {
-    return kMediumNarrowRight;
-}
-
 + (void)load {
     [super addSubclass:self];
 }
