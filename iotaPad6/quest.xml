@@ -39,5 +39,19 @@
                 <multiselect value="11">Sax</multiselect>
             </observation>
         </item>
+        <item bold="no" indentlevel="0">Vilken number gillar du?
+            <observation name="Ankieta4" type="multiselect" direction="getput">
+                <multiselect value="1">1</multiselect>
+                <multiselect value="2">2</multiselect>
+                <multiselect value="3">3</multiselect>
+                <multiselect value="4">4</multiselect>
+                <multiselect value="5">5</multiselect>
+                <multiselect value="6">6</multiselect>
+                <multiselect value="7">7</multiselect>
+                <multiselect value="8">8</multiselect>
+                <multiselect value="9">9</multiselect>
+                <multiselect value="10">0</multiselect>
+            </observation>
+        </item>
     </block>
 </template>

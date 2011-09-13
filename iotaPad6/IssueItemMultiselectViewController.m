@@ -37,7 +37,6 @@ static CGFloat kTableViewRowHeight = 40.0;
     [_tempMultiselects release];
     [_okButtonItem release];
     [_clearButtonItem release];
-    [_tempMultiselects release];
     [super dealloc];
 }
 
@@ -80,7 +79,6 @@ static CGFloat kTableViewRowHeight = 40.0;
     [self setTempMultiselects:nil];
     [self setOkButtonItem:nil];
     [self setClearButtonItem:nil];
-    [self setTempMultiselects:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
