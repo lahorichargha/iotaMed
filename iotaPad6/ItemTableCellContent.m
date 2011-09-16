@@ -30,6 +30,9 @@
 #import "BulletView.h"
 #import "NSString+iotaAdditions.h"
 #import "IotaContext.h"
+#import "IDRAction.h"
+#import "IDRBlock.h"
+#import "Notifications.h"
 
 @implementation ItemTableCellContent
 
@@ -126,12 +129,21 @@
         if ([idrItem hasBullet]) {
             self.bulletView = (BulletView *)[self viewOfClass:[BulletView class] tag:TAG_BULLET];
         }
+        
+        if ([idrItem hasAction]) {
+            UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)] autorelease];
+            [self.lblContent addGestureRecognizer:tap];
+        }
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observationDataChanged:) name:kObservationDataChangedNotification object:nil];
+        
         [self layoutSubviews];
     }
     return self;
 }
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.lblContent = nil;
     self.bulletView = nil;
     [super dealloc];
@@ -148,6 +160,62 @@
     CGFloat contentWidth = [self contentWidth];
     self.lblContent.frame = CGRectMake(leftMargin, kContentTextOffsetFromTop, contentWidth, 20);
     [self.lblContent sizeToFit];
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Actions
+// -----------------------------------------------------------
+
+- (void)doLabAction {
+    if ([self.itemCellDelegate respondsToSelector:@selector(presentLabOrderForm:)])
+        [self.itemCellDelegate presentLabOrderForm:self.idrItem];
+}
+
+- (void)doPrescriptionAction {
+    if ([self.itemCellDelegate respondsToSelector:@selector(presentPrescriptionForm:)]) 
+        [self.itemCellDelegate presentPrescriptionForm:self.idrItem];
+}
+
+- (void)doReferralAction {
+    if ([self.itemCellDelegate respondsToSelector:@selector(presentReferralForm:)])
+        [self.itemCellDelegate presentReferralForm:self.idrItem];
+}
+
+- (void)doBlockAction {
+    NSString *uuid = self.idrItem.action.templateUuid;
+    IDRBlock *block = [IotaContext blockForUuid:uuid];
+    IDRWorksheet *ws = self.idrItem.parentBlock.worksheet;
+    [[IotaContext getCurrentPatientContext] addBlock:block toExistingWorksheet:ws customTitle:@""];
+}
+
+- (void)observationDataChanged:(NSNotification *)notification {
+    [self refreshDisplay];
+}
+
+- (void)refreshDisplay {
+    // do nothing, descendents will override
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Gestures
+// -----------------------------------------------------------
+
+- (void)tap {
+    NSLog(@"tapped content");
+    if (![self isItemCurrentlyEnabled])
+        return;
+    NSString *type = self.idrItem.action.type;
+    if ([type isEqualToString:@"lab"])
+        [self doLabAction];
+    else if ([type isEqualToString:@"prescription"])
+        [self doPrescriptionAction];
+    else if ([type isEqualToString:@"referral"])
+        [self doReferralAction];
+    else if ([type isEqualToString:@"block"])
+        [self doBlockAction];
+    // we don't really need to report a non-existent type, since simply not reacting is enough
 }
 
 @end

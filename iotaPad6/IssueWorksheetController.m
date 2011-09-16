@@ -312,7 +312,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    NSLog(@"selected row at: %@", indexPath);
 }
 
 // -----------------------------------------------------------

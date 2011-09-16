@@ -122,5 +122,6 @@ static float kCheckViewWidth                __attribute__ ((unused)) = 50.0;
 
 - (id)initWithTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 - (UIView *)viewOfClass:(Class)cls tag:(NSUInteger)tag;
+- (BOOL)isItemCurrentlyEnabled;
 
 @end

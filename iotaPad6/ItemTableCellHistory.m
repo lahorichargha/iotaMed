@@ -32,7 +32,9 @@
 
 #import "ItemTableCellHistory.h"
 #import "ThemeColors.h"
-
+#import "IDRValue.h"
+#import "IDRContact.h"
+#import "Funcs.h"
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -69,9 +71,41 @@
         
         self.lblDate = (UILabel *)[self viewOfClass:[UILabel class] tag:TAG_LBLDATE];
         self.lblDate.backgroundColor = [[ThemeColors themeColors] dateBackground];
+        self.lblDate.userInteractionEnabled = YES;
+        
+        [self refreshHistory];
         [self layoutSubviews];
+        
+        UITapGestureRecognizer *singleTapValue = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHistory)] autorelease];
+        singleTapValue.numberOfTapsRequired = 1;
+        singleTapValue.numberOfTouchesRequired = 1;
+        [self.lblValue addGestureRecognizer:singleTapValue];
+
+        UITapGestureRecognizer *singleTapDate = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showHistory)] autorelease];
+        singleTapDate.numberOfTapsRequired = 1;
+        singleTapDate.numberOfTouchesRequired = 1;
+        [self.lblDate addGestureRecognizer:singleTapDate];
+
     }
     return self;
+}
+
+- (void)showHistory {
+    [self.itemCellDelegate presentValueLookupForm:self.idrItem];
+}
+
+- (void)refreshDisplay {
+    [self refreshHistory];
+}
+
+- (void)refreshHistory {
+    IDRValue *value;
+    if ([self.idrItem hasInput])
+        value = [self.idrItem getHistoricValue];
+    else
+        value = [self.idrItem getLatestValue];
+    self.lblValue.text = value.displayValue;
+    self.lblDate.text = dateshort2str(value.contact.date);
 }
 
 - (void)dealloc {
@@ -82,12 +116,9 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    //CGFloat currentWidth = self.parentTableView.frame.size.width;
     CGFloat currentWidth = self.frame.size.width;
     self.lblValue.frame = CGRectMake(currentWidth - kValueOffsetFromRight, kValueOffsetFromTop, kValueWidth, kValueHeight);
     self.lblDate.frame = CGRectMake(currentWidth - kDateOffsetFromRight, kDateOffsetFromTop, kDateWidth, kDateHeight);
-    NSLog(@"lblValue frame: %@", NSStringFromCGRect(self.lblValue.frame));
-    NSLog(@"lblDate frame:  %@", NSStringFromCGRect(self.lblDate.frame));
 }
 
 // -----------------------------------------------------------

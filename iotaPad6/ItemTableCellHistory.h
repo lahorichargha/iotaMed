@@ -47,4 +47,6 @@
 @property (nonatomic, retain) UILabel *lblValue;
 @property (nonatomic, retain) UILabel *lblDate;
 
+- (void)refreshHistory;
+
 @end

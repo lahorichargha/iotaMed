@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <template type='issue' title='Fotledstrauma' fromICD10='S82' toICD10='S82' lang='SE' templateUuid='CE224E67-095D-46DF-896D-BF047031A820'>
     
+<!--    <import templateUuid='82006883-C68D-4E52-B75B-3073FDAA9AE5'/>   -->
+    
     <description type='template'>Denna mall är avsedd för akutmottagning på sjukhus för initiell bedömning och åtgärd av trauma i fotledsregionen. 
         Mallen innehåller olika delar vilka man väljer utgående från första undersökningsresultaten. Andra delmallar används vid uppföljning.</description>
     
@@ -150,7 +152,7 @@
             </action>
         </item>
         
-        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
+        <item>Andra kontroller</item>
         
     </block>
 
@@ -182,7 +184,7 @@
             </action>
         </item>
         
-        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
+        <item>Andra kontroller</item>
     </block>
 
     <block type='any' repeats='no' title='AO typ A3' templateUuid='5333B170-1ACC-4A0D-B878-38511D34BA17'>
@@ -214,7 +216,7 @@
             </action>
         </item>
         
-        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
+        <item>Andra kontroller</item>
     </block>
 
     <block type='any' repeats='no' title='AO typ B1' templateUuid='2016F4D3-DF9A-4B31-8843-48CF68B3E805'>
@@ -276,7 +278,6 @@
             </action>
         </item>
         
-        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
     </block>
 
     <block type='any' repeats='no' title='AO typ B3' templateUuid='FA6B4472-BD38-4FCF-85AB-A54FCFC5389F'>
@@ -310,7 +311,6 @@
             </action>
         </item>
         
-        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
     </block>
 
     <block type='any' repeats='no' title='AO typ C1' templateUuid='DAE4CA3C-55D6-457F-A420-5667748D0AA3'>
@@ -342,7 +342,6 @@
             </action>
         </item>
         
-        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
     </block>
 
     <block type='any' repeats='no' title='AO typ C2' templateUuid='85EC3A0E-306F-47A1-A7C6-A6242AC1D35C'>
@@ -374,7 +373,6 @@
             </action>
         </item>
         
-        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
     </block>
 
     <block type='any' repeats='no' title='AO typ C3' templateUuid='063FA318-C7E1-4AE7-8C2C-CDF3270C1563'>
@@ -408,7 +406,6 @@
             </action>
         </item>
         
-        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
     </block>
     
     

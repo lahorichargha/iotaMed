@@ -38,6 +38,7 @@
 
 @class IDRObservation;
 @class IDRAction;
+@class IDRValue;
 @class IDRBlock;
 @class IDRImage;
 @class ItemCell;
@@ -71,6 +72,9 @@
 - (BOOL)hasGet;
 - (BOOL)hasValues;
 - (NSArray *)getValues;
+- (IDRValue *)getItemValue;
+- (IDRValue *)getHistoricValue;
+- (IDRValue *)getLatestValue;
 
 
 @end

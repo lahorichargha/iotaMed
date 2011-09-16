@@ -55,6 +55,9 @@
 #import "ItemTableCell.h"
 #import "IDRItem.h"
 #import "IDRImage.h"
+#import "IDRBlock.h"
+#import "IDRContact.h"
+#import "IotaContext.h"
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -99,6 +102,7 @@ static NSMutableArray *subclasses;
 // children must override and call super:
 - (id)initWithTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
     if ((self = [super init])) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.parentTableView = tableView;
         self.idrItem = idrItem;
         idrItem.itemTableCell = self;
@@ -159,6 +163,8 @@ static NSMutableArray *subclasses;
             cell = [cls subCellForTableView:tableView idrItem:idrItem];
         }
     }
+    if (cell == nil)
+        [NSException raise:@"No cell could be created for item" format:@"Item content: %@", idrItem.content];
     return cell;
 }
 
@@ -222,6 +228,12 @@ static NSMutableArray *subclasses;
     view.tag = tag;
     [self.contentView addSubview:view];
     return [view autorelease];
+}
+
+- (BOOL)isItemCurrentlyEnabled {
+    IDRContact *currentContact = [[IotaContext getCurrentPatientContext] currentContact];
+    IDRContact *itemContact = self.idrItem.parentBlock.contact;
+    return (currentContact == itemContact);
 }
 
 @end

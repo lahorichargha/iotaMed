@@ -60,8 +60,14 @@
     if ((self = [super initWithTableView:tableView idrItem:idrItem])) {
         self.lblCheck = (UILabel *)[self viewOfClass:[UILabel class] tag:TAG_CHECKVIEW];
         self.lblCheck.backgroundColor = [UIColor clearColor];
+        self.lblCheck.userInteractionEnabled = YES;
         [self layoutSubviews];
         [self displayValue];
+        
+        UITapGestureRecognizer *singleTap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleCheck)] autorelease];
+        singleTap.numberOfTapsRequired = 1;
+        singleTap.numberOfTouchesRequired = 1;
+        [self.lblCheck addGestureRecognizer:singleTap];
     }
     return self;
 }
@@ -78,17 +84,14 @@
 }
 
 - (void)displayValue {
-    IDRObservation *obs = self.idrItem.observation;
-    IDRObsDefinition *obsDef = obs.obsDefinition;
-    IDRBlock *block = self.idrItem.parentBlock;
-    IDRContact *contact = block.contact;
-    IDRValue *value = [obsDef valueForContact:contact];
-    if ([value.value isEqualToString:@"yes"])
-        self.lblCheck.text = @"Ja";
-    else if ([value.value isEqualToString:@"no"])
-        self.lblCheck.text = @"Nej";
+    NSString *value = [self.idrItem getItemValue].value;
+    if ([value isEqualToString:@"yes"])
+        value = @"Ja";
+    else if ([value isEqualToString:@"no"])
+        value = @"Nej";
     else
-        self.lblCheck.text = @"?";
+        value = @"?";
+    self.lblCheck.text = value;
 }
 
 // -----------------------------------------------------------
@@ -96,18 +99,17 @@
 #pragma mark Touch stuff
 // -----------------------------------------------------------
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
+- (void)toggleCheck {
+    NSString *value = [self.idrItem getItemValue].value;
+    if ([value isEqualToString:@"yes"])
+        value = @"no";
+    else if ([value isEqualToString:@"no"])
+        value = @"?";
+    else
+        value = @"yes";
+    [self.idrItem setItemValue:value];
+    [self displayValue];
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    for (UITouch *t in touches) {
-        NSLog(@"got a touch with tapcount: %d", t.tapCount);
-    
-        for (UIGestureRecognizer *gest in [t gestureRecognizers]) {
-            NSLog(@"got a gesture");
-        }
-    }
-}
 
 @end

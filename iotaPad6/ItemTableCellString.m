@@ -8,6 +8,8 @@
 
 #import "ItemTableCellString.h"
 #import "IDRObservation.h"
+#import "IDRItem.h"
+#import "IDRValue.h"
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -54,12 +56,14 @@
         self.tfValue.borderStyle = UITextBorderStyleRoundedRect;
         self.tfValue.delegate = self;
         self.tfValue.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.tfValue.text = [idrItem getItemValue].value;
         
         // single tap: pop up list of choices, including default, manual text, dictation, clear
         UITapGestureRecognizer *singleTap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureListOfChoices)] autorelease];
         singleTap.numberOfTouchesRequired = 1;
         singleTap.numberOfTapsRequired = 1;
-        [self.tfValue addGestureRecognizer:singleTap];
+        // reactivate this one when you have a popup working for edit fields
+        //        [self.tfValue addGestureRecognizer:singleTap];
         
         // double tap, one finger: enter default text
         UITapGestureRecognizer *doubleTap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureDefaultEntry)] autorelease];
@@ -94,7 +98,7 @@
     CGFloat currentWidth = self.frame.size.width;
     CGRect newFrame = CGRectMake(currentWidth - kInputOffsetRightEndFromRight - kInputWidthWide, kInputOffsetFromTop, kInputWidthWide, kInputHeight);
     self.tfValue.frame = newFrame;
-    NSLog(@"layout ItemTableCellString: %@", NSStringFromCGRect(newFrame));
+//    NSLog(@"layout ItemTableCellString: %@", NSStringFromCGRect(newFrame));
 }
 
 - (void)dealloc {
@@ -107,6 +111,8 @@
 #pragma mark -
 #pragma mark Gestures
 // -----------------------------------------------------------
+
+
 
 - (void)gestureListOfChoices {
     // create a popover pointing to the entry field
@@ -131,6 +137,32 @@
 
 + (CGFloat)gadgetSpaceAdd:(CGFloat)oldSpace forItem:(IDRItem *)idrItem {
     return [super gadgetSpaceAdd:(oldSpace + kInputWidthWide + kInterGadgetSpace) forItem:idrItem];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    // when text field begins editing, the keyboard is not yet fully deployed
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(keyboardDidShow:) 
+                                                 name:UIKeyboardDidShowNotification 
+                                               object:nil];
+
+}
+
+- (void)keyboardDidShow:(NSNotification *)n {
+    // now the keyboard is fully deployed and we can center the view right
+    // we also have to remove the notification right away, else any other cell that gets
+    // activated will make this one try to center itself again; not such a great idea
+    NSIndexPath *indexPath = [self.parentTableView indexPathForCell:self];
+    [self.parentTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    [[NSNotificationCenter defaultCenter] removeObserver:self 
+                                                    name:UIKeyboardDidShowNotification 
+                                                  object:nil];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [textField resignFirstResponder];
+    NSString *newText = textField.text;
+    [self.idrItem setItemValue:newText];
 }
 
 @end

@@ -195,6 +195,7 @@
 		AAF9B5541392A78C0049BA69 /* test5.xml in Resources */ = {isa = PBXBuildFile; fileRef = AAF9B5531392A78C0049BA69 /* test5.xml */; };
 		AAFB52BD13E4336B00F9CC59 /* ItemTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB52BC13E4336B00F9CC59 /* ItemTextFieldView.m */; };
 		AAFB52C013E44F6900F9CC59 /* IssueWorksheetTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB52BF13E44F6900F9CC59 /* IssueWorksheetTableView.m */; };
+		CEA5AB34141FDE9400D24128 /* obsdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = CEA5AB33141FDE9400D24128 /* obsdef.xml */; };
 		CEE52BE3141CD083005CA465 /* ItemTableCellHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE52BE2141CD083005CA465 /* ItemTableCellHistory.m */; };
 		EE3A18E813F2D55D00A2A16E /* diagnoser.png in Resources */ = {isa = PBXBuildFile; fileRef = EE3A18E713F2D55D00A2A16E /* diagnoser.png */; };
 		EE4159CD13F291E500199032 /* background2.png in Resources */ = {isa = PBXBuildFile; fileRef = EE4159C513F291E500199032 /* background2.png */; };
@@ -543,6 +544,7 @@
 		AAFB52BC13E4336B00F9CC59 /* ItemTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTextFieldView.m; sourceTree = "<group>"; };
 		AAFB52BE13E44F6900F9CC59 /* IssueWorksheetTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueWorksheetTableView.h; sourceTree = "<group>"; };
 		AAFB52BF13E44F6900F9CC59 /* IssueWorksheetTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueWorksheetTableView.m; sourceTree = "<group>"; };
+		CEA5AB33141FDE9400D24128 /* obsdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = obsdef.xml; sourceTree = "<group>"; };
 		CEE52BE1141CD083005CA465 /* ItemTableCellHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTableCellHistory.h; sourceTree = "<group>"; };
 		CEE52BE2141CD083005CA465 /* ItemTableCellHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableCellHistory.m; sourceTree = "<group>"; };
 		EE3A18E713F2D55D00A2A16E /* diagnoser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diagnoser.png; sourceTree = "<group>"; };
@@ -729,6 +731,7 @@
 				AA48FE77132FBE9B008409AA /* keywordtemplates.xml */,
 				AA220A87134148990088CBD3 /* fotledstrauma.xml */,
 				AAB7700E1357077700388BF5 /* stroke.xml */,
+				CEA5AB33141FDE9400D24128 /* obsdef.xml */,
 			);
 			name = Templates;
 			sourceTree = "<group>";
@@ -1328,6 +1331,7 @@
 				EE4159D613F291FE00199032 /* rowImage.png in Resources */,
 				EE3A18E813F2D55D00A2A16E /* diagnoser.png in Resources */,
 				AAF21BCA13F9927500DCDCF4 /* ankle.svg in Resources */,
+				CEA5AB34141FDE9400D24128 /* obsdef.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

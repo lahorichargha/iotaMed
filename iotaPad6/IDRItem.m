@@ -39,6 +39,7 @@
 #import "IDRBlock.h"
 #import "IDRImage.h"
 #import "IDRSvgView.h"
+#import "IDRValue.h"
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -150,6 +151,34 @@ static NSString *kIdrSvgView = @"idrSvgView";
     IDRBlock *block = self.parentBlock;
     IDRContact *contact = block.contact;
     [obsDef setValue:value extendedValue:extendedValue forContact:contact];
+}
+
+- (IDRValue *)getItemValue {
+    IDRObservation *observation = self.observation;
+    IDRObsDefinition *obsDef = observation.obsDefinition;
+    IDRBlock *block = self.parentBlock;
+    IDRContact *contact = block.contact;
+    IDRValue *value = [obsDef valueForContact:contact];
+    return value;
+}
+
+- (IDRValue *)getHistoricValue {
+    IDRObservation *observation = self.observation;
+    IDRObsDefinition *obsDef = observation.obsDefinition;
+    IDRBlock *block = self.parentBlock;
+    IDRContact *contact = block.contact;
+    IDRValue *value = [obsDef valueBeforeContact:contact];
+    return value;
+}
+
+- (IDRValue *)getLatestValue {
+    // meaning current or historic
+    IDRObservation *observation = self.observation;
+    IDRObsDefinition *obsDef = observation.obsDefinition;
+    IDRBlock *block = self.parentBlock;
+    IDRContact *contact = block.contact;
+    IDRValue *value = [obsDef valueForOrBeforeContact:contact];
+    return value;
 }
 
 - (BOOL)hasValues {
