@@ -1,8 +1,7 @@
 //
-//  IDRWorksheet.h
+//  IDRDefScriptParameter.h
 //  iotaPad6
 //
-//  Created by Martin on 2011-03-03.
 //  Copyright © 2011, MITM AB, Sweden
 //  All rights reserved.
 //
@@ -33,43 +32,10 @@
 
 #import <Foundation/Foundation.h>
 #import "IDRAttribs.h"
-#import "DebugDump.h"
 
-@class IDRBlock;
-@class IDRDescription;
-@class IDRDataDictionary;
-@class IDRDefScript;
-@class IDRDefConstant;
-@class IDRObsDef;
+@interface IDRDefScriptParameter : NSObject <IDRAttribs, NSCoding>
 
-@interface IDRWorksheet : NSObject <IDRAttribs, DebugDump, NSCoding, NSCopying> {
-    
-}
-
-@property (nonatomic, retain) NSString *type;
-@property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSString *fromICD10;
-@property (nonatomic, retain) NSString *toICD10;
-@property (nonatomic, retain) NSString *templateUuid;
-@property (nonatomic, retain) NSString *instanceUuid;
-@property (nonatomic, retain) IDRDescription *description;
-@property (nonatomic, retain) NSMutableArray *blocks;
-@property (nonatomic, retain) IDRDataDictionary *dataDictionary;
-
-- (void)blockAdd:(IDRBlock *)block; 
-- (NSUInteger)blockCount;
-- (IDRBlock *)blockAtIndex:(NSUInteger)index;
-- (IDRBlock *)blockByTemplateUuid:(NSString *)templateUuid;
-- (IDRBlock *)blockByInstanceUuid:(NSString *)instanceUuid;
-- (IDRWorksheet *)copyWithoutBlocks;
-- (NSUInteger)indexOfBlock:(IDRBlock *)block;
-- (void)removeBlockAtIndex:(NSUInteger)index;
-
-// data dictionary related
-
-- (void)addObsDef:(IDRObsDef *)obsDef;
-- (void)addConstant:(IDRDefConstant *)constant;
-- (void)addScript:(IDRDefScript *)script;
+@property (nonatomic, retain) NSString *localName;
+@property (nonatomic, retain) NSString *def;
 
 @end
-

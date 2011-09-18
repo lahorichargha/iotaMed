@@ -38,6 +38,8 @@
 #import "IDRBlock.h"
 #import "Funcs.h"
 
+#import "IDRDataDictionary.h"
+
 // -----------------------------------------------------------
 #pragma mark -
 #pragma mark Local declarations
@@ -62,6 +64,7 @@
 @synthesize templateUuid = _templateUuid;
 @synthesize instanceUuid = _instanceUuid;
 @synthesize description = _description;
+@synthesize dataDictionary = _dataDictionary;
 
 - (void)dealloc {
     self.type = nil;
@@ -72,6 +75,7 @@
     self.templateUuid = nil;
     self.instanceUuid = nil;
     self.description = nil;
+    self.dataDictionary = nil;
     [super dealloc];
 }
 
@@ -95,6 +99,7 @@ static NSString *kBlocksKey = @"blocksKey";
 static NSString *kTemplateUuidKey = @"templateUuidKey";
 static NSString *kInstanceUuidKey = @"instanceUuidKey";
 static NSString *kDescriptionKey = @"descriptionKey";
+static NSString *kDataDictionaryKey = @"dataDictionaryKey";
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super init])) {
@@ -106,6 +111,7 @@ static NSString *kDescriptionKey = @"descriptionKey";
         self.templateUuid = [aDecoder decodeObjectForKey:kTemplateUuidKey];
         self.instanceUuid = [aDecoder decodeObjectForKey:kInstanceUuidKey];
         self.description = [aDecoder decodeObjectForKey:kDescriptionKey];
+        self.dataDictionary = [aDecoder decodeObjectForKey:kDataDictionaryKey];
     }
     return self;
 }
@@ -119,6 +125,7 @@ static NSString *kDescriptionKey = @"descriptionKey";
     [aCoder encodeObject:self.templateUuid forKey:kTemplateUuidKey];
     [aCoder encodeObject:self.instanceUuid forKey:kInstanceUuidKey];
     [aCoder encodeObject:self.description forKey:kDescriptionKey];
+    [aCoder encodeObject:self.dataDictionary forKey:kDataDictionaryKey];
 }
 
 // -----------------------------------------------------------
@@ -159,6 +166,32 @@ static NSString *kDescriptionKey = @"descriptionKey";
 - (void)removeBlockAtIndex:(NSUInteger)index {
     [self.blocks removeObjectAtIndex:index];
 }
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Data dictionary related accessors
+// -----------------------------------------------------------
+
+- (IDRDataDictionary *)dataDictionary {
+    if (_dataDictionary == nil) {
+        _dataDictionary = [[IDRDataDictionary alloc] init];
+    }
+    return [[_dataDictionary retain] autorelease];
+}
+
+
+- (void)addObsDef:(IDRObsDef *)obsDef {
+    [self.dataDictionary addObsDef:obsDef];
+}
+
+- (void)addConstant:(IDRDefConstant *)constant {
+    [self.dataDictionary addConstant:constant];
+}
+
+- (void)addScript:(IDRDefScript *)script {
+    [self.dataDictionary addScript:script];
+}
+
 
 // -----------------------------------------------------------
 #pragma mark -

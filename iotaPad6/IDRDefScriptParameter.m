@@ -1,8 +1,7 @@
 //
-//  IDRWorksheet.h
+//  IDRDefScriptParameter.m
 //  iotaPad6
 //
-//  Created by Martin on 2011-03-03.
 //  Copyright © 2011, MITM AB, Sweden
 //  All rights reserved.
 //
@@ -31,45 +30,42 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Foundation/Foundation.h>
-#import "IDRAttribs.h"
-#import "DebugDump.h"
 
-@class IDRBlock;
-@class IDRDescription;
-@class IDRDataDictionary;
-@class IDRDefScript;
-@class IDRDefConstant;
-@class IDRObsDef;
+#import "IDRDefScriptParameter.h"
 
-@interface IDRWorksheet : NSObject <IDRAttribs, DebugDump, NSCoding, NSCopying> {
-    
+@implementation IDRDefScriptParameter
+
+@synthesize localName = _localName;
+@synthesize def = _def;
+
+static NSString *kLocalNameKey = @"localNameKey";
+static NSString *kDefKey = @"defKey";
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super init])) {
+        self.localName = [aDecoder decodeObjectForKey:kLocalNameKey];
+        self.def = [aDecoder decodeObjectForKey:kDefKey];
+    }
+    return self;
 }
 
-@property (nonatomic, retain) NSString *type;
-@property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSString *fromICD10;
-@property (nonatomic, retain) NSString *toICD10;
-@property (nonatomic, retain) NSString *templateUuid;
-@property (nonatomic, retain) NSString *instanceUuid;
-@property (nonatomic, retain) IDRDescription *description;
-@property (nonatomic, retain) NSMutableArray *blocks;
-@property (nonatomic, retain) IDRDataDictionary *dataDictionary;
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.localName forKey:kLocalNameKey];
+    [aCoder encodeObject:self.def forKey:kDefKey];
+}
 
-- (void)blockAdd:(IDRBlock *)block; 
-- (NSUInteger)blockCount;
-- (IDRBlock *)blockAtIndex:(NSUInteger)index;
-- (IDRBlock *)blockByTemplateUuid:(NSString *)templateUuid;
-- (IDRBlock *)blockByInstanceUuid:(NSString *)instanceUuid;
-- (IDRWorksheet *)copyWithoutBlocks;
-- (NSUInteger)indexOfBlock:(IDRBlock *)block;
-- (void)removeBlockAtIndex:(NSUInteger)index;
+- (void)dealloc {
+    self.localName = nil;
+    self.def = nil;
+    [super dealloc];
+}
 
-// data dictionary related
+- (void)takeAttributes:(NSDictionary *)attribs {
+    self.localName = [attribs valueForKey:@"localname"];
+    self.def = [attribs valueForKey:@"def"];
+}
 
-- (void)addObsDef:(IDRObsDef *)obsDef;
-- (void)addConstant:(IDRDefConstant *)constant;
-- (void)addScript:(IDRDefScript *)script;
+
+
 
 @end
-

@@ -41,10 +41,13 @@
 #import <Foundation/Foundation.h>
 
 @class IDRWorksheet;
+@class IDRDataDictionary;
 
 @interface XML2IDR : NSObject <NSXMLParserDelegate> {
     
 }
+
+@property (nonatomic, retain) IDRDataDictionary *dataDic;
 
 + (IDRWorksheet *)worksheetFromFileName:(NSString *)fileName;
 + (IDRWorksheet *)worksheetFromXML:(NSURL *)xml;

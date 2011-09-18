@@ -1,9 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <template type='issue' title='Diabetes' fromICD10='E10' toICD10='E14' lang='SE' templateUuid='D31C527B-9F08-4B6D-8A02-9FD8A728EACC'>
 
+    
+    
     <description type='template'>Denna mall är avsedd för primärvårdens utredning och uppföljning av diabetes typ 1 och typ 2. 
         Mallen innehåller olika delar. Utredning och symptom är avsedda att användas en gång, medan årskontroll och NDR används 
         vid upprepade tillfällen.</description>
+    
+    
+    <obsdef name='BP' type='formattedstring' dimension='mmHg' format='#/#'>
+        <prompt lang='SE'>Blodtryck</prompt>
+        <prompt lang='EN'>Blood pressure</prompt>
+        <prompt lang='NL'>Bloeddruk</prompt>
+    </obsdef>
+    
+    <obsdef name='Pulm' type='string' default='norm' free='free'>
+        <prompt lang='SE'>Lungor</prompt>
+        <prompt lang='NL'>Longen</prompt>
+        <select value='norm'>
+            <prompt lang='SE'>Normalt andningsljud bilat. Inga pip eller rassel.</prompt>
+            <prompt lang='NL'>Normaal vesikulair ademhalingsgeruis bilateraal, geen krepitaties of rhonchi.</prompt>
+        </select>
+        <select value='wet'>
+            <prompt lang='SE'>Fuktiga krepitationer bilateralt basalt.</prompt>
+            <prompt lang='NL'>Bilateraal vochtige krepitaties basaal.</prompt>
+        </select>
+    </obsdef>
+    
+    <constant name='InsulinATC'>
+        A10A
+    </constant>
+    
+    <script name='Instherapy' language='lua' value='BOOL' type='expression'>
+        <parameter localname='ATCList' def='ATCList'/>
+        <parameter localname='InsulinATC' def='InsulinATC'/>
+        <![CDATA[
+            foreach (atccode in ATCList) {
+            if (atccode partof InsulinATC)
+            return TRUE;
+            }
+            return FALSE;
+        ]]>
+    </script>
+    
+    
     
     <block type='initial' repeats='no' title='Diagnostik och utredning' templateUuid='BA2BC279-C461-49B0-AC5F-2A48F0A9A437'>
         <description type='template'>Symptom och utredningsmallen läggs till som första mall och är avsedd att hjälpa urskilja om diagnosen i fråga

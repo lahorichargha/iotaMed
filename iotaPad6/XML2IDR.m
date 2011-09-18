@@ -44,6 +44,14 @@
 #import "IotaContext.h"
 #import "PatientContext.h"
 
+#import "IDRObsDef.h"
+#import "IDRDefScript.h"
+#import "IDRDefConstant.h"
+#import "IDRPrompt.h"
+#import "IDRDefScriptParameter.h"
+#import "IDRSelect.h"
+#import "IDRDataDictionary.h"
+
 // -----------------------------------------------------------
 #pragma mark -
 #pragma mark Local declarations
@@ -53,6 +61,10 @@
 @property (nonatomic, retain) IDRWorksheet *worksheet;
 @property (nonatomic, retain) NSXMLParser *parser;
 @property (nonatomic, retain) NSMutableArray *elementStack;
+@property (nonatomic, retain) NSMutableArray *dicStack;
+
+- (id)topOfStackElement;
+
 @end
 
 
@@ -63,15 +75,19 @@
 
 @implementation XML2IDR
 
+@synthesize dataDic = _dataDic;
+
 @synthesize worksheet = _worksheet;
 @synthesize parser = _parser;
 @synthesize elementStack = _elementStack;
+@synthesize dicStack = _dicStack;
 
 - (id)initWithParser:(NSXMLParser *)parser {
     if ((self = [super init])) {
         _worksheet = [[IDRWorksheet alloc] init];
         self.parser = parser;
         _elementStack = [[NSMutableArray alloc] initWithCapacity:10];
+        _dicStack = [[NSMutableArray alloc] initWithCapacity:5];
     }
     return self;
 }
@@ -80,6 +96,8 @@
     self.worksheet = nil;
     self.parser = nil;
     self.elementStack = nil;
+    self.dicStack = nil;
+    self.dataDic = nil;
     [super dealloc];
 }
 
@@ -116,6 +134,11 @@
     self.parser = nil;
 }
 
+- (void)fatalStackPushError:(NSString *)failedElement {
+    id tos = [self topOfStackElement];
+    [self fatalError:[NSString stringWithFormat:@"Could not add %@ to top of stack element: %@", failedElement, [tos class]] parser:self.parser];
+}
+
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     NSString *errMsg = [NSString stringWithFormat:@"Parser error in line %d: %@", [parser lineNumber], [parseError localizedDescription]];
     NSLog(@"%@", errMsg);
@@ -123,7 +146,7 @@
 
 // -----------------------------------------------------------
 #pragma mark -
-#pragma mark Element stack
+#pragma mark Element stack for worksheet
 // -----------------------------------------------------------
 
 - (void)pushElement:(id)theElement {
@@ -156,7 +179,6 @@
     return [self topOfStackElement];
 }
 
-
 // -----------------------------------------------------------
 #pragma mark -
 #pragma mark Tag handling
@@ -170,15 +192,20 @@
     if ([elementName isEqualToString:@"template"]) {
         self.worksheet = [[[IDRWorksheet alloc] init] autorelease];
         newElement = self.worksheet;
+        [newElement takeAttributes:attributeDict];
+        [self pushElement:newElement];
     }
+    
     else if ([elementName isEqualToString:@"description"]) {
         newElement = [[[IDRDescription alloc] init] autorelease];
         id tos = [self topOfStackElement];
-        if ([tos respondsToSelector:@selector(setDescription:)])
+        if ([tos respondsToSelector:@selector(setDescription:)]) {
             [tos performSelector:@selector(setDescription:) withObject:newElement];
+            [newElement takeAttributes:attributeDict];
+            [self pushElement:newElement];
+        }
         else {
-            [self fatalError:[NSString stringWithFormat:@"Could not add IDRDescription to top of stack element: %@", [tos class]] parser:self.parser];
-            return;
+            [self fatalStackPushError:@"description"];
         }
     }
     else if ([elementName isEqualToString:@"block"]) {
@@ -186,10 +213,11 @@
         id tos = [self topOfStackElement];
         if ([tos respondsToSelector:@selector(blockAdd:)]) {
             [tos performSelector:@selector(blockAdd:) withObject:newElement];
+            [newElement takeAttributes:attributeDict];
+            [self pushElement:newElement];
         }
         else {
-            [self fatalError:[NSString stringWithFormat:@"Could not add IDRBlock to top of stack element: %@", [tos class]] parser:self.parser];
-            return;
+            [self fatalStackPushError:@"block"];
         }
         
     }
@@ -198,10 +226,11 @@
         id tos = [self topOfStackElement];
         if ([tos respondsToSelector:@selector(itemAdd:)]) {
             [tos performSelector:@selector(itemAdd:) withObject:newElement];
+            [newElement takeAttributes:attributeDict];
+            [self pushElement:newElement];
         }
         else {
-            [self fatalError:[NSString stringWithFormat:@"Could not add IDRItem to top of stack element: %@", [tos class]] parser:self.parser];
-            return;
+            [self fatalStackPushError:@"item"];
         }
     }
     else if ([elementName isEqualToString:@"observation"]) {
@@ -209,10 +238,11 @@
         id tos = [self topOfStackElement];
         if ([tos respondsToSelector:@selector(setObservation:)]) {
             [tos performSelector:@selector(setObservation:) withObject:newElement];
+            [newElement takeAttributes:attributeDict];
+            [self pushElement:newElement];
         }
         else {
-            [self fatalError:[NSString stringWithFormat:@"Could not set IDRObservation to top of stack element: %@", [tos class]] parser:self.parser];
-            return;
+            [self fatalStackPushError:@"observation"];
         }
     }
     else if ([elementName isEqualToString:@"action"]) {
@@ -220,10 +250,11 @@
         id tos = [self topOfStackElement];
         if ([tos respondsToSelector:@selector(setAction:)]) {
             [tos performSelector:@selector(setAction:) withObject:newElement];
+            [newElement takeAttributes:attributeDict];
+            [self pushElement:newElement];
         }
         else {
-            [self fatalError:[NSString stringWithFormat:@"Could not set IDRAction to top of stack element: %@", [tos class]] parser:self.parser];
-            return;
+            [self fatalStackPushError:@"action"];
         }
     }
     
@@ -232,10 +263,11 @@
         id tos = [self topOfStackElement];
         if ([tos respondsToSelector:@selector(setIdrImage:)]) {
             [tos performSelector:@selector(setIdrImage:) withObject:newElement];
+            [newElement takeAttributes:attributeDict];
+            [self pushElement:newElement];
         }
         else {
-            [self fatalError:[NSString stringWithFormat:@"Could not set IDRImage to top of stack element: %@", [tos class]] parser:self.parser];
-            return;
+            [self fatalStackPushError:@"image"];
         }
     }
     
@@ -244,10 +276,11 @@
         id tos = [self topOfStackElement];
         if ([tos respondsToSelector:@selector(addTest:)]) {
             [tos performSelector:@selector(addTest:) withObject:newElement];
+            [newElement takeAttributes:attributeDict];
+            [self pushElement:newElement];
         }
         else {
-            [self fatalError:[NSString stringWithFormat:@"Could not add test to top of stack element: %@", [tos class]] parser:self.parser];
-            return;
+            [self fatalStackPushError:@"test"];
         }
     }
     
@@ -256,24 +289,122 @@
         id tos = [self topOfStackElement];
         if ([tos respondsToSelector:@selector(addDose:)]) {
             [tos performSelector:@selector(addDose:) withObject:newElement];
+            [newElement takeAttributes:attributeDict];
+            [self pushElement:newElement];
         }
         else {
-            [self fatalError:[NSString stringWithFormat:@"Could not add dose to top of stack element: %@", [tos class]] parser:self.parser];
-            return;
+            [self fatalStackPushError:@"dose"];
         }
     }
+    
+    // -----------------------------------------------------------
+    // data dictionary elements
+    
+    else if ([elementName isEqualToString:@"obsdef"]) {
+        newElement = [[[IDRObsDef alloc] init] autorelease];
+        id tos = [self topOfStackElement];
+        if ([tos respondsToSelector:@selector(addObsDef:)]) {
+            [tos performSelector:@selector(addObsDef:) withObject:newElement];
+            [newElement takeAttributes:attributeDict];
+            [self pushElement:newElement];
+        }
+        else {
+            [self fatalStackPushError:@"obsdef"];
+        }
+    }
+    
+    else if ([elementName isEqualToString:@"prompt"]) {
+        newElement = [[[IDRPrompt alloc] init] autorelease];
+        id tos = [self topOfStackElement]; 
+        if ([tos respondsToSelector:@selector(addPrompt:)]) {
+            [tos performSelector:@selector(addPrompt:) withObject:newElement];
+            [newElement takeAttributes:attributeDict];
+            [self pushElement:newElement];
+        }
+        else {
+            [self fatalStackPushError:@"prompt"];
+        }
+    }
+    
+    else if ([elementName isEqualToString:@"select"]) {
+        newElement = [[[IDRSelect alloc] init] autorelease];
+        id tos = [self topOfStackElement];
+        if ([tos respondsToSelector:@selector(addSelect:)]) {
+            [tos performSelector:@selector(addSelect:) withObject:newElement];
+            [newElement takeAttributes:attributeDict];
+            [self pushElement:newElement];
+        }
+        else {
+            [self fatalStackPushError:@"select"];
+        }
+    }
+    
+    else if ([elementName isEqualToString:@"constant"]) {
+        newElement = [[[IDRDefConstant alloc] init] autorelease];
+        id tos = [self topOfStackElement];
+        if ([tos respondsToSelector:@selector(addConstant:)]) {
+            [tos performSelector:@selector(addConstant:) withObject:newElement];
+            [newElement takeAttributes:attributeDict];
+            [self pushElement:newElement];
+        }
+        else {
+            [self fatalStackPushError:@"constant"];
+        }
+    }
+    
+    else if ([elementName isEqualToString:@"script"]) {
+        newElement = [[[IDRDefScript alloc] init] autorelease];
+        id tos = [self topOfStackElement];
+        if ([tos respondsToSelector:@selector(addScript:)]) {
+            [tos performSelector:@selector(addScript:) withObject:newElement];
+            [newElement takeAttributes:attributeDict];
+            [self pushElement:newElement];
+        }
+        else {
+            [self fatalStackPushError:@"script"];
+        }
+        
+    }
+    
+    else if ([elementName isEqualToString:@"parameter"]) {
+        newElement = [[[IDRDefScriptParameter alloc] init] autorelease];
+        id tos = [self topOfStackElement];
+        if ([tos respondsToSelector:@selector(addParameter:)]) {
+            [tos performSelector:@selector(addParameter:) withObject:newElement];
+            [newElement takeAttributes:attributeDict];
+            [self pushElement:newElement];
+        }
+        else {
+            [self fatalStackPushError:@"parameter"];
+        }
+    }
+    
+    // -----------------------------------------------------------
+    // directives
+    
+    else if ([elementName isEqualToString:@"import"]) {
+    }
+    
+    // -----------------------------------------------------------
+    // unknown elements handling
     
     else {
         [self fatalError:[NSString stringWithFormat:@"Unknown tag in document: %@", elementName] parser:self.parser];
-        return;
     }
-    [newElement takeAttributes:attributeDict];
-    [self pushElement:newElement];
-    
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     [self popElement];
+}
+
+- (void)parser:(NSXMLParser *)parser foundCDATA:(NSData *)CDATABlock {
+    id tos = [self topOfStackElement];
+    if ([tos respondsToSelector:@selector(addCData:)]) {
+        // the CDATABlock is always in UTF-8 encoding, according to docs
+        NSString *cdata = [[NSString alloc] initWithData:CDATABlock encoding:NSUTF8StringEncoding];
+        [tos performSelector:@selector(addCData:) withObject:cdata];
+        [cdata release];
+    }
 }
 
 // -----------------------------------------------------------

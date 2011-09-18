@@ -195,6 +195,14 @@
 		AAF9B5541392A78C0049BA69 /* test5.xml in Resources */ = {isa = PBXBuildFile; fileRef = AAF9B5531392A78C0049BA69 /* test5.xml */; };
 		AAFB52BD13E4336B00F9CC59 /* ItemTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB52BC13E4336B00F9CC59 /* ItemTextFieldView.m */; };
 		AAFB52C013E44F6900F9CC59 /* IssueWorksheetTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB52BF13E44F6900F9CC59 /* IssueWorksheetTableView.m */; };
+		CE78ECA51424EE51009842DB /* IDRDef.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78ECA41424EE51009842DB /* IDRDef.m */; };
+		CE78ECA81424EF5E009842DB /* IDRDefConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78ECA71424EF5E009842DB /* IDRDefConstant.m */; };
+		CE78ECAB1424EF6C009842DB /* IDRDefScript.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78ECAA1424EF6C009842DB /* IDRDefScript.m */; };
+		CE78ECAE1424EF98009842DB /* IDRObsDef.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78ECAD1424EF97009842DB /* IDRObsDef.m */; };
+		CE78ECB11424F130009842DB /* IDRPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78ECB01424F130009842DB /* IDRPrompt.m */; };
+		CE78ECB4142508DF009842DB /* IDRDefScriptParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78ECB3142508DE009842DB /* IDRDefScriptParameter.m */; };
+		CE78ECB714250B72009842DB /* IDRSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78ECB614250B71009842DB /* IDRSelect.m */; };
+		CE78ECBB14253B69009842DB /* IDRDataDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78ECBA14253B69009842DB /* IDRDataDictionary.m */; };
 		CEA5AB34141FDE9400D24128 /* obsdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = CEA5AB33141FDE9400D24128 /* obsdef.xml */; };
 		CEE52BE3141CD083005CA465 /* ItemTableCellHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE52BE2141CD083005CA465 /* ItemTableCellHistory.m */; };
 		EE3A18E813F2D55D00A2A16E /* diagnoser.png in Resources */ = {isa = PBXBuildFile; fileRef = EE3A18E713F2D55D00A2A16E /* diagnoser.png */; };
@@ -544,6 +552,22 @@
 		AAFB52BC13E4336B00F9CC59 /* ItemTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTextFieldView.m; sourceTree = "<group>"; };
 		AAFB52BE13E44F6900F9CC59 /* IssueWorksheetTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueWorksheetTableView.h; sourceTree = "<group>"; };
 		AAFB52BF13E44F6900F9CC59 /* IssueWorksheetTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueWorksheetTableView.m; sourceTree = "<group>"; };
+		CE78ECA31424EE51009842DB /* IDRDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRDef.h; sourceTree = "<group>"; };
+		CE78ECA41424EE51009842DB /* IDRDef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRDef.m; sourceTree = "<group>"; };
+		CE78ECA61424EF5E009842DB /* IDRDefConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRDefConstant.h; sourceTree = "<group>"; };
+		CE78ECA71424EF5E009842DB /* IDRDefConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRDefConstant.m; sourceTree = "<group>"; };
+		CE78ECA91424EF6C009842DB /* IDRDefScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRDefScript.h; sourceTree = "<group>"; };
+		CE78ECAA1424EF6C009842DB /* IDRDefScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRDefScript.m; sourceTree = "<group>"; };
+		CE78ECAC1424EF97009842DB /* IDRObsDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRObsDef.h; sourceTree = "<group>"; };
+		CE78ECAD1424EF97009842DB /* IDRObsDef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRObsDef.m; sourceTree = "<group>"; };
+		CE78ECAF1424F130009842DB /* IDRPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRPrompt.h; sourceTree = "<group>"; };
+		CE78ECB01424F130009842DB /* IDRPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRPrompt.m; sourceTree = "<group>"; };
+		CE78ECB2142508DE009842DB /* IDRDefScriptParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRDefScriptParameter.h; sourceTree = "<group>"; };
+		CE78ECB3142508DE009842DB /* IDRDefScriptParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRDefScriptParameter.m; sourceTree = "<group>"; };
+		CE78ECB514250B71009842DB /* IDRSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRSelect.h; sourceTree = "<group>"; };
+		CE78ECB614250B71009842DB /* IDRSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRSelect.m; sourceTree = "<group>"; };
+		CE78ECB914253B69009842DB /* IDRDataDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRDataDictionary.h; sourceTree = "<group>"; };
+		CE78ECBA14253B69009842DB /* IDRDataDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRDataDictionary.m; sourceTree = "<group>"; };
 		CEA5AB33141FDE9400D24128 /* obsdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = obsdef.xml; sourceTree = "<group>"; };
 		CEE52BE1141CD083005CA465 /* ItemTableCellHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTableCellHistory.h; sourceTree = "<group>"; };
 		CEE52BE2141CD083005CA465 /* ItemTableCellHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableCellHistory.m; sourceTree = "<group>"; };
@@ -716,6 +740,7 @@
 				AA220A8A13414B260088CBD3 /* IDRImage.m */,
 				AA7EB02E1401360D00F9F918 /* IDRSvgView.h */,
 				AA7EB02F1401360D00F9F918 /* IDRSvgView.m */,
+				CE78ECB814250DCC009842DB /* IDRObsDefinition replacement */,
 			);
 			name = "IDR Worksheet";
 			sourceTree = "<group>";
@@ -1147,6 +1172,29 @@
 			name = CKSVG;
 			sourceTree = "<group>";
 		};
+		CE78ECB814250DCC009842DB /* IDRObsDefinition replacement */ = {
+			isa = PBXGroup;
+			children = (
+				CE78ECA31424EE51009842DB /* IDRDef.h */,
+				CE78ECA41424EE51009842DB /* IDRDef.m */,
+				CE78ECA91424EF6C009842DB /* IDRDefScript.h */,
+				CE78ECAA1424EF6C009842DB /* IDRDefScript.m */,
+				CE78ECA61424EF5E009842DB /* IDRDefConstant.h */,
+				CE78ECA71424EF5E009842DB /* IDRDefConstant.m */,
+				CE78ECAC1424EF97009842DB /* IDRObsDef.h */,
+				CE78ECAD1424EF97009842DB /* IDRObsDef.m */,
+				CE78ECAF1424F130009842DB /* IDRPrompt.h */,
+				CE78ECB01424F130009842DB /* IDRPrompt.m */,
+				CE78ECB2142508DE009842DB /* IDRDefScriptParameter.h */,
+				CE78ECB3142508DE009842DB /* IDRDefScriptParameter.m */,
+				CE78ECB514250B71009842DB /* IDRSelect.h */,
+				CE78ECB614250B71009842DB /* IDRSelect.m */,
+				CE78ECB914253B69009842DB /* IDRDataDictionary.h */,
+				CE78ECBA14253B69009842DB /* IDRDataDictionary.m */,
+			);
+			name = "IDRObsDefinition replacement";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1468,6 +1516,14 @@
 				AA7EB02A14012FD900F9F918 /* ItemTableCellAnalog.m in Sources */,
 				AA7EB0301401360D00F9F918 /* IDRSvgView.m in Sources */,
 				CEE52BE3141CD083005CA465 /* ItemTableCellHistory.m in Sources */,
+				CE78ECA51424EE51009842DB /* IDRDef.m in Sources */,
+				CE78ECA81424EF5E009842DB /* IDRDefConstant.m in Sources */,
+				CE78ECAB1424EF6C009842DB /* IDRDefScript.m in Sources */,
+				CE78ECAE1424EF98009842DB /* IDRObsDef.m in Sources */,
+				CE78ECB11424F130009842DB /* IDRPrompt.m in Sources */,
+				CE78ECB4142508DF009842DB /* IDRDefScriptParameter.m in Sources */,
+				CE78ECB714250B72009842DB /* IDRSelect.m in Sources */,
+				CE78ECBB14253B69009842DB /* IDRDataDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
