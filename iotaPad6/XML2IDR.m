@@ -61,7 +61,6 @@
 @property (nonatomic, retain) IDRWorksheet *worksheet;
 @property (nonatomic, retain) NSXMLParser *parser;
 @property (nonatomic, retain) NSMutableArray *elementStack;
-@property (nonatomic, retain) NSMutableArray *dicStack;
 
 - (id)topOfStackElement;
 
@@ -75,19 +74,15 @@
 
 @implementation XML2IDR
 
-@synthesize dataDic = _dataDic;
-
 @synthesize worksheet = _worksheet;
 @synthesize parser = _parser;
 @synthesize elementStack = _elementStack;
-@synthesize dicStack = _dicStack;
 
 - (id)initWithParser:(NSXMLParser *)parser {
     if ((self = [super init])) {
         _worksheet = [[IDRWorksheet alloc] init];
         self.parser = parser;
         _elementStack = [[NSMutableArray alloc] initWithCapacity:10];
-        _dicStack = [[NSMutableArray alloc] initWithCapacity:5];
     }
     return self;
 }
@@ -96,8 +91,6 @@
     self.worksheet = nil;
     self.parser = nil;
     self.elementStack = nil;
-    self.dicStack = nil;
-    self.dataDic = nil;
     [super dealloc];
 }
 
@@ -111,8 +104,13 @@
     NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:xml];
     XML2IDR *xml2idr = [[XML2IDR alloc] initWithParser:parser];
     parser.delegate = xml2idr;
+    
+    IDRDataDictionary *dataDictionary = [IotaContext getCurrentPatientContext].dataDictionary;
+    xml2idr.worksheet.dataDictionary = dataDictionary;
+    
     [parser parse];
     IDRWorksheet *ws = [xml2idr.worksheet retain];
+    
 //    [ws dumpWithIndent:4];
     [parser release];
     [xml2idr release];
@@ -189,207 +187,215 @@
 
     id <IDRAttribs> newElement = nil;
     
-    if ([elementName isEqualToString:@"template"]) {
-        self.worksheet = [[[IDRWorksheet alloc] init] autorelease];
-        newElement = self.worksheet;
-        [newElement takeAttributes:attributeDict];
-        [self pushElement:newElement];
-    }
+    @try {
     
-    else if ([elementName isEqualToString:@"description"]) {
-        newElement = [[[IDRDescription alloc] init] autorelease];
-        id tos = [self topOfStackElement];
-        if ([tos respondsToSelector:@selector(setDescription:)]) {
-            [tos performSelector:@selector(setDescription:) withObject:newElement];
+    
+        if ([elementName isEqualToString:@"template"]) {
+            self.worksheet = [[[IDRWorksheet alloc] init] autorelease];
+            newElement = self.worksheet;
             [newElement takeAttributes:attributeDict];
             [self pushElement:newElement];
-        }
-        else {
-            [self fatalStackPushError:@"description"];
-        }
-    }
-    else if ([elementName isEqualToString:@"block"]) {
-        newElement = [[[IDRBlock alloc] init] autorelease];
-        id tos = [self topOfStackElement];
-        if ([tos respondsToSelector:@selector(blockAdd:)]) {
-            [tos performSelector:@selector(blockAdd:) withObject:newElement];
-            [newElement takeAttributes:attributeDict];
-            [self pushElement:newElement];
-        }
-        else {
-            [self fatalStackPushError:@"block"];
         }
         
-    }
-    else if ([elementName isEqualToString:@"item"]) {
-        newElement = [[[IDRItem alloc] init] autorelease];
-        id tos = [self topOfStackElement];
-        if ([tos respondsToSelector:@selector(itemAdd:)]) {
-            [tos performSelector:@selector(itemAdd:) withObject:newElement];
-            [newElement takeAttributes:attributeDict];
-            [self pushElement:newElement];
+        else if ([elementName isEqualToString:@"description"]) {
+            newElement = [[[IDRDescription alloc] init] autorelease];
+            id tos = [self topOfStackElement];
+            if ([tos respondsToSelector:@selector(setDescription:)]) {
+                [tos performSelector:@selector(setDescription:) withObject:newElement];
+                [newElement takeAttributes:attributeDict];
+                [self pushElement:newElement];
+            }
+            else {
+                [self fatalStackPushError:@"description"];
+            }
         }
-        else {
-            [self fatalStackPushError:@"item"];
+        else if ([elementName isEqualToString:@"block"]) {
+            newElement = [[[IDRBlock alloc] init] autorelease];
+            id tos = [self topOfStackElement];
+            if ([tos respondsToSelector:@selector(blockAdd:)]) {
+                [tos performSelector:@selector(blockAdd:) withObject:newElement];
+                [newElement takeAttributes:attributeDict];
+                [self pushElement:newElement];
+            }
+            else {
+                [self fatalStackPushError:@"block"];
+            }
+            
         }
-    }
-    else if ([elementName isEqualToString:@"observation"]) {
-        newElement = [[[IDRObservation alloc] init] autorelease];
-        id tos = [self topOfStackElement];
-        if ([tos respondsToSelector:@selector(setObservation:)]) {
-            [tos performSelector:@selector(setObservation:) withObject:newElement];
-            [newElement takeAttributes:attributeDict];
-            [self pushElement:newElement];
+        else if ([elementName isEqualToString:@"item"]) {
+            newElement = [[[IDRItem alloc] init] autorelease];
+            id tos = [self topOfStackElement];
+            if ([tos respondsToSelector:@selector(itemAdd:)]) {
+                [tos performSelector:@selector(itemAdd:) withObject:newElement];
+                [newElement takeAttributes:attributeDict];
+                [self pushElement:newElement];
+            }
+            else {
+                [self fatalStackPushError:@"item"];
+            }
         }
-        else {
-            [self fatalStackPushError:@"observation"];
+        else if ([elementName isEqualToString:@"observation"]) {
+            newElement = [[[IDRObservation alloc] init] autorelease];
+            id tos = [self topOfStackElement];
+            if ([tos respondsToSelector:@selector(setObservation:)]) {
+                [tos performSelector:@selector(setObservation:) withObject:newElement];
+                [newElement takeAttributes:attributeDict];
+                [self pushElement:newElement];
+            }
+            else {
+                [self fatalStackPushError:@"observation"];
+            }
         }
-    }
-    else if ([elementName isEqualToString:@"action"]) {
-        newElement = [[[IDRAction alloc] init] autorelease];
-        id tos = [self topOfStackElement];
-        if ([tos respondsToSelector:@selector(setAction:)]) {
-            [tos performSelector:@selector(setAction:) withObject:newElement];
-            [newElement takeAttributes:attributeDict];
-            [self pushElement:newElement];
-        }
-        else {
-            [self fatalStackPushError:@"action"];
-        }
-    }
-    
-    else if ([elementName isEqualToString:@"image"]) {
-        newElement = [[[IDRImage alloc] init] autorelease];
-        id tos = [self topOfStackElement];
-        if ([tos respondsToSelector:@selector(setIdrImage:)]) {
-            [tos performSelector:@selector(setIdrImage:) withObject:newElement];
-            [newElement takeAttributes:attributeDict];
-            [self pushElement:newElement];
-        }
-        else {
-            [self fatalStackPushError:@"image"];
-        }
-    }
-    
-    else if ([elementName isEqualToString:@"test"]) {
-        newElement = [[[IDRTest alloc] init] autorelease];
-        id tos = [self topOfStackElement];
-        if ([tos respondsToSelector:@selector(addTest:)]) {
-            [tos performSelector:@selector(addTest:) withObject:newElement];
-            [newElement takeAttributes:attributeDict];
-            [self pushElement:newElement];
-        }
-        else {
-            [self fatalStackPushError:@"test"];
-        }
-    }
-    
-    else if ([elementName isEqualToString:@"dose"]) {
-        newElement = [[[IDRDose alloc] init] autorelease];
-        id tos = [self topOfStackElement];
-        if ([tos respondsToSelector:@selector(addDose:)]) {
-            [tos performSelector:@selector(addDose:) withObject:newElement];
-            [newElement takeAttributes:attributeDict];
-            [self pushElement:newElement];
-        }
-        else {
-            [self fatalStackPushError:@"dose"];
-        }
-    }
-    
-    // -----------------------------------------------------------
-    // data dictionary elements
-    
-    else if ([elementName isEqualToString:@"obsdef"]) {
-        newElement = [[[IDRObsDef alloc] init] autorelease];
-        id tos = [self topOfStackElement];
-        if ([tos respondsToSelector:@selector(addObsDef:)]) {
-            [tos performSelector:@selector(addObsDef:) withObject:newElement];
-            [newElement takeAttributes:attributeDict];
-            [self pushElement:newElement];
-        }
-        else {
-            [self fatalStackPushError:@"obsdef"];
-        }
-    }
-    
-    else if ([elementName isEqualToString:@"prompt"]) {
-        newElement = [[[IDRPrompt alloc] init] autorelease];
-        id tos = [self topOfStackElement]; 
-        if ([tos respondsToSelector:@selector(addPrompt:)]) {
-            [tos performSelector:@selector(addPrompt:) withObject:newElement];
-            [newElement takeAttributes:attributeDict];
-            [self pushElement:newElement];
-        }
-        else {
-            [self fatalStackPushError:@"prompt"];
-        }
-    }
-    
-    else if ([elementName isEqualToString:@"select"]) {
-        newElement = [[[IDRSelect alloc] init] autorelease];
-        id tos = [self topOfStackElement];
-        if ([tos respondsToSelector:@selector(addSelect:)]) {
-            [tos performSelector:@selector(addSelect:) withObject:newElement];
-            [newElement takeAttributes:attributeDict];
-            [self pushElement:newElement];
-        }
-        else {
-            [self fatalStackPushError:@"select"];
-        }
-    }
-    
-    else if ([elementName isEqualToString:@"constant"]) {
-        newElement = [[[IDRDefConstant alloc] init] autorelease];
-        id tos = [self topOfStackElement];
-        if ([tos respondsToSelector:@selector(addConstant:)]) {
-            [tos performSelector:@selector(addConstant:) withObject:newElement];
-            [newElement takeAttributes:attributeDict];
-            [self pushElement:newElement];
-        }
-        else {
-            [self fatalStackPushError:@"constant"];
-        }
-    }
-    
-    else if ([elementName isEqualToString:@"script"]) {
-        newElement = [[[IDRDefScript alloc] init] autorelease];
-        id tos = [self topOfStackElement];
-        if ([tos respondsToSelector:@selector(addScript:)]) {
-            [tos performSelector:@selector(addScript:) withObject:newElement];
-            [newElement takeAttributes:attributeDict];
-            [self pushElement:newElement];
-        }
-        else {
-            [self fatalStackPushError:@"script"];
+        else if ([elementName isEqualToString:@"action"]) {
+            newElement = [[[IDRAction alloc] init] autorelease];
+            id tos = [self topOfStackElement];
+            if ([tos respondsToSelector:@selector(setAction:)]) {
+                [tos performSelector:@selector(setAction:) withObject:newElement];
+                [newElement takeAttributes:attributeDict];
+                [self pushElement:newElement];
+            }
+            else {
+                [self fatalStackPushError:@"action"];
+            }
         }
         
-    }
-    
-    else if ([elementName isEqualToString:@"parameter"]) {
-        newElement = [[[IDRDefScriptParameter alloc] init] autorelease];
-        id tos = [self topOfStackElement];
-        if ([tos respondsToSelector:@selector(addParameter:)]) {
-            [tos performSelector:@selector(addParameter:) withObject:newElement];
-            [newElement takeAttributes:attributeDict];
-            [self pushElement:newElement];
+        else if ([elementName isEqualToString:@"image"]) {
+            newElement = [[[IDRImage alloc] init] autorelease];
+            id tos = [self topOfStackElement];
+            if ([tos respondsToSelector:@selector(setIdrImage:)]) {
+                [tos performSelector:@selector(setIdrImage:) withObject:newElement];
+                [newElement takeAttributes:attributeDict];
+                [self pushElement:newElement];
+            }
+            else {
+                [self fatalStackPushError:@"image"];
+            }
         }
+        
+        else if ([elementName isEqualToString:@"test"]) {
+            newElement = [[[IDRTest alloc] init] autorelease];
+            id tos = [self topOfStackElement];
+            if ([tos respondsToSelector:@selector(addTest:)]) {
+                [tos performSelector:@selector(addTest:) withObject:newElement];
+                [newElement takeAttributes:attributeDict];
+                [self pushElement:newElement];
+            }
+            else {
+                [self fatalStackPushError:@"test"];
+            }
+        }
+        
+        else if ([elementName isEqualToString:@"dose"]) {
+            newElement = [[[IDRDose alloc] init] autorelease];
+            id tos = [self topOfStackElement];
+            if ([tos respondsToSelector:@selector(addDose:)]) {
+                [tos performSelector:@selector(addDose:) withObject:newElement];
+                [newElement takeAttributes:attributeDict];
+                [self pushElement:newElement];
+            }
+            else {
+                [self fatalStackPushError:@"dose"];
+            }
+        }
+        
+        // -----------------------------------------------------------
+        // data dictionary elements
+        
+        else if ([elementName isEqualToString:@"obsdef"]) {
+            newElement = [[[IDRObsDef alloc] init] autorelease];
+            id tos = [self topOfStackElement];
+            if ([tos respondsToSelector:@selector(addObsDef:)]) {
+                [tos performSelector:@selector(addObsDef:) withObject:newElement];
+                [newElement takeAttributes:attributeDict];
+                [self pushElement:newElement];
+            }
+            else {
+                [self fatalStackPushError:@"obsdef"];
+            }
+        }
+        
+        else if ([elementName isEqualToString:@"prompt"]) {
+            newElement = [[[IDRPrompt alloc] init] autorelease];
+            id tos = [self topOfStackElement]; 
+            if ([tos respondsToSelector:@selector(addPrompt:)]) {
+                [tos performSelector:@selector(addPrompt:) withObject:newElement];
+                [newElement takeAttributes:attributeDict];
+                [self pushElement:newElement];
+            }
+            else {
+                [self fatalStackPushError:@"prompt"];
+            }
+        }
+        
+        else if ([elementName isEqualToString:@"select"]) {
+            newElement = [[[IDRSelect alloc] init] autorelease];
+            id tos = [self topOfStackElement];
+            if ([tos respondsToSelector:@selector(addSelect:)]) {
+                [tos performSelector:@selector(addSelect:) withObject:newElement];
+                [newElement takeAttributes:attributeDict];
+                [self pushElement:newElement];
+            }
+            else {
+                [self fatalStackPushError:@"select"];
+            }
+        }
+        
+        else if ([elementName isEqualToString:@"constant"]) {
+            newElement = [[[IDRDefConstant alloc] init] autorelease];
+            id tos = [self topOfStackElement];
+            if ([tos respondsToSelector:@selector(addConstant:)]) {
+                [tos performSelector:@selector(addConstant:) withObject:newElement];
+                [newElement takeAttributes:attributeDict];
+                [self pushElement:newElement];
+            }
+            else {
+                [self fatalStackPushError:@"constant"];
+            }
+        }
+        
+        else if ([elementName isEqualToString:@"script"]) {
+            newElement = [[[IDRDefScript alloc] init] autorelease];
+            id tos = [self topOfStackElement];
+            if ([tos respondsToSelector:@selector(addScript:)]) {
+                [tos performSelector:@selector(addScript:) withObject:newElement];
+                [newElement takeAttributes:attributeDict];
+                [self pushElement:newElement];
+            }
+            else {
+                [self fatalStackPushError:@"script"];
+            }
+            
+        }
+        
+        else if ([elementName isEqualToString:@"parameter"]) {
+            newElement = [[[IDRDefScriptParameter alloc] init] autorelease];
+            id tos = [self topOfStackElement];
+            if ([tos respondsToSelector:@selector(addParameter:)]) {
+                [tos performSelector:@selector(addParameter:) withObject:newElement];
+                [newElement takeAttributes:attributeDict];
+                [self pushElement:newElement];
+            }
+            else {
+                [self fatalStackPushError:@"parameter"];
+            }
+        }
+        
+        // -----------------------------------------------------------
+        // directives
+        
+        else if ([elementName isEqualToString:@"import"]) {
+        }
+        
+        // -----------------------------------------------------------
+        // unknown elements handling
+        
         else {
-            [self fatalStackPushError:@"parameter"];
+            [self fatalError:[NSString stringWithFormat:@"Unknown tag in document: %@", elementName] parser:self.parser];
         }
     }
     
-    // -----------------------------------------------------------
-    // directives
-    
-    else if ([elementName isEqualToString:@"import"]) {
-    }
-    
-    // -----------------------------------------------------------
-    // unknown elements handling
-    
-    else {
-        [self fatalError:[NSString stringWithFormat:@"Unknown tag in document: %@", elementName] parser:self.parser];
+    @catch (NSException *exc) {
+        [self fatalError:[NSString stringWithFormat:@"%@, %@", exc.name, exc.reason] parser:self.parser];
     }
 }
 

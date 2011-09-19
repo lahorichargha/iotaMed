@@ -117,3 +117,12 @@ NSDate *combineDateAndTime(NSDate *datePart, NSDate *timePart) {
     NSDate *newDate = [calendar dateFromComponents:dateComponents];
     return newDate;
 }
+
+BOOL isValidChoice(NSString *str, NSString **choices) {
+    for (int i = 0; choices[i] != nil; i++) 
+        if ([str isEqualToString:choices[i]])
+            return YES;
+    return NO;
+}
+
+

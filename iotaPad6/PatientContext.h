@@ -41,6 +41,9 @@
 @class IDRValue;
 @class Patient;
 
+@class IDRDataDictionary;
+@class IDRObsDef;
+
 @interface PatientContext : NSObject <NSCoding> {
     
 }
@@ -50,6 +53,7 @@
 @property (nonatomic, retain) IDRContact *currentContact;
 @property (nonatomic, retain) NSMutableArray *obsDefinitions;
 @property (nonatomic, retain) Patient *patient;
+@property (nonatomic, retain) IDRDataDictionary *dataDictionary;
 
 - (id)init;
 - (IDRBlock *)blockWithTemplateUuid:(NSString *)blockTemplateUuid inWorksheetWithTemplateUuid:(NSString *)worksheetTemplateUuid;
@@ -60,5 +64,6 @@
 - (IDRValue *)getCurrentValueForObsName:(NSString *)name;
 - (NSString *)replaceObsNamesInString:(NSString *)inputStr;
 - (void)addBlockAndValuesToCurrentContact:(IDRBlock *)block;
+- (IDRObsDef *)getObsDefForName:(NSString *)name;
 
 @end

@@ -42,5 +42,5 @@
 - (void)addObsDef:(IDRObsDef *)obsDef;
 - (void)addConstant:(IDRDefConstant *)constant;
 - (void)addScript:(IDRDefScript *)script;
-
+- (IDRObsDef *)getObsDef:(NSString *)name;
 @end

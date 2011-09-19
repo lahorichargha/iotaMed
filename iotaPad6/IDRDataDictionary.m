@@ -113,6 +113,15 @@ static NSString *kScriptsKey = @"scriptsKey";
     return [[_scripts retain] autorelease];
 }
 
+- (IDRObsDef *)getObsDef:(NSString *)name {
+    for (IDRObsDef *od in self.obsDefs) {
+        if ([od.name isEqualToString:name]) {
+            return od;
+        }
+    }
+    return nil;
+}
+
 // -----------------------------------------------------------
 #pragma mark -
 #pragma mark Functions

@@ -5,14 +5,9 @@
     
     <description type='template'>Denna mall är avsedd för primärvårdens utredning och uppföljning av diabetes typ 1 och typ 2. 
         Mallen innehåller olika delar. Utredning och symptom är avsedda att användas en gång, medan årskontroll och NDR används 
-        vid upprepade tillfällen.</description>
+        vid upprepade tillfällen.
+    </description>
     
-    
-    <obsdef name='BP' type='formattedstring' dimension='mmHg' format='#/#'>
-        <prompt lang='SE'>Blodtryck</prompt>
-        <prompt lang='EN'>Blood pressure</prompt>
-        <prompt lang='NL'>Bloeddruk</prompt>
-    </obsdef>
     
     <obsdef name='Pulm' type='string' default='norm' free='free'>
         <prompt lang='SE'>Lungor</prompt>
@@ -25,6 +20,12 @@
             <prompt lang='SE'>Fuktiga krepitationer bilateralt basalt.</prompt>
             <prompt lang='NL'>Bilateraal vochtige krepitaties basaal.</prompt>
         </select>
+    </obsdef>
+    
+    <obsdef name='BP' type='formattedstring' dimension='mmHg' format='#/#'>
+        <prompt lang='SE'>Blodtryck</prompt>
+        <prompt lang='EN'>Blood pressure</prompt>
+        <prompt lang='NL'>Bloeddruk</prompt>
     </obsdef>
     
     <constant name='InsulinATC'>
@@ -42,6 +43,10 @@
             return FALSE;
         ]]>
     </script>
+    
+    <obsdef name='PGlukos' type='numeric' dimension='mmol/L'>
+        <prompt lang='SE'>Plasmaglukos</prompt>
+    </obsdef>
     
     
     
