@@ -34,6 +34,7 @@
 #import "ThemeColors.h"
 #import "IDRValue.h"
 #import "IDRContact.h"
+#import "IDRObservation.h"
 #import "Funcs.h"
 
 // -----------------------------------------------------------

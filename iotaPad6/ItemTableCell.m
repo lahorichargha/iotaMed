@@ -59,6 +59,8 @@
 #import "IDRContact.h"
 #import "IotaContext.h"
 
+#import "TestFlight.h"
+
 // -----------------------------------------------------------
 #pragma mark -
 #pragma mark Constants
@@ -159,12 +161,13 @@ static NSMutableArray *subclasses;
     for (Class cls in subclasses) {
         if ([cls canHandle:idrItem]) {
             if (cell != nil) 
-                [NSException raise:@"Ambiguous canHandle" format:@"Two different classes (%@ and %@) claim to handle the same IDRItem (%@)", [cell class], cls, idrItem];
+                [NSException raise:@"Ambiguous canHandle" format:@"Two different classes (%@ and %@) claim to handle the same IDRItem (%@)", [cell class], cls, idrItem.content];
             cell = [cls subCellForTableView:tableView idrItem:idrItem];
         }
     }
-    if (cell == nil)
-        [NSException raise:@"No cell could be created for item" format:@"Item content: %@", idrItem.content];
+    if (cell == nil) {
+        [NSException raise:@"No cell could be created for item" format:@"Item content: %@, description: %@", idrItem.content, idrItem.description];
+    }
     return cell;
 }
 

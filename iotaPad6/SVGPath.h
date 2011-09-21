@@ -33,4 +33,6 @@
 	CGMutablePathRef path;
 }
 
+- (id)initWithAttributes:(NSDictionary *)attributeDict;
+
 @end

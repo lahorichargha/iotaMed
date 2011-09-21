@@ -16,7 +16,7 @@
 }
 
 + (BOOL)canHandle:(IDRItem *)idrItem {
-    return [idrItem hasObservation] && [idrItem.observation isNumeric];
+    return [idrItem hasObservation] && [idrItem hasInput] && [idrItem.observation isNumeric] && ![idrItem.observation isCheck];
 }
 
 + (ItemTableCellNumeric *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {

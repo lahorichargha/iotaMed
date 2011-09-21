@@ -32,7 +32,7 @@
 }
 
 + (BOOL)canHandle:(IDRItem *)idrItem {
-    return [idrItem hasObservation] && [idrItem.observation isCheck];
+    return [idrItem hasObservation] && [idrItem.observation isCheck] && [idrItem hasInput];
 }
 
 + (ItemTableCellCheck *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {

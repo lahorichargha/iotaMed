@@ -241,7 +241,9 @@ static NSString *kIdrSvgView = @"idrSvgView";
 - (NSString *)description {
     NSMutableString *desc = [[NSMutableString alloc] initWithCapacity:50];
     [desc setString:@"IDRItem description:\n"];
-    [desc appendFormat:@"  parentBlock:%@", [self.parentBlock description]];
+    [desc appendFormat:@"  parentBlock:%@\n", [self.parentBlock description]];
+    [desc appendFormat:@"  image: %@\n", self.idrImage];
+    [desc appendFormat:@"  svg: %@\n", self.idrSvgView];
     return [desc autorelease];
 }
 
