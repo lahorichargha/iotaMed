@@ -54,7 +54,6 @@
 @property (nonatomic, retain) NSString *instanceUuid;
 @property (nonatomic, retain) IDRDescription *description;
 @property (nonatomic, retain) NSMutableArray *blocks;
-@property (nonatomic, retain) IDRDataDictionary *dataDictionary;
 
 - (void)blockAdd:(IDRBlock *)block; 
 - (NSUInteger)blockCount;

@@ -10,6 +10,12 @@
 #import "IDRObservation.h"
 #import "IDRItem.h"
 #import "IDRValue.h"
+#import "NSString+iotaAdditions.h"
+
+#import "IDRObsDef.h"
+#import "PatientContext.h"
+#import "IotaContext.h"
+#import "Funcs.h"
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -57,6 +63,17 @@
         self.tfValue.delegate = self;
         self.tfValue.autocorrectionType = UITextAutocorrectionTypeNo;
         self.tfValue.text = [idrItem getItemValue].value;
+        
+        if ([self.lblContent.text iotaIsEmpty]) {
+            NSString *obsName = idrItem.observation.name;
+            PatientContext *pCtx = [IotaContext getCurrentPatientContext];
+            IDRObsDef *obsDef = [pCtx getObsDefForName:obsName];
+            if (obsDef == nil)
+                postAlert([NSString stringWithFormat:@"Definition not found in data dictionary: %@", obsName]);
+            NSString *prompt = [obsDef promptForLanguage:@"SE"];
+            if (prompt != nil)
+                self.lblContent.text = prompt;
+        }
         
         // single tap: pop up list of choices, including default, manual text, dictation, clear
         UITapGestureRecognizer *singleTap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureListOfChoices)] autorelease];

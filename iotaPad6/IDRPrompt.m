@@ -67,4 +67,16 @@ static NSString *kPromptStringKey = @"promptStringKey";
     [super dealloc];
 }
 
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Accessors
+// -----------------------------------------------------------
+
+- (NSMutableString *)promptString {
+    if (_promptString == nil) {
+        _promptString = [[NSMutableString alloc] initWithCapacity:20];
+    }
+    return [[_promptString retain] autorelease];
+}
+
 @end

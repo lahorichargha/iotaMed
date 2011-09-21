@@ -60,12 +60,14 @@ static NSString *kConstantsKey = @"constantsKey";
 static NSString *kScriptsKey = @"scriptsKey";
 
 - (id)init {
+    NSLog(@"Data dictionary init");
     if ((self = [super init])) {
     }
     return self;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
+    NSLog(@"Data dictionary initWithCoder");
     if ((self = [super init])) {
         self.obsDefs = [aDecoder decodeObjectForKey:kObsDefsKey];
         self.constants = [aDecoder decodeObjectForKey:kConstantsKey];
@@ -75,6 +77,7 @@ static NSString *kScriptsKey = @"scriptsKey";
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
+    NSLog(@"Data Dictionary encodeWithCoder");
     [aCoder encodeObject:self.obsDefs forKey:kObsDefsKey];
     [aCoder encodeObject:self.constants forKey:kConstantsKey];
     [aCoder encodeObject:self.scripts forKey:kScriptsKey];
@@ -114,11 +117,14 @@ static NSString *kScriptsKey = @"scriptsKey";
 }
 
 - (IDRObsDef *)getObsDef:(NSString *)name {
+    NSLog(@"getObsDef: %@, there are %d obsDefs to search", name, [self.obsDefs count]);
     for (IDRObsDef *od in self.obsDefs) {
         if ([od.name isEqualToString:name]) {
+            NSLog(@"   found it: %@", od);
             return od;
         }
     }
+    NSLog(@"   found nothing");
     return nil;
 }
 
@@ -128,6 +134,7 @@ static NSString *kScriptsKey = @"scriptsKey";
 // -----------------------------------------------------------
 
 - (void)addObsDef:(IDRObsDef *)obsDef {
+    NSLog(@"adding obsdef to dictionary: %@", obsDef.name);
     [self.obsDefs addObject:obsDef];
 }
 

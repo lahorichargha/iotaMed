@@ -8,7 +8,6 @@
 
 #import "ItemTableCellCheck.h"
 #import "IDRObservation.h"
-#import "IDRObsDefinition.h"
 #import "IDRContact.h"
 #import "IDRValue.h"
 #import "IDRBlock.h"

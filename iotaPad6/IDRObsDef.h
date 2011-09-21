@@ -43,4 +43,6 @@
 @property (nonatomic, retain) NSMutableArray *selects;
 @property (nonatomic, retain) NSMutableArray *values;
 
+- (NSString *)promptForLanguage:(NSString *)language;
+
 @end

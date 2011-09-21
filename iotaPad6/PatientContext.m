@@ -82,6 +82,7 @@ static NSString *kDataDictionaryKey = @"dataDictionaryKey";
 
 - (id)init {
     if ((self = [super init])) {
+        NSLog(@"PatientContext init");
         _contacts = [[NSMutableArray alloc] initWithCapacity:5];
         _currentContact = nil;
         _obsDefinitions = [[NSMutableArray alloc] initWithCapacity:5];
@@ -90,6 +91,7 @@ static NSString *kDataDictionaryKey = @"dataDictionaryKey";
 }
 
 - (void)dealloc {
+    NSLog(@"PatientContext dealloc");
     self.contacts = nil;
     self.currentContact = nil;
     self.obsDefinitions = nil;
@@ -99,6 +101,7 @@ static NSString *kDataDictionaryKey = @"dataDictionaryKey";
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
+    NSLog(@"PatientContext initWithCoder");
     if ((self = [super init])) {
         self.contacts = [aDecoder decodeObjectForKey:kContactsKey];
         [self.contacts sortUsingSelector:@selector(compare:)];
@@ -111,6 +114,7 @@ static NSString *kDataDictionaryKey = @"dataDictionaryKey";
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
+    NSLog(@"PatientContext encodeWithCoder");
     [aCoder encodeObject:self.contacts forKey:kContactsKey];
     [aCoder encodeObject:self.currentContact forKey:kCurrentContactKey];
     [aCoder encodeObject:self.obsDefinitions forKey:kObsDefinitionsKey];

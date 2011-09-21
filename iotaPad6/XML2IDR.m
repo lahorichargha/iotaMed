@@ -105,10 +105,7 @@
     XML2IDR *xml2idr = [[XML2IDR alloc] initWithParser:parser];
     parser.delegate = xml2idr;
     
-    IDRDataDictionary *dataDictionary = [IotaContext getCurrentPatientContext].dataDictionary;
-    xml2idr.worksheet.dataDictionary = dataDictionary;
-    
-    [parser parse];
+     [parser parse];
     IDRWorksheet *ws = [xml2idr.worksheet retain];
     
 //    [ws dumpWithIndent:4];
@@ -189,6 +186,9 @@
     
     @try {
     
+        // note that in the following code, 'takeAttributes' should always be done before 'performSelector',
+        // since the selector may rely on attributes for particular actions, such as adding to a data
+        // dictionary (yes, I realized this the hard way...)
     
         if ([elementName isEqualToString:@"template"]) {
             self.worksheet = [[[IDRWorksheet alloc] init] autorelease];
@@ -201,8 +201,8 @@
             newElement = [[[IDRDescription alloc] init] autorelease];
             id tos = [self topOfStackElement];
             if ([tos respondsToSelector:@selector(setDescription:)]) {
-                [tos performSelector:@selector(setDescription:) withObject:newElement];
                 [newElement takeAttributes:attributeDict];
+                [tos performSelector:@selector(setDescription:) withObject:newElement];
                 [self pushElement:newElement];
             }
             else {
@@ -213,8 +213,8 @@
             newElement = [[[IDRBlock alloc] init] autorelease];
             id tos = [self topOfStackElement];
             if ([tos respondsToSelector:@selector(blockAdd:)]) {
-                [tos performSelector:@selector(blockAdd:) withObject:newElement];
                 [newElement takeAttributes:attributeDict];
+                [tos performSelector:@selector(blockAdd:) withObject:newElement];
                 [self pushElement:newElement];
             }
             else {
@@ -226,8 +226,8 @@
             newElement = [[[IDRItem alloc] init] autorelease];
             id tos = [self topOfStackElement];
             if ([tos respondsToSelector:@selector(itemAdd:)]) {
-                [tos performSelector:@selector(itemAdd:) withObject:newElement];
                 [newElement takeAttributes:attributeDict];
+                [tos performSelector:@selector(itemAdd:) withObject:newElement];
                 [self pushElement:newElement];
             }
             else {
@@ -238,8 +238,8 @@
             newElement = [[[IDRObservation alloc] init] autorelease];
             id tos = [self topOfStackElement];
             if ([tos respondsToSelector:@selector(setObservation:)]) {
-                [tos performSelector:@selector(setObservation:) withObject:newElement];
                 [newElement takeAttributes:attributeDict];
+                [tos performSelector:@selector(setObservation:) withObject:newElement];
                 [self pushElement:newElement];
             }
             else {
@@ -250,8 +250,8 @@
             newElement = [[[IDRAction alloc] init] autorelease];
             id tos = [self topOfStackElement];
             if ([tos respondsToSelector:@selector(setAction:)]) {
-                [tos performSelector:@selector(setAction:) withObject:newElement];
                 [newElement takeAttributes:attributeDict];
+                [tos performSelector:@selector(setAction:) withObject:newElement];
                 [self pushElement:newElement];
             }
             else {
@@ -263,8 +263,8 @@
             newElement = [[[IDRImage alloc] init] autorelease];
             id tos = [self topOfStackElement];
             if ([tos respondsToSelector:@selector(setIdrImage:)]) {
-                [tos performSelector:@selector(setIdrImage:) withObject:newElement];
                 [newElement takeAttributes:attributeDict];
+                [tos performSelector:@selector(setIdrImage:) withObject:newElement];
                 [self pushElement:newElement];
             }
             else {
@@ -276,8 +276,8 @@
             newElement = [[[IDRTest alloc] init] autorelease];
             id tos = [self topOfStackElement];
             if ([tos respondsToSelector:@selector(addTest:)]) {
-                [tos performSelector:@selector(addTest:) withObject:newElement];
                 [newElement takeAttributes:attributeDict];
+                [tos performSelector:@selector(addTest:) withObject:newElement];
                 [self pushElement:newElement];
             }
             else {
@@ -289,8 +289,8 @@
             newElement = [[[IDRDose alloc] init] autorelease];
             id tos = [self topOfStackElement];
             if ([tos respondsToSelector:@selector(addDose:)]) {
-                [tos performSelector:@selector(addDose:) withObject:newElement];
                 [newElement takeAttributes:attributeDict];
+                [tos performSelector:@selector(addDose:) withObject:newElement];
                 [self pushElement:newElement];
             }
             else {
@@ -305,8 +305,8 @@
             newElement = [[[IDRObsDef alloc] init] autorelease];
             id tos = [self topOfStackElement];
             if ([tos respondsToSelector:@selector(addObsDef:)]) {
-                [tos performSelector:@selector(addObsDef:) withObject:newElement];
                 [newElement takeAttributes:attributeDict];
+                [tos performSelector:@selector(addObsDef:) withObject:newElement];
                 [self pushElement:newElement];
             }
             else {
@@ -318,8 +318,8 @@
             newElement = [[[IDRPrompt alloc] init] autorelease];
             id tos = [self topOfStackElement]; 
             if ([tos respondsToSelector:@selector(addPrompt:)]) {
-                [tos performSelector:@selector(addPrompt:) withObject:newElement];
                 [newElement takeAttributes:attributeDict];
+                [tos performSelector:@selector(addPrompt:) withObject:newElement];
                 [self pushElement:newElement];
             }
             else {
@@ -331,8 +331,8 @@
             newElement = [[[IDRSelect alloc] init] autorelease];
             id tos = [self topOfStackElement];
             if ([tos respondsToSelector:@selector(addSelect:)]) {
-                [tos performSelector:@selector(addSelect:) withObject:newElement];
                 [newElement takeAttributes:attributeDict];
+                [tos performSelector:@selector(addSelect:) withObject:newElement];
                 [self pushElement:newElement];
             }
             else {
@@ -344,8 +344,8 @@
             newElement = [[[IDRDefConstant alloc] init] autorelease];
             id tos = [self topOfStackElement];
             if ([tos respondsToSelector:@selector(addConstant:)]) {
-                [tos performSelector:@selector(addConstant:) withObject:newElement];
                 [newElement takeAttributes:attributeDict];
+                [tos performSelector:@selector(addConstant:) withObject:newElement];
                 [self pushElement:newElement];
             }
             else {
@@ -357,8 +357,8 @@
             newElement = [[[IDRDefScript alloc] init] autorelease];
             id tos = [self topOfStackElement];
             if ([tos respondsToSelector:@selector(addScript:)]) {
-                [tos performSelector:@selector(addScript:) withObject:newElement];
                 [newElement takeAttributes:attributeDict];
+                [tos performSelector:@selector(addScript:) withObject:newElement];
                 [self pushElement:newElement];
             }
             else {
@@ -371,8 +371,8 @@
             newElement = [[[IDRDefScriptParameter alloc] init] autorelease];
             id tos = [self topOfStackElement];
             if ([tos respondsToSelector:@selector(addParameter:)]) {
-                [tos performSelector:@selector(addParameter:) withObject:newElement];
                 [newElement takeAttributes:attributeDict];
+                [tos performSelector:@selector(addParameter:) withObject:newElement];
                 [self pushElement:newElement];
             }
             else {

@@ -552,6 +552,7 @@
 		AAFB52BC13E4336B00F9CC59 /* ItemTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTextFieldView.m; sourceTree = "<group>"; };
 		AAFB52BE13E44F6900F9CC59 /* IssueWorksheetTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueWorksheetTableView.h; sourceTree = "<group>"; };
 		AAFB52BF13E44F6900F9CC59 /* IssueWorksheetTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueWorksheetTableView.m; sourceTree = "<group>"; };
+		CE5707E8142915A100A73E39 /* iotaMed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = iotaMed.entitlements; sourceTree = "<group>"; };
 		CE78ECA31424EE51009842DB /* IDRDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRDef.h; sourceTree = "<group>"; };
 		CE78ECA41424EE51009842DB /* IDRDef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRDef.m; sourceTree = "<group>"; };
 		CE78ECA61424EF5E009842DB /* IDRDefConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRDefConstant.h; sourceTree = "<group>"; };
@@ -798,6 +799,7 @@
 		AA63B60413055E350035A49C /* iotaPad6 */ = {
 			isa = PBXGroup;
 			children = (
+				CE5707E8142915A100A73E39 /* iotaMed.entitlements */,
 				AAF8515313F9377F006BFD59 /* CKSVG */,
 				AAECB6A913815A0600EAB251 /* Inbox */,
 				AA12A383137C6FF60016AB24 /* Constants */,
@@ -1618,6 +1620,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = iotaPad6/iotaMed.entitlements;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1642,6 +1645,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = iotaPad6/iotaMed.entitlements;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iotaPad6/iotaPad6-Prefix.pch";
@@ -1657,7 +1661,7 @@
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = iotaMed;
 				USER_HEADER_SEARCH_PATHS = "Components/**";
-				VALIDATE_PRODUCT = YES;
+				VALIDATE_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1708,6 +1712,75 @@
 			};
 			name = Release;
 		};
+		CE5707E514290ED400A73E39 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				CODE_SIGN_ENTITLEMENTS = iotaPad6/iotaMed.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: MITM AB";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = iotaMed;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = "Ad Hoc";
+		};
+		CE5707E614290ED400A73E39 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: MITM AB";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iotaPad6/iotaPad6-Prefix.pch";
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = IOTAMED;
+				INFOPLIST_FILE = "iotaPad6/iotaPad6-Info.plist";
+				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/iotaShared-eklfomehickbklcxeappepdtcpwu/Build/Products/Debug-iphoneos\"",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_NAME = iotaMed;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				USER_HEADER_SEARCH_PATHS = "Components/**";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = "Ad Hoc";
+		};
+		CE5707E714290ED400A73E39 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iotaPad6.app/iotaPad6";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iotaPad6Tests/iotaPad6Tests-Prefix.pch";
+				INFOPLIST_FILE = "iotaPad6Tests/iotaPad6Tests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = "Ad Hoc";
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1716,6 +1789,7 @@
 			buildConfigurations = (
 				AA63B62913055E360035A49C /* Debug */,
 				AA63B62A13055E360035A49C /* Release */,
+				CE5707E514290ED400A73E39 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1725,6 +1799,7 @@
 			buildConfigurations = (
 				AA63B62C13055E360035A49C /* Debug */,
 				AA63B62D13055E360035A49C /* Release */,
+				CE5707E614290ED400A73E39 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1734,6 +1809,7 @@
 			buildConfigurations = (
 				AA63B62F13055E360035A49C /* Debug */,
 				AA63B63013055E360035A49C /* Release */,
+				CE5707E714290ED400A73E39 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

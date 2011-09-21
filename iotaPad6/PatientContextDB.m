@@ -42,7 +42,6 @@
 #import "IDRBlock.h"
 #import "IDRItem.h"
 #import "IDRObservation.h"
-#import "IDRObsDefinition.h"
 #import "IDRValue.h"
 
 // -----------------------------------------------------------

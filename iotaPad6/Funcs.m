@@ -125,4 +125,9 @@ BOOL isValidChoice(NSString *str, NSString **choices) {
     return NO;
 }
 
+void postAlert(NSString *msg) {
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" message:msg delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    [av show];
+    [av release];
+}
 

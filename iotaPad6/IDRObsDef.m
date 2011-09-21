@@ -54,7 +54,7 @@ static NSString *kPromptsKey = @"promptsKey";
 static NSString *kSelectsKey = @"selectsKey";
 static NSString *kValuesKey = @"valuesKey";
 
-static NSString *typeAttrib[] = {@"numeric", @"string", @"formattedstring", nil};
+static NSString *typeAttrib[] = {@"numeric", @"string", @"formattedstring", @"check", @"select", @"multiselect", nil};
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
@@ -119,6 +119,32 @@ static NSString *typeAttrib[] = {@"numeric", @"string", @"formattedstring", nil}
 
 - (IDRSelect *)getDefaultSelect {
     return [self getSelectWithValue:self.defaultSelect];
+}
+
+- (NSString *)promptForLanguage:(NSString *)language {
+    for (IDRPrompt *prompt in self.prompts)
+        if ([prompt.lang isEqualToString:language])
+            return prompt.promptString;
+    return nil;
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Accessors
+// -----------------------------------------------------------
+
+- (NSMutableArray *)prompts {
+    if (_prompts == nil) {
+        _prompts = [[NSMutableArray alloc] initWithCapacity:5];
+    }
+    return [[_prompts retain] autorelease];
+}
+
+- (NSMutableArray *)selects {
+    if (_selects == nil) {
+        _selects = [[NSMutableArray alloc] initWithCapacity:5]; 
+    }
+    return [[_selects retain] autorelease];
 }
 
 @end
