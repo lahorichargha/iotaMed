@@ -33,6 +33,17 @@
 #import <Foundation/Foundation.h>
 #import "IDRDef.h"
 
+enum eObsDefType {
+    eObsDefTypeNone = 0,
+    eObsDefTypeNumeric,
+    eObsDefTypeString,
+    eObsDefTypeFormattedString,
+    eObsDefTypeCheck,
+    eObsDefTypeSelect,
+    eObsDefTypeMultiselect,
+    eObsDefTypeCount,
+};
+
 @interface IDRObsDef : IDRDef
 
 @property (nonatomic, retain) NSString *type;
@@ -44,5 +55,6 @@
 @property (nonatomic, retain) NSMutableArray *values;
 
 - (NSString *)promptForLanguage:(NSString *)language;
+- (enum eObsDefType)obsDefType;
 
 @end

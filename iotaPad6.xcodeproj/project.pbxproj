@@ -811,7 +811,7 @@
 				AA2DF2B6131476230018A2DD /* External files Systeam */,
 				AA9081E5130E9C6C00DBF856 /* Database */,
 				AAC2FC2D130C4052009E8384 /* Context and Patient */,
-				AAC2FC27130BE588009E8384 /* Base classes */,
+				AAC2FC27130BE588009E8384 /* Base classes and categories */,
 				AA63B60D13055E350035A49C /* iotaPad6AppDelegate.h */,
 				AA63B60E13055E350035A49C /* iotaPad6AppDelegate.m */,
 				AA63B60513055E350035A49C /* Supporting Files */,
@@ -1096,7 +1096,7 @@
 			path = background;
 			sourceTree = "<group>";
 		};
-		AAC2FC27130BE588009E8384 /* Base classes */ = {
+		AAC2FC27130BE588009E8384 /* Base classes and categories */ = {
 			isa = PBXGroup;
 			children = (
 				AAC2FC20130BDF85009E8384 /* DetailViewController.h */,
@@ -1106,7 +1106,7 @@
 				AAF16F65130DB1BA00A86E3E /* DetailViewControllerWithNavbar.h */,
 				AAF16F66130DB1BB00A86E3E /* DetailViewControllerWithNavbar.m */,
 			);
-			name = "Base classes";
+			name = "Base classes and categories";
 			sourceTree = "<group>";
 		};
 		AAC2FC2D130C4052009E8384 /* Context and Patient */ = {

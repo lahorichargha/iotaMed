@@ -54,7 +54,8 @@ static NSString *kPromptsKey = @"promptsKey";
 static NSString *kSelectsKey = @"selectsKey";
 static NSString *kValuesKey = @"valuesKey";
 
-static NSString *typeAttrib[] = {@"numeric", @"string", @"formattedstring", @"check", @"select", @"multiselect", nil};
+// the following two must be equal and synched, since the obsGetType function relies on it,
+static NSString *typeAttrib[] = {@"none", @"numeric", @"string", @"formattedstring", @"check", @"select", @"multiselect", nil};
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
@@ -132,6 +133,14 @@ static NSString *typeAttrib[] = {@"numeric", @"string", @"formattedstring", @"ch
 #pragma mark -
 #pragma mark Accessors
 // -----------------------------------------------------------
+
+- (enum eObsDefType)obsDefType {
+    for (enum eObsDefType i = eObsDefTypeNone; i < eObsDefTypeCount ; i++) {
+        if ([typeAttrib[i] isEqualToString:self.type])
+            return i;
+    }
+    return eObsDefTypeNone;
+}
 
 - (NSMutableArray *)prompts {
     if (_prompts == nil) {
