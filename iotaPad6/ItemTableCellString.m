@@ -57,6 +57,8 @@
         self.tfValue.delegate = self;
         self.tfValue.autocorrectionType = UITextAutocorrectionTypeNo;
         self.tfValue.text = [idrItem getItemValue].value;
+        // add symbolview here
+        
         
         // single tap: pop up list of choices, including default, manual text, dictation, clear
         UITapGestureRecognizer *singleTap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureListOfChoices)] autorelease];
@@ -80,6 +82,9 @@
         UIToolbar *tb = [[[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 10, 30)] autorelease];
         tb.barStyle = UIBarStyleBlackTranslucent;
         UIBarButtonItem *bbispacer = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
+        
+        
+        
         
         UIImage *microImage = [UIImage imageNamed:@"tape4.png"];
         UIBarButtonItem *bbirec = [[[UIBarButtonItem alloc] initWithImage:microImage style:UIBarButtonItemStylePlain target:nil action:nil] autorelease];
