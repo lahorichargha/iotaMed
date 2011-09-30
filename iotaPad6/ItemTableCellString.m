@@ -76,6 +76,8 @@
         self.tfValue.delegate = self;
         self.tfValue.autocorrectionType = UITextAutocorrectionTypeNo;
         self.tfValue.text = [idrItem getItemValue].value;
+        // add symbolview here
+        
         
         //add symbols (record, pause, stop, play) from the left to the text field.
         CGRect symbolRect=CGRectMake(0, 0, self.tfValue.frame.size.height-18,self.tfValue.frame.size.height-18);
@@ -105,6 +107,9 @@
         UIToolbar *tb = [[[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 10, 30)] autorelease];
         tb.barStyle = UIBarStyleBlackTranslucent;
         UIBarButtonItem *bbispacer = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
+        
+        
+        
         
         UIImage *microImage = [UIImage imageNamed:@"tape4.png"];
         self.rec = [[[UIBarButtonItem alloc] initWithImage:microImage style:UIBarButtonItemStylePlain target:self action:@selector(doRecord:)] autorelease];
