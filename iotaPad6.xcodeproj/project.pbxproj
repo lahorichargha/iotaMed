@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		585ACE5D14305C990004F0B2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585ACE5C14305C990004F0B2 /* AVFoundation.framework */; };
+		58D76240143084360068610F /* pause_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D7623C143084360068610F /* pause_image@2x.png */; };
+		58D76241143084360068610F /* play_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D7623D143084360068610F /* play_image@2x.png */; };
+		58D76242143084360068610F /* record_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D7623E143084360068610F /* record_image@2x.png */; };
+		58D76243143084360068610F /* stop_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D7623F143084360068610F /* stop_image@2x.png */; };
+		58D76246143084850068610F /* MyVUMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D76245143084850068610F /* MyVUMeter.m */; };
 		AA12A380137B2F010016AB24 /* IssueWorksheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA12A37F137B2F010016AB24 /* IssueWorksheetController.xib */; };
 		AA12A38E137C73EF0016AB24 /* ThemeColors.m in Sources */ = {isa = PBXBuildFile; fileRef = AA12A38D137C73EF0016AB24 /* ThemeColors.m */; };
 		AA16037B1375B4B800D03EE6 /* ServerListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16037A1375B4B800D03EE6 /* ServerListener.m */; };
@@ -242,6 +248,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		585ACE5C14305C990004F0B2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		58D7623C143084360068610F /* pause_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause_image@2x.png"; sourceTree = "<group>"; };
+		58D7623D143084360068610F /* play_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play_image@2x.png"; sourceTree = "<group>"; };
+		58D7623E143084360068610F /* record_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record_image@2x.png"; sourceTree = "<group>"; };
+		58D7623F143084360068610F /* stop_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop_image@2x.png"; sourceTree = "<group>"; };
+		58D76244143084850068610F /* MyVUMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyVUMeter.h; sourceTree = "<group>"; };
+		58D76245143084850068610F /* MyVUMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyVUMeter.m; sourceTree = "<group>"; };
 		AA12A37F137B2F010016AB24 /* IssueWorksheetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueWorksheetController.xib; sourceTree = "<group>"; };
 		AA12A384137C70220016AB24 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		AA12A38C137C73EF0016AB24 /* ThemeColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeColors.h; sourceTree = "<group>"; };
@@ -567,6 +580,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				585ACE5D14305C990004F0B2 /* AVFoundation.framework in Frameworks */,
 				AA97B6DD13938DDB002E6C11 /* libiotaShared.a in Frameworks */,
 				AA63B5FF13055E350035A49C /* UIKit.framework in Frameworks */,
 				AA63B60113055E350035A49C /* Foundation.framework in Frameworks */,
@@ -588,6 +602,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		585ACE43143055B00004F0B2 /* AudioRecord */ = {
+			isa = PBXGroup;
+			children = (
+				58D76244143084850068610F /* MyVUMeter.h */,
+				58D76245143084850068610F /* MyVUMeter.m */,
+				58D7623F143084360068610F /* stop_image@2x.png */,
+				58D7623C143084360068610F /* pause_image@2x.png */,
+				58D7623D143084360068610F /* play_image@2x.png */,
+				58D7623E143084360068610F /* record_image@2x.png */,
+			);
+			name = AudioRecord;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		AA12A383137C6FF60016AB24 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -752,6 +780,7 @@
 				AA63B60413055E350035A49C /* iotaPad6 */,
 				AA63B61E13055E360035A49C /* iotaPad6Tests */,
 				AA63B5FD13055E350035A49C /* Frameworks */,
+				585ACE5C14305C990004F0B2 /* AVFoundation.framework */,
 				AA63B5FB13055E350035A49C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -801,6 +830,7 @@
 				AA50C887132B9D290031D231 /* Journal */,
 				AA94FC07133288530065DC19 /* Klin kem */,
 				AA7EB00914012BED00F9F918 /* Item Table Cell */,
+				585ACE43143055B00004F0B2 /* AudioRecord */,
 				AA2A2D681335607E005B7CAC /* Item Cell */,
 				AA66CDCB1336AF8100B4E2F5 /* Ehr NPO Cross */,
 				AA63B63E13055E880035A49C /* MedListController.h */,
@@ -1338,6 +1368,10 @@
 				EE3A18E813F2D55D00A2A16E /* diagnoser.png in Resources */,
 				AAF21BCA13F9927500DCDCF4 /* ankle.svg in Resources */,
 				CEA5AB34141FDE9400D24128 /* obsdef.xml in Resources */,
+				58D76240143084360068610F /* pause_image@2x.png in Resources */,
+				58D76241143084360068610F /* play_image@2x.png in Resources */,
+				58D76242143084360068610F /* record_image@2x.png in Resources */,
+				58D76243143084360068610F /* stop_image@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1474,6 +1508,7 @@
 				AA7EB02A14012FD900F9F918 /* ItemTableCellAnalog.m in Sources */,
 				AA7EB0301401360D00F9F918 /* IDRSvgView.m in Sources */,
 				CEE52BE3141CD083005CA465 /* ItemTableCellHistory.m in Sources */,
+				58D76246143084850068610F /* MyVUMeter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
