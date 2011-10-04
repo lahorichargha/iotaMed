@@ -41,7 +41,9 @@
 
 @property (nonatomic, retain) IBOutlet UITableView *patientTableView;
 @property (nonatomic, retain) IBOutlet UIButton *btnOk;
+@property (retain, nonatomic) IBOutlet UIButton *btnCancel;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (retain, nonatomic) IBOutlet UIButton *btnNew;
 
 - (IBAction)btnOk:(id)sender;
 - (IBAction)btnCancel:(id)sender;

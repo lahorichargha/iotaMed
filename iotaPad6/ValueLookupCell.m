@@ -70,18 +70,7 @@
 
 - (void)setValueObject:(IDRValue *)value {
     self.lblDate.text = dateshort2str(value.contact.date);
-    
-    // TODO: goddamn, this is ugly! I *have* to fix this more elegantly
-    if ([value.value isEqualToString:@"yes"]) {
-        self.lblValue.text = @"Ja";
-    }
-    else if ([value.value isEqualToString:@"no"]) {
-        self.lblValue.text = @"Nej";
-    }
-    else {
-        self.lblValue.text = value.value;
-    }
-    // end of butt ugly
+    self.lblValue.text = [value displayValue];
     
     if ([[self class] hasUsefulExtendedInfo:value]) {
         self.lblExtendedValue.text = value.extendedValue;

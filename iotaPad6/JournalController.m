@@ -104,7 +104,8 @@
 - (void)reload {
     PatientContext *pCtx = [IotaContext getCurrentPatientContext];
     self.contact = pCtx.currentContact;
-    self.btnContact.title = (self.contact) ? [self.contact contactAsHeader] : @"<Inga kontakter>";
+    self.btnContact.title = (self.contact) ? [self.contact contactAsHeader] : 
+        [NSString stringWithFormat:@"<%@>", NSLocalizedString(@"No contacts", @"No contacts")];  
     [self.tableView reloadData];
 }
 

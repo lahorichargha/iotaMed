@@ -63,7 +63,7 @@
     
     // Do any additional setup after loading the view from its nib.
     [self _loadMyIotaIssues];
-    self.navigationItem.title = @"Inkorg";
+    self.navigationItem.title = NSLocalizedString(@"Inbox", @"Inbox");
     UIBarButtonItem *bbiCancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
                                                                                target:self action:@selector(btnCancel:)];
     self.navigationItem.leftBarButtonItem = bbiCancel;
@@ -134,7 +134,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"minIota återkoppling";
+    return NSLocalizedString(@"myIota Feedback", @"myIota Feedback");
 }
 
 // -----------------------------------------------------------

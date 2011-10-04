@@ -18,6 +18,7 @@
 @property (nonatomic, retain) IDRItem *idrItem;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *segControl;
 @property (nonatomic, retain) IBOutlet UIView *grafView;
+@property (retain, nonatomic) IBOutlet UIButton *btnClose;
 
 - (IBAction)segmentedChanged:(id)sender;
 - (IBAction)btnClose:(id)sender;

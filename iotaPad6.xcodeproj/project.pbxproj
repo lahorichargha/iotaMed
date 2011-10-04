@@ -194,7 +194,6 @@
 		AAF8516613F93796006BFD59 /* SVGPath.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF8516013F93796006BFD59 /* SVGPath.m */; };
 		AAF9B5541392A78C0049BA69 /* test5.xml in Resources */ = {isa = PBXBuildFile; fileRef = AAF9B5531392A78C0049BA69 /* test5.xml */; };
 		AAFB52BD13E4336B00F9CC59 /* ItemTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB52BC13E4336B00F9CC59 /* ItemTextFieldView.m */; };
-		AAFB52C013E44F6900F9CC59 /* IssueWorksheetTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFB52BF13E44F6900F9CC59 /* IssueWorksheetTableView.m */; };
 		CE78ECA51424EE51009842DB /* IDRDef.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78ECA41424EE51009842DB /* IDRDef.m */; };
 		CE78ECA81424EF5E009842DB /* IDRDefConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78ECA71424EF5E009842DB /* IDRDefConstant.m */; };
 		CE78ECAB1424EF6C009842DB /* IDRDefScript.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78ECAA1424EF6C009842DB /* IDRDefScript.m */; };
@@ -204,7 +203,9 @@
 		CE78ECB714250B72009842DB /* IDRSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78ECB614250B71009842DB /* IDRSelect.m */; };
 		CE78ECBB14253B69009842DB /* IDRDataDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78ECBA14253B69009842DB /* IDRDataDictionary.m */; };
 		CEA5AB34141FDE9400D24128 /* obsdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = CEA5AB33141FDE9400D24128 /* obsdef.xml */; };
+		CEB2508D143779CB0037692A /* diabetes_EN.xml in Resources */ = {isa = PBXBuildFile; fileRef = CEB2508C143779CB0037692A /* diabetes_EN.xml */; };
 		CEE52BE3141CD083005CA465 /* ItemTableCellHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE52BE2141CD083005CA465 /* ItemTableCellHistory.m */; };
+		CEFDC49F143B52C6006D77DE /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFDC49E143B52C6006D77DE /* libTestFlight.a */; };
 		EE3A18E813F2D55D00A2A16E /* diagnoser.png in Resources */ = {isa = PBXBuildFile; fileRef = EE3A18E713F2D55D00A2A16E /* diagnoser.png */; };
 		EE4159CD13F291E500199032 /* background2.png in Resources */ = {isa = PBXBuildFile; fileRef = EE4159C513F291E500199032 /* background2.png */; };
 		EE4159CE13F291E500199032 /* background4.png in Resources */ = {isa = PBXBuildFile; fileRef = EE4159C613F291E500199032 /* background4.png */; };
@@ -550,8 +551,6 @@
 		AAF9B5531392A78C0049BA69 /* test5.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test5.xml; sourceTree = "<group>"; };
 		AAFB52BB13E4336B00F9CC59 /* ItemTextFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTextFieldView.h; sourceTree = "<group>"; };
 		AAFB52BC13E4336B00F9CC59 /* ItemTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTextFieldView.m; sourceTree = "<group>"; };
-		AAFB52BE13E44F6900F9CC59 /* IssueWorksheetTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueWorksheetTableView.h; sourceTree = "<group>"; };
-		AAFB52BF13E44F6900F9CC59 /* IssueWorksheetTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueWorksheetTableView.m; sourceTree = "<group>"; };
 		CE5707E8142915A100A73E39 /* iotaMed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = iotaMed.entitlements; sourceTree = "<group>"; };
 		CE78ECA31424EE51009842DB /* IDRDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRDef.h; sourceTree = "<group>"; };
 		CE78ECA41424EE51009842DB /* IDRDef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRDef.m; sourceTree = "<group>"; };
@@ -570,8 +569,11 @@
 		CE78ECB914253B69009842DB /* IDRDataDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRDataDictionary.h; sourceTree = "<group>"; };
 		CE78ECBA14253B69009842DB /* IDRDataDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRDataDictionary.m; sourceTree = "<group>"; };
 		CEA5AB33141FDE9400D24128 /* obsdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = obsdef.xml; sourceTree = "<group>"; };
+		CEB2508C143779CB0037692A /* diabetes_EN.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = diabetes_EN.xml; sourceTree = "<group>"; };
 		CEE52BE1141CD083005CA465 /* ItemTableCellHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTableCellHistory.h; sourceTree = "<group>"; };
 		CEE52BE2141CD083005CA465 /* ItemTableCellHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableCellHistory.m; sourceTree = "<group>"; };
+		CEFDC49E143B52C6006D77DE /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		CEFDC4A0143B52CD006D77DE /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		EE3A18E713F2D55D00A2A16E /* diagnoser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diagnoser.png; sourceTree = "<group>"; };
 		EE4159C513F291E500199032 /* background2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background2.png; sourceTree = "<group>"; };
 		EE4159C613F291E500199032 /* background4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background4.png; sourceTree = "<group>"; };
@@ -593,6 +595,7 @@
 				AA63B5FF13055E350035A49C /* UIKit.framework in Frameworks */,
 				AA63B60113055E350035A49C /* Foundation.framework in Frameworks */,
 				AA63B60313055E350035A49C /* CoreGraphics.framework in Frameworks */,
+				CEFDC49F143B52C6006D77DE /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,8 +683,6 @@
 				AA63B63413055E6E0035A49C /* IssueWorksheetController.h */,
 				AA63B63513055E6E0035A49C /* IssueWorksheetController.m */,
 				AA12A37F137B2F010016AB24 /* IssueWorksheetController.xib */,
-				AAFB52BE13E44F6900F9CC59 /* IssueWorksheetTableView.h */,
-				AAFB52BF13E44F6900F9CC59 /* IssueWorksheetTableView.m */,
 			);
 			name = "Issue Worksheet";
 			sourceTree = "<group>";
@@ -751,6 +752,7 @@
 			children = (
 				AAF9B5531392A78C0049BA69 /* test5.xml */,
 				AA5DB255131FFA9400888408 /* diabetes.xml */,
+				CEB2508C143779CB0037692A /* diabetes_EN.xml */,
 				AA5DB27E132058F700888408 /* templates.xml */,
 				AA9B47FE1323F25500C96675 /* atc.xml */,
 				AA50C87B132B8EB50031D231 /* keywords.xml */,
@@ -765,6 +767,8 @@
 		AA63B5EF13055E350035A49C = {
 			isa = PBXGroup;
 			children = (
+				CEFDC4A0143B52CD006D77DE /* TestFlight.h */,
+				CEFDC49E143B52C6006D77DE /* libTestFlight.a */,
 				AA97B6DC13938DDB002E6C11 /* libiotaShared.a */,
 				AA97B6CD13938D9A002E6C11 /* iotaShared.xcodeproj */,
 				AAB76FFC1355A7C200388BF5 /* Localizable.strings */,
@@ -1382,6 +1386,7 @@
 				EE3A18E813F2D55D00A2A16E /* diagnoser.png in Resources */,
 				AAF21BCA13F9927500DCDCF4 /* ankle.svg in Resources */,
 				CEA5AB34141FDE9400D24128 /* obsdef.xml in Resources */,
+				CEB2508D143779CB0037692A /* diabetes_EN.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1497,7 +1502,6 @@
 				AAECB6CD1381834C00EAB251 /* MyIotaPatientContext.m in Sources */,
 				AAC0397F13DC6010008F38C3 /* PatientController.m in Sources */,
 				AAFB52BD13E4336B00F9CC59 /* ItemTextFieldView.m in Sources */,
-				AAFB52C013E44F6900F9CC59 /* IssueWorksheetTableView.m in Sources */,
 				AA9CD3EA13F453BE00DA80D7 /* UIImage+HackyBugfix.m in Sources */,
 				AAF8516113F93796006BFD59 /* SVG.m in Sources */,
 				AAF8516213F93796006BFD59 /* SVGElement.m in Sources */,
@@ -1626,6 +1630,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iotaPad6/iotaPad6-Prefix.pch";
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = IOTAMED;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "iotaPad6/iotaPad6-Info.plist";
 				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -1650,6 +1655,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iotaPad6/iotaPad6-Prefix.pch";
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = IOTAMED;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "iotaPad6/iotaPad6-Info.plist";
 				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -1678,6 +1684,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iotaPad6Tests/iotaPad6Tests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "iotaPad6Tests/iotaPad6Tests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -1701,6 +1708,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iotaPad6Tests/iotaPad6Tests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "iotaPad6Tests/iotaPad6Tests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -1718,6 +1726,7 @@
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				CODE_SIGN_ENTITLEMENTS = iotaPad6/iotaMed.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: MITM AB";
+				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1727,6 +1736,7 @@
 				PRODUCT_NAME = iotaMed;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = NO;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = "Ad Hoc";
@@ -1741,6 +1751,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iotaPad6/iotaPad6-Prefix.pch";
 				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = IOTAMED;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "iotaPad6/iotaPad6-Info.plist";
 				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -1770,6 +1781,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iotaPad6Tests/iotaPad6Tests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "iotaPad6Tests/iotaPad6Tests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",

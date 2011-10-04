@@ -14,11 +14,31 @@
 /* Referral cause */
 "Cause:" = "Cause:";
 
+/* Custom button */
+"Custom" = "Custom";
+
+/* Demo warning text */
+"Demo warning" = "Never use real names or personal numbers in this demo version!";
+
+/* First name */
+"Firstname" = "First name";
+
+"General recommendation" = "General recommendation";
+"Graph" = "Graph";
+
 /* Referral history label */
 "History:" = "History:";
 
+"Import" = "Import";
+"Inbox" = "Inbox";
+
 /* Title for the issue list and popover */
 "Issues" = "Issues";
+
+/* Last name */
+"Lastname" = "Last name";
+
+"List" = "List";
 
 /* Just checking */
 "LocalizedLanguage" = "English";
@@ -26,14 +46,41 @@
 /* Name of the executable minIota */
 "minIota" = "myIota";
 
+"myIota Feedback" = "myIota Feedback";
+
+/* New button */
+"New" = "New";
+
 /* new contact label */
 "New contact" = "New contact";
+
+/* No */
+"No" = "No";
+
+/* no contacts */
+"No contacts" = "No contacts";
+
+/* no patient selected */
+"No patient selected" = "No patient selected";
+
+"None" = "None";
 
 /* ok label for button */
 "Ok" = "Ok";
 
+/* lab referral */
+"Order lab tests" = "Order lab tests";
+
+/* Patients */
+"Patients" = "Patients";
+
+/* Personnumber */
+"Personnumber" = "Personal number";
+
 /* Prescription */
 "Prescription" = "Prescription";
+
+"Select dosage" = "Select dosage";
 
 /* explanatory text in ContactSelectOrCreateForm */
 "SelectOrCreateContact" = "Select or create a new contact for this subtemplate:";
@@ -41,11 +88,15 @@
 /* Send referral button */
 "Send" = "Send";
 
+/* Sent */
+"Sent" = "Sent";
+
 /* Referral status label */
 "Status:" = "Status:";
 
 /* Label for destination of referral */
 "To:" = "To:";
 
-
+/* Yes */
+"Yes" = "Yes";
 

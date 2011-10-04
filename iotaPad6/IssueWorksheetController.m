@@ -150,7 +150,8 @@
     }
 
     IDRContact *currentContact = [[IotaContext getCurrentPatientContext] currentContact];
-    self.btnContact.title = (currentContact) ? [currentContact contactAsHeader] : @"<Inga kontakter>";
+    self.btnContact.title = (currentContact) ? [currentContact contactAsHeader] : 
+        [NSString stringWithFormat:@"<%@>", NSLocalizedString(@"No contacts", @"No contacts")];  
     
     if (!self.idrBlock) {
         self.tableView.tableHeaderView = nil;
@@ -312,7 +313,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"selected row at: %@", indexPath);
 }
 
 // -----------------------------------------------------------

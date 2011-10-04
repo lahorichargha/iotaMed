@@ -29,7 +29,7 @@
 
 @protocol SVGElement;
 
-@protocol SVGContainer<SVGElement>
+@protocol SVGContainer 
 
 @property (nonatomic, readonly) NSMutableArray *elements;
 

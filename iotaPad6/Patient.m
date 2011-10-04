@@ -71,7 +71,7 @@ static NSString *kLastNameKey = @"lastNameKey";
         return [NSString stringWithFormat:@"%@ - %@ %@", patient.patientID, patient.firstName, patient.lastName]; 
     }
     else {
-        return @"<Ingen patient vald>";
+        return [NSString stringWithFormat:@"<%@>", NSLocalizedString(@"No patient selected", @"No patient selected")];
     }
 }
 
