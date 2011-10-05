@@ -38,7 +38,6 @@
 #import "IDRDescription.h"
 #import "IDRItem.h"
 #import "IDRObservation.h"
-#import "IDRObsDefinition.h"
 #import "IDRContact.h"
 #import "ItemCellTemplate.h"
 #import "Funcs.h"

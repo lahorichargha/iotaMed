@@ -37,6 +37,10 @@
 
 @class IDRBlock;
 @class IDRDescription;
+@class IDRDataDictionary;
+@class IDRDefScript;
+@class IDRDefConstant;
+@class IDRObsDef;
 
 @interface IDRWorksheet : NSObject <IDRAttribs, DebugDump, NSCoding, NSCopying> {
     
@@ -59,6 +63,12 @@
 - (IDRWorksheet *)copyWithoutBlocks;
 - (NSUInteger)indexOfBlock:(IDRBlock *)block;
 - (void)removeBlockAtIndex:(NSUInteger)index;
+
+// data dictionary related
+
+- (void)addObsDef:(IDRObsDef *)obsDef;
+- (void)addConstant:(IDRDefConstant *)constant;
+- (void)addScript:(IDRDefScript *)script;
 
 @end
 

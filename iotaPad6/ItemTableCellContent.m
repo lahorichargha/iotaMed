@@ -58,14 +58,6 @@
     [super addSubclass:self];
 }
 
-+ (ItemTableCellContent *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
-    ItemTableCellContent *cell = (ItemTableCellContent *)(idrItem.itemTableCell);
-    if (cell == nil) {
-        cell = [[[self alloc] initWithTableView:tableView idrItem:idrItem] autorelease];
-    }
-    return cell;
-}
-
 + (CGFloat)leftMarginForIdrItem:(IDRItem *)idrItem {
     return idrItem.indentLevel * kIndentSize + kContentTextOffsetFromLeft;
 }

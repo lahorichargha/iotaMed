@@ -46,3 +46,5 @@ NSString *dateForIssueTitles(NSDate *date);
 UILabel *navBarLabelWithText(NSString *text);
 NSString *generateUuidString();
 NSDate *combineDateAndTime(NSDate *datePart, NSDate *timePart);
+BOOL isValidChoice(NSString *str, NSString **choices);
+void postAlert(NSString *msg);

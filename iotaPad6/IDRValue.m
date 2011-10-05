@@ -39,6 +39,9 @@
  * An IDRObservation object defines a particular occurrence of an IDRObservationDefinition
  * in a worksheet and contains indications of input/output.
  *
+ * "extendedValue" is typically used in description of a dose of a mediciation, where:
+ *      value           2x3
+ *      extendedValue   two tablets three times a day
  *
  */
 
@@ -91,9 +94,11 @@ static NSString *kObsDefinitionKey = @"obsDefinitionKey";
 
 - (NSString *)displayValue {
     if ([self.value isEqualToString:@"yes"])
-        return @"Ja";
+        return NSLocalizedString(@"Yes", @"Yes");
     else if ([self.value isEqualToString:@"no"])
-        return @"Nej";
+        return NSLocalizedString(@"No", @"No");
+    else if ([self.obsDefinition isCheck]) 
+        return @"?";
     else
         return self.value;
 }

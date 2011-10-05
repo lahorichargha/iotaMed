@@ -28,6 +28,7 @@
 @synthesize idrItem = _idrItem;
 @synthesize segControl = _segControl;
 @synthesize grafView = _grafView;
+@synthesize btnClose = _btnClose;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -42,6 +43,7 @@
     self.tableView = nil;
     self.segControl = nil;
     self.grafView = nil;
+    [_btnClose release];
     [super dealloc];
 }
 
@@ -62,9 +64,13 @@
     // Do any additional setup after loading the view from its nib.
     BOOL numeric = [self.idrItem.observation isNumeric];
     self.segControl.hidden = !numeric;
+    [self.segControl setTitle:NSLocalizedString(@"List", @"List") forSegmentAtIndex:0];
+    [self.segControl setTitle:NSLocalizedString(@"Graph", @"Graph") forSegmentAtIndex:1];
+    [self.btnClose setTitle:NSLocalizedString(@"Close", @"Close") forState:UIControlStateNormal];
 }
 
 - (void)viewDidUnload {
+    [self setBtnClose:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

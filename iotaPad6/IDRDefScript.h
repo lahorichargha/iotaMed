@@ -1,8 +1,7 @@
 //
-//  NSString+iotaAdditions.h
-//  iotaPad1
+//  IDRObsDefScript.h
+//  iotaPad6
 //
-//  Created by mw on 2010-06-23.
 //  Copyright © 2011, MITM AB, Sweden
 //  All rights reserved.
 //
@@ -32,16 +31,15 @@
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
+#import "IDRDef.h"
 
+@interface IDRDefScript : IDRDef
 
-@interface NSString (iotaNSString) 
-
-- (NSString *)iotaNormalize;
-- (NSString *)trim;
-- (BOOL)iotaIsNonEmpty;
-+ (NSString *)spacesOfLength:(unsigned int)aLength;
-- (BOOL)iotaIsYes;
-- (NSString *)setterName;
+@property (nonatomic, retain) NSString *language;
+@property (nonatomic, retain) NSMutableString *script;
+@property (nonatomic, retain) NSString *scriptType; // expression, statement
+@property (nonatomic, retain) NSString *returnType;
+@property (nonatomic, retain) NSMutableArray *parameters;
 
 
 @end

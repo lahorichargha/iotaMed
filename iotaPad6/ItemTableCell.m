@@ -137,7 +137,6 @@ static NSMutableArray *subclasses;
 
 + (void)addSubclass:(Class)cls {
     [subclasses addObject:cls];
-    NSLog(@"Added subclass: %@", cls);
 }
 
 + (BOOL)canHandle:(IDRItem *)idrItem {
@@ -145,9 +144,16 @@ static NSMutableArray *subclasses;
     return NO;
 }
 
+
 + (ItemTableCell *)subCellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
-    [NSException raise:@"Should never be called" format:@"abstract subCellForTableView called from %@", self];
-    return nil;
+    ItemTableCell *cell = idrItem.itemTableCell;
+    if (cell == nil) {
+        cell = [[[self alloc] initWithTableView:tableView idrItem:idrItem] autorelease];
+    }
+    else {
+        [cell refreshDisplay];
+    }
+    return cell;
 }
 
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
@@ -216,6 +222,24 @@ static NSMutableArray *subclasses;
     return (bold) ? [self boldContentFont] : [self normalContentFont];
 }
 
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Touch stuff
+// -----------------------------------------------------------
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    // touch the worksheet anywhere to dismiss keyboard
+    [self.parentTableView endEditing:YES];
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Should be overridden
+// -----------------------------------------------------------
+
+- (void)refreshDisplay {
+    
+}
 
 // -----------------------------------------------------------
 #pragma mark -

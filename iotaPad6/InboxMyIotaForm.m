@@ -11,7 +11,6 @@
 #import "IDRWorksheet.h"
 #import "IDRItem.h"
 #import "IDRObservation.h"
-#import "IDRObsDefinition.h"
 #import "IDRValue.h"
 #import "MyIotaPatientContext.h"
 #import "PatientContext.h"
@@ -71,7 +70,7 @@
     self.navigationItem.title = [NSString stringWithFormat:@"%@: %@", self.block.worksheet.title, self.block.title];
     [self _loadArrays];
     // Do any additional setup after loading the view from its nib.
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Importera" 
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Import", @"Import") 
                                                                                style:UIBarButtonItemStylePlain 
                                                                               target:self 
                                                                               action:@selector(importButton:)] autorelease];
@@ -133,22 +132,19 @@
     // configure the cell here
 
     IDRItem *item = [self.items objectAtIndex:[indexPath row]];
-    //IDRValue *value = [self.miContext getCurrentValueForObsName:item.observation.name];
     NSArray *values = [self.miContext getAllValuesForObsName:item.observation.name];
     if (values && [values count] > 0) {
         IDRValue *val = [values objectAtIndex:0];
         if ([item.observation.type isEqualToString:@"check"]) {
-            cell.detailTextLabel.text = ([val.value isEqualToString:@"yes"]) ? @"Ja" : @"Nej";
+            cell.detailTextLabel.text = [val displayValue];
         }
         else {
             cell.detailTextLabel.text = val.value;
         }
     }
     else {
-        cell.detailTextLabel.text = @"<inget>";
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"<%@>", NSLocalizedString(@"None", @"None")];
     }
-    //    cell.detailTextLabel.text = value.value;
-    
     cell.textLabel.text = item.content;
     
     return cell;

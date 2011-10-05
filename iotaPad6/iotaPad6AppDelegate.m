@@ -34,6 +34,7 @@
 #import "iotaPad6AppDelegate.h"
 #import "IotaContext.h"
 #import "Notifications.h"
+#import "TestFlight.h"
 
 #import "TestFlight.h"
 

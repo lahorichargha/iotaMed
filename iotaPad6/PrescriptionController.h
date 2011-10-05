@@ -24,10 +24,14 @@
 
 @property (nonatomic, retain) IBOutlet UILabel *lblDescription;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (retain, nonatomic) IBOutlet UIButton *btnCancel;
 @property (nonatomic, retain) IDRItem *idrItem;
 @property (nonatomic, retain) IBOutlet UIButton *btnOk;
 @property (nonatomic, retain) IBOutlet UIButton *btnCustom;
 @property (nonatomic, retain) id <PrescriptionControllerDelegate> pcDelegate;
+@property (retain, nonatomic) IBOutlet UILabel *lblGeneralRecommendation;
+@property (retain, nonatomic) IBOutlet UILabel *lblGeneralRecommendationText;
+@property (retain, nonatomic) IBOutlet UILabel *lblSelectDosage;
 
 - (IBAction)btnOk:(id)sender;
 - (IBAction)btnCancel:(id)sender;

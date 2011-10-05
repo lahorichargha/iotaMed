@@ -19,6 +19,12 @@
 @property (nonatomic, retain) IBOutlet UITextField *txtFirstname;
 @property (nonatomic, retain) IBOutlet UITextField *txtLastname;
 @property (nonatomic, retain) IBOutlet UIButton *btnDelete;
+@property (retain, nonatomic) IBOutlet UIButton *btnCancel;
+@property (retain, nonatomic) IBOutlet UIButton *btnOk;
+@property (retain, nonatomic) IBOutlet UILabel *lblPersonnumber;
+@property (retain, nonatomic) IBOutlet UILabel *lblFirstname;
+@property (retain, nonatomic) IBOutlet UILabel *lblLastname;
+@property (retain, nonatomic) IBOutlet UILabel *lblDemoWarning;
 
 @property (retain) Patient *patient;
 
