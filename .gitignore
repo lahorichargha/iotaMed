@@ -1,4 +1,4 @@
-
 iotaPad6.xcodeproj/xcuserdata/martinwehlou.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
-
-iotaPad6.xcodeproj/xcuserdata/martinwehlou.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
+*.orig
+.DS_Store
+*.xcarchive
