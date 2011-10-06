@@ -167,7 +167,6 @@ enum eCellContents {
 };
 
 @interface ItemCell()
-@property (assign) UITableView *parentTableView;
 @end
 
 // -----------------------------------------------------------
@@ -320,14 +319,7 @@ enum eCellContents {
         IDRValue *value = [obsDef valueForContact:contact];
         if ([item hasInput]) {
             if ([item.observation isCheck]) {
-                if ([value.value isEqualToString:@"yes"])
-                    cell.checkView.text = @"Ja";
-                else if ([value.value isEqualToString:@"no"])
-                    cell.checkView.text = @"Nej";
-                else
-                    cell.checkView.text = @"?";
-                
-                cell.checkView.textAlignment = UITextAlignmentCenter;
+                cell.checkView.text = [value displayValue];
             }
             else if ([item.observation isSelect]) {
                 if (value.value) {

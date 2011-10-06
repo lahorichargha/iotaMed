@@ -8,7 +8,6 @@
 
 #import "IDRImage.h"
 
-
 @implementation IDRImage
 
 static NSString *kImageNameKey = @"imageNameKey";

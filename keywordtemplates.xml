@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <template type='keywords' title='Standard' templateUuid='DE9030CC-22AB-46BE-8927-3DB49FB1752D'>
 
-    <block title='Standard' type='default' templateUuid='8AC4B008-4663-40F3-95E5-D66851FD172B'>
+    <block title='Standard EN' type='default' templateUuid='89E93A5D-5C96-4308-B5E1-4AB90B395003'>
+        <item>History<observation name='Anamnes' type='memo' direction='getput'/></item>
+        <item>General status<observation name='Allmäntillstånd' type='string' direction='getput'/></item>
+        <item>Heart<observation name='Hjärta' type='string' direction='getput'/></item>
+        <item>Lungs<observation name='Lungor' type='string' direction='getput'/></item>
+        <item>Blood pressure<observation name='Blodtryck' type='string' direction='getput'/></item>
+        <item>Abdomen<observation name='Buk' type='string' direction='getput'/></item>
+        <item>Skin and mucosa<observation name='Hud' type='string' direction='getput'/></item>
+        <item>Assessment<observation name='Bedömning' type='string' direction='getput'/></item>
+    </block>
+
+    <block title='Standard SV' type='default' templateUuid='8AC4B008-4663-40F3-95E5-D66851FD172B'>
         <item>Anamnes<observation name='Anamnes' type='memo' direction='getput'/></item>
         <item>Allmäntillstånd<observation name='Allmäntillstånd' type='string' direction='getput'/></item>
         <item>Hjärta<observation name='Hjärta' type='string' direction='getput'/></item>
@@ -11,7 +22,7 @@
         <item>Hud och slemhinnor<observation name='Hud' type='string' direction='getput'/></item>
         <item>Beslut och bedömning<observation name='Bedömning' type='string' direction='getput'/></item>
     </block>
-
+    
     <block title='Barn' templateUuid='96BD6EC0-4C01-42AC-B348-CAB886134900'>
         <item>Öron<observation name='Öron' type='string' direction='getput'/></item>
         <item>Mun och svalg<observation name='MoS' type='string' direction='getput'/></item>

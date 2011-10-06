@@ -35,6 +35,7 @@
 #import "IDRWorksheet.h"
 #import "IDRBlock.h"
 #import "ItemCellIssue.h"
+#import "ItemTableCell.h"
 #import "IDRItem.h"
 #import "IDRAction.h"
 #import "Patient.h"
@@ -166,7 +167,8 @@
     }
 
     IDRContact *currentContact = [[IotaContext getCurrentPatientContext] currentContact];
-    self.btnContact.title = (currentContact) ? [currentContact contactAsHeader] : @"<Inga kontakter>";
+    self.btnContact.title = (currentContact) ? [currentContact contactAsHeader] : 
+        [NSString stringWithFormat:@"<%@>", NSLocalizedString(@"No contacts", @"No contacts")];  
     
     if (!self.idrBlock) {
         self.tableView.tableHeaderView = nil;
@@ -267,7 +269,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     IDRItem *item = [self.idrBlock.items objectAtIndex:[indexPath row]];
-    ItemCellIssue *cell = [ItemCellIssue cellForTableView:tableView idrItem:item];
+    ItemTableCell *cell = [ItemTableCell cellForTableView:tableView idrItem:item];
     cell.itemCellDelegate = self;
     //    cell.textLabel.text = item.content;
     return cell;
@@ -345,17 +347,18 @@
 // -----------------------------------------------------------
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [ItemCellIssue cellHeightForTableView:tableView idrItem:[self.idrBlock.items objectAtIndex:[indexPath row]]];
+    IDRItem *idrItem = [self.idrBlock.items objectAtIndex:[indexPath row]];
+    return [ItemTableCell cellHeightForTableView:tableView idrItem:idrItem];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    //    ItemTableCell *myCell = (ItemTableCell *)cell;
     ItemCell *myCell = (ItemCell *)cell;
     [myCell.selectButton addTarget:self action:@selector(selectButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [myCell.multiselectButton addTarget:self action:@selector(multiselectButtonAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
 }
 
 // -----------------------------------------------------------

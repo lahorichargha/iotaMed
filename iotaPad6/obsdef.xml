@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<template type='def' title='basic defs' templateUuid='82006883-C68D-4E52-B75B-3073FDAA9AE5'>
+    
+    <obsdef name='BP' type='formattedstring' dimension='mmHg' format='#/#'>
+        <prompt lang='SE'>Blodtryck</prompt>
+        <prompt lang='EN'>Blood pressure</prompt>
+        <prompt lang='NL'>Bloeddruk</prompt>
+    </obsdef>
+    
+    <obsdef name='Pulm' type='string' default='norm' free='free'>
+        <prompt lang='SE'>Lungor</prompt>
+        <prompt lang='NL'>Longen</prompt>
+        <select value='norm'>
+            <prompt lang='SE'>Normalt andningsljud bilat. Inga pip eller rassel.</prompt>
+            <prompt lang='NL'>Normaal vesikulair ademhalingsgeruis bilateraal, geen krepitaties of rhonchi.</prompt>
+        </select>
+        <select value='wet'>
+            <prompt lang='SE'>Fuktiga krepitationer bilateralt basalt.</prompt>
+            <prompt lang='NL'>Bilateraal vochtige krepitaties basaal.</prompt>
+        </select>
+    </obsdef>
+    
+    <constant name='InsulinATC'>
+        A10A
+    </constant>
+    
+    <script name='Instherapy' language='lua' value='BOOL' type='expression'>
+        <parameter localname='ATCList' def='ATCList'/>
+        <parameter localname='InsulinATC' def='InsulinATC'/>
+        <![CDATA[
+                foreach (atccode in ATCList) {
+                  if (atccode partof InsulinATC)
+                    return TRUE;
+                }
+                return FALSE;
+        ]]>
+    </script>
+    
+    <script name='Cleanup' language='lua' type='statement'>
+    </script>
+
+    
+</template>

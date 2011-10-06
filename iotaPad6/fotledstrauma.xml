@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <template type='issue' title='Fotledstrauma' fromICD10='S82' toICD10='S82' lang='SE' templateUuid='CE224E67-095D-46DF-896D-BF047031A820'>
     
+<!--    <import templateUuid='82006883-C68D-4E52-B75B-3073FDAA9AE5'/>   -->
+    
     <description type='template'>Denna mall är avsedd för akutmottagning på sjukhus för initiell bedömning och åtgärd av trauma i fotledsregionen. 
         Mallen innehåller olika delar vilka man väljer utgående från första undersökningsresultaten. Andra delmallar används vid uppföljning.</description>
     
@@ -71,33 +73,33 @@
         <item>
             Typ A1: Adduktionsvåld mot supinerad fot ger lateral skada, antingen en tvär avulsionsfraktur genom laterala malleolen 
             nedom syndesmoshöjd eller en lateral ligamentruptur.
-            <image imagename='44A11'/>
+            <image imagename='44A11' imagetype='png'/>
             <action type='block' templateUuid='F2B88172-44D2-48E2-86B4-CAC6F6A33001'/>
         </item>
         
         <item>
             Typ A2: Vid vidare adduktionsvåld komprimeras fotleden medialt med vertikal fraktur genom mediala malleolen som följd.
-            <image imagename='44A21'/>
+            <image imagename='44A21' imagetype='png'/>
             <action type='block' templateUuid='4F9AFD17-FBDD-4B2F-B97F-3B1BBDC7A9C1'/>
         </item>
         
         <item>
             Typ A3: Alternativt uppkommer en trimalleolär fraktur.
-            <image imagename='44A31'/>
+            <image imagename='44A31' imagetype='png'/>
             <action type='block' templateUuid='5333B170-1ACC-4A0D-B878-38511D34BA17'/>
         </item>
         
         <item>
             Typ B1: Axialt våld mot en supinerad fot ger utåtrotation av talus vilket resulterar i en snedfraktur av laterala malleolen
             i syndesmoshöjd.
-            <image imagename='44B11'/>
+            <image imagename='44B11' imagetype='png'/>
             <action type='block' templateUuid='2016F4D3-DF9A-4B31-8843-48CF68B3E805'/>
         </item>
         
         <item>
             Typ B3: (Den omvända ordningen är avsiktlig.) Fortsatt utåtrotation av talus ger först skada på bakre
             syndesmosligamenten alternativt en fraktur genom processus posterior tibiae.
-            <image imagename='44B31'/>
+            <image imagename='44B31' imagetype='png'/>
             <action type='block' templateUuid='FA6B4472-BD38-4FCF-85AB-A54FCFC5389F'/>
         </item>
         
@@ -105,7 +107,7 @@
             Typ B2: Slutligen sker skada på mediala strukturer med antingen ruptur av ligamentum deltoideum eller en tvärfraktur
             genom mediala malleolen och frakturen är därmed trimalleolär. B3 frakturen uppkommer således tidigare än B2 med detta
             resonemang.
-            <image imagename='44B21'/>
+            <image imagename='44B21' imagetype='png'/>
             <action type='block' templateUuid='318AE419-414C-4983-9104-B835F0742DFB'/>
         </item>
         
@@ -113,21 +115,26 @@
             Typ C1: Pronerad for som utsätts för utåtrotationsvåld ger skada på deltoidligamentet eller tvär avulsionsfraktur
             genom mediala malleolen. Talus trycker sedan mot fibula som roterar utåt och rupturerar främre syndesmosen och
             membrana interossea för att till sist frakturera ovan syndesmosen.
-            <image imagename='44C11'/>
+            <image imagename='44C11' imagetype='png'/>
             <action type='block' templateUuid='DAE4CA3C-55D6-457F-A420-5667748D0AA3'/>
         </item>
         
         <item>
             Typ C2: Som ovan men med splittrad fibulafraktur.
-            <image imagename='44C21'/>
+            <image imagename='44C21' imagetype='png'/>
             <action type='block' templateUuid='85EC3A0E-306F-47A1-A7C6-A6242AC1D35C'/>
         </item>
         
         <item>
             Typ C3: Maisonneuvefrakturen är en C-skada som ibland missas. Här föreligger skador på deltoidligamentet,
             främre syndesmosen och hela membrana interossea samt proximal fibulafraktur.
-            <image imagename='44C31'/>
+            <image imagename='44C31' imagetype='png'/>
             <action type='block' templateUuid='063FA318-C7E1-4AE7-8C2C-CDF3270C1563'/>
+        </item>
+        
+        <item>
+            Typ ingenting: en test av SVG images
+            <image imagename='ankle' imagetype='svg'/>
         </item>
         
     </block>
@@ -150,7 +157,7 @@
             </action>
         </item>
         
-        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
+        <item>Andra kontroller</item>
         
     </block>
 
@@ -182,7 +189,7 @@
             </action>
         </item>
         
-        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
+        <item>Andra kontroller</item>
     </block>
 
     <block type='any' repeats='no' title='AO typ A3' templateUuid='5333B170-1ACC-4A0D-B878-38511D34BA17'>
@@ -214,7 +221,7 @@
             </action>
         </item>
         
-        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
+        <item>Andra kontroller</item>
     </block>
 
     <block type='any' repeats='no' title='AO typ B1' templateUuid='2016F4D3-DF9A-4B31-8843-48CF68B3E805'>
@@ -276,7 +283,6 @@
             </action>
         </item>
         
-        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
     </block>
 
     <block type='any' repeats='no' title='AO typ B3' templateUuid='FA6B4472-BD38-4FCF-85AB-A54FCFC5389F'>
@@ -310,7 +316,6 @@
             </action>
         </item>
         
-        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
     </block>
 
     <block type='any' repeats='no' title='AO typ C1' templateUuid='DAE4CA3C-55D6-457F-A420-5667748D0AA3'>
@@ -342,7 +347,6 @@
             </action>
         </item>
         
-        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
     </block>
 
     <block type='any' repeats='no' title='AO typ C2' templateUuid='85EC3A0E-306F-47A1-A7C6-A6242AC1D35C'>
@@ -374,7 +378,6 @@
             </action>
         </item>
         
-        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
     </block>
 
     <block type='any' repeats='no' title='AO typ C3' templateUuid='063FA318-C7E1-4AE7-8C2C-CDF3270C1563'>
@@ -408,7 +411,6 @@
             </action>
         </item>
         
-        <item>Andra kontroller<observation name='KTAndraKontroller'/></item>
     </block>
     
     

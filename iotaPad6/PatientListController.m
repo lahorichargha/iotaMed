@@ -77,7 +77,9 @@
 
 @synthesize patientTableView = _patientTableView;
 @synthesize btnOk = _btnOk;
+@synthesize btnCancel = _btnCancel;
 @synthesize activityIndicator = _activityIndicator;
+@synthesize btnNew = _btnNew;
 @synthesize deletePath = _deletePath;
 
 // -----------------------------------------------------------
@@ -110,6 +112,8 @@
     self.patientTableView = nil;
     self.activityIndicator = nil;
     self.deletePath = nil;
+    [_btnCancel release];
+    [_btnNew release];
     [super dealloc];
 }
 
@@ -134,10 +138,17 @@
     [self.activityIndicator startAnimating];
     [IotaContext saveCurrentPatientContext];
     [self.activityIndicator stopAnimating];
+    
+    [self.btnNew setTitle:NSLocalizedString(@"New", @"New button") forState:UIControlStateNormal];
+    [self.btnCancel setTitle:NSLocalizedString(@"Cancel", @"Cancel button") forState:UIControlStateNormal];
+    [self.btnOk setTitle:NSLocalizedString(@"Ok", @"Ok button") forState:UIControlStateNormal];
+    
 }
 
 - (void)viewDidUnload {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self setBtnCancel:nil];
+    [self setBtnNew:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -322,7 +333,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Patienter";
+    return NSLocalizedString(@"Patients", @"Patients");
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

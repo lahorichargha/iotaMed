@@ -6,6 +6,7 @@
 //  Copyright (c) 2011 MITM AB. All rights reserved.
 //
 
+#import "IssueWorksheetController_Select.h"
 #import "IssueItemMultiselectViewController.h"
 #import "IDRItem.h"
 #import "IDRObservation.h"

@@ -1,8 +1,7 @@
 //
-//  NSString+iotaAdditions.h
-//  iotaPad1
+//  ItemTableCellCheck.h
+//  iotaPad6
 //
-//  Created by mw on 2010-06-23.
 //  Copyright © 2011, MITM AB, Sweden
 //  All rights reserved.
 //
@@ -31,17 +30,13 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Foundation/Foundation.h>
+#import "ItemTableCellHistory.h"
 
+@interface ItemTableCellCheck : ItemTableCellHistory
 
-@interface NSString (iotaNSString) 
+@property (nonatomic, retain) UILabel *lblCheck;
 
-- (NSString *)iotaNormalize;
-- (NSString *)trim;
-- (BOOL)iotaIsNonEmpty;
-+ (NSString *)spacesOfLength:(unsigned int)aLength;
-- (BOOL)iotaIsYes;
-- (NSString *)setterName;
++ (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 
 
 @end

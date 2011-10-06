@@ -33,6 +33,8 @@
 
 #import "IDRObservation.h"
 #import "IDRObsDefinition.h"
+#import "IDRObsDef.h"
+#import "IDRDataDictionary.h"
 #import "NSString+iotaAdditions.h"
 #import "IotaContext.h"
 #import "PatientContext.h"
@@ -54,6 +56,7 @@ static NSString *kDirectionGetPut = @"getput";
 @synthesize type = _type;
 @synthesize direction = _direction;
 @synthesize obsDefinition = _obsDefinition;
+@synthesize obsDef = _obsDef;
 @synthesize options = _options;
 @synthesize selects = _selects;
 @synthesize multiselects = _multiselects;
@@ -64,6 +67,7 @@ static NSString *kDirectionGetPut = @"getput";
     self.type = nil;
     self.direction = nil;
     self.obsDefinition = nil;
+    self.obsDef = nil;
     self.options = nil;
     self.selects = nil;
     self.multiselects = nil;
@@ -85,6 +89,15 @@ static NSString *kDirectionGetPut = @"getput";
     _obsDefinition = [obsDefinition retain];
 }
 
+- (IDRObsDef *)obsDef {
+    if (_obsDef == nil) {
+        PatientContext *pCtx = [IotaContext getCurrentPatientContext];
+        IDRDataDictionary *dataDic = pCtx.dataDictionary;
+        _obsDef = [[dataDic getObsDef:self.name] retain];
+    }
+    return [[_obsDef retain] autorelease];
+}
+
 // -----------------------------------------------------------
 #pragma mark -
 #pragma mark Coding, copying
@@ -94,6 +107,7 @@ static NSString *kNameKey = @"nameKey";
 static NSString *kTypeKey = @"typeKey";
 static NSString *kDirectionKey = @"directionKey";
 static NSString *kObsDefinitionKey = @"obsDefinitionKey";
+static NSString *kObsDefKey = @"obsDefKey";
 static NSString *kOptionsKey = @"optionsKey";
 static NSString *kSelectsKey = @"selectsKey";
 static NSString *kMultiselectsKey = @"multiselectsKey";
@@ -104,6 +118,7 @@ static NSString *kMultiselectsKey = @"multiselectsKey";
         self.type = [aDecoder decodeObjectForKey:kTypeKey];
         self.direction = [aDecoder decodeObjectForKey:kDirectionKey];
         self.obsDefinition = [aDecoder decodeObjectForKey:kObsDefinitionKey];
+        self.obsDef = [aDecoder decodeObjectForKey:kObsDefKey];
         self.options = [aDecoder decodeObjectForKey:kOptionsKey];
         self.selects = [aDecoder decodeObjectForKey:kSelectsKey];
         self.multiselects = [aDecoder decodeObjectForKey:kMultiselectsKey];
@@ -116,6 +131,7 @@ static NSString *kMultiselectsKey = @"multiselectsKey";
     [aCoder encodeObject:self.type forKey:kTypeKey];
     [aCoder encodeObject:self.direction forKey:kDirectionKey];
     [aCoder encodeObject:self.obsDefinition forKey:kObsDefinitionKey];
+    [aCoder encodeObject:self.obsDef forKey:kObsDefKey];
     [aCoder encodeObject:self.options forKey:kOptionsKey];
     [aCoder encodeObject:self.selects forKey:kSelectsKey];
     [aCoder encodeObject:self.multiselects forKey:kMultiselectsKey];
@@ -129,6 +145,7 @@ static NSString *kMultiselectsKey = @"multiselectsKey";
     copy.type = [[self.type copyWithZone:zone] autorelease];
     copy.direction = [[self.direction copyWithZone:zone] autorelease];
     copy.obsDefinition = self.obsDefinition;
+    copy.obsDef = self.obsDef;
     
     
     // TODO: think about options, shouldn't they actually be in obsDefinition instead?

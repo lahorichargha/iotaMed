@@ -37,6 +37,10 @@
 @class IDRItem;
 @class BulletView;
 
+//static float kNormalFontSize    __attribute__ ((unused)) = 14.0;
+//static float kBoldFontSize      __attribute__ ((unused)) = 18.0;
+//static float kBoldHeight = 44.0;
+
 
 @interface ItemCell : UITableViewCell <UITextFieldDelegate> {
     
@@ -56,6 +60,8 @@
 @property (nonatomic, retain) UIButton *multiselectButton;
 @property (nonatomic, retain) UILabel *multiselectLabel;
 @property (nonatomic, retain) id <ItemCellDelegate> itemCellDelegate;
+@property (assign) UITableView *parentTableView;
+
 
 + (ItemCell *)cellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 + (CGFloat)cellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;

@@ -34,6 +34,9 @@
 #import "iotaPad6AppDelegate.h"
 #import "IotaContext.h"
 #import "Notifications.h"
+#import "TestFlight.h"
+
+#import "TestFlight.h"
 
 @implementation iotaPad6AppDelegate
 
@@ -44,6 +47,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [TestFlight takeOff:@"67bd577cfab746ffedee1557d8d72cd0_MjYyMTUyMDExLTA5LTIxIDA2OjQ2OjU3LjA5Nzk1MA"];
     [self.window addSubview:_splitViewController.view];
     [self.window makeKeyAndVisible];
     NSString *loc = NSLocalizedString(@"LocalizedLanguage", @"Just checking");

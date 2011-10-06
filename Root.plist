@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+			<key>Title</key>
+			<string>Legal stuff</string>
+			<key>File</key>
+			<string>About.plist</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Patients type</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Naming of patients</string>
+			<key>Key</key>
+			<string>patientType</string>
+			<key>DefaultValue</key>
+			<string>namingFakeNames</string>
+			<key>Titles</key>
+			<array>
+				<string>Numbered</string>
+				<string>Fake names</string>
+				<string>Real names</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>namingNumbered</string>
+				<string>namingFakeNames</string>
+				<string>namingRealNames</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>iotaMed server</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Remote server (bonjour)</string>
+			<key>Key</key>
+			<string>remoteServer</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>SYSteam Cross</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>cross_ip</string>
+			<key>Title</key>
+			<string>IP address</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Användare</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>Key</key>
+			<string>dr_name</string>
+			<key>Title</key>
+			<string>Namn</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Användargränssnitt: radavstånd i issues</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<integer>40</integer>
+			<key>Key</key>
+			<string>minRowHeight</string>
+			<key>MaximumValue</key>
+			<integer>60</integer>
+			<key>MinimumValue</key>
+			<integer>32</integer>
+			<key>Type</key>
+			<string>PSSliderSpecifier</string>
+		</dict>
+		<dict>
+			<key>Title</key>
+			<string>Demo settings</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+</dict>
+</plist>

@@ -7,6 +7,7 @@
 //
 
 #import "IssueWorksheetController_Select.h"
+#import "IssueItemSelectViewController.h"
 #import "ItemCell.h"
 #import "IDRBlock.h"
 #import "IDRItem.h"

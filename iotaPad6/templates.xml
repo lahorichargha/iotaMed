@@ -46,6 +46,8 @@
     <template title="Demenssjukdomar" resourceName='' resourceType=''/>
     <template title="Depression" resourceName='' resourceType=''/>
     <template title="Diabetes " resourceName='diabetes' resourceType='xml'/>
+    <template title="Diabetes (EN)" resourceName='diabetes_EN' resourceType='xml'/>
+<!--    <template title="Diabetes Piotr" resourceName='test5' resourceType='xml'/>   -->
     <template title="Diabeteshanden" resourceName='' resourceType=''/>
     <template title="Diabetesfoten" resourceName='' resourceType=''/>
     <template title="Diarréer" resourceName='' resourceType=''/>
