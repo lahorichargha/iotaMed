@@ -53,12 +53,10 @@
         <prompt lang='EN'>Plasma glucose</prompt>
     </obsdef>
     
-    <!--
     <obsdef name='Anamnes' type='string'>
         <prompt lang='SE'>Anamnes</prompt>
         <prompt lang='EN'>History</prompt>
     </obsdef>
-     -->
     
     <block type='initial' repeats='no' title='Diagnosis and workup' templateUuid='F386B410-BF18-4ADC-A631-A7DD410651DB'>
         <description type='template'>The Diagnosis and workup template template should be added as first worksheet for the disease and
@@ -67,7 +65,7 @@
             the same clinical parameters, and also in the chronological form in the "Journal" tab.
         </description>
         <item bold='yes'>History<observation name='Anamnes' type='string' direction='getput'/></item>
-<!--        <item bold='yes'><observation name='Anamnes' direction='getput'/></item> -->
+        <item bold='yes'><observation name='Anamnes' direction='getput'/></item> 
         <item bold='yes'>Criteria:</item>
         <item indentlevel='1'>Plasma glucose &gt;= 7,0 mmol/L on two consecutive occassions, or one non-fasting glucose value in excess of 11.1 for venous blood, or
             over 12.2 mmol/L in capillary blood.</item>

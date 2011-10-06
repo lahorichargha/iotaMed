@@ -36,6 +36,7 @@
 #import "IDRValue.h"
 #import "IDRBlock.h"
 #import "NSString+iotaAdditions.h"
+#import "Notifications.h"
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -122,7 +123,8 @@
     else
         value = @"yes";
     [self.idrItem setItemValue:value];
-    [self displayValue];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kObservationDataChangedNotification object:nil];
+//    [self displayValue];
 }
 
 - (void)refreshDisplay {

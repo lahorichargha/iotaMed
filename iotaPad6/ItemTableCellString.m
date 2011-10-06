@@ -40,6 +40,7 @@
 #import "PatientContext.h"
 #import "IotaContext.h"
 #import "Funcs.h"
+#import "Notifications.h"
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -132,7 +133,6 @@
     CGFloat currentWidth = self.frame.size.width;
     CGRect newFrame = CGRectMake(currentWidth - kInputOffsetRightEndFromRight - kInputWidthWide, kInputOffsetFromTop, kInputWidthWide, kInputHeight);
     self.tfValue.frame = newFrame;
-//    NSLog(@"layout ItemTableCellString: %@", NSStringFromCGRect(newFrame));
 }
 
 - (void)dealloc {
@@ -205,6 +205,7 @@
     [textField resignFirstResponder];
     NSString *newText = textField.text;
     [self.idrItem setItemValue:newText];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kObservationDataChangedNotification object:nil];
 }
 
 @end
