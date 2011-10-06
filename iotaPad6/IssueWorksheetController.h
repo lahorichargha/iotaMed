@@ -36,14 +36,14 @@
 
 #import <UIKit/UIKit.h>
 #import "DetailViewControllerWithToolbar.h"
-#import "ItemCellDelegate.h"
+#import "ItemTableCellDelegate.h"
 
 #import "LabOrderController.h"
 #import "PrescriptionController.h"
 #import "ReferralControllerDelegate.h"
 
 @interface IssueWorksheetController : DetailViewControllerWithToolbar <UITableViewDelegate, UITableViewDataSource, 
-    ItemCellDelegate, 
+    ItemTableCellDelegate, 
     LabOrderControllerDelegate, 
     PrescriptionControllerDelegate,
     ReferralControllerDelegate> {

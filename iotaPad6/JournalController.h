@@ -33,13 +33,12 @@
 
 #import <UIKit/UIKit.h>
 #import "DetailViewControllerWithToolbar.h"
-#import "ItemCellDelegate.h"
+#import "ItemTableCellDelegate.h"
 
 @class IDRContact;
 
 @interface JournalController : DetailViewControllerWithToolbar <UITableViewDataSource, UITableViewDelegate,
-            ItemCellDelegate> {
-    
+            ItemTableCellDelegate> {
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;

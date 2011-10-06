@@ -36,7 +36,7 @@
 #import "PatientContext.h"
 #import "IDRBlock.h"
 #import "IDRItem.h"
-#import "ItemCellJournal.h"
+#import "ItemTableCell.h"
 #import "IotaContext.h"
 #import "PatientContext.h"
 #import "IDRContact.h"
@@ -238,7 +238,7 @@
     IDRBlock *block = [jBlocks objectAtIndex:[indexPath section]];
     IDRItem *item = [block.items objectAtIndex:[indexPath row]];
     
-    ItemCellJournal *cell = [ItemCellJournal cellForTableView:tableView idrItem:item];
+    ItemTableCell *cell = [ItemTableCell cellForTableView:tableView idrItem:item];
     cell.itemCellDelegate = self;
     return cell;
 }
@@ -265,7 +265,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     IDRBlock *block = [[self getJournalBlocks] objectAtIndex:[indexPath section]];
     IDRItem *item = [block.items objectAtIndex:[indexPath row]];
-    return [ItemCellJournal cellHeightForTableView:tableView idrItem:item];
+    return [ItemTableCell cellHeightForTableView:tableView idrItem:item];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

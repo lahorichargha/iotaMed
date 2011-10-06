@@ -57,7 +57,7 @@
 @synthesize parentBlock = _parentBlock;
 @synthesize idrImage = _idrImage;
 @synthesize idrSvgView = _idrSvgView;
-@synthesize itemCell = _itemCell;
+//@synthesize itemCell = _itemCell;
 @synthesize itemTableCell = _itemTableCell;
 
 - (id)init {
@@ -68,7 +68,7 @@
 }
 
 - (void)dealloc {
-    self.itemCell = nil;
+//    self.itemCell = nil;
     self.itemTableCell = nil;
     self.observation = nil;
     self.action = nil;
