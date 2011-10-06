@@ -97,7 +97,7 @@ static float kCheckViewWidth                __attribute__ ((unused)) = 50.0;
 @property (nonatomic, assign) BOOL isActive;
 @property (nonatomic, assign) IDRItem *idrItem; // IDRItem owns this ItemTableCell
 @property (nonatomic, retain) id <ItemTableCellDelegate> itemCellDelegate;
-@property (nonatomic, assign) UITableView *parentTableView;
+@property (nonatomic, readonly) UITableView *parentTableView;
 
 // gadgetSpaceAdd keeps track of how much screen real estate 
 // counting from the right margin has been

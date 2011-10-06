@@ -35,9 +35,9 @@
 @synthesize elements;
 
 - (id)initWithAttributes:(NSDictionary *)attributeDict {
-	if (![super init])
-		return nil;
-	elements = [[NSMutableArray alloc] init];
+    if ((self = [super init])) {
+        elements = [[NSMutableArray alloc] init];
+    }
 	return self;
 }
 

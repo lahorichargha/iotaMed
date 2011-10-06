@@ -93,6 +93,11 @@ static NSMutableArray *subclasses;
 @synthesize itemCellDelegate = _itemCellDelegate;
 @synthesize parentTableView = _parentTableView;
 
+// we have to find the parent table view, since it changes when moving from template to worksheet.
+- (UITableView *)parentTableView {
+    return (UITableView *)self.superview;
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
@@ -105,7 +110,6 @@ static NSMutableArray *subclasses;
 - (id)initWithTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
     if ((self = [super init])) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.parentTableView = tableView;
         self.idrItem = idrItem;
         idrItem.itemTableCell = self;
     }
@@ -121,7 +125,6 @@ static NSMutableArray *subclasses;
 - (void)dealloc {
     self.idrItem = nil;
     self.itemCellDelegate = nil;
-    self.parentTableView = nil;
     [super dealloc];
 }
 
