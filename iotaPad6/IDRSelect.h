@@ -38,4 +38,10 @@
 @property (nonatomic, retain) NSString *value;
 @property (nonatomic, retain) NSMutableArray *prompts;
 
+- (NSString *)promptForLang:(NSString *)lang;
+- (BOOL)canMerge:(IDRSelect *)other;
+- (void)merge:(IDRSelect *)other;
+
+- (void)dumpWithIndent:(NSUInteger)indent;
+
 @end

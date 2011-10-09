@@ -38,4 +38,6 @@
 @property (nonatomic, retain) NSString *lang;
 @property (nonatomic, retain) NSMutableString *promptString;
 
+- (void)dumpWithIndent:(NSUInteger)indent;
+
 @end

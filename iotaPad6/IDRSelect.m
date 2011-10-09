@@ -32,6 +32,7 @@
 
 #import "IDRSelect.h"
 #import "IDRPrompt.h"
+#import "NSString+iotaAdditions.h"
 
 @implementation IDRSelect
 
@@ -49,6 +50,12 @@ static NSString *kPromptsKey = @"promptsKey";
     return self;
 }
 
+- (void)dealloc {
+    self.value = nil;
+    self.prompts = nil;
+    [super dealloc];
+}
+
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.value forKey:kValueKey];
     [aCoder encodeObject:self.prompts forKey:kPromptsKey];
@@ -59,7 +66,63 @@ static NSString *kPromptsKey = @"promptsKey";
 }
 
 - (void)addPrompt:(IDRPrompt *)prompt {
-    [self.prompts addObject:prompt];
+    if (_prompts == nil)
+        _prompts = [[NSMutableArray alloc] init];
+    [_prompts addObject:prompt];
+}
+
+- (NSString *)promptForLang:(NSString *)lang {
+    for (IDRPrompt *prompt in self.prompts) {
+        if ([prompt.lang isEqualToString:lang])
+            return prompt.promptString;
+    }
+    if ([self.prompts count] > 0)
+        return ((IDRPrompt *)[self.prompts objectAtIndex:0]).promptString;
+    else
+        return @"<No prompts found>";
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Merge
+// -----------------------------------------------------------
+
+- (IDRPrompt *)promptForLanguage:(NSString *)lang {
+    for (IDRPrompt *prompt in self.prompts) {
+        if ([prompt.lang isEqualToString:lang])
+            return prompt;
+    }
+    return nil;
+}
+
+- (BOOL)canMerge:(IDRSelect *)other {
+    for (IDRPrompt *prompt in other.prompts) {
+        // we have to make sure that any prompts from other for a certain language either does not exist
+        // in our own collection of prompts, or if it does, that it is identical
+        IDRPrompt *myPrompt = [self promptForLanguage:prompt.lang];
+        if (myPrompt != nil && ![prompt.promptString isEqualToString:myPrompt.promptString])
+            return NO;
+    }
+    return YES;
+}
+
+- (void)merge:(IDRSelect *)other {
+    for (IDRPrompt *prompt in other.prompts) {
+        IDRPrompt *myPrompt = [self promptForLanguage:prompt.lang];
+        if (myPrompt == nil)
+            [self addPrompt:prompt];
+    }
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Debug
+// -----------------------------------------------------------
+
+- (void)dumpWithIndent:(NSUInteger)indent {
+    NSLog(@"%@value: %@", [NSString spacesOfLength:indent], self.value);
+    for (IDRPrompt *prompt in self.prompts)
+        [prompt dumpWithIndent:(indent + 4)];
 }
 
 @end

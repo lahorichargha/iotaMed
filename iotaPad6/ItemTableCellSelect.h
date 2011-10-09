@@ -30,9 +30,10 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "ItemTableCellHistory.h"
+#import "ItemTableCellString.h"
+#import "ItemSelectControllerDelegate.h"
 
-@interface ItemTableCellSelect : ItemTableCellHistory
+@interface ItemTableCellSelect : ItemTableCellString <ItemSelectControllerDelegate>
 
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 

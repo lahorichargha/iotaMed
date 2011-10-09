@@ -189,6 +189,11 @@
 		AAF8516513F93796006BFD59 /* SVGGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF8515E13F93796006BFD59 /* SVGGroup.m */; };
 		AAF8516613F93796006BFD59 /* SVGPath.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF8516013F93796006BFD59 /* SVGPath.m */; };
 		AAF9B5541392A78C0049BA69 /* test5.xml in Resources */ = {isa = PBXBuildFile; fileRef = AAF9B5531392A78C0049BA69 /* test5.xml */; };
+		CE5252F4143E452200B5F0EA /* ItemSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5252F3143E452200B5F0EA /* ItemSelectController.m */; };
+		CE5252F7143E453600B5F0EA /* ItemMultiselectController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5252F6143E453600B5F0EA /* ItemMultiselectController.m */; };
+		CE5252FA143E52C600B5F0EA /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5252F9143E52C600B5F0EA /* button.png */; };
+		CE52530B1441C56A00B5F0EA /* ItemSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5253091441C56900B5F0EA /* ItemSelectViewController.m */; };
+		CE52530C1441C56A00B5F0EA /* ItemSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE52530A1441C56900B5F0EA /* ItemSelectViewController.xib */; };
 		CE78ECA51424EE51009842DB /* IDRDef.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78ECA41424EE51009842DB /* IDRDef.m */; };
 		CE78ECA81424EF5E009842DB /* IDRDefConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78ECA71424EF5E009842DB /* IDRDefConstant.m */; };
 		CE78ECAB1424EF6C009842DB /* IDRDefScript.m in Sources */ = {isa = PBXBuildFile; fileRef = CE78ECAA1424EF6C009842DB /* IDRDefScript.m */; };
@@ -536,6 +541,15 @@
 		AAF8515F13F93796006BFD59 /* SVGPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGPath.h; sourceTree = "<group>"; };
 		AAF8516013F93796006BFD59 /* SVGPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGPath.m; sourceTree = "<group>"; };
 		AAF9B5531392A78C0049BA69 /* test5.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test5.xml; sourceTree = "<group>"; };
+		CE5252F2143E452200B5F0EA /* ItemSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemSelectController.h; sourceTree = "<group>"; };
+		CE5252F3143E452200B5F0EA /* ItemSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemSelectController.m; sourceTree = "<group>"; };
+		CE5252F5143E453600B5F0EA /* ItemMultiselectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemMultiselectController.h; sourceTree = "<group>"; };
+		CE5252F6143E453600B5F0EA /* ItemMultiselectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemMultiselectController.m; sourceTree = "<group>"; };
+		CE5252F8143E45AF00B5F0EA /* ItemSelectControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemSelectControllerDelegate.h; sourceTree = "<group>"; };
+		CE5252F9143E52C600B5F0EA /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
+		CE5253081441C56900B5F0EA /* ItemSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemSelectViewController.h; sourceTree = "<group>"; };
+		CE5253091441C56900B5F0EA /* ItemSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemSelectViewController.m; sourceTree = "<group>"; };
+		CE52530A1441C56900B5F0EA /* ItemSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemSelectViewController.xib; sourceTree = "<group>"; };
 		CE5707E8142915A100A73E39 /* iotaMed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = iotaMed.entitlements; sourceTree = "<group>"; };
 		CE78ECA31424EE51009842DB /* IDRDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDRDef.h; sourceTree = "<group>"; };
 		CE78ECA41424EE51009842DB /* IDRDef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDRDef.m; sourceTree = "<group>"; };
@@ -935,6 +949,14 @@
 				AA7EB02614012FC600F9F918 /* ItemTableCellMultiSelect.m */,
 				AA7EB02814012FD800F9F918 /* ItemTableCellAnalog.h */,
 				AA7EB02914012FD900F9F918 /* ItemTableCellAnalog.m */,
+				CE5252F2143E452200B5F0EA /* ItemSelectController.h */,
+				CE5252F3143E452200B5F0EA /* ItemSelectController.m */,
+				CE5252F5143E453600B5F0EA /* ItemMultiselectController.h */,
+				CE5252F6143E453600B5F0EA /* ItemMultiselectController.m */,
+				CE5252F8143E45AF00B5F0EA /* ItemSelectControllerDelegate.h */,
+				CE5253081441C56900B5F0EA /* ItemSelectViewController.h */,
+				CE5253091441C56900B5F0EA /* ItemSelectViewController.m */,
+				CE52530A1441C56900B5F0EA /* ItemSelectViewController.xib */,
 			);
 			name = "Item Table Cell";
 			sourceTree = "<group>";
@@ -1007,6 +1029,7 @@
 		AA94FC1A1333E59D0065DC19 /* opacity */ = {
 			isa = PBXGroup;
 			children = (
+				CE5252F9143E52C600B5F0EA /* button.png */,
 				AAECB6BC13815BF000EAB251 /* inkorg.png */,
 				AA220A7213413A170088CBD3 /* tape4.png */,
 				AAB05C02133810C7008FD031 /* issues_iota.png */,
@@ -1354,6 +1377,8 @@
 				AAF21BCA13F9927500DCDCF4 /* ankle.svg in Resources */,
 				CEA5AB34141FDE9400D24128 /* obsdef.xml in Resources */,
 				CEB2508D143779CB0037692A /* diabetes_EN.xml in Resources */,
+				CE5252FA143E52C600B5F0EA /* button.png in Resources */,
+				CE52530C1441C56A00B5F0EA /* ItemSelectViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1492,6 +1517,9 @@
 				CE78ECB4142508DF009842DB /* IDRDefScriptParameter.m in Sources */,
 				CE78ECB714250B72009842DB /* IDRSelect.m in Sources */,
 				CE78ECBB14253B69009842DB /* IDRDataDictionary.m in Sources */,
+				CE5252F4143E452200B5F0EA /* ItemSelectController.m in Sources */,
+				CE5252F7143E453600B5F0EA /* ItemMultiselectController.m in Sources */,
+				CE52530B1441C56A00B5F0EA /* ItemSelectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

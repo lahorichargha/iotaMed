@@ -43,4 +43,10 @@
 - (void)addConstant:(IDRDefConstant *)constant;
 - (void)addScript:(IDRDefScript *)script;
 - (IDRObsDef *)getObsDef:(NSString *)name;
+- (void)dumpWithIndent:(NSUInteger)indent;
+
+- (BOOL)verifyAndFix;
+- (BOOL)verify;
+- (BOOL)cleanUp;
+
 @end

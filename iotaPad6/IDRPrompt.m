@@ -31,6 +31,7 @@
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "IDRPrompt.h"
+#import "NSString+iotaAdditions.h"
 
 @implementation IDRPrompt
 
@@ -58,7 +59,9 @@ static NSString *kPromptStringKey = @"promptStringKey";
 }
 
 - (void)addContent:(NSString *)str {
-    [self.promptString appendString:str];
+    if (_promptString == nil) 
+        _promptString = [[NSMutableString alloc] init];
+    [_promptString appendString:str];
 }
 
 - (void)dealloc {
@@ -77,6 +80,15 @@ static NSString *kPromptStringKey = @"promptStringKey";
         _promptString = [[NSMutableString alloc] initWithCapacity:20];
     }
     return [[_promptString retain] autorelease];
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Debug
+// -----------------------------------------------------------
+
+- (void)dumpWithIndent:(NSUInteger)indent {
+    NSLog(@"%@lang:%@, prompt:%@", [NSString spacesOfLength:indent], self.lang, self.promptString);
 }
 
 @end

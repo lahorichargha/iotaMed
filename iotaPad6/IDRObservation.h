@@ -58,6 +58,8 @@
 - (BOOL)hasGet;
 - (BOOL)hasPut;
 - (BOOL)hasGetPut;
+- (BOOL)isSelect;
+- (BOOL)isMultiSelect;
 
 - (void)dumpWithIndent:(NSUInteger)indent;
 

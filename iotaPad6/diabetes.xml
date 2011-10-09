@@ -22,6 +22,36 @@
         </select>
     </obsdef>
     
+    <obsdef name='DiabetesType' type='select' default='type2'>
+        <prompt lang='SE'>Diabetestyp</prompt>
+        <prompt lang='EN'>Type of diabetes</prompt>
+        <select value='type1'>
+            <prompt lang='SE'>Typ 1</prompt>
+            <prompt lang='EN'>Type 1</prompt>
+        </select>
+        <select value='type2'>
+            <prompt lang='SE'>Typ 2</prompt>
+            <prompt lang='EN'>Type 2</prompt>
+        </select>
+    </obsdef>
+    
+    <obsdef name='Therapies' type='multiselect'>
+        <prompt lang='SE'>Terapityper</prompt>
+        <prompt lang='EN'>Therapies</prompt>
+        <select value='tablets'>
+            <prompt lang='SE'>Tabletter</prompt>
+            <prompt lang='EN'>Tablets</prompt>
+        </select>
+        <select value='insulin'>
+            <prompt lang='SE'>Insulin</prompt>
+            <prompt lang='EN'>Insulin</prompt>
+        </select>
+        <select value='diet'>
+            <prompt lang='SE'>Diet</prompt>
+            <prompt lang='EN'>Diet</prompt>
+        </select>
+    </obsdef>
+    
     <obsdef name='BP' type='formattedstring' dimension='mmHg' format='#/#'>
         <prompt lang='SE'>Blodtryck</prompt>
         <prompt lang='EN'>Blood pressure</prompt>
@@ -181,7 +211,8 @@
         
         <item bold='yes'>Allmänt</item>
         <item>Debutår<observation name='DiabDiagÅr' direction='getput' type='numeric'/></item>
-        <item>Typ av diabetes<observation name='TypDiabetes' direction='getput' type='string'/></item>
+        <item>Typ av diabetes (B)<observation name='TypDiabetes' direction='getput' type='string'/></item>
+        <item><observation name='DiabetesType' direction='getput'/></item>
         <item>Diabetesbehandling<observation name='BehandlingDiabetes' direction='getput'/></item>
         <item>Metod att ge insulin<observation name='MetodAttGeInsulin' direction='getput'/></item>
         

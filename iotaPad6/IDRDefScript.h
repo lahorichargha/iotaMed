@@ -41,5 +41,6 @@
 @property (nonatomic, retain) NSString *returnType;
 @property (nonatomic, retain) NSMutableArray *parameters;
 
+- (void)dumpWithIndent:(NSUInteger)indent;
 
 @end

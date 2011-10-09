@@ -36,6 +36,7 @@
 #import "NSString+iotaAdditions.h"
 #import "IDRObservation.h"
 #import "IDRObsDefinition.h"
+#import "IDRObsDef.h"
 #import "IDRBlock.h"
 #import "IDRImage.h"
 #import "IDRSvgView.h"
@@ -198,7 +199,18 @@ static NSString *kIdrSvgView = @"idrSvgView";
 // -----------------------------------------------------------
 
 - (void)addContent:(NSString *)content {
-    [self.content appendString:content];
+    if (_content == nil)
+        _content = [[NSMutableString alloc] init];
+    [_content appendString:content];
+}
+
+- (NSString *)content {
+    if (_content != nil && [_content iotaIsNonEmpty])
+        return [[_content retain] autorelease];
+    if (self.observation && self.observation.obsDef) {
+        return [self.observation.obsDef promptForLanguage:@"EN"];
+    }
+    return @"<no content found>";
 }
 
 - (void)takeAttributes:(NSDictionary *)attribs {

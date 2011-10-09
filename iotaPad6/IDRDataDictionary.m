@@ -32,8 +32,10 @@
 
 #import "IDRDataDictionary.h"
 #import "IDRObsDef.h"
+#import "IDRPrompt.h"
 #import "IDRDefScript.h"
 #import "IDRDefConstant.h"
+#import "NSString+iotaAdditions.h"
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -134,8 +136,20 @@ static NSString *kScriptsKey = @"scriptsKey";
 // -----------------------------------------------------------
 
 - (void)addObsDef:(IDRObsDef *)obsDef {
-    NSLog(@"adding obsdef to dictionary: %@", obsDef.name);
-    [self.obsDefs addObject:obsDef];
+    IDRObsDef *old = [self getObsDef:obsDef.name];
+    if (old) {
+        if (![old merge:obsDef]) {
+            NSLog(@"Failed to merge to obsDefs:");
+            [old dumpWithIndent:4];
+            [obsDef dumpWithIndent:4];
+        }
+        else
+            NSLog(@"Merged two obsDefs for name: %@", obsDef.name);
+    }
+    else {
+        NSLog(@"adding obsdef to dictionary: %@", obsDef.name);
+        [self.obsDefs addObject:obsDef];
+    }
 }
 
 - (void)addConstant:(IDRDefConstant *)constant {
@@ -146,5 +160,73 @@ static NSString *kScriptsKey = @"scriptsKey";
     [self.scripts addObject:script];
 }
 
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Verify and cleanup functions
+// -----------------------------------------------------------
+
+- (BOOL)verifyAndFix {
+    if ([self verify]) 
+        return YES;
+    return [self cleanUp];
+}
+
+- (BOOL)verify {
+    BOOL foundDuplicate = NO;
+    BOOL foundNilLangs = NO;
+    NSMutableDictionary *tracker = [[[NSMutableDictionary alloc] initWithCapacity:[self.obsDefs count]] autorelease];
+    for (IDRObsDef *obsDef in self.obsDefs) {
+        for (IDRPrompt *p in obsDef.prompts)
+            if (p.lang == nil || ![p.lang iotaIsNonEmpty])
+                foundNilLangs = YES;
+        
+        // check if we've already seen this one, if so, bad news
+        if ([tracker valueForKey:obsDef.name] != nil) {
+            NSLog(@"Found duplicate obsDef: %@", obsDef.name);
+            foundDuplicate = YES;
+        }
+        else
+            [tracker setValue:[NSNull null] forKey:obsDef.name];
+    }
+    return !foundDuplicate && !foundNilLangs;
+}
+
+- (BOOL)cleanUp {
+    IDRDataDictionary *clean = [[[IDRDataDictionary alloc] init] autorelease];
+    for (IDRObsDef *obsDef in self.obsDefs) {
+        IDRObsDef *cleanObsDef = [clean getObsDef:obsDef.name];
+        if (cleanObsDef == nil)
+            [clean addObsDef:obsDef];
+        else
+            // merge into each other, if you fail, give up and abandon the new dictionary
+            if (![cleanObsDef merge:obsDef])
+                return NO;
+    }
+    // replace current obsdefs with the new, merged, set
+    self.obsDefs = clean.obsDefs;
+    // do one more sweep to clean up nil prompts in obsdefs
+    for (IDRObsDef *od in self.obsDefs)
+        [od cleanup];
+    return YES;
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Debug
+// -----------------------------------------------------------
+
+- (void)dumpWithIndent:(NSUInteger)indent {
+    NSLog(@"%@ObsDefs", [NSString spacesOfLength:indent]);
+    for (IDRObsDef *obsdef in self.obsDefs)
+        [obsdef dumpWithIndent:(indent + 4)];
+    
+    NSLog(@"%@Constants", [NSString spacesOfLength:indent]);
+    for (IDRDefConstant *constant in self.constants)
+        [constant dumpWithIndent:(indent + 4)];
+    
+    NSLog(@"%@Scripts", [NSString spacesOfLength:indent]);
+    for (IDRDefScript *script in self.scripts) 
+        [script dumpWithIndent:(indent + 4)];
+}
 
 @end

@@ -105,12 +105,16 @@
     XML2IDR *xml2idr = [[XML2IDR alloc] initWithParser:parser];
     parser.delegate = xml2idr;
     
-     [parser parse];
+    [parser parse];
     IDRWorksheet *ws = [xml2idr.worksheet retain];
     
 //    [ws dumpWithIndent:4];
     [parser release];
     [xml2idr release];
+    IDRDataDictionary *dataDic = [IotaContext getCurrentPatientContext].dataDictionary;
+    if (![dataDic verifyAndFix])
+        NSLog(@"Could not fix up defective data dictionary");
+    [[IotaContext getCurrentPatientContext].dataDictionary dumpWithIndent:0];
     return [ws autorelease];
 }
 
@@ -303,16 +307,51 @@
         
         else if ([elementName isEqualToString:@"obsdef"]) {
             newElement = [[[IDRObsDef alloc] init] autorelease];
-            id tos = [self topOfStackElement];
-            if ([tos respondsToSelector:@selector(addObsDef:)]) {
-                [newElement takeAttributes:attributeDict];
-                [tos performSelector:@selector(addObsDef:) withObject:newElement];
-                [self pushElement:newElement];
-            }
-            else {
-                [self fatalStackPushError:@"obsdef"];
-            }
+            [newElement takeAttributes:attributeDict];
+            [self pushElement:newElement];
+//            id tos = [self topOfStackElement];
+//            if ([tos respondsToSelector:@selector(addObsDef:)]) {
+//                [newElement takeAttributes:attributeDict];
+//                [tos performSelector:@selector(addObsDef:) withObject:newElement];
+//                [self pushElement:newElement];
+//            }
+//            else {
+//                [self fatalStackPushError:@"obsdef"];
+//            }
         }
+        
+        else if ([elementName isEqualToString:@"constant"]) {
+            newElement = [[[IDRDefConstant alloc] init] autorelease];
+            [newElement takeAttributes:attributeDict];
+            [self pushElement:newElement];
+//            id tos = [self topOfStackElement];
+//            if ([tos respondsToSelector:@selector(addConstant:)]) {
+//                [newElement takeAttributes:attributeDict];
+//                [tos performSelector:@selector(addConstant:) withObject:newElement];
+//                [self pushElement:newElement];
+//            }
+//            else {
+//                [self fatalStackPushError:@"constant"];
+//            }
+        }
+        
+        else if ([elementName isEqualToString:@"script"]) {
+            newElement = [[[IDRDefScript alloc] init] autorelease];
+            [newElement takeAttributes:attributeDict];
+            [self pushElement:newElement];
+//            id tos = [self topOfStackElement];
+//            if ([tos respondsToSelector:@selector(addScript:)]) {
+//                [newElement takeAttributes:attributeDict];
+//                [tos performSelector:@selector(addScript:) withObject:newElement];
+//                [self pushElement:newElement];
+//            }
+//            else {
+//                [self fatalStackPushError:@"script"];
+//            }
+        }
+
+        // -----------------------------------------------------------
+        // subcomponents of data dic objects
         
         else if ([elementName isEqualToString:@"prompt"]) {
             newElement = [[[IDRPrompt alloc] init] autorelease];
@@ -338,33 +377,6 @@
             else {
                 [self fatalStackPushError:@"select"];
             }
-        }
-        
-        else if ([elementName isEqualToString:@"constant"]) {
-            newElement = [[[IDRDefConstant alloc] init] autorelease];
-            id tos = [self topOfStackElement];
-            if ([tos respondsToSelector:@selector(addConstant:)]) {
-                [newElement takeAttributes:attributeDict];
-                [tos performSelector:@selector(addConstant:) withObject:newElement];
-                [self pushElement:newElement];
-            }
-            else {
-                [self fatalStackPushError:@"constant"];
-            }
-        }
-        
-        else if ([elementName isEqualToString:@"script"]) {
-            newElement = [[[IDRDefScript alloc] init] autorelease];
-            id tos = [self topOfStackElement];
-            if ([tos respondsToSelector:@selector(addScript:)]) {
-                [newElement takeAttributes:attributeDict];
-                [tos performSelector:@selector(addScript:) withObject:newElement];
-                [self pushElement:newElement];
-            }
-            else {
-                [self fatalStackPushError:@"script"];
-            }
-            
         }
         
         else if ([elementName isEqualToString:@"parameter"]) {
@@ -400,7 +412,14 @@
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-    [self popElement];
+    id popped = [self popElement];
+    // data dictionary stuff should only be added once complete
+    if ([popped isKindOfClass:[IDRObsDef class]])
+        [[IotaContext getCurrentPatientContext].dataDictionary addObsDef:popped];
+    else if ([popped isKindOfClass:[IDRDefConstant class]])
+        [[IotaContext getCurrentPatientContext].dataDictionary addConstant:popped];
+    else if ([popped isKindOfClass:[IDRDefScript class]])
+        [[IotaContext getCurrentPatientContext].dataDictionary addScript:popped];
 }
 
 - (void)parser:(NSXMLParser *)parser foundCDATA:(NSData *)CDATABlock {

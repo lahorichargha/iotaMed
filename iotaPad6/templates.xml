@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates>
+    <template title='Test' resourceName='test5' resourceType='xml'/>
+    
     <template title="Acne" resourceName='' resourceType=''/>
     <template title="Akromioclavikularleden, axel" resourceName='' resourceType=''/>
     <template title="Aktinisk keratos" resourceName='' resourceType=''/>

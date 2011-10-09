@@ -32,6 +32,7 @@
 
 #import "IDRDefScript.h"
 #import "IDRDefScriptParameter.h"
+#import "NSString+iotaAdditions.h"
 
 @implementation IDRDefScript
 
@@ -84,11 +85,25 @@ static NSString *kParametersKey = @"parametersKey";
 }
 
 - (void)addCData:(NSString *)cdata {
-    [self.script appendString:cdata];
+    if (_script == nil)
+        _script = [[NSMutableString alloc] init];
+    [_script appendString:cdata];
 }
 
 - (void)addParameter:(IDRDefScriptParameter *)parameter {
     [self.parameters addObject:parameter];
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Debug
+// -----------------------------------------------------------
+
+- (void)dumpWithIndent:(NSUInteger)indent {
+    NSLog(@"%@script, lang:%@, type:%@, return:%@", [NSString spacesOfLength:indent], self.language, self.scriptType, self.returnType);
+    NSLog(@"%@%@", [NSString spacesOfLength:indent], self.script);
+    for (IDRDefScriptParameter *param in self.parameters)
+        [param dumpWithIndent:(indent + 4)];
 }
 
 @end

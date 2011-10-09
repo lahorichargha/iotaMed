@@ -31,6 +31,7 @@
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "IDRDefConstant.h"
+#import "NSString+iotaAdditions.h"
 
 @implementation IDRDefConstant
 
@@ -57,6 +58,15 @@ static NSString *kConstantValueKey = @"constantValueKey";
 
 - (void)takeAttributes:(NSDictionary *)attribs {
     [super takeAttributes:attribs];
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Debug
+// -----------------------------------------------------------
+
+- (void)dumpWithIndent:(NSUInteger)indent {
+    NSLog(@"%@constant value: %@", [NSString spacesOfLength:indent], self.constantValue);
 }
 
 @end

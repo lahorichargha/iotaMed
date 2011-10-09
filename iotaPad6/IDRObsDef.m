@@ -35,6 +35,7 @@
 #import "IDRSelect.h"
 #import "IDRValue.h"
 #import "Funcs.h"
+#import "NSString+iotaAdditions.h"
 
 @implementation IDRObsDef
 
@@ -122,10 +123,25 @@ static NSString *typeAttrib[] = {@"none", @"numeric", @"string", @"formattedstri
     return [self getSelectWithValue:self.defaultSelect];
 }
 
-- (NSString *)promptForLanguage:(NSString *)language {
+- (IDRPrompt *)idrPromptForLanguage:(NSString *)language {
     for (IDRPrompt *prompt in self.prompts)
         if ([prompt.lang isEqualToString:language])
-            return prompt.promptString;
+            return prompt;
+    return nil;
+}
+
+- (NSString *)promptForLanguage:(NSString *)language {
+    IDRPrompt *prompt = [self idrPromptForLanguage:language];
+    if (prompt)
+        return prompt.promptString;
+    else
+        return nil;
+}
+
+- (IDRSelect *)selectForValue:(NSString *)value {
+    for (IDRSelect *select in self.selects)
+        if ([select.value isEqualToString:value])
+            return select;
     return nil;
 }
 
@@ -154,6 +170,129 @@ static NSString *typeAttrib[] = {@"none", @"numeric", @"string", @"formattedstri
         _selects = [[NSMutableArray alloc] initWithCapacity:5]; 
     }
     return [[_selects retain] autorelease];
+}
+
+- (NSMutableArray *)values {
+    if (_values == nil) {
+        _values = [[NSMutableArray alloc] initWithCapacity:5];
+    }
+    return [[_values retain] autorelease];
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Merge
+// -----------------------------------------------------------
+
+- (BOOL)canMergePrompts:(IDRObsDef *)other {
+    for (IDRPrompt *prompt in other.prompts) {
+        // we have to make sure that any prompts from other for a certain language either does not exist
+        // in our own collection of prompts, or if it does, that it is identical
+        NSString *myPrompt = [self promptForLanguage:prompt.lang];
+        if (myPrompt != nil && ![prompt.promptString isEqualToString:myPrompt])
+            return NO;
+    }
+    return YES;
+}
+
+- (BOOL)canMergeSelects:(IDRObsDef *)other {
+    for (IDRSelect *select in other.selects) {
+        // same principle: any select in other either needs to be new, or needs to be identical
+        // to an existing select
+        IDRSelect *old = [self selectForValue:select.value];
+        if (old != nil && ![old canMerge:select])
+            return NO;
+    }
+    return YES;
+}
+
+- (BOOL)canMergeValues:(IDRObsDef *)other {
+    //TODO:
+    // !!!:
+    // needs fleshing out
+    return YES;
+}
+
+- (BOOL)canMerge:(NSString *)left right:(NSString *)right {
+    return left == nil || ![left iotaIsNonEmpty] || right == nil || ![right iotaIsNonEmpty] || [left isEqualToString:right];
+}
+
+- (NSString *)mergeStrings:(NSString *)left right:(NSString *)right {
+    // assumes you already know they can be merged
+    return (left != nil && [left iotaIsNonEmpty]) ? left : right;
+}
+
+- (void)mergePrompts:(IDRObsDef *)other {
+    for (IDRPrompt *prompt in other.prompts) {
+        IDRPrompt *myPrompt = [self idrPromptForLanguage:prompt.lang];
+        if (!myPrompt && prompt.lang != nil)
+            [self addPrompt:prompt];
+    }
+    [self cleanup];
+}
+
+- (void)mergeSelects:(IDRObsDef *)other {
+    for (IDRSelect *select in other.selects) {
+        IDRSelect *mySelect = [self selectForValue:select.value];
+        if (mySelect != nil)
+            [mySelect merge:select];
+        else
+            [self.selects addObject:other];
+    }
+}
+
+- (void)cleanup {
+    // clean out prompts with no language
+    NSMutableArray *objectsToRemove = [NSMutableArray array];
+    for (IDRPrompt *p in self.prompts) 
+        if (p.lang == nil || ![p.lang iotaIsNonEmpty])
+            [objectsToRemove addObject:p];
+    [_prompts removeObjectsInArray:objectsToRemove];
+}
+
+- (void)mergeValues:(IDRObsDef *)other {
+    
+}
+
+- (BOOL)merge:(IDRObsDef *)other {
+    if ([self canMerge:self.type right:other.type] &&
+        [self canMerge:self.dimension right:other.dimension] &&
+        [self canMerge:self.format right:other.format] &&
+        [self canMerge:self.defaultSelect right:other.defaultSelect] &&
+        [self canMergePrompts:other] &&
+        [self canMergeSelects:other] &&
+        [self canMergeValues:other]) {
+        
+        NSLog(@"merging obsdef: %@", self.name);
+        self.type = [self mergeStrings:self.type right:other.type];
+        self.dimension = [self mergeStrings:self.dimension right:other.dimension];
+        self.format = [self mergeStrings:self.format right:other.format];
+        self.defaultSelect = [self mergeStrings:self.defaultSelect right:other.defaultSelect];
+        [self mergePrompts:other];
+        [self mergeSelects:other];
+        [self mergeValues:other];
+        return YES;
+    }
+    else {
+        return NO;
+    }
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Debug
+// -----------------------------------------------------------
+
+- (void)dumpWithIndent:(NSUInteger)indent {
+    NSLog(@"%@name:%@, type:%@, dim:%@, format:%@, default:%@", 
+          [NSString spacesOfLength:indent],
+          self.name, self.type, self.dimension, self.format, self.defaultSelect);
+    for (IDRPrompt *prompt in self.prompts)
+        [prompt dumpWithIndent:(indent + 4)];
+    for (IDRSelect *select in self.selects)
+        [select dumpWithIndent:(indent + 4)];
+    for (IDRValue *value in self.values)
+        [value dumpWithIndent:(indent + 4)];
 }
 
 @end

@@ -169,18 +169,18 @@ static NSString *kDescriptionKey = @"descriptionKey";
 #pragma mark Data dictionary related accessors
 // -----------------------------------------------------------
 
-
-- (void)addObsDef:(IDRObsDef *)obsDef {
-    [[IotaContext getCurrentPatientContext].dataDictionary addObsDef:obsDef];
-}
-
-- (void)addConstant:(IDRDefConstant *)constant {
-    [[IotaContext getCurrentPatientContext].dataDictionary addConstant:constant];
-}
-
-- (void)addScript:(IDRDefScript *)script {
-    [[IotaContext getCurrentPatientContext].dataDictionary addScript:script];
-}
+//
+//- (void)addObsDef:(IDRObsDef *)obsDef {
+//    [[IotaContext getCurrentPatientContext].dataDictionary addObsDef:obsDef];
+//}
+//
+//- (void)addConstant:(IDRDefConstant *)constant {
+//    [[IotaContext getCurrentPatientContext].dataDictionary addConstant:constant];
+//}
+//
+//- (void)addScript:(IDRDefScript *)script {
+//    [[IotaContext getCurrentPatientContext].dataDictionary addScript:script];
+//}
 
 
 // -----------------------------------------------------------

@@ -172,6 +172,14 @@ static NSString *kOptionsKey = @"optionsKey";
     return ([self.type isEqualToString:@"check"]);
 }
 
+- (BOOL)isSelect {
+    return self.obsDef && ([self.obsDef obsDefType] == eObsDefTypeSelect);
+}
+
+- (BOOL)isMultiSelect {
+    return self.obsDef && ([self.obsDef obsDefType] == eObsDefTypeMultiselect);
+}
+
 
 // -----------------------------------------------------------
 #pragma mark -

@@ -37,5 +37,5 @@
 @property (nonatomic, retain) UITextField *tfValue;
 
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
-
+- (void)writeCurrent;
 @end

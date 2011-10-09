@@ -38,4 +38,6 @@
 @property (nonatomic, retain) NSString *localName;
 @property (nonatomic, retain) NSString *def;
 
+- (void)dumpWithIndent:(NSUInteger)indent;
+
 @end

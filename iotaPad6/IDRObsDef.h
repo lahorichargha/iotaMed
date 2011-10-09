@@ -56,5 +56,8 @@ enum eObsDefType {
 
 - (NSString *)promptForLanguage:(NSString *)language;
 - (enum eObsDefType)obsDefType;
+- (BOOL)merge:(IDRObsDef *)other;
+- (void)cleanup;
+- (void)dumpWithIndent:(NSUInteger)indent;
 
 @end

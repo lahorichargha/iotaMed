@@ -31,6 +31,7 @@
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "ItemTableCellMultiSelect.h"
+#import "IDRObservation.h"
 
 @implementation ItemTableCellMultiSelect
 
@@ -39,7 +40,10 @@
 }
 
 + (BOOL)canHandle:(IDRItem *)idrItem {
-    return NO;
+    if ([idrItem.observation isMultiSelect])
+        return YES;
+    else
+        return NO;
 }
 
 + (CGFloat)subCellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {

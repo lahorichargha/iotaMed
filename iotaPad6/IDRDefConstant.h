@@ -37,4 +37,6 @@
 
 @property (nonatomic, retain) NSString *constantValue;
 
+- (void)dumpWithIndent:(NSUInteger)indent;
+
 @end

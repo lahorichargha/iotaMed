@@ -194,7 +194,7 @@
         [tos performSelector:@selector(addContent:) withObject:string];
     }
     else {
-        [self.charBuffer appendString:string];
+        [_charBuffer appendString:string];
     }
 }
 

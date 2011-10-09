@@ -32,6 +32,7 @@
 
 
 #import "IDRDefScriptParameter.h"
+#import "NSString+iotaAdditions.h"
 
 @implementation IDRDefScriptParameter
 
@@ -65,7 +66,13 @@ static NSString *kDefKey = @"defKey";
     self.def = [attribs valueForKey:@"def"];
 }
 
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Debug
+// -----------------------------------------------------------
 
-
+- (void)dumpWithIndent:(NSUInteger)indent {
+    NSLog(@"%@Param localname:%@, def:%@", [NSString spacesOfLength:indent], self.localName, self.def);
+}
 
 @end
