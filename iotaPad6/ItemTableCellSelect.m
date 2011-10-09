@@ -185,7 +185,7 @@ static CGFloat kButtonOffsetRight = 40.0;    // from gadget to the right
     NSArray *arr = self.idrItem.observation.obsDef.selects;
     NSMutableArray *result = [[NSMutableArray alloc] initWithCapacity:[arr count]];
     for (IDRSelect *select in arr) {
-        [result addObject:[select promptForLang:@"EN"]];
+        [result addObject:[select promptForPreferredLanguage]];
     }
     return [result autorelease];
 }
@@ -200,7 +200,9 @@ static CGFloat kButtonOffsetRight = 40.0;    // from gadget to the right
 }
 
 - (void)selectedValues:(NSArray *)selected {
-    self.tfValue.text = [selected objectAtIndex:0];
+    IDRSelect *sel = [self.idrItem.observation.obsDef getSelectWithValue:[selected objectAtIndex:0]]; 
+    NSString *value = [sel promptForPreferredLanguage];
+    self.tfValue.text = value;
     [self writeCurrent];
     [self.popOver dismissPopoverAnimated:YES];
 }

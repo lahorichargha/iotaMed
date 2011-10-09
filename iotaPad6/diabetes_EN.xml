@@ -9,25 +9,25 @@
     
     
     <obsdef name='Pulm' type='string' default='norm' free='free'>
-        <prompt lang='SE'>Lungor</prompt>
-        <prompt lang='NL'>Longen</prompt>
-        <prompt Lang='EN'>Lungs</prompt>
+        <prompt lang='sv'>Lungor</prompt>
+        <prompt lang='nl'>Longen</prompt>
+        <prompt Lang='en'>Lungs</prompt>
         <select value='norm'>
-            <prompt lang='SE'>Normalt andningsljud bilat. Inga pip eller rassel.</prompt>
-            <prompt lang='NL'>Normaal vesikulair ademhalingsgeruis bilateraal, geen krepitaties of rhonchi.</prompt>
-            <prompt lang='EN'>Normal breathing sounds</prompt>
+            <prompt lang='sv'>Normalt andningsljud bilat. Inga pip eller rassel.</prompt>
+            <prompt lang='nl'>Normaal vesikulair ademhalingsgeruis bilateraal, geen krepitaties of rhonchi.</prompt>
+            <prompt lang='en'>Normal breathing sounds</prompt>
         </select>
         <select value='wet'>
-            <prompt lang='SE'>Fuktiga krepitationer bilateralt basalt.</prompt>
-            <prompt lang='NL'>Bilateraal vochtige krepitaties basaal.</prompt>
-            <prompt lang='EN'>Bilateral wet crepitations at the bases.</prompt>
+            <prompt lang='sv'>Fuktiga krepitationer bilateralt basalt.</prompt>
+            <prompt lang='nl'>Bilateraal vochtige krepitaties basaal.</prompt>
+            <prompt lang='en'>Bilateral wet crepitations at the bases.</prompt>
         </select>
     </obsdef>
     
     <obsdef name='BP' type='formattedstring' dimension='mmHg' format='#/#'>
-        <prompt lang='SE'>Blodtryck</prompt>
-        <prompt lang='EN'>Blood pressure</prompt>
-        <prompt lang='NL'>Bloeddruk</prompt>
+        <prompt lang='sv'>Blodtryck</prompt>
+        <prompt lang='en'>Blood pressure</prompt>
+        <prompt lang='nl'>Bloeddruk</prompt>
     </obsdef>
     
     <constant name='InsulinATC'>
@@ -49,13 +49,13 @@
     
     
     <obsdef name='PGlukos2' type='numeric' dimension='mmol/L'>
-        <prompt lang='SE'>Plasmaglukos2:</prompt>
-        <prompt lang='EN'>Plasma glucose</prompt>
+        <prompt lang='sv'>Plasmaglukos2:</prompt>
+        <prompt lang='en'>Plasma glucose</prompt>
     </obsdef>
     
     <obsdef name='Anamnes' type='string'>
-        <prompt lang='SE'>Anamnes</prompt>
-        <prompt lang='EN'>History</prompt>
+        <prompt lang='sv'>Anamnes</prompt>
+        <prompt lang='en'>History</prompt>
     </obsdef>
     
     <block type='initial' repeats='no' title='Diagnosis and workup' templateUuid='F386B410-BF18-4ADC-A631-A7DD410651DB'>

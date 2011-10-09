@@ -67,6 +67,8 @@ enum enumNamingOfPatients {
 + (NSString *)crossServerIPNumber;
 + (BOOL)useRemoteServer;
 + (enum enumNamingOfPatients)namingOfPatients;
++ (NSString *)currentIso639Language;
++ (NSUInteger)indexOfPreferredLanguage:(NSArray *)langCodes;
 
 + (IDRWorksheet *)worksheetForUuid:(NSString *)uuid;
 + (IDRBlock *)blockForUuid:(NSString *)uuid;

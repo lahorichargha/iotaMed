@@ -151,6 +151,25 @@ static IotaContext * volatile _sharedInstance = nil;
     }
 }
 
++ (NSString *)currentIso639Language {
+    NSString *langCode = [[NSLocale preferredLanguages] objectAtIndex:0];
+    return langCode;
+}
+
++ (NSUInteger)indexOfPreferredLanguage:(NSArray *)langCodes {
+    // you get an array of language codes, and from this list you
+    // should choose the one that matches the language of highest 
+    // preference for the user. If none can be found, throw an exception
+    for (NSString *language in [NSLocale preferredLanguages]) {
+        for (NSString *langCode in langCodes) {
+            if ([langCode isEqualToString:language])
+                return [langCodes indexOfObject:langCode];
+        }
+    }
+    //    [NSException raise:@"Could not find language in system" format:@"Language code: %@ matches no language in preferences"];
+    return 0;
+}
+
 // -----------------------------------------------------------
 #pragma mark -
 #pragma mark Values from the settings pane in iOS

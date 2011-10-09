@@ -2,15 +2,15 @@
 <template type='issue' title='Diabetes' fromICD10='E10' toICD10='E14' lang='SE' templateUuid='D31C527B-9F08-4B6D-8A02-9FD8A728EACC'>
     
     <obsdef name='DiabetesType' type='select'>
-        <prompt lang='SE'>Diabetestyp</prompt>
-        <prompt lang='EN'>Type of diabetes</prompt>
+        <prompt lang='sv'>Diabetestyp</prompt>
+        <prompt lang='en'>Type of diabetes</prompt>
         <select value='type1'>
-            <prompt lang='SE'>Typ 1</prompt>
-            <prompt lang='EN'>Type 1</prompt>
+            <prompt lang='sv'>Typ 1</prompt>
+            <prompt lang='en'>Type 1</prompt>
         </select>
         <select value='type2'>
-            <prompt lang='SE'>Typ 2</prompt>
-            <prompt lang='EN'>Type 2</prompt>
+            <prompt lang='sv'>Typ 2</prompt>
+            <prompt lang='en'>Type 2</prompt>
         </select>
     </obsdef>
 

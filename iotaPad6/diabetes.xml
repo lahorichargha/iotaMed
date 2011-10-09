@@ -10,52 +10,52 @@
     
     
     <obsdef name='Pulm' type='string' default='norm' free='free'>
-        <prompt lang='SE'>Lungor</prompt>
-        <prompt lang='NL'>Longen</prompt>
+        <prompt lang='sv'>Lungor</prompt>
+        <prompt lang='nl'>Longen</prompt>
         <select value='norm'>
-            <prompt lang='SE'>Normalt andningsljud bilat. Inga pip eller rassel.</prompt>
-            <prompt lang='NL'>Normaal vesikulair ademhalingsgeruis bilateraal, geen krepitaties of rhonchi.</prompt>
+            <prompt lang='sv'>Normalt andningsljud bilat. Inga pip eller rassel.</prompt>
+            <prompt lang='nl'>Normaal vesikulair ademhalingsgeruis bilateraal, geen krepitaties of rhonchi.</prompt>
         </select>
         <select value='wet'>
-            <prompt lang='SE'>Fuktiga krepitationer bilateralt basalt.</prompt>
-            <prompt lang='NL'>Bilateraal vochtige krepitaties basaal.</prompt>
+            <prompt lang='sv'>Fuktiga krepitationer bilateralt basalt.</prompt>
+            <prompt lang='nl'>Bilateraal vochtige krepitaties basaal.</prompt>
         </select>
     </obsdef>
     
     <obsdef name='DiabetesType' type='select' default='type2'>
-        <prompt lang='SE'>Diabetestyp</prompt>
-        <prompt lang='EN'>Type of diabetes</prompt>
+        <prompt lang='sv'>Diabetestyp</prompt>
+        <prompt lang='en'>Type of diabetes</prompt>
         <select value='type1'>
-            <prompt lang='SE'>Typ 1</prompt>
-            <prompt lang='EN'>Type 1</prompt>
+            <prompt lang='sv'>Typ 1</prompt>
+            <prompt lang='en'>Type 1</prompt>
         </select>
         <select value='type2'>
-            <prompt lang='SE'>Typ 2</prompt>
-            <prompt lang='EN'>Type 2</prompt>
+            <prompt lang='sv'>Typ 2</prompt>
+            <prompt lang='en'>Type 2</prompt>
         </select>
     </obsdef>
     
     <obsdef name='Therapies' type='multiselect'>
-        <prompt lang='SE'>Terapityper</prompt>
-        <prompt lang='EN'>Therapies</prompt>
+        <prompt lang='sv'>Terapityper</prompt>
+        <prompt lang='en'>Therapies</prompt>
         <select value='tablets'>
-            <prompt lang='SE'>Tabletter</prompt>
-            <prompt lang='EN'>Tablets</prompt>
+            <prompt lang='sv'>Tabletter</prompt>
+            <prompt lang='en'>Tablets</prompt>
         </select>
         <select value='insulin'>
-            <prompt lang='SE'>Insulin</prompt>
-            <prompt lang='EN'>Insulin</prompt>
+            <prompt lang='sv'>Insulin</prompt>
+            <prompt lang='en'>Insulin</prompt>
         </select>
         <select value='diet'>
-            <prompt lang='SE'>Diet</prompt>
-            <prompt lang='EN'>Diet</prompt>
+            <prompt lang='sv'>Diet</prompt>
+            <prompt lang='en'>Diet</prompt>
         </select>
     </obsdef>
     
     <obsdef name='BP' type='formattedstring' dimension='mmHg' format='#/#'>
-        <prompt lang='SE'>Blodtryck</prompt>
-        <prompt lang='EN'>Blood pressure</prompt>
-        <prompt lang='NL'>Bloeddruk</prompt>
+        <prompt lang='sv'>Blodtryck</prompt>
+        <prompt lang='en'>Blood pressure</prompt>
+        <prompt lang='nl'>Bloeddruk</prompt>
     </obsdef>
     
     <constant name='InsulinATC'>
@@ -75,7 +75,7 @@
     </script>
     
     <obsdef name='PGlukos2' type='numeric' dimension='mmol/L'>
-        <prompt lang='SE'>Plasmaglukos2:</prompt>
+        <prompt lang='sv'>Plasmaglukos2:</prompt>
     </obsdef>
     
     

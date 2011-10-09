@@ -33,6 +33,9 @@
 #import <Foundation/Foundation.h>
 #import "IDRDef.h"
 
+@class IDRPrompt;
+@class IDRSelect;
+
 enum eObsDefType {
     eObsDefTypeNone = 0,
     eObsDefTypeNumeric,
@@ -54,10 +57,12 @@ enum eObsDefType {
 @property (nonatomic, retain) NSMutableArray *selects;
 @property (nonatomic, retain) NSMutableArray *values;
 
-- (NSString *)promptForLanguage:(NSString *)language;
+- (IDRPrompt *)promptForPreferredLanguage;
+//- (NSString *)promptForLanguage:(NSString *)language;
 - (enum eObsDefType)obsDefType;
 - (BOOL)merge:(IDRObsDef *)other;
 - (void)cleanup;
 - (void)dumpWithIndent:(NSUInteger)indent;
+- (IDRSelect *)getSelectWithValue:(NSString *)value;
 
 @end

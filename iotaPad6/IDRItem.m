@@ -41,6 +41,7 @@
 #import "IDRImage.h"
 #import "IDRSvgView.h"
 #import "IDRValue.h"
+#import "IDRPrompt.h"
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -208,7 +209,8 @@ static NSString *kIdrSvgView = @"idrSvgView";
     if (_content != nil && [_content iotaIsNonEmpty])
         return [[_content retain] autorelease];
     if (self.observation && self.observation.obsDef) {
-        return [self.observation.obsDef promptForLanguage:@"EN"];
+        IDRPrompt *prompt = [self.observation.obsDef promptForPreferredLanguage];
+        return prompt.promptString;
     }
     return @"<no content found>";
 }

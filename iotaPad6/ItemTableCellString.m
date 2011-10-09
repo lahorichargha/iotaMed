@@ -35,6 +35,7 @@
 #import "IDRItem.h"
 #import "IDRValue.h"
 #import "NSString+iotaAdditions.h"
+#import "IDRPrompt.h"
 
 #import "IDRObsDef.h"
 #import "PatientContext.h"
@@ -89,9 +90,9 @@
             IDRObsDef *obsDef = [pCtx getObsDefForName:obsName];
             if (obsDef == nil)
                 postAlert([NSString stringWithFormat:@"Definition not found in data dictionary: %@", obsName]);
-            NSString *prompt = [obsDef promptForLanguage:@"SE"];
+            IDRPrompt *prompt = [obsDef promptForPreferredLanguage];
             if (prompt != nil)
-                self.lblContent.text = prompt;
+                self.lblContent.text = prompt.promptString;
         }
 
         UIToolbar *tb = [[[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 10, 30)] autorelease];

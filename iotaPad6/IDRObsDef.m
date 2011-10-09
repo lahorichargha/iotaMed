@@ -36,6 +36,7 @@
 #import "IDRValue.h"
 #import "Funcs.h"
 #import "NSString+iotaAdditions.h"
+#import "IotaContext.h"
 
 @implementation IDRObsDef
 
@@ -123,20 +124,32 @@ static NSString *typeAttrib[] = {@"none", @"numeric", @"string", @"formattedstri
     return [self getSelectWithValue:self.defaultSelect];
 }
 
-- (IDRPrompt *)idrPromptForLanguage:(NSString *)language {
+- (IDRPrompt *)promptForPreferredLanguage {
+    NSMutableArray *choices = [NSMutableArray arrayWithCapacity:[self.prompts count]];
     for (IDRPrompt *prompt in self.prompts)
-        if ([prompt.lang isEqualToString:language])
-            return prompt;
-    return nil;
+        [choices addObject:prompt.lang];
+    
+    NSUInteger index = [IotaContext indexOfPreferredLanguage:choices];
+    return [self.prompts objectAtIndex:index];
 }
 
-- (NSString *)promptForLanguage:(NSString *)language {
-    IDRPrompt *prompt = [self idrPromptForLanguage:language];
-    if (prompt)
-        return prompt.promptString;
-    else
-        return nil;
+// this method is used only for merges
+- (IDRPrompt *)idrPromptForLanguage:(NSString *)language {
+    NSMutableArray *choices = [NSMutableArray arrayWithCapacity:[self.prompts count]];
+    for (IDRPrompt *prompt in self.prompts)
+        [choices addObject:prompt.lang];
+    
+    NSUInteger index = [IotaContext indexOfPreferredLanguage:choices];
+    return [self.prompts objectAtIndex:index];
 }
+
+//- (NSString *)promptForLanguage:(NSString *)language {
+//    IDRPrompt *prompt = [self idrPromptForLanguage:language];
+//    if (prompt)
+//        return prompt.promptString;
+//    else
+//        return nil;
+//}
 
 - (IDRSelect *)selectForValue:(NSString *)value {
     for (IDRSelect *select in self.selects)
@@ -188,8 +201,8 @@ static NSString *typeAttrib[] = {@"none", @"numeric", @"string", @"formattedstri
     for (IDRPrompt *prompt in other.prompts) {
         // we have to make sure that any prompts from other for a certain language either does not exist
         // in our own collection of prompts, or if it does, that it is identical
-        NSString *myPrompt = [self promptForLanguage:prompt.lang];
-        if (myPrompt != nil && ![prompt.promptString isEqualToString:myPrompt])
+        IDRPrompt *myPrompt = [self idrPromptForLanguage:prompt.lang];
+        if (myPrompt != nil && ![prompt.promptString isEqualToString:myPrompt.promptString])
             return NO;
     }
     return YES;

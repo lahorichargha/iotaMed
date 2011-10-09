@@ -33,6 +33,7 @@
 #import "IDRSelect.h"
 #import "IDRPrompt.h"
 #import "NSString+iotaAdditions.h"
+#import "IotaContext.h"
 
 @implementation IDRSelect
 
@@ -71,16 +72,27 @@ static NSString *kPromptsKey = @"promptsKey";
     [_prompts addObject:prompt];
 }
 
-- (NSString *)promptForLang:(NSString *)lang {
+- (NSString *)promptForPreferredLanguage {
+    NSMutableArray *choices = [NSMutableArray arrayWithCapacity:[self.prompts count]];
     for (IDRPrompt *prompt in self.prompts) {
-        if ([prompt.lang isEqualToString:lang])
-            return prompt.promptString;
+        [choices addObject:prompt.lang];
     }
-    if ([self.prompts count] > 0)
-        return ((IDRPrompt *)[self.prompts objectAtIndex:0]).promptString;
-    else
-        return @"<No prompts found>";
+    NSUInteger index = [IotaContext indexOfPreferredLanguage:choices];
+    IDRPrompt *selectedPrompt = [self.prompts objectAtIndex:index];
+    NSString *promptString = selectedPrompt.promptString;
+    return promptString;
 }
+
+//- (NSString *)promptForLang:(NSString *)lang {
+//    for (IDRPrompt *prompt in self.prompts) {
+//        if ([prompt.lang isEqualToString:lang])
+//            return prompt.promptString;
+//    }
+//    if ([self.prompts count] > 0)
+//        return ((IDRPrompt *)[self.prompts objectAtIndex:0]).promptString;
+//    else
+//        return @"<No prompts found>";
+//}
 
 // -----------------------------------------------------------
 #pragma mark -
