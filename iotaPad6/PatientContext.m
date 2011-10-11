@@ -50,6 +50,7 @@
 #import "Notifications.h"
 #import "Patient.h"
 #import "IotaContext.h"
+#import "IDRDataDictionary.h"
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -71,14 +72,17 @@
 @synthesize currentContact = _currentContact;
 @synthesize obsDefinitions = _obsDefinitions;
 @synthesize patient = _patient;
+@synthesize dataDictionary = _dataDictionary;
 
 static NSString *kContactsKey = @"contactsKey";
 static NSString *kCurrentContactKey = @"contactKey";
 static NSString *kObsDefinitionsKey = @"obsDefinitionsKey";
 static NSString *kPatientKey = @"patientKey";
+static NSString *kDataDictionaryKey = @"dataDictionaryKey";
 
 - (id)init {
     if ((self = [super init])) {
+        NSLog(@"PatientContext init");
         _contacts = [[NSMutableArray alloc] initWithCapacity:5];
         _currentContact = nil;
         _obsDefinitions = [[NSMutableArray alloc] initWithCapacity:5];
@@ -87,29 +91,35 @@ static NSString *kPatientKey = @"patientKey";
 }
 
 - (void)dealloc {
+    NSLog(@"PatientContext dealloc");
     self.contacts = nil;
     self.currentContact = nil;
     self.obsDefinitions = nil;
     self.patient = nil;
+    self.dataDictionary = nil;
     [super dealloc];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
+    NSLog(@"PatientContext initWithCoder");
     if ((self = [super init])) {
         self.contacts = [aDecoder decodeObjectForKey:kContactsKey];
         [self.contacts sortUsingSelector:@selector(compare:)];
         self.currentContact = [aDecoder decodeObjectForKey:kCurrentContactKey];
         self.obsDefinitions = [aDecoder decodeObjectForKey:kObsDefinitionsKey];
         self.patient = [aDecoder decodeObjectForKey:kPatientKey];
+        self.dataDictionary = [aDecoder decodeObjectForKey:kDataDictionaryKey];
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
+    NSLog(@"PatientContext encodeWithCoder");
     [aCoder encodeObject:self.contacts forKey:kContactsKey];
     [aCoder encodeObject:self.currentContact forKey:kCurrentContactKey];
     [aCoder encodeObject:self.obsDefinitions forKey:kObsDefinitionsKey];
     [aCoder encodeObject:self.patient forKey:kPatientKey];
+    [aCoder encodeObject:self.dataDictionary forKey:kDataDictionaryKey];
 }
 
 
@@ -117,6 +127,17 @@ static NSString *kPatientKey = @"patientKey";
 #pragma mark -
 #pragma mark Accessors
 // -----------------------------------------------------------
+
+- (IDRDataDictionary *)dataDictionary {
+    if (_dataDictionary == nil) {
+        _dataDictionary = [[IDRDataDictionary alloc] init];
+    }
+    return [[_dataDictionary retain] autorelease];
+}
+
+- (IDRObsDef *)getObsDefForName:(NSString *)name {
+    return [self.dataDictionary getObsDef:name];
+}
 
 - (void)setDirty:(BOOL)dirty {
     _dirty = dirty;

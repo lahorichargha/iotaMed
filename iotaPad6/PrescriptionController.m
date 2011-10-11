@@ -33,10 +33,14 @@
 
 @synthesize lblDescription = _lblDescription;
 @synthesize tableView = _tableView;
+@synthesize btnCancel = _btnCancel;
 @synthesize idrItem = _idrItem;
 @synthesize btnOk = _btnOk;
 @synthesize btnCustom = _btnCustom;
 @synthesize pcDelegate = _pcDelegate;
+@synthesize lblGeneralRecommendation = _lblGeneralRecommendation;
+@synthesize lblGeneralRecommendationText = _lblGeneralRecommendationText;
+@synthesize lblSelectDosage = _lblSelectDosage;
 
 @synthesize doseName = _doseName;
 @synthesize extendedDoseName = _extendedDoseName;
@@ -58,6 +62,10 @@
     self.pcDelegate = nil;
     self.doseName = nil;
     self.extendedDoseName = nil;
+    [_lblGeneralRecommendation release];
+    [_lblGeneralRecommendationText release];
+    [_lblSelectDosage release];
+    [_btnCancel release];
     [super dealloc];
 }
 
@@ -101,9 +109,18 @@
     self.lblDescription.text = self.idrItem.content;
     [self updateEnables];
     // Do any additional setup after loading the view from its nib.
+    
+    [self.btnCustom setTitle:NSLocalizedString(@"Custom", @"Custom") forState:UIControlStateNormal];
+    self.lblGeneralRecommendation.text = NSLocalizedString(@"General recommendation", @"General recommendation");
+    self.lblSelectDosage.text = NSLocalizedString(@"Select dosage", @"Select dosage");
+    
 }
 
 - (void)viewDidUnload {
+    [self setLblGeneralRecommendation:nil];
+    [self setLblGeneralRecommendationText:nil];
+    [self setLblSelectDosage:nil];
+    [self setBtnCancel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

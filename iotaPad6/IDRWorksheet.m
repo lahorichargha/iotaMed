@@ -38,6 +38,10 @@
 #import "IDRBlock.h"
 #import "Funcs.h"
 
+#import "IDRDataDictionary.h"
+#import "IotaContext.h"
+#import "PatientContext.h"
+
 // -----------------------------------------------------------
 #pragma mark -
 #pragma mark Local declarations
@@ -159,6 +163,25 @@ static NSString *kDescriptionKey = @"descriptionKey";
 - (void)removeBlockAtIndex:(NSUInteger)index {
     [self.blocks removeObjectAtIndex:index];
 }
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Data dictionary related accessors
+// -----------------------------------------------------------
+
+//
+//- (void)addObsDef:(IDRObsDef *)obsDef {
+//    [[IotaContext getCurrentPatientContext].dataDictionary addObsDef:obsDef];
+//}
+//
+//- (void)addConstant:(IDRDefConstant *)constant {
+//    [[IotaContext getCurrentPatientContext].dataDictionary addConstant:constant];
+//}
+//
+//- (void)addScript:(IDRDefScript *)script {
+//    [[IotaContext getCurrentPatientContext].dataDictionary addScript:script];
+//}
+
 
 // -----------------------------------------------------------
 #pragma mark -

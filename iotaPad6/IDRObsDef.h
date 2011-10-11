@@ -1,8 +1,7 @@
 //
-//  ItemCellTemplate.h
+//  IDRObsDefVariable.h
 //  iotaPad6
 //
-//  Created by Martin on 2011-03-19.
 //  Copyright © 2011, MITM AB, Sweden
 //  All rights reserved.
 //
@@ -32,13 +31,38 @@
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
-#import "ItemCell.h"
+#import "IDRDef.h"
 
-@interface ItemCellTemplate : ItemCell {
-    
-}
+@class IDRPrompt;
+@class IDRSelect;
 
-+ (ItemCellTemplate *)cellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
+enum eObsDefType {
+    eObsDefTypeNone = 0,
+    eObsDefTypeNumeric,
+    eObsDefTypeString,
+    eObsDefTypeFormattedString,
+    eObsDefTypeCheck,
+    eObsDefTypeSelect,
+    eObsDefTypeMultiselect,
+    eObsDefTypeCount,
+};
 
+@interface IDRObsDef : IDRDef
+
+@property (nonatomic, retain) NSString *type;
+@property (nonatomic, retain) NSString *dimension;
+@property (nonatomic, retain) NSString *format;
+@property (nonatomic, retain) NSString *defaultSelect;
+@property (nonatomic, retain) NSMutableArray *prompts;
+@property (nonatomic, retain) NSMutableArray *selects;
+@property (nonatomic, retain) NSMutableArray *values;
+
+- (IDRPrompt *)promptForPreferredLanguage;
+//- (NSString *)promptForLanguage:(NSString *)language;
+- (enum eObsDefType)obsDefType;
+- (BOOL)merge:(IDRObsDef *)other;
+- (void)cleanup;
+- (void)dumpWithIndent:(NSUInteger)indent;
+- (IDRSelect *)getSelectWithValue:(NSString *)value;
 
 @end

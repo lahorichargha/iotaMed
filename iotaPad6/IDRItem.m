@@ -36,10 +36,12 @@
 #import "NSString+iotaAdditions.h"
 #import "IDRObservation.h"
 #import "IDRObsDefinition.h"
+#import "IDRObsDef.h"
 #import "IDRBlock.h"
 #import "IDRImage.h"
 #import "IDRSvgView.h"
 #import "IDRValue.h"
+#import "IDRPrompt.h"
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -57,7 +59,7 @@
 @synthesize parentBlock = _parentBlock;
 @synthesize idrImage = _idrImage;
 @synthesize idrSvgView = _idrSvgView;
-@synthesize itemCell = _itemCell;
+//@synthesize itemCell = _itemCell;
 @synthesize itemTableCell = _itemTableCell;
 
 - (id)init {
@@ -68,7 +70,7 @@
 }
 
 - (void)dealloc {
-    self.itemCell = nil;
+//    self.itemCell = nil;
     self.itemTableCell = nil;
     self.observation = nil;
     self.action = nil;
@@ -198,7 +200,19 @@ static NSString *kIdrSvgView = @"idrSvgView";
 // -----------------------------------------------------------
 
 - (void)addContent:(NSString *)content {
-    [self.content appendString:content];
+    if (_content == nil)
+        _content = [[NSMutableString alloc] init];
+    [_content appendString:content];
+}
+
+- (NSString *)content {
+    if (_content != nil && [_content iotaIsNonEmpty])
+        return [[_content retain] autorelease];
+    if (self.observation && self.observation.obsDef) {
+        IDRPrompt *prompt = [self.observation.obsDef promptForPreferredLanguage];
+        return prompt.promptString;
+    }
+    return @"<no content found>";
 }
 
 - (void)takeAttributes:(NSDictionary *)attribs {

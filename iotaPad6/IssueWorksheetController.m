@@ -34,7 +34,6 @@
 #import "IssueWorksheetController.h"
 #import "IDRWorksheet.h"
 #import "IDRBlock.h"
-//#import "ItemCellIssue.h"
 #import "ItemTableCell.h"
 #import "IDRItem.h"
 #import "IDRAction.h"
@@ -150,7 +149,8 @@
     }
 
     IDRContact *currentContact = [[IotaContext getCurrentPatientContext] currentContact];
-    self.btnContact.title = (currentContact) ? [currentContact contactAsHeader] : @"<Inga kontakter>";
+    self.btnContact.title = (currentContact) ? [currentContact contactAsHeader] : 
+        [NSString stringWithFormat:@"<%@>", NSLocalizedString(@"No contacts", @"No contacts")];  
     
     if (!self.idrBlock) {
         self.tableView.tableHeaderView = nil;
@@ -159,7 +159,6 @@
     UIView *thView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 760, 120)] autorelease];
     UIImageView *backround = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"doctor.png"]];
     [thView addSubview:backround];
-    [backround release];
     UILabel *thLabel = [[[UILabel alloc] initWithFrame:CGRectMake(140, 20, 620, 66)] autorelease];
     thLabel.backgroundColor = [UIColor clearColor];
     thLabel.textColor = [UIColor brownColor];
@@ -181,6 +180,11 @@
         [thView addSubview:imageView];
     }
     self.tableView.tableHeaderView = thView;
+    if ([self.idrBlock blockType] == eBlockTypePatient) {
+        [self.tableView setBackgroundColor:[[ThemeColors themeColors] worksheetBackgroundPatientBlock]];
+        backround.image = nil;
+    }
+    [backround release];
 }
 
 
@@ -312,7 +316,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"selected row at: %@", indexPath);
 }
 
 // -----------------------------------------------------------

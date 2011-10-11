@@ -10,7 +10,7 @@
 
 @class IDRItem;
 
-@protocol ItemCellDelegate <NSObject>
+@protocol ItemTableCellDelegate <NSObject>
 - (void)presentValueLookupForm:(IDRItem *)item;
 @optional
 - (void)presentLabOrderForm:(IDRItem *)item;

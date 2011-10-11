@@ -1,8 +1,7 @@
 //
-//  ItemCellController.h
+//  IDRObsDef.h
 //  iotaPad6
 //
-//  Created by Martin on 2011-03-04.
 //  Copyright © 2011, MITM AB, Sweden
 //  All rights reserved.
 //
@@ -31,36 +30,11 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <UIKit/UIKit.h>
-#import "ItemCellDelegate.h"
+#import <Foundation/Foundation.h>
+#import "IDRAttribs.h"
 
+@interface IDRDef : NSObject <IDRAttribs, NSCoding>
 
-@class IDRItem;
-@class BulletView;
-
-static float kNormalFontSize    __attribute__ ((unused)) = 14.0;
-static float kBoldFontSize      __attribute__ ((unused)) = 18.0;
-//static float kBoldHeight = 44.0;
-
-
-@interface ItemCell : UITableViewCell <UITextFieldDelegate> {
-    
-}
-
-@property (nonatomic, assign) BOOL isActive;        // true if actually in a live issue, false in template viewing
-@property (nonatomic, retain) IDRItem *idrItem;
-@property (nonatomic, retain) UILabel *lblContent;
-@property (nonatomic, retain) UITextField *textField;
-@property (nonatomic, retain) UILabel *lblValue;
-@property (nonatomic, retain) UILabel *lblDate;
-@property (nonatomic, retain) UIImageView *itemImageView;
-@property (nonatomic, retain) BulletView *bulletView;
-@property (nonatomic, retain) UILabel *checkView;
-@property (nonatomic, retain) id <ItemCellDelegate> itemCellDelegate;
-@property (assign) UITableView *parentTableView;
-
-
-+ (ItemCell *)cellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
-+ (CGFloat)cellHeightForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
+@property (nonatomic, retain) NSString *name;
 
 @end

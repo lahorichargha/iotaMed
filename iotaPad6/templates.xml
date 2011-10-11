@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates>
+    <template title='Test' resourceName='test5' resourceType='xml'/>
+    
     <template title="Acne" resourceName='' resourceType=''/>
     <template title="Akromioclavikularleden, axel" resourceName='' resourceType=''/>
     <template title="Aktinisk keratos" resourceName='' resourceType=''/>
@@ -46,7 +48,8 @@
     <template title="Demenssjukdomar" resourceName='' resourceType=''/>
     <template title="Depression" resourceName='' resourceType=''/>
     <template title="Diabetes " resourceName='diabetes' resourceType='xml'/>
-    <template title="Diabetes Piotr" resourceName='test5' resourceType='xml'/>
+    <template title="Diabetes (EN)" resourceName='diabetes_EN' resourceType='xml'/>
+<!--    <template title="Diabetes Piotr" resourceName='test5' resourceType='xml'/>   -->
     <template title="Diabeteshanden" resourceName='' resourceType=''/>
     <template title="Diabetesfoten" resourceName='' resourceType=''/>
     <template title="Diarréer" resourceName='' resourceType=''/>

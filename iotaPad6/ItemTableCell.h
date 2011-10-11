@@ -27,7 +27,7 @@
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <UIKit/UIKit.h>
-#import "ItemCellDelegate.h"
+#import "ItemTableCellDelegate.h"
 #import "IDRItem.h"
 
 // -----------------------------------------------------------
@@ -96,8 +96,8 @@ static float kCheckViewWidth                __attribute__ ((unused)) = 50.0;
 
 @property (nonatomic, assign) BOOL isActive;
 @property (nonatomic, assign) IDRItem *idrItem; // IDRItem owns this ItemTableCell
-@property (nonatomic, retain) id <ItemCellDelegate> itemCellDelegate;
-@property (nonatomic, assign) UITableView *parentTableView;
+@property (nonatomic, retain) id <ItemTableCellDelegate> itemCellDelegate;
+@property (nonatomic, readonly) UITableView *parentTableView;
 
 // gadgetSpaceAdd keeps track of how much screen real estate 
 // counting from the right margin has been
@@ -123,5 +123,6 @@ static float kCheckViewWidth                __attribute__ ((unused)) = 50.0;
 - (id)initWithTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
 - (UIView *)viewOfClass:(Class)cls tag:(NSUInteger)tag;
 - (BOOL)isItemCurrentlyEnabled;
+- (void)refreshDisplay;
 
 @end

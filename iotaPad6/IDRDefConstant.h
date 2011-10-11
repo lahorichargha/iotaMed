@@ -1,8 +1,7 @@
 //
-//  NSString+iotaAdditions.h
-//  iotaPad1
+//  IDRObsDefConstant.h
+//  iotaPad6
 //
-//  Created by mw on 2010-06-23.
 //  Copyright © 2011, MITM AB, Sweden
 //  All rights reserved.
 //
@@ -32,16 +31,12 @@
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
+#import "IDRDef.h"
 
+@interface IDRDefConstant : IDRDef
 
-@interface NSString (iotaNSString) 
+@property (nonatomic, retain) NSString *constantValue;
 
-- (NSString *)iotaNormalize;
-- (NSString *)trim;
-- (BOOL)iotaIsNonEmpty;
-+ (NSString *)spacesOfLength:(unsigned int)aLength;
-- (BOOL)iotaIsYes;
-- (NSString *)setterName;
-
+- (void)dumpWithIndent:(NSUInteger)indent;
 
 @end

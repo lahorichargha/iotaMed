@@ -41,7 +41,7 @@
 @class IDRValue;
 @class IDRBlock;
 @class IDRImage;
-@class ItemCell;
+//@class ItemCell;
 @class IDRSvgView;
 @class ItemTableCell;
 
@@ -59,7 +59,7 @@
 @property (nonatomic, retain) IDRBlock *parentBlock;
 @property (nonatomic, retain) IDRImage *idrImage;
 @property (nonatomic, retain) IDRSvgView *idrSvgView;
-@property (nonatomic, retain) ItemCell *itemCell;           // owns the table cell
+//@property (nonatomic, retain) ItemCell *itemCell;           // owns the table cell
 @property (nonatomic, retain) ItemTableCell *itemTableCell; // replaces itemCell with new style ItemTableCell hierarchy
 
 - (void)setItemValue:(NSString *)value;

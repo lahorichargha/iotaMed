@@ -1,8 +1,7 @@
 //
-//  ItemCellIssue.m
+//  IDRPrompt.h
 //  iotaPad6
 //
-//  Created by Martin on 2011-03-19.
 //  Copyright © 2011, MITM AB, Sweden
 //  All rights reserved.
 //
@@ -31,15 +30,14 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "ItemCellIssue.h"
+#import <Foundation/Foundation.h>
+#import "IDRAttribs.h"
 
+@interface IDRPrompt : NSObject <IDRAttribs, NSCoding>
 
-@implementation ItemCellIssue
+@property (nonatomic, retain) NSString *lang;
+@property (nonatomic, retain) NSMutableString *promptString;
 
-+ (ItemCellIssue *)cellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
-    ItemCellIssue *ici = (ItemCellIssue *)[super cellForTableView:tableView idrItem:idrItem];
-    ici.isActive = YES;
-    return ici;
-}
+- (void)dumpWithIndent:(NSUInteger)indent;
 
 @end

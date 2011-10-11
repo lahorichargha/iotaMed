@@ -25,6 +25,12 @@
 @synthesize txtFirstname;
 @synthesize txtLastname;
 @synthesize btnDelete;
+@synthesize btnCancel;
+@synthesize btnOk;
+@synthesize lblPersonnumber;
+@synthesize lblFirstname;
+@synthesize lblLastname;
+@synthesize lblDemoWarning;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -55,6 +61,12 @@
         self.txtFirstname.text = self.patient.firstName;
         self.txtLastname.text = self.patient.lastName;
     }
+    self.lblPersonnumber.text = NSLocalizedString(@"Personnumber", @"Personnumber");
+    self.lblFirstname.text = NSLocalizedString(@"Firstname", @"Firstname");
+    self.lblLastname.text = NSLocalizedString(@"Lastname", @"Lastname");
+    [self.btnCancel setTitle:NSLocalizedString(@"Cancel", @"Cancel") forState:UIControlStateNormal];
+    [self.btnOk setTitle:NSLocalizedString(@"Ok", @"Ok") forState:UIControlStateNormal];
+    self.lblDemoWarning.text = NSLocalizedString(@"Demo warning", @"Demo warning");
 }
 
 - (void)viewDidUnload {
@@ -63,6 +75,12 @@
     [self setTxtLastname:nil];
     self.patient = nil;
     [self setBtnDelete:nil];
+    [self setLblPersonnumber:nil];
+    [self setLblFirstname:nil];
+    [self setLblLastname:nil];
+    [self setBtnCancel:nil];
+    [self setBtnOk:nil];
+    [self setLblDemoWarning:nil];
     [super viewDidUnload];
 }
 
@@ -77,6 +95,12 @@
     [txtLastname release];
     [_patient release];
     [btnDelete release];
+    [lblPersonnumber release];
+    [lblFirstname release];
+    [lblLastname release];
+    [btnCancel release];
+    [btnOk release];
+    [lblDemoWarning release];
     [super dealloc];
 }
 

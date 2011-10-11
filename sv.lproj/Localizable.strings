@@ -14,11 +14,31 @@
 /* Referral cause */
 "Cause:" = "Orsak:";
 
+/* Custom */
+"Custom" = "Anpassad";
+
+/* Demo warning text */
+"Demo warning" = "I denna demoversion, använd aldrig identifierbara patientdata!";
+
+/* First name */
+"Firstname" = "Förnamn";
+
+"General recommendation" = "Allmän rekommendation";
+"Graph" = "Grafik";
+
 /* Referral history label */
 "History:" = "Anamnes:";
 
+"Import" = "Importera";
+"Inbox" = "Inkorg";
+
 /* Title for the issue list and popover */
 "Issues" = "Ärenden";
+
+/* Last name */
+"Lastname" = "Efternamn";
+
+"List" = "Lista";
 
 /* Just checking */
 "LocalizedLanguage" = "Svenska";
@@ -26,14 +46,41 @@
 /* Name of the executable minIota */
 "minIota" = "minIota";
 
+"myIota Feedback" = "minIota Återkoppling";
+
+/* New button */
+"New" = "Ny";
+
 /* new contact label */
 "New contact" = "Ny kontakt";
+
+/* No */
+"No" = "Nej";
+
+/* no contacts */
+"No contacts" = "Inga kontakter";
+
+/* no patient selected */
+"No patient selected" = "Ingen patient vald";
+
+"None" = "Inget";
 
 /* ok label for button */
 "Ok" = "Ok";
 
+/* lab referral */
+"Order lab tests" = "Beställ labprover";
+
+/* Patients */
+"Patients" = "Patienter";
+
+/* Personnumber */
+"Personnumber" = "Personnummer";
+
 /* Prescription */
 "Prescription" = "Ordination";
+
+"Select dosage" = "Välj ordination";
 
 /* explanatory text in ContactSelectOrCreateForm */
 "SelectOrCreateContact" = "Välj eller lägg till en kontakt för denna undermall:";
@@ -41,9 +88,14 @@
 /* Send referral button */
 "Send" = "Skicka";
 
+/* Sent */
+"Sent" = "Skickat";
+
 /* Referral status label */
 "Status:" = "Status:";
 
 /* Label for destination of referral */
 "To:" = "Till:";
 
+/* Yes */
+"Yes" = "Ja";

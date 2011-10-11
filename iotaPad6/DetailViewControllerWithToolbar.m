@@ -155,8 +155,6 @@
     else
         frame.size.height -= (keyboardBounds.size.width - 55);
     
-    NSLog(@"willshow, oldframe: %@, newFrame: %@", NSStringFromCGRect(self.viewToShrink.frame), NSStringFromCGRect(frame));
-    
     // apply new size
     self.viewToShrink.frame = frame;
     
@@ -197,8 +195,6 @@
     else
         frame.size.height += keyboardBounds.size.width - 55;
 
-    NSLog(@"willhide, oldframe: %@, newframe: %@", NSStringFromCGRect(self.viewToShrink.frame), NSStringFromCGRect(frame));
-    
     // apply new size
     self.viewToShrink.frame = frame;
     

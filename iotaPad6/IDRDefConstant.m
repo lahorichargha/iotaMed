@@ -1,8 +1,7 @@
 //
-//  ItemCellIssue.h
+//  IDRObsDefConstant.m
 //  iotaPad6
 //
-//  Created by Martin on 2011-03-19.
 //  Copyright © 2011, MITM AB, Sweden
 //  All rights reserved.
 //
@@ -31,14 +30,43 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <Foundation/Foundation.h>
-#import "ItemCell.h"
+#import "IDRDefConstant.h"
+#import "NSString+iotaAdditions.h"
 
-@interface ItemCellIssue : ItemCell {
-    
+@implementation IDRDefConstant
+
+@synthesize constantValue = _constantValue;
+
+static NSString *kConstantValueKey = @"constantValueKey";
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super initWithCoder:aDecoder])) {
+        self.constantValue = [aDecoder decodeObjectForKey:kConstantValueKey];
+    }
+    return self;
 }
 
-+ (ItemCellIssue *)cellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeObject:self.constantValue forKey:kConstantValueKey];
+}
 
+- (void)dealloc {
+    self.constantValue = nil;
+    [super dealloc];
+}
+
+- (void)takeAttributes:(NSDictionary *)attribs {
+    [super takeAttributes:attribs];
+}
+
+// -----------------------------------------------------------
+#pragma mark -
+#pragma mark Debug
+// -----------------------------------------------------------
+
+- (void)dumpWithIndent:(NSUInteger)indent {
+    NSLog(@"%@constant value: %@", [NSString spacesOfLength:indent], self.constantValue);
+}
 
 @end

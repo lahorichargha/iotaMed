@@ -38,9 +38,8 @@
 #import "IDRDescription.h"
 #import "IDRItem.h"
 #import "IDRObservation.h"
-#import "IDRObsDefinition.h"
 #import "IDRContact.h"
-#import "ItemCellTemplate.h"
+#import "ItemTableCell.h"
 #import "Funcs.h"
 #import "NSString+iotaAdditions.h"
 #import "IotaContext.h"
@@ -235,7 +234,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     IDRItem *item = [self.idrBlock.items objectAtIndex:[indexPath row]];
-    ItemCellTemplate *cell = [ItemCellTemplate cellForTableView:tableView idrItem:item];
+    ItemTableCell *cell = [ItemTableCell cellForTableView:tableView idrItem:item];
     return cell;
 }
 
@@ -258,7 +257,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     IDRItem *item = [self.idrBlock.items objectAtIndex:[indexPath row]];
-    return [ItemCellTemplate cellHeightForTableView:tableView idrItem:item];
+    return [ItemTableCell cellHeightForTableView:tableView idrItem:item];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

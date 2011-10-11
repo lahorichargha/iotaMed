@@ -36,7 +36,6 @@
 #import "IotaContext.h"
 #import "PatientContext.h"
 #import "IDRObservation.h"
-#import "IDRObsDefinition.h"
 #import "IDRWorksheet.h"
 #import "IDRBlock.h"
 #import "IDRItem.h"

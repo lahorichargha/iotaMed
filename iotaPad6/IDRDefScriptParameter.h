@@ -1,8 +1,7 @@
 //
-//  ItemCellJournal.h
+//  IDRDefScriptParameter.h
 //  iotaPad6
 //
-//  Created by Martin on 2011-03-19.
 //  Copyright © 2011, MITM AB, Sweden
 //  All rights reserved.
 //
@@ -32,13 +31,13 @@
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
-#import "ItemCell.h"
+#import "IDRAttribs.h"
 
-@interface ItemCellJournal : ItemCell {
-    
-}
+@interface IDRDefScriptParameter : NSObject <IDRAttribs, NSCoding>
 
-+ (ItemCellJournal *)cellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem;
+@property (nonatomic, retain) NSString *localName;
+@property (nonatomic, retain) NSString *def;
 
+- (void)dumpWithIndent:(NSUInteger)indent;
 
 @end

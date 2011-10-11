@@ -1,8 +1,7 @@
 //
-//  ItemCellJournal.m
+//  ItemSelectControllerDelegate.h
 //  iotaPad6
 //
-//  Created by Martin on 2011-03-19.
 //  Copyright © 2011, MITM AB, Sweden
 //  All rights reserved.
 //
@@ -31,16 +30,14 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "ItemCellJournal.h"
+#import <Foundation/Foundation.h>
 
+@protocol ItemSelectControllerDelegate <NSObject>
 
-@implementation ItemCellJournal
-
-+ (ItemCellJournal *)cellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
-    ItemCellJournal *icj = (ItemCellJournal *)[super cellForTableView:tableView idrItem:idrItem];
-    icj.isActive = YES;
-    return icj;
-}
-
+- (NSArray *)selectPrompts;     // the prompt strings to show in the popover
+- (NSArray *)selectValues;      // corresponding values to return if chosen
+- (void)selectedValues:(NSArray *)selected; // returns an array of selected values to the delegate
+- (void)showKeyboard;
+- (void)done;                   // dismiss me
 
 @end

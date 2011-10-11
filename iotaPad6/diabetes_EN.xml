@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<template type='issue' title='Diabetes' fromICD10='E10' toICD10='E14' lang='EN' templateUuid='AF7D75CB-9C81-4457-8639-535ABF52339F'>
+    
+    
+    
+    <description type='template'>This template is intended for primary care workup and followup of diabetes type 1 and type 2.
+        The template consists of several parts. 
+    </description>
+    
+    
+    <obsdef name='Pulm' type='string' default='norm' free='free'>
+        <prompt lang='sv'>Lungor</prompt>
+        <prompt lang='nl'>Longen</prompt>
+        <prompt Lang='en'>Lungs</prompt>
+        <select value='norm'>
+            <prompt lang='sv'>Normalt andningsljud bilat. Inga pip eller rassel.</prompt>
+            <prompt lang='nl'>Normaal vesikulair ademhalingsgeruis bilateraal, geen krepitaties of rhonchi.</prompt>
+            <prompt lang='en'>Normal breathing sounds</prompt>
+        </select>
+        <select value='wet'>
+            <prompt lang='sv'>Fuktiga krepitationer bilateralt basalt.</prompt>
+            <prompt lang='nl'>Bilateraal vochtige krepitaties basaal.</prompt>
+            <prompt lang='en'>Bilateral wet crepitations at the bases.</prompt>
+        </select>
+    </obsdef>
+    
+    <obsdef name='BP' type='formattedstring' dimension='mmHg' format='#/#'>
+        <prompt lang='sv'>Blodtryck</prompt>
+        <prompt lang='en'>Blood pressure</prompt>
+        <prompt lang='nl'>Bloeddruk</prompt>
+    </obsdef>
+    
+    <constant name='InsulinATC'>
+        A10A
+    </constant>
+    
+    <script name='Instherapy' language='lua' value='BOOL' type='expression'>
+        <parameter localname='ATCList' def='ATCList'/>
+        <parameter localname='InsulinATC' def='InsulinATC'/>
+        <![CDATA[
+            foreach (atccode in ATCList) {
+            if (atccode partof InsulinATC)
+            return TRUE;
+            }
+            return FALSE;
+        ]]>
+    </script>
+    
+    
+    
+    <obsdef name='PGlukos2' type='numeric' dimension='mmol/L'>
+        <prompt lang='sv'>Plasmaglukos2:</prompt>
+        <prompt lang='en'>Plasma glucose</prompt>
+    </obsdef>
+    
+    <obsdef name='Anamnes' type='string'>
+        <prompt lang='sv'>Anamnes</prompt>
+        <prompt lang='en'>History</prompt>
+    </obsdef>
+    
+    <block type='initial' repeats='no' title='Diagnosis and workup' templateUuid='F386B410-BF18-4ADC-A631-A7DD410651DB'>
+        <description type='template'>The Diagnosis and workup template template should be added as first worksheet for the disease and
+            is meant to help you decide if the diagnosis is correct, and to perform the initial workup. If it turns out the diagnosis is wrong,
+            you can remove the worksheet again. The entered clinical values remain in the records and will be shown in other worksheets using
+            the same clinical parameters, and also in the chronological form in the "Journal" tab.
+        </description>
+        <item bold='yes'>History<observation name='Anamnes' type='string' direction='getput'/></item>
+        <item bold='yes'><observation name='Anamnes' direction='getput'/></item> 
+        <item bold='yes'>Criteria:</item>
+        <item indentlevel='1'>Plasma glucose &gt;= 7,0 mmol/L on two consecutive occassions, or one non-fasting glucose value in excess of 11.1 for venous blood, or
+            over 12.2 mmol/L in capillary blood.</item>
+        <item indentlevel='2'>Plasma glucose<observation name='PGlukos' type='numeric' direction='getput'/></item>
+        <item indentlevel='2'><observation name='PGlukos2' direction='getput'/></item>
+        <item bold='yes'>IFG and IGT</item>
+        <item>IFG (Impaired Fasting Glucose): Non-diabetic fasting hyperglycemia, i.e. plasma glucose 6,1-6,9 mmol/L.</item>
+        <item>Consider oral glucose tolerance test (OGTT).</item>
+        <item bold='yes'>Gestational Diabetes Mellitus (GDM)</item>
+        <item>Abnormal glucose metabolism during pregnancy. Increases the risk of later type 2 diabetes. All women who have had GDM
+            should have an OGTT performed post partum. 
+        </item>
+        <item bold='yes'>Care center and referral</item>
+        <item>Referral to diabetes clinic or outpatient center:</item>
+        <item indentlevel='1'>Assessment of insufficient metabolic control
+            <observation direction='get' name='RemMetabolkontroll'/>
+            <action type='referral' cause='Type 2 with insufficient metabolic control' to='Diabetes Center|School of Medicine'
+            status='Most recent plasma glucose: $(PGlukos)'/>
+        </item>
+        <item indentlevel='1'>Assessment of complications or riskfactors
+            <observation direction='get' name='RemRiskfakt'/>
+            <action type='referral' cause='Assessment of risk factors.' to='Diabetes Center|School of Medicine'/>
+        </item>
+        <item indentlevel='1'>Referral for hospital admission: acute type 1 or type 2 diabetes.
+            <observation direction='get' name='RemDiabSjukhus'/>
+            <action type='referral' cause='Acutely ill diabetic, should be admitted' to='Emergency Dept.|School of Medicine'/>
+        </item>
+        <item indentlevel='1'>Referral to geriatrics clinic for adjustment of treatment and followup
+            <observation direction='get' name='RemDiabGeriatrik'/>
+            <action type='referral' cause='Please do a followup and treatment update' to='Geriatrics dept.'/>
+        </item>
+        <item indentlevel='1'>Referral to ophthalmologist
+            <observation direction='get' name='RemDiabÖgonmott'/>
+            <action type='referral' cause='Please do a fundoscopy for diabetes' to='Dept. of Ophthalmology|University Hospital'/>
+        </item>
+        
+        <item bold='yes'>In acute cases, sudden onset</item>
+        <item>Loss of weight<observation name='Viktnedgång' type='numeric' direction='getput'/></item>
+        <item>Thirst<observation name='Törst' type='check' direction='getput'/></item>
+        <item>Polyuria<observation name='Polyuri' type='check' direction='getput'/></item>
+        <item>Food preferences (sweet drinks)<observation name='Kostvanor' type='check' direction='getput'/></item>
+        <item>Blood workup: glukose, ketones in urine, Hb, HbA1c, Na, K, Krea, ALAT, ASAT, ALP, KOL, LDL, HDL, Trig, TSH, MU-alb/krea-index
+            <observation direction='get' name='LabDiabUtr'/>
+            <action type='lab' name='LabDiabUtr'>
+                <test name='Glukos'/>
+                <test name='Hb'/>
+                <test name='HbA1c'/>
+                <test name='Na'/>
+                <test name='K'/>
+                <test name='Krea'/>
+                <test name='ALAT'/>
+                <test name='ASAT'/>
+                <test name='ALP'/>
+                <test name='KOL'/>
+                <test name='LDL'/>
+                <test name='HDL'/>
+                <test name='Trig'/>
+                <test name='TSH'/>
+                <test name='MU-Alb/krea-index'/>
+            </action>
+        </item>
+        <item>Bloodpressure, should be 130/80 eller lower<observation name='Blodtryck' type='numeric' direction='getput'/></item>
+        
+        <item bold='yes'>Other diseases</item>
+        <item>Ischemic hartdisease<observation name='IschemiskHjärtsjukdom' type='check' direction='getput'/></item>
+        <item>Cerebrovascular disease<observation name='CerebrovaskulärSjukdom' direction='getput' type='check'/></item>
+        
+    </block>
+    
+    <block type='any' repeats='yes' title='Therapy' templateUuid='E1BEF2E2-1653-44EC-92B4-F9C49FCEF045'>
+        
+        <item bold='yes'>Target HbA1c</item>
+        <item indentlevel='1'>Standard target value: 42-52 mmol/mol (5,0 - 6,0 %)</item>
+        <item indentlevel='1'>Symptomatic target: &lt; 73 mmol/mol (&lt; 8,0 %)</item>
+        
+        <item bold='yes'>Metformin</item>
+        <item indentlevel='1'>Metformin 500 mg/day - 2000 mg/day
+            <observation direction='get' name='RecMetformin'/>
+            <action type='prescription' ATC='A10BA02' showaction='yes'>
+                <dose name='500 mg'>500 mg - 1x1</dose>
+                <dose name='850 mg'>850 mg - 1x1</dose>
+                <dose name='1000 mg'>500 mg - 1x2</dose>
+                <dose name='1500 mg'>500 mg - 1x3</dose>
+                <dose name='2000 mg'>1000 mg - 1x2</dose>
+            </action>
+        </item>
+        
+        <item bold='yes'>Sulfonylurea</item>
+        <item bold='no' indentlevel='1'>Glimepirid, initially 1 mg/dag, increment 1-2 mg every 2-6 weeks, max 4 mg/day
+            <observation direction='get' name='RecGlimepirid'/>
+            <action type='prescription' ATC='A10BB12' showaction='yes'>
+                <dose name='1 mg'>1 mg - 1x1</dose>
+                <dose name='2 mg'>1 mg - 1x2</dose>
+                <dose name='3 mg'>1 mg - 1x3</dose>
+                <dose name='4 mg'>2 mg - 1x2</dose>
+            </action>
+            
+            
+        </item>
+        
+        <item bold='no' indentlevel='1'>Glipizid, initially 2,5 mg/day, increment 2,5-5 mg every 2-6 weeks, max 10 mg/day
+            <observation direction='get' name='RecGlipizid'/>
+            <action type='prescription' ATC='A10BB07' showaction='yes'>
+                <dose name='2,5 mg'>2,5 mg - 1x1</dose>
+                <dose name='5,0 mg'>2,5 mg - 1x2</dose>
+                <dose name='7,5 mg'>2,5 mg - 1x3</dose>
+                <dose name='10 mg'>5 mg - 1x2</dose>
+                <dose name='15 mg'>5 mg - 1x3</dose>
+            </action>
+        </item>
+        
+        <item bold='yes'>Meglitinides</item>
+        <item indentlevel='1'>Can be used in cases where low dose Sulfonylurea causes hypoglycemia.</item>
+        
+        <item bold='yes'>Akarbose</item>
+        <item indentlevel='1'>Can be used in cases with mild hyperglycemia after meals. Influences the breakdown of carbohydrates in the intestines.
+            Usually lowers HbA1c with 5-10 mmol/mol (0.5-1%). Taken before meals.</item>
+    </block>
+    
+    <block type='followup' repeats='yes' title='Yearly followup' prompt='Year' templateUuid='18752F4A-0264-4934-916C-C591D0F59824'>
+        <item bold='yes'>Post clinical data to the National Diabetes Registry - NDR.</item>
+        <item>Touch here if you want to add the NDR registration form for this visit.
+            <action type='block' templateUuid='32A5669F-7D8D-4D46-81BA-301987DD7D1A'/>
+        </item>
+        
+        <item bold='yes'>General</item>
+        <item>Year of onset<observation name='DiabDiagÅr' direction='getput' type='numeric'/></item>
+        <item>Type of diabetes<observation name='TypDiabetes' direction='getput' type='string'/></item>
+        <item>Treatment modality<observation name='BehandlingDiabetes' direction='getput'/></item>
+        <item>Insulin administration method<observation name='MetodAttGeInsulin' direction='getput'/></item>
+        
+        <item bold='yes'>History</item>
+        <item indentlevel='1'>Smoking<observation name='Rökning' direction='getput'/></item>
+        <item indentlevel='1'>Physical activity (quick walk or equivalent, how often?).
+            <observation name='FysisktAktiv' type='numeric' direction='getput'/>
+        </item>
+        <item indentlevel='1'>Selfadministered glycemia meas.<observation name='Egenkontroller' type='check' direction='getput'/></item>
+        <item indentlevel='1'>Hypoglycemic incidents, last year<observation name='Hypos' type='numeric' direction='getput'/></item>
+        
+        <item bold='yes'>Status, complications.</item>
+        <item indentlevel='1'>Foot status<observation name='Fotstatus' type='string' direction='getput'/></item>
+        <item indentlevel='1'>Peripheral pulsations<observation name='Periferapulsar' direction='getput'/></item>
+        <item indentlevel='1'>Neurologic status feet (tuning fork, monofilament)<observation name='NeurologiFötter' type='string' direction='getput'/></item>
+        <item indentlevel='1'>Bloodpressure<observation name='Blodtryck' direction='getput' type='numeric'/></item>
+        <item indentlevel='1'>Weight<observation name='Vikt' direction='getput' type='numeric'/></item>
+        <item indentlevel='1'>Length<observation name='Längd' direction='getput' type='numeric'/></item>
+        <item indentlevel='1'>Abdominal circumference<observation name='Bukomfång' direction='getput' type='numeric'/></item>
+        <item indentlevel='1'>Referral ophthalmologist
+            <observation direction='get' name='RemDiabÖgonmott'/>
+            <action type='referral' to='Dept Ophthalmology|University Hospital' cause='Screening fundoscopy in diabetes'/>
+        </item>
+        
+        <item bold='yes'>Metabolic control</item>
+        <item indentlevel='1'>Order lab tests: HbA1c, MU-alb/krea index, Kreatinin, Kolesterol, LDL, HDL, triglycerides
+            <observation direction='get' name='LabDiabÅrskontroll'/>
+            <action type='lab'>
+                <test name='HbA1c'/>
+                <test name='MU-Alb/krea-index'/>
+                <test name='Krea'/>
+                <test name='Kol'/>
+                <test name='LDL'/>
+                <test name='HDL'/>
+                <test name='Triglyc'/>
+            </action>
+        </item>
+        <item>Lipids<observation name='Lipider' type='string' direction='getput'/></item>
+        <item>HbA1c<observation name='HbA1c' direction='getput' type='numeric'/></item>
+        <item>Macroalbuminuria<observation name='Makroalbuminuri' direction='getput' type='check'/></item>
+        <item>Microalbuminuria<observation name='Mikroalbuminuri' direction='getput' type='check'/></item>
+        <item>S-Krea<observation name='SKrea' direction='getput' type='numeric'/></item>
+        
+        <item bold='yes'>Diabetes therapy</item>
+        <item bold='yes'>Metformin</item>
+        <item indentlevel='1'>Metformin 500 mg/day - 2000 mg/day
+            <observation direction='get' name='RecMetformin'/>
+            <action type='prescription' ATC='A10BA02' showaction='yes'>
+                <dose name='500 mg'>500 mg - 1x1</dose>
+                <dose name='850 mg'>850 mg - 1x1</dose>
+                <dose name='1000 mg'>500 mg - 1x2</dose>
+                <dose name='1500 mg'>500 mg - 1x3</dose>
+                <dose name='2000 mg'>1000 mg - 1x2</dose>
+            </action>
+        </item>
+        
+        <item bold='yes'>Sulfonylurea</item>
+        <item bold='no' indentlevel='1'>Glimepirid, initial 1 mg/day, increment 1-2 mg every 2-6 weeks, max 4 mg/day
+            <observation direction='get' name='RecGlimepirid'/>
+            <action type='prescription' ATC='A10BB12' showaction='yes'>
+                <dose name='1 mg'>1 mg - 1x1</dose>
+                <dose name='2 mg'>1 mg - 1x2</dose>
+                <dose name='3 mg'>1 mg - 1x3</dose>
+                <dose name='4 mg'>2 mg - 1x2</dose>
+            </action>
+            
+            
+        </item>
+        
+        <item bold='no' indentlevel='1'>Glipizid, initial 2.5 mg/day, increment 2.5-5 mg every 2-6 weeks, max 10 mg/day
+            <observation direction='get' name='RecGlipizid'/>
+            <action type='prescription' ATC='A10BB07' showaction='yes'>
+                <dose name='2,5 mg'>2.5 mg - 1x1</dose>
+                <dose name='5,0 mg'>2.5 mg - 1x2</dose>
+                <dose name='7,5 mg'>2.5 mg - 1x3</dose>
+                <dose name='10 mg'>5 mg - 1x2</dose>
+                <dose name='15 mg'>5 mg - 1x3</dose>
+            </action>
+        </item>
+        
+        <item bold='yes'>Other medication</item>
+        <item>Antihypertensive therapy<observation name='MedsAntiHypertoni' direction='getput'/></item>
+        <item>Lipid lowering therapy<observation name='MedsLipidsänkande' direction='getput'/></item>
+        <item>ASA<observation name='MedsASA' direction='getput'/></item>
+        
+        
+    </block>
+    
+    <block type='qr' repeats='yes' title='National Diabetes Registry NDR' prompt='Year' templateUuid='32A5669F-7D8D-4D46-81BA-301987DD7D1A'>
+        <description type='template'>
+            The NDR template consists of a number of clinical data points as determined by the NDR management. All of these elements
+            can be found in the regular workup or followup worksheets and their values are taken from there. For this reason, the NDR
+            form does not contain any user editable fields, only values retrieved from other sources within the iotaMed system. This
+            worksheet serves to allow the user to verify the correctness and completeness of the information and then approve the
+            posting of the form to the quality registry. 
+        </description>
+        <item>Year of onset<observation name='DiabDiagÅr' type='numeric' direction='get'/></item>
+        <item>Type of diabetes<observation name='TypDiabetes' direction='get'/></item>
+        <item>Diabetes treatment<observation name='BehandlingDiabetes' direction='get'/></item>
+        <item>Insulin administration method<observation name='MetodAttGeInsulin' direction='get'/></item>
+        <item>HbA1c<observation name='HbA1c' direction='get'/></item>
+        <item>Weight<observation name='Vikt' direction='get'/></item>
+        <item>Length<observation name='Längd' direction='get'/></item>
+        <item>Abdominal circumference<observation name='Bukomfång' direction='get'/></item>
+        <item>Blood pressure<observation name='Blodtryck' direction='get'/></item>
+        <item>Antihypertensive medication<observation name='MedsAntiHypertoni' direction='get'/></item>
+        <item>Blood lipids<observation name='Lipider' direction='get'/></item>
+        <item>Lipid lowering medication<observation name='MedsLipidsänkande' direction='get'/></item>
+        <item>Macroalbuminuria<observation name='Makroalbuminuri' direction='get' type='check'/></item>
+        <item>S-kreatinin<observation name='SKrea' direction='get' type='numeric'/></item>
+        <item>Microalbuminuria<observation name='Mikroalbuminuri' direction='get' type='check'/></item>
+        <item>Ischemic heart disease<observation name='IschemiskHjärtsjukdom' direction='get'/></item>
+        <item>Cerebrovascular disease<observation name='CerebrovaskulärSjukdom' direction='get'/></item>
+        <item>ASA<observation name='MedsASA' direction='get'/></item>
+        <item>Fundoscopy<observation name='RemDiabÖgonmott' direction='get'/></item>
+        <item>Diabetic retinopathy<observation name='DiabetesRetinopati' direction='get'/></item>
+        <item>Visual aberration due to diabetes<observation name='Synnedsättning' direction='get'/></item>
+        <item>Foot status<observation name='Fotstatus' direction='get'/></item>
+        <item>Risk category<observation name='DiabetesRiskkategori' direction='get'/></item>
+        <item>Smoker<observation name='Rökning' direction='get'/></item>
+        <item>Physical activity<observation name='FysisktAktiv' direction='get'/></item>
+        <item>Hypoglycemic episodes<observation name='Hypos' direction='get'/></item>
+        <item>Did the patient agree to sending this form to NDR?<observation name='NDRMedgivande' direction='getput' type='check'/></item>
+    </block>
+    
+    <block type='patient' repeats='yes' title='Patient form' templateUuid='6DCBCA63-5EF9-4985-8686-C662E1C4D5EF'>
+        <description type='template'>
+            If you activate this template, it will be presented to the patient through the application "myIota" which
+            the patient can run on his or her own iPad. Existing data from the medical record can be included in the template
+            automatically, and the patient can enter data into myIota which will then be presented to the physician and optionally
+            imported into the records at a later encounter.
+        </description>
+        <item>As a diabetic, you should strive for optimal blood glucose levels. Basically, you need to measure your own
+            blood glucose regularly, and you need to be able to interpret the results and know how to manage your diet and 
+            therapy so improve your results. You should take regular meals and follow a certain pattern. In what follows,
+            you can find a recommended diat. At the end of this document, you will find a few questions we would like you 
+            to answer before your next visit to your doctor.</item>
+        <item>Did you measure your glucose levels?<observation name='Egenkontroller' type='check' direction='getput'/></item>
+        <item>How many serious hypoglycemic episodes occurred in the last year?<observation name='Hypos' direction='getput'/></item>
+        <item>What is your body weight?<observation name='Vikt' direction='getput'/></item>
+        <item>How many cigarettes do you smoke daily (enter 0 if you don't smoke)?<observation name='Rökning' direction='getput'/></item>
+        <item>How many times per week do you take a forced walk of 30 minutes or more?<observation name='FysisktAktiv' direction='getput'/></item>
+    </block>
+    
+</template>

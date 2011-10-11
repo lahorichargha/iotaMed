@@ -153,7 +153,7 @@
     [self loadArrays];
     
     UILabel *newTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
-    newTitle.text = @"Issues";
+    newTitle.text = NSLocalizedString(@"Issues", @"Title for issue list and popover");
     newTitle.backgroundColor = [UIColor clearColor];
     newTitle.textColor = [UIColor whiteColor];
     UIFont *newFont = [UIFont fontWithName:@"Helvetica" size:20];

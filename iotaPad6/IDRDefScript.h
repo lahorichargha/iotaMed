@@ -1,8 +1,7 @@
 //
-//  ItemCellTemplate.m
+//  IDRObsDefScript.h
 //  iotaPad6
 //
-//  Created by Martin on 2011-03-19.
 //  Copyright © 2011, MITM AB, Sweden
 //  All rights reserved.
 //
@@ -31,15 +30,17 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "ItemCellTemplate.h"
+#import <Foundation/Foundation.h>
+#import "IDRDef.h"
 
+@interface IDRDefScript : IDRDef
 
-@implementation ItemCellTemplate
+@property (nonatomic, retain) NSString *language;
+@property (nonatomic, retain) NSMutableString *script;
+@property (nonatomic, retain) NSString *scriptType; // expression, statement
+@property (nonatomic, retain) NSString *returnType;
+@property (nonatomic, retain) NSMutableArray *parameters;
 
-+ (ItemCellTemplate *)cellForTableView:(UITableView *)tableView idrItem:(IDRItem *)idrItem {
-    ItemCellTemplate *ict = (ItemCellTemplate *)[super cellForTableView:tableView idrItem:idrItem];
-    ict.isActive = NO;
-    return ict;
-}
+- (void)dumpWithIndent:(NSUInteger)indent;
 
 @end

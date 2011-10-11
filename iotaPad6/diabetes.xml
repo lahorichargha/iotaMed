@@ -1,9 +1,84 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <template type='issue' title='Diabetes' fromICD10='E10' toICD10='E14' lang='SE' templateUuid='D31C527B-9F08-4B6D-8A02-9FD8A728EACC'>
 
+    
+    
     <description type='template'>Denna mall är avsedd för primärvårdens utredning och uppföljning av diabetes typ 1 och typ 2. 
         Mallen innehåller olika delar. Utredning och symptom är avsedda att användas en gång, medan årskontroll och NDR används 
-        vid upprepade tillfällen.</description>
+        vid upprepade tillfällen.
+    </description>
+    
+    
+    <obsdef name='Pulm' type='string' default='norm' free='free'>
+        <prompt lang='sv'>Lungor</prompt>
+        <prompt lang='nl'>Longen</prompt>
+        <select value='norm'>
+            <prompt lang='sv'>Normalt andningsljud bilat. Inga pip eller rassel.</prompt>
+            <prompt lang='nl'>Normaal vesikulair ademhalingsgeruis bilateraal, geen krepitaties of rhonchi.</prompt>
+        </select>
+        <select value='wet'>
+            <prompt lang='sv'>Fuktiga krepitationer bilateralt basalt.</prompt>
+            <prompt lang='nl'>Bilateraal vochtige krepitaties basaal.</prompt>
+        </select>
+    </obsdef>
+    
+    <obsdef name='DiabetesType' type='select' default='type2'>
+        <prompt lang='sv'>Diabetestyp</prompt>
+        <prompt lang='en'>Type of diabetes</prompt>
+        <select value='type1'>
+            <prompt lang='sv'>Typ 1</prompt>
+            <prompt lang='en'>Type 1</prompt>
+        </select>
+        <select value='type2'>
+            <prompt lang='sv'>Typ 2</prompt>
+            <prompt lang='en'>Type 2</prompt>
+        </select>
+    </obsdef>
+    
+    <obsdef name='Therapies' type='multiselect'>
+        <prompt lang='sv'>Terapityper</prompt>
+        <prompt lang='en'>Therapies</prompt>
+        <select value='tablets'>
+            <prompt lang='sv'>Tabletter</prompt>
+            <prompt lang='en'>Tablets</prompt>
+        </select>
+        <select value='insulin'>
+            <prompt lang='sv'>Insulin</prompt>
+            <prompt lang='en'>Insulin</prompt>
+        </select>
+        <select value='diet'>
+            <prompt lang='sv'>Diet</prompt>
+            <prompt lang='en'>Diet</prompt>
+        </select>
+    </obsdef>
+    
+    <obsdef name='BP' type='formattedstring' dimension='mmHg' format='#/#'>
+        <prompt lang='sv'>Blodtryck</prompt>
+        <prompt lang='en'>Blood pressure</prompt>
+        <prompt lang='nl'>Bloeddruk</prompt>
+    </obsdef>
+    
+    <constant name='InsulinATC'>
+        A10A
+    </constant>
+    
+    <script name='Instherapy' language='lua' value='BOOL' type='expression'>
+        <parameter localname='ATCList' def='ATCList'/>
+        <parameter localname='InsulinATC' def='InsulinATC'/>
+        <![CDATA[
+            foreach (atccode in ATCList) {
+            if (atccode partof InsulinATC)
+            return TRUE;
+            }
+            return FALSE;
+        ]]>
+    </script>
+    
+    <obsdef name='PGlukos2' type='numeric' dimension='mmol/L'>
+        <prompt lang='sv'>Plasmaglukos2:</prompt>
+    </obsdef>
+    
+    
     
     <block type='initial' repeats='no' title='Diagnostik och utredning' templateUuid='BA2BC279-C461-49B0-AC5F-2A48F0A9A437'>
         <description type='template'>Symptom och utredningsmallen läggs till som första mall och är avsedd att hjälpa urskilja om diagnosen i fråga
@@ -12,6 +87,7 @@
         <item indentlevel='1'>fP-Glukos &gt;= 7,0 mmol/L vid 2 på varandra följande tillfällen, eller ett glukosvärde (ej fastande) över 11,1 venöst
             alt. över 12,2 kapillärt med symtom på hyperglykemi.</item>
         <item indentlevel='2'>Plasmaglukos<observation name='PGlukos' type='numeric' direction='getput'/></item>
+        <item indentlevel='2'><observation name='PGlukos2' direction='getput'/></item>
         <item bold='yes'>IFG och IGT</item>
         <item>IFG (Impaired Fasting Glucose): Icke-diabetisk fastehyperglykemi, dvs fP-glukos 6,1-6,9 mmol/L.</item>
         <item>Överväg peroral glukosbelastning för att utreda om patienten har IGT eller diabetes (se Utredning).</item>
@@ -135,7 +211,8 @@
         
         <item bold='yes'>Allmänt</item>
         <item>Debutår<observation name='DiabDiagÅr' direction='getput' type='numeric'/></item>
-        <item>Typ av diabetes<observation name='TypDiabetes' direction='getput' type='string'/></item>
+        <item>Typ av diabetes (B)<observation name='TypDiabetes' direction='getput' type='string'/></item>
+        <item><observation name='DiabetesType' direction='getput'/></item>
         <item>Diabetesbehandling<observation name='BehandlingDiabetes' direction='getput'/></item>
         <item>Metod att ge insulin<observation name='MetodAttGeInsulin' direction='getput'/></item>
         
