@@ -27,7 +27,7 @@
 @synthesize avPlayer=_avPlayer;
 @synthesize uuids=_uuids;
 @synthesize timer=_timer;
-@synthesize myVUmeter=_myVUmeter;
+
 // -----------------------------------------------------------
 #pragma mark -
 #pragma mark Sizing helper
@@ -68,7 +68,6 @@
     [self.btnPlay release];
     self.avRecorder=nil;
     self.avPlayer=nil;
-    self.myVUmeter=nil;
     self.uuids=nil;
     self.timer=nil;
     [super dealloc];
@@ -233,10 +232,6 @@ static const CGFloat dbRange = 120.0;
 
 -(void) updateUVMeter{
     [self.avRecorder updateMeters];
-}
-
-- (void)timerFired:(NSTimer *)timer {
-    [self updateUVMeter];
 }
 
 - (IBAction)recording:(id)sender {

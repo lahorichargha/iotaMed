@@ -31,7 +31,6 @@
 @property (retain, nonatomic) IBOutlet UIButton *btnRec;
 @property (retain,nonatomic) IBOutlet UIButton *btnPlay;
 @property (nonatomic,retain) ItemTableCellString *itemString;
-@property (nonatomic,retain) MyVUMeter *myVUmeter;
 @property (retain, nonatomic) NSMutableArray *uuids;
 @property (retain, nonatomic) AVAudioPlayer *avPlayer;
 @property (retain,nonatomic) AVAudioRecorder *avRecorder;
