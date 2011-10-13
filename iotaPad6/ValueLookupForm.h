@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class IDRItem;
+@class graphDrawing;
 
 @interface ValueLookupForm : UIViewController <UITableViewDelegate, UITableViewDataSource> {
     
@@ -19,6 +20,9 @@
 @property (nonatomic, retain) IBOutlet UISegmentedControl *segControl;
 @property (nonatomic, retain) IBOutlet UIView *grafView;
 @property (retain, nonatomic) IBOutlet UIButton *btnClose;
+@property (nonatomic, retain)  IBOutlet graphDrawing *graph;
+@property (nonatomic, retain) NSMutableArray *arrValue;
+@property (nonatomic, retain) NSMutableArray *arrDate;
 
 - (IBAction)segmentedChanged:(id)sender;
 - (IBAction)btnClose:(id)sender;

@@ -13,6 +13,8 @@
 #import "IDRContact.h"
 #import "ValueLookupCell.h"
 #import "Funcs.h"
+#import "graphDrawing.h"
+#import "IDRObsDefinition.h"
 
 #define kListSegment    0
 #define kGrafSegment    1
@@ -29,6 +31,10 @@
 @synthesize segControl = _segControl;
 @synthesize grafView = _grafView;
 @synthesize btnClose = _btnClose;
+@synthesize graph=_graph;
+@synthesize arrValue=_arrValue;
+@synthesize arrDate=_arrDate;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -43,6 +49,9 @@
     self.tableView = nil;
     self.segControl = nil;
     self.grafView = nil;
+    self.graph=nil;
+    self.arrDate=nil;
+    self.arrValue=nil;
     [_btnClose release];
     [super dealloc];
 }
@@ -67,6 +76,20 @@
     [self.segControl setTitle:NSLocalizedString(@"List", @"List") forSegmentAtIndex:0];
     [self.segControl setTitle:NSLocalizedString(@"Graph", @"Graph") forSegmentAtIndex:1];
     [self.btnClose setTitle:NSLocalizedString(@"Close", @"Close") forState:UIControlStateNormal];
+    self.tableView.hidden=YES;
+    graphDrawing *gg=[[[graphDrawing alloc]initWithFrame:CGRectMake(15,50 , 450, 400)]autorelease];
+    self.graph=gg;
+    [self.grafView addSubview:self.graph];
+    self.grafView.hidden=YES;
+    
+    NSArray *values = [self.idrItem.observation.obsDefinition values];
+    self.graph.value=values;
+    
+    for (IDRValue *val in values) {
+        IDRContact *contact = val.contact;
+        self.graph.date=contact.date;
+    }
+
 }
 
 - (void)viewDidUnload {
@@ -87,7 +110,19 @@
 // -----------------------------------------------------------
 
 - (IBAction)segmentedChanged:(id)sender {
-    self.grafView.hidden = !([self.segControl selectedSegmentIndex] == kGrafSegment);
+    switch (self.segControl.selectedSegmentIndex) {
+        case 0:{
+            self.tableView.hidden=NO;
+            self.grafView.hidden=YES;
+        }
+            break;
+        case 1:{
+            
+            self.tableView.hidden=YES;
+            self.grafView.hidden=NO;
+        }
+            break;
+    }
 }
 
 - (IBAction)btnClose:(id)sender {

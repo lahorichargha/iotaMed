@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58151EA9144581B700E3C25D /* MyVUMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58151EA8144581B700E3C25D /* MyVUMeter.m */; };
+		583976151445830A00B69B9E /* pause_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 583976111445830A00B69B9E /* pause_image@2x.png */; };
+		583976161445830A00B69B9E /* play_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 583976121445830A00B69B9E /* play_image@2x.png */; };
+		583976171445830A00B69B9E /* record_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 583976131445830A00B69B9E /* record_image@2x.png */; };
+		583976181445830A00B69B9E /* stop_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 583976141445830A00B69B9E /* stop_image@2x.png */; };
+		5839761B1445856200B69B9E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5839761A1445856200B69B9E /* AVFoundation.framework */; };
+		58C2C60614457444008B72E7 /* graphDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C2C60514457444008B72E7 /* graphDrawing.m */; };
 		AA12A380137B2F010016AB24 /* IssueWorksheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA12A37F137B2F010016AB24 /* IssueWorksheetController.xib */; };
 		AA12A38E137C73EF0016AB24 /* ThemeColors.m in Sources */ = {isa = PBXBuildFile; fileRef = AA12A38D137C73EF0016AB24 /* ThemeColors.m */; };
 		AA16037B1375B4B800D03EE6 /* ServerListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AA16037A1375B4B800D03EE6 /* ServerListener.m */; };
@@ -250,6 +257,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		58151EA7144581B700E3C25D /* MyVUMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyVUMeter.h; path = ../MyVUMeter.h; sourceTree = "<group>"; };
+		58151EA8144581B700E3C25D /* MyVUMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyVUMeter.m; path = ../MyVUMeter.m; sourceTree = "<group>"; };
+		583976111445830A00B69B9E /* pause_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause_image@2x.png"; sourceTree = SOURCE_ROOT; };
+		583976121445830A00B69B9E /* play_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play_image@2x.png"; sourceTree = SOURCE_ROOT; };
+		583976131445830A00B69B9E /* record_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record_image@2x.png"; sourceTree = SOURCE_ROOT; };
+		583976141445830A00B69B9E /* stop_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop_image@2x.png"; sourceTree = SOURCE_ROOT; };
+		5839761A1445856200B69B9E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		58C2C60414457443008B72E7 /* graphDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graphDrawing.h; sourceTree = "<group>"; };
+		58C2C60514457444008B72E7 /* graphDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = graphDrawing.m; sourceTree = "<group>"; };
 		AA12A37F137B2F010016AB24 /* IssueWorksheetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueWorksheetController.xib; sourceTree = "<group>"; };
 		AA12A384137C70220016AB24 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		AA12A38C137C73EF0016AB24 /* ThemeColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeColors.h; sourceTree = "<group>"; };
@@ -590,6 +606,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5839761B1445856200B69B9E /* AVFoundation.framework in Frameworks */,
 				AA97B6DD13938DDB002E6C11 /* libiotaShared.a in Frameworks */,
 				AA63B5FF13055E350035A49C /* UIKit.framework in Frameworks */,
 				AA63B60113055E350035A49C /* Foundation.framework in Frameworks */,
@@ -611,6 +628,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		583976191445831B00B69B9E /* AudioRecord */ = {
+			isa = PBXGroup;
+			children = (
+				58151EA8144581B700E3C25D /* MyVUMeter.m */,
+				583976111445830A00B69B9E /* pause_image@2x.png */,
+				583976121445830A00B69B9E /* play_image@2x.png */,
+				583976131445830A00B69B9E /* record_image@2x.png */,
+				583976141445830A00B69B9E /* stop_image@2x.png */,
+				58151EA7144581B700E3C25D /* MyVUMeter.h */,
+			);
+			name = AudioRecord;
+			sourceTree = "<group>";
+		};
 		AA12A383137C6FF60016AB24 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -748,6 +778,7 @@
 		AA63B5EF13055E350035A49C = {
 			isa = PBXGroup;
 			children = (
+				5839761A1445856200B69B9E /* AVFoundation.framework */,
 				CEFDC4A0143B52CD006D77DE /* TestFlight.h */,
 				CEFDC49E143B52C6006D77DE /* libTestFlight.a */,
 				AA97B6DC13938DDB002E6C11 /* libiotaShared.a */,
@@ -785,6 +816,7 @@
 			isa = PBXGroup;
 			children = (
 				CE5707E8142915A100A73E39 /* iotaMed.entitlements */,
+				583976191445831B00B69B9E /* AudioRecord */,
 				AAF8515313F9377F006BFD59 /* CKSVG */,
 				AAECB6A913815A0600EAB251 /* Inbox */,
 				AA12A383137C6FF60016AB24 /* Constants */,
@@ -827,6 +859,8 @@
 				AA9680C9133D5743006E6AF0 /* PrescriptionDetailController.h */,
 				AA9680CA133D5746006E6AF0 /* PrescriptionDetailController.m */,
 				AA9680CB133D5748006E6AF0 /* PrescriptionDetailController.xib */,
+				58C2C60414457443008B72E7 /* graphDrawing.h */,
+				58C2C60514457444008B72E7 /* graphDrawing.m */,
 				AA9680C1133D3F66006E6AF0 /* ValueLookupForm.h */,
 				AA9680C2133D3F67006E6AF0 /* ValueLookupForm.m */,
 				AA9680C3133D3F6A006E6AF0 /* ValueLookupForm.xib */,
@@ -1379,6 +1413,10 @@
 				CEB2508D143779CB0037692A /* diabetes_EN.xml in Resources */,
 				CE5252FA143E52C600B5F0EA /* button.png in Resources */,
 				CE52530C1441C56A00B5F0EA /* ItemSelectViewController.xib in Resources */,
+				583976151445830A00B69B9E /* pause_image@2x.png in Resources */,
+				583976161445830A00B69B9E /* play_image@2x.png in Resources */,
+				583976171445830A00B69B9E /* record_image@2x.png in Resources */,
+				583976181445830A00B69B9E /* stop_image@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1520,6 +1558,8 @@
 				CE5252F4143E452200B5F0EA /* ItemSelectController.m in Sources */,
 				CE5252F7143E453600B5F0EA /* ItemMultiselectController.m in Sources */,
 				CE52530B1441C56A00B5F0EA /* ItemSelectViewController.m in Sources */,
+				58C2C60614457444008B72E7 /* graphDrawing.m in Sources */,
+				58151EA9144581B700E3C25D /* MyVUMeter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
