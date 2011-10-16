@@ -189,8 +189,6 @@
 		AAF8516513F93796006BFD59 /* SVGGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF8515E13F93796006BFD59 /* SVGGroup.m */; };
 		AAF8516613F93796006BFD59 /* SVGPath.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF8516013F93796006BFD59 /* SVGPath.m */; };
 		AAF9B5541392A78C0049BA69 /* test5.xml in Resources */ = {isa = PBXBuildFile; fileRef = AAF9B5531392A78C0049BA69 /* test5.xml */; };
-		CE5252F4143E452200B5F0EA /* ItemSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5252F3143E452200B5F0EA /* ItemSelectController.m */; };
-		CE5252F7143E453600B5F0EA /* ItemMultiselectController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5252F6143E453600B5F0EA /* ItemMultiselectController.m */; };
 		CE5252FA143E52C600B5F0EA /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5252F9143E52C600B5F0EA /* button.png */; };
 		CE52530B1441C56A00B5F0EA /* ItemSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5253091441C56900B5F0EA /* ItemSelectViewController.m */; };
 		CE52530C1441C56A00B5F0EA /* ItemSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE52530A1441C56900B5F0EA /* ItemSelectViewController.xib */; };
@@ -541,10 +539,6 @@
 		AAF8515F13F93796006BFD59 /* SVGPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGPath.h; sourceTree = "<group>"; };
 		AAF8516013F93796006BFD59 /* SVGPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGPath.m; sourceTree = "<group>"; };
 		AAF9B5531392A78C0049BA69 /* test5.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test5.xml; sourceTree = "<group>"; };
-		CE5252F2143E452200B5F0EA /* ItemSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemSelectController.h; sourceTree = "<group>"; };
-		CE5252F3143E452200B5F0EA /* ItemSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemSelectController.m; sourceTree = "<group>"; };
-		CE5252F5143E453600B5F0EA /* ItemMultiselectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemMultiselectController.h; sourceTree = "<group>"; };
-		CE5252F6143E453600B5F0EA /* ItemMultiselectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemMultiselectController.m; sourceTree = "<group>"; };
 		CE5252F8143E45AF00B5F0EA /* ItemSelectControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemSelectControllerDelegate.h; sourceTree = "<group>"; };
 		CE5252F9143E52C600B5F0EA /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		CE5253081441C56900B5F0EA /* ItemSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemSelectViewController.h; sourceTree = "<group>"; };
@@ -805,7 +799,7 @@
 				AA50C885132B9C7E0031D231 /* Issue Worksheet */,
 				AA50C886132B9CA80031D231 /* Contact List */,
 				AA50C887132B9D290031D231 /* Journal */,
-				AA94FC07133288530065DC19 /* Klin kem */,
+				AA94FC07133288530065DC19 /* Klin kem Systeam */,
 				AA7EB00914012BED00F9F918 /* Item Table Cell */,
 				AA66CDCB1336AF8100B4E2F5 /* Ehr NPO Cross */,
 				AA63B63E13055E880035A49C /* MedListController.h */,
@@ -949,10 +943,6 @@
 				AA7EB02614012FC600F9F918 /* ItemTableCellMultiSelect.m */,
 				AA7EB02814012FD800F9F918 /* ItemTableCellAnalog.h */,
 				AA7EB02914012FD900F9F918 /* ItemTableCellAnalog.m */,
-				CE5252F2143E452200B5F0EA /* ItemSelectController.h */,
-				CE5252F3143E452200B5F0EA /* ItemSelectController.m */,
-				CE5252F5143E453600B5F0EA /* ItemMultiselectController.h */,
-				CE5252F6143E453600B5F0EA /* ItemMultiselectController.m */,
 				CE5252F8143E45AF00B5F0EA /* ItemSelectControllerDelegate.h */,
 				CE5253081441C56900B5F0EA /* ItemSelectViewController.h */,
 				CE5253091441C56900B5F0EA /* ItemSelectViewController.m */,
@@ -1007,7 +997,7 @@
 			name = "Issue worksheets";
 			sourceTree = "<group>";
 		};
-		AA94FC07133288530065DC19 /* Klin kem */ = {
+		AA94FC07133288530065DC19 /* Klin kem Systeam */ = {
 			isa = PBXGroup;
 			children = (
 				AAD67BE713183DE100D3A031 /* KlinKemController.h */,
@@ -1023,7 +1013,7 @@
 				AA630223133AC65D0033DB11 /* AnalysTjanst.h */,
 				AA630224133AC65D0033DB11 /* AnalysTjanst.m */,
 			);
-			name = "Klin kem";
+			name = "Klin kem Systeam";
 			sourceTree = "<group>";
 		};
 		AA94FC1A1333E59D0065DC19 /* opacity */ = {
@@ -1517,8 +1507,6 @@
 				CE78ECB4142508DF009842DB /* IDRDefScriptParameter.m in Sources */,
 				CE78ECB714250B72009842DB /* IDRSelect.m in Sources */,
 				CE78ECBB14253B69009842DB /* IDRDataDictionary.m in Sources */,
-				CE5252F4143E452200B5F0EA /* ItemSelectController.m in Sources */,
-				CE5252F7143E453600B5F0EA /* ItemMultiselectController.m in Sources */,
 				CE52530B1441C56A00B5F0EA /* ItemSelectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

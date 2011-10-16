@@ -74,6 +74,11 @@
         ]]>
     </script>
     
+    <obsdef name='PGlukos' type='numeric' dimension='mmol/L'>
+        <prompt lang='sv'>Plasmaglukos</prompt>
+        <prompt lang='en'>Plasma glycemia</prompt>
+    </obsdef>
+    
     <obsdef name='PGlukos2' type='numeric' dimension='mmol/L'>
         <prompt lang='sv'>Plasmaglukos2:</prompt>
     </obsdef>
@@ -86,7 +91,7 @@
         <item bold='yes'>Kriterium:</item>
         <item indentlevel='1'>fP-Glukos &gt;= 7,0 mmol/L vid 2 på varandra följande tillfällen, eller ett glukosvärde (ej fastande) över 11,1 venöst
             alt. över 12,2 kapillärt med symtom på hyperglykemi.</item>
-        <item indentlevel='2'>Plasmaglukos<observation name='PGlukos' type='numeric' direction='getput'/></item>
+        <item indentlevel='2'><observation name='PGlukos' type='numeric' direction='getput'/></item>
         <item indentlevel='2'><observation name='PGlukos2' direction='getput'/></item>
         <item bold='yes'>IFG och IGT</item>
         <item>IFG (Impaired Fasting Glucose): Icke-diabetisk fastehyperglykemi, dvs fP-glukos 6,1-6,9 mmol/L.</item>

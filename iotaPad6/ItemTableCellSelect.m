@@ -33,7 +33,6 @@
 #import "ItemTableCellSelect.h"
 #import "IDRObservation.h"
 #import "IDRObsDef.h"
-#import "ItemSelectController.h"
 #import "ItemSelectViewController.h"
 #import "IDRSelect.h"
 #import "UIView+iotaExtensions.h"
@@ -95,7 +94,9 @@ static CGFloat kButtonOffsetRight = 40.0;    // from gadget to the right
     [singleTap requireGestureRecognizerToFail:doubleTap];
     
     // two finger single tap: keyboard entry
-    UITapGestureRecognizer *twoFingerSingleTap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureKeyboardEntry)] autorelease];
+    UITapGestureRecognizer *twoFingerSingleTap = [[[UITapGestureRecognizer alloc] 
+                                                   initWithTarget:self 
+                                                   action:@selector(gestureKeyboardEntry)] autorelease];
     twoFingerSingleTap.numberOfTouchesRequired = 2;
     twoFingerSingleTap.numberOfTapsRequired = 1;
     [self.tfValue addGestureRecognizer:twoFingerSingleTap];
@@ -129,12 +130,14 @@ static CGFloat kButtonOffsetRight = 40.0;    // from gadget to the right
     self.btnSelect.frame = CGRectMake(self.frame.size.width - kInputOffsetRightEndFromRight - kButtonOffsetRight, kInputOffsetFromTop, kButtonWidth, kButtonHeight);
 }
 
+// gadgetspaceadd tells subclasses how much place we need for our displayfields, counting from
+// the right margin
 + (CGFloat)gadgetSpaceAdd:(CGFloat)oldSpace forItem:(IDRItem *)idrItem {
     CGFloat superSpace = [super gadgetSpaceAdd:oldSpace forItem:idrItem];
     return  superSpace + kButtonOffsetRight + kButtonWidth;
 }
 
-- (void)btnSelectPressed:(id)sender {
+- (void)selectFromList {
     ItemSelectViewController *isvc = [[ItemSelectViewController alloc] initWithNibName:@"ItemSelectViewController" bundle:nil];
     isvc.delegate = self;
     self.popOver = [[UIPopoverController alloc] initWithContentViewController:isvc];
@@ -145,12 +148,8 @@ static CGFloat kButtonOffsetRight = 40.0;    // from gadget to the right
     [self.parentTableView findAndResignFirstResponder];
 }
 
-// overrides the one from ItemTableCellString
-- (void)gestureListOfChoices {
-    if (self.selectPrompts && [self.selectPrompts count] > 0)
-        [self btnSelectPressed:nil];
-    else
-        [self.tfValue becomeFirstResponder];
+- (void)btnSelectPressed:(id)sender {
+    [self selectFromList];
 }
 
 // -----------------------------------------------------------
@@ -158,12 +157,23 @@ static CGFloat kButtonOffsetRight = 40.0;    // from gadget to the right
 #pragma mark Gestures
 // -----------------------------------------------------------
 
+// overrides the one from ItemTableCellString
+- (void)gestureListOfChoices {
+    if (self.selectPrompts && [self.selectPrompts count] > 0)
+        [self selectFromList];
+    else
+        [self.tfValue becomeFirstResponder];
+}
+
 - (void)gestureDefaultEntry {
-    NSString *defaultValue = [self.idrItem.observation.obsDef defaultSelect];
+    IDRObsDef *obsDef = self.idrItem.observation.obsDef;
+    NSString *defaultValue = obsDef.defaultSelect;
     if (defaultValue == nil) 
         [self gestureListOfChoices];
     else {
-        self.tfValue.text = defaultValue;
+        IDRSelect *defSelect = [obsDef getSelectWithValue:defaultValue];
+        NSString *defPrompt = [defSelect promptForPreferredLanguage];
+        self.tfValue.text = defPrompt;
         [self writeCurrent];
     }
 }   
