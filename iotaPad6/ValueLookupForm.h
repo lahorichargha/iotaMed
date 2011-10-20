@@ -20,7 +20,7 @@
 @property (nonatomic, retain) IBOutlet UISegmentedControl *segControl;
 @property (nonatomic, retain) IBOutlet UIView *grafView;
 @property (retain, nonatomic) IBOutlet UIButton *btnClose;
-@property (nonatomic, retain)  IBOutlet graphDrawing *graph;
+@property (nonatomic, retain) graphDrawing *graph;
 @property (nonatomic, retain) NSMutableArray *arrValue;
 @property (nonatomic, retain) NSMutableArray *arrDate;
 

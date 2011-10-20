@@ -22,11 +22,14 @@
 @synthesize selectedIndex = _selectedIndex;
 @synthesize tableView = _tableView;
 @synthesize btnPlay=_btnPlay;
-@synthesize itemString=_itemString;
-@synthesize avRecorder=_avRecorder;
-@synthesize avPlayer=_avPlayer;
-@synthesize uuids=_uuids;
+@synthesize audioRec=_audioRec;
+@synthesize avRec=_avRec;
+@synthesize avPlay=_avPlay;
+@synthesize vum=_vum;
 @synthesize timer=_timer;
+@synthesize sliderItemSelect=_sliderItemSelect;
+@synthesize currentLabelItemSelect=_currentLabelItemSelect;
+@synthesize durationLabelItemSelect=_durationLabelItemSelect;
 
 // -----------------------------------------------------------
 #pragma mark -
@@ -62,14 +65,17 @@
 - (void)dealloc {
     self.delegate = nil;
     self.selectedIndex = nil;
-    self.itemString=nil;
+    self.audioRec=nil;
     [self.btnKeyboard release];
     [self.btnRec release];
     [self.btnPlay release];
-    self.avRecorder=nil;
-    self.avPlayer=nil;
-    self.uuids=nil;
+    self.avRec=nil;
+    self.avPlay=nil;
+    self.vum=nil;
     self.timer=nil;
+    self.sliderItemSelect=nil;
+    self.currentLabelItemSelect=nil;
+    self.durationLabelItemSelect=nil;
     [super dealloc];
 }
 
@@ -80,9 +86,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (!recording) {
+    if (!(self.audioRec.recording)) {
         [self.btnRec setTitle:@"Record" forState:UIControlStateNormal];}
-    if (!playWasPaused || !playing) {
+    if (!(self.audioRec.playWasPaused) || !(self.audioRec.playing)) {
         [self.btnPlay setTitle:@"Play" forState:UIControlStateNormal];}
 }
 
@@ -139,225 +145,108 @@
 - (IBAction)btnKeyboard:(id)sender {
     [self.delegate showKeyboard];
 }
-
-// -----------------------------------------------------------
-#pragma - recorder delegate
-//------------------------------------------------------------------
-
--(void) audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag{
-    NSLog(@"did finish recording!");
-    [self.timer invalidate];
-    [self.btnRec setTitle:@"Record" forState:UIControlStateNormal];
-    self.btnRec.enabled=YES;
-
-}
-
-
--(void) audioRecorderEncodeErrorDidOccur:(AVAudioRecorder *)recorder error:(NSError *)error{
-    NSLog(@"an error accured");
-}
-
-//Martin had two more delegate here! Check Later.
-
-
-//------------------------------------------------------------------
-
-#pragma - player delegate
-//------------------------------------------------------------------
-
-
--(void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
-    NSLog(@"did finish playing!");
-    [self.timer invalidate];
-    [self.btnPlay setTitle:@"Play" forState:UIControlStateNormal];
-    self.btnPlay.enabled=YES;
-    playing=NO;
-       // [self setSymbolnamed:nil];
-}
-
--(void) audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError *)error{
-    NSLog(@"An error accured!");
-}
-
-
-//------------------------------------------------------------------
-
-#pragma - get directory
-//------------------------------------------------------------------
-
--(NSString*) getDocumentDirectory{
-    NSString *path=[NSTemporaryDirectory() stringByAppendingPathComponent: @"recordedFile.caf"];  
-    return path;
-    NSLog(@"path%@",path);
-}
-
--(NSURL*) getFileURL{
-    NSString *docDir=[self getDocumentDirectory];
-    NSURL *url=[NSURL fileURLWithPath:docDir];
-    return url;
-}
-
--(NSString*) uniquePathDirctory{
-    CFUUIDRef uuid = CFUUIDCreate(NULL);
-    CFStringRef uuidString = CFUUIDCreateString(NULL, uuid);
-    CFRelease(uuid);
-    NSString *newPath = [NSString stringWithFormat:@"%@/%@.caf", NSTemporaryDirectory(), uuidString];
-    CFRelease(uuidString);
-    return newPath;
-}
-
--(NSURL*) getURLToSend{
-    
-    NSString *docDir=[self uniquePathDirctory];
-    NSURL *url;
-    url=[NSURL fileURLWithPath:docDir];
-    return url;    
-}
-
-//---------------------------------------------------------
-#pragma mark -
-#pragma mark Soundrecording stuff
-//---------------------------------------------------------
-
 static const CGFloat dbRange = 120.0;
+-(void) updateMeter{
+    [self.avRec updateMeters];
+    CGFloat db = [self.avRec averagePowerForChannel:0];
+    CGFloat peakDb = [self.avRec peakPowerForChannel:0];
+    // db goes from -160.0 to 0.0, but iOS only goes from -120 to 0
+    
+    NSLog(@"db, peakDb: %f %f", db, peakDb);
+    
+    // with this conversion, the volume values should become 0.0 - 1.0
+    CGFloat myIdeaOfVolume = (db + dbRange) / dbRange;
+   CGFloat myIdeaOfPeakVolume = (peakDb + dbRange) / dbRange;
+    
+    self.vum.volume = myIdeaOfVolume;
+    self.vum.peakVolume = myIdeaOfPeakVolume;
+    [self.vum setNeedsDisplay];
+}
 
--(void) currentTimeForPlayer: (AVAudioPlayer *) p {
-    timePaused=p.currentTime;
+-(void)prepareMeter{
     
 }
 
--(void) updateCurrentTime{
-    [self currentTimeForPlayer:self.avPlayer];
-}
 
--(void) updateUVMeter{
-    [self.avRecorder updateMeters];
-}
 
-- (IBAction)recording:(id)sender {
+
+
+-(IBAction)recording:(id)sender{
+   
     
-    if (recording) {
-        [self stopping];}
-    else{
+    if (!(self.audioRec.recording)) {
+        AudioRecording *audio=[[[AudioRecording alloc]init]autorelease];
+        self.audioRec=nil;
+        self.audioRec=audio;
+        
+//        MyVUMeter *vumeter=(MyVUMeter *)audio.VUmeter;
+//        self.vum=vumeter;
+
+        [audio prepareToRecord];
+        self.avRec=nil;
+        self.avRec=audio.avRecorder;
+        
+           [audio record];
+        
+
+        self.audioRec.recording=YES;  
         [self.btnRec setTitle:@"Stop" forState:UIControlStateNormal];
         
-    
-    NSLog(@"start to record.");
-    //[self setSymbolnamed:@"record_image@2x"];
+        }
+    else{
         
-    NSTimeInterval ti=1.0/30.0;
-    self.timer=[NSTimer scheduledTimerWithTimeInterval:ti target:self selector:@selector(updateUVMeter) userInfo:nil repeats:YES];
-    
-    AVAudioSession *audioSession=[AVAudioSession sharedInstance];
-    
-    //sharedInstance Returns the singleton audio session.
-    
-    [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-    
-    [audioSession setActive:YES error:nil];
-    
-    //    NSURL *url=[self getFileURL];
-    //    NSLog(@"record url%@",url);
-    
-    NSURL *urluuid=[self getFileURL];
-    NSLog(@"record UUIDAdress %@",urluuid);
-    
-    if (!self.uuids) {
-        self.uuids = [[[NSMutableArray alloc] initWithCapacity:5]autorelease];
-    }
-    [self.uuids addObject:urluuid];
-    
-    NSMutableDictionary *recordSetting=[[[NSMutableDictionary alloc]init]autorelease]; 
-    
-    //    [recordSetting setValue :[NSNumber numberWithInt:kAudioFormatLinearPCM] forKey:AVFormatIDKey];
-    //    [recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey]; 
-    //    [recordSetting setValue:[NSNumber numberWithInt: 2] forKey:AVNumberOfChannelsKey];
-    //    [recordSetting setValue :[NSNumber numberWithInt:8] forKey:AVLinearPCMBitDepthKey];
-    //    [recordSetting setValue :[NSNumber numberWithBool:NO] forKey:AVLinearPCMIsBigEndianKey];
-    //    [recordSetting setValue :[NSNumber numberWithBool:NO] forKey:AVLinearPCMIsFloatKey];
-    
-    self.avRecorder=[[[AVAudioRecorder alloc]initWithURL:urluuid settings:recordSetting error:nil]autorelease];
-    self.avRecorder.delegate=self; 
-    [self.avRecorder prepareToRecord];
-    self.avRecorder.meteringEnabled=YES;
-    
-    BOOL didStartRecord=[self.avRecorder record];
-    if (!didStartRecord) 
-        NSLog(@"faile to record");
-    else 
-        NSLog(@"Could record");
-    
-        recording=YES;}
-    
+        
+        [self.audioRec stopping];
+        self.audioRec.stopBool=YES;
+       self.audioRec.recording=NO;
+        [self.btnRec setTitle:@"Record" forState:UIControlStateNormal];
+        }
 }
 
-- (IBAction)playing:(id)sender {
+-(IBAction)playing:(id)sender{
     
-    if (playing) {
-                [self pausing];
-        }
-    
-    else{
-        if (playWasPaused) {
-        
-            [self.avPlayer play];
-            NSLog(@"playing again");
-            
-            [self.btnPlay setTitle:@"PauseAgain" forState:UIControlStateNormal];
-            playing=YES;}
-        else{
+         
+    if (!(self.audioRec.playing)) {
+        [self.audioRec play];
+        [self sliderChanged:self.sliderItemSelect];
+        self.currentLabelItemSelect=self.audioRec.labelCellCurrent;
+        self.durationLabelItemSelect=self.audioRec.labelCellDuration;
 
-    
-    NSLog(@"start playing");
-   // [self setSymbolnamed:@"play_image@2x"];
-    
-       
-    //    NSURL *url = [self getFileURL];
-    //    NSLog(@"Url to play: %@", url);
-    
-    NSURL *urlPlay=[self.uuids objectAtIndex:0];
-    
-    if (!playWasPaused || !self.avPlayer) {
-        self.avPlayer=[[[AVAudioPlayer alloc]initWithContentsOfURL:urlPlay error:nil]autorelease];
-        self.avPlayer.delegate = self;
-    
-        self.timer=[NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(updateCurrentTime) userInfo:self.avPlayer repeats:YES];
+               
 
-    
-    [self.avPlayer play];
-        [self currentTimeForPlayer:self.avPlayer];
+        self.audioRec.playing=YES;
         [self.btnPlay setTitle:@"Pause" forState:UIControlStateNormal];
-        playing=YES; }
+        self.avPlay=self.audioRec.avPlayer;
         
-        }
-
     }
-    
-}
-
-- (void)pausing{
-    NSLog(@"paused");
-    [self.btnPlay setTitle:@"PlayAgain" forState:UIControlStateNormal];
-        [self.avPlayer pause];
-    playWasPaused=YES;
-        playing=NO;
-    
-    //[self setSymbolnamed:@"pause_image@2x"];
-}
-
-- (void)stopping{
-    NSLog(@"Stopped recording");
-    
-    if (stopping) {
-        self.btnRec.enabled=YES;
-        [self.btnRec setTitle:@"Record" forState:UIControlStateNormal];}
-    
     else{
-       [self.avRecorder stop];
-       stopping=YES;
-       recording=NO;}
-    //[self setSymbolnamed:@"stop_image@2x"];
+        
+        if (self.audioRec.didFinishPlay) {
+            [self.btnPlay setTitle:@"play" forState:UIControlStateNormal];
+        }
+        else{
+        [self.audioRec pausing];
+       self.audioRec.playWasPaused=YES;
+        self.audioRec.playing=NO;
+            [self.btnPlay setTitle:@"Play" forState:UIControlStateNormal];}
+        
+    }
+   
+   
+   }
+
+
+-(IBAction)sliderChanged:(id)sender{
+    
+    self.sliderItemSelect=sender;
+    [self.audioRec sliderValue:self.sliderItemSelect];
+    
+   self.audioRec.labelCellCurrent= self.currentLabelItemSelect;
+   self.audioRec.labelCellDuration= self.durationLabelItemSelect;
+        
+    
 }
+
 
 
 // -----------------------------------------------------------

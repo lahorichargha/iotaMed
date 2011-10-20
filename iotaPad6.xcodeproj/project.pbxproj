@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		58151EA9144581B700E3C25D /* MyVUMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58151EA8144581B700E3C25D /* MyVUMeter.m */; };
+		58259401144D74B100A89D9D /* AudioRecording.m in Sources */ = {isa = PBXBuildFile; fileRef = 58259400144D74B100A89D9D /* AudioRecording.m */; };
 		583976151445830A00B69B9E /* pause_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 583976111445830A00B69B9E /* pause_image@2x.png */; };
 		583976161445830A00B69B9E /* play_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 583976121445830A00B69B9E /* play_image@2x.png */; };
 		583976171445830A00B69B9E /* record_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 583976131445830A00B69B9E /* record_image@2x.png */; };
@@ -259,6 +260,8 @@
 /* Begin PBXFileReference section */
 		58151EA7144581B700E3C25D /* MyVUMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyVUMeter.h; path = ../MyVUMeter.h; sourceTree = "<group>"; };
 		58151EA8144581B700E3C25D /* MyVUMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyVUMeter.m; path = ../MyVUMeter.m; sourceTree = "<group>"; };
+		582593FF144D74B100A89D9D /* AudioRecording.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioRecording.h; sourceTree = "<group>"; };
+		58259400144D74B100A89D9D /* AudioRecording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioRecording.m; sourceTree = "<group>"; };
 		583976111445830A00B69B9E /* pause_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause_image@2x.png"; sourceTree = SOURCE_ROOT; };
 		583976121445830A00B69B9E /* play_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play_image@2x.png"; sourceTree = SOURCE_ROOT; };
 		583976131445830A00B69B9E /* record_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record_image@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -631,12 +634,14 @@
 		583976191445831B00B69B9E /* AudioRecord */ = {
 			isa = PBXGroup;
 			children = (
-				58151EA8144581B700E3C25D /* MyVUMeter.m */,
+				582593FF144D74B100A89D9D /* AudioRecording.h */,
+				58259400144D74B100A89D9D /* AudioRecording.m */,
 				583976111445830A00B69B9E /* pause_image@2x.png */,
 				583976121445830A00B69B9E /* play_image@2x.png */,
 				583976131445830A00B69B9E /* record_image@2x.png */,
 				583976141445830A00B69B9E /* stop_image@2x.png */,
 				58151EA7144581B700E3C25D /* MyVUMeter.h */,
+				58151EA8144581B700E3C25D /* MyVUMeter.m */,
 			);
 			name = AudioRecord;
 			sourceTree = "<group>";
@@ -1560,6 +1565,7 @@
 				CE52530B1441C56A00B5F0EA /* ItemSelectViewController.m in Sources */,
 				58C2C60614457444008B72E7 /* graphDrawing.m in Sources */,
 				58151EA9144581B700E3C25D /* MyVUMeter.m in Sources */,
+				58259401144D74B100A89D9D /* AudioRecording.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
